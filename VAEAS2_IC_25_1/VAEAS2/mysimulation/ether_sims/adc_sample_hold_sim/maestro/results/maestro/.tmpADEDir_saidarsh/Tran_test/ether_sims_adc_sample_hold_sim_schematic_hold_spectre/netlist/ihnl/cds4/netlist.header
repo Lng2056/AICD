@@ -1,6 +1,0 @@
-
-// Library name: gpdk090
-// Cell name: resnsnpoly
-// View name: schematic
-subckt resnsnpoly_pcell_0 B MINUS PLUS
-parameters segL=8u segW=1.5u

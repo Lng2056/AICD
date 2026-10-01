@@ -1,6 +1,0 @@
-    PM0 (Y A inh_DVDD inh_DVDD) gpdk090_pmos2v w=(2.8u) l=280.0n as=1.68p \
-        ad=1.68p ps=6.8u pd=6.8u m=(1)*(1) simM=(1)*(1)
-    NM0 (Y A inh_DVSS inh_DVSS) gpdk090_nmos2v w=(1.12u) l=280.0n as=672f \
-        ad=672f ps=3.44u pd=3.44u m=(1)*(1) simM=(1)*(1)
-ends inv_2x_hv
-// End of subcircuit definition.

@@ -1,6 +1,0 @@
-
-// Library name: ether
-// Cell name: adc_sample_hold
-// View name: schematic
-subckt adc_sample_hold outm outp SIDDQ VDD VSS bias100 hold hold_test inm \
-        inm_test inp inp_test sample sample_test

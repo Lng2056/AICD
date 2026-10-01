@@ -1,9 +1,0 @@
-HEADER
-"PSFversion" "1.00"
-"NM0n NM1n" "gpdk090_nmos2v_spectre"
-"PM0n PM1n" "gpdk090_pmos2v_spectre"
-"Av" ":1v"
-"Bv" ":2v"
-"OUTv" ":3v"
-"VDDv" ":4v"
-"VSSv" ":5v"

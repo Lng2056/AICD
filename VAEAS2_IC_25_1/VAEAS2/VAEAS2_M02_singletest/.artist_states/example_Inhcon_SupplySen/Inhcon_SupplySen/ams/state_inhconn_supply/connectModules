@@ -1,5 +1,0 @@
-rule "ConnRules_5V_full"
-userRuleView "connect"
-selectRules "User defined"
-userRuleCell "ConnRules_ss_mid"
-userRuleLib "connectLib"

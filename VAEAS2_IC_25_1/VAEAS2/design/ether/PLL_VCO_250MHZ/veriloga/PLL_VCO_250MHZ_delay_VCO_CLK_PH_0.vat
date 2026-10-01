@@ -1,9 +1,0 @@
-# Table File  : '/project/tsmc13lv98/sims/aptivia/workarea/pll/vco/dcmlib/PLL_VCO_250MHZ/veriloga/PLL_VCO_250MHZ_delay_VCO_CLK_PH_0.vat'
-# Result File : 'results/schroeder_sims/PLL_VCO_250MHZDCM/configDCM/results/_vco_dcm_VerilogA_timing_sweep-_vco_dcm_timing.res'
-# Created on  : 'Wed Jan  7 2004 at 16:13:48'
-
-# dcm_Vcontrol_value
-# 	delay_VCO_CLK_PH_0
-1.1	4.20753e-10 	# keys='1.1 '
-1.3	3.14833e-10 	# keys='1.3 '
-1.5	2.54012e-10 	# keys='1.5 '

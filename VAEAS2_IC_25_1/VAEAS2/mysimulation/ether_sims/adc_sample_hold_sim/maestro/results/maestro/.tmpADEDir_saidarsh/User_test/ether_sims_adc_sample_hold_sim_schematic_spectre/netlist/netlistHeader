@@ -1,7 +1,0 @@
-// Generated for: spectre
-// Design Netlist Generated on: Aug  9 12:33:12 2023
-// Design library name: ether_sims
-// Design cell name: adc_sample_hold_sim
-// Design view name: schematic
-simulator lang=spectre
-global 0

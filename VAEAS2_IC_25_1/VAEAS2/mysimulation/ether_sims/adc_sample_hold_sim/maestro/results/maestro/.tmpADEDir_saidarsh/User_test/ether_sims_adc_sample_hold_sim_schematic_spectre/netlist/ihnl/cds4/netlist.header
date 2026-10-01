@@ -1,5 +1,0 @@
-
-// Library name: ether
-// Cell name: adc_nandx10
-// View name: schematic
-subckt adc_nandx10 A B OUT VDD VSS

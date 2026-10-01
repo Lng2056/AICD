@@ -1,5 +1,0 @@
-(envOpts enableArclength) nil
-(envOpts useSPPFile) ""
-(envOpts paramRangeCheckFile) ""
-(envOpts spp) ""
-(envOpts solver) "Spectre"

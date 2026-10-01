@@ -1,5 +1,0 @@
-define ncuse5x
-define ncvlogopts -linedebug -mess
-define ncelabopts -nowarn CUVWSP -nowarn CUNGL1 -nowarn CSINFI
-define ncvhdlopts -linedebug -mess -v93 
-#define modelpath $AMS/CDK090/gpdk090/models/spectre/gpdk090.scs(NN):$AMS/pkgModel/QFP80LD.scs

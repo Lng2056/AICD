@@ -1,5 +1,0 @@
-cdba.DBUPerUU   maskLayout      int     2000
-layoutXL setPPConn boolean nil
-layout mppTemplate string "N-Tab"
-layout  xSnapSpacing    float   0.005
-layout  ySnapSpacing    float   0.005

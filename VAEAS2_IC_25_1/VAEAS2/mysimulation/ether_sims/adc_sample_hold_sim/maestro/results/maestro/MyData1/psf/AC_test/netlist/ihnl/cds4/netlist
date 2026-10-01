@@ -1,4 +1,0 @@
-    R1 (n1 MINUS B) gpdk090_resnsnpoly l=segL w=segW
-    R0 (PLUS n1 B) gpdk090_resnsnpoly l=segL w=segW
-ends resnsnpoly_pcell_0
-// End of subcircuit definition.

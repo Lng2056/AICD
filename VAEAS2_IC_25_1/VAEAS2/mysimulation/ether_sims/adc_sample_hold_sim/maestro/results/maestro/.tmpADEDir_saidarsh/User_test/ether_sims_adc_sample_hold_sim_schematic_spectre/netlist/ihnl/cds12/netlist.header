@@ -1,7 +1,0 @@
-
-// Library name: ether
-// Cell name: adc_clk_nonoverlap
-// View name: schematic
-subckt adc_clk_nonoverlap hold hold_f hold_test hold_test_f ph1 ph1b ph2 \
-        ph2b sample sample_f sample_test sample_test_f SIDDQ TEST_ENABLE \
-        VDD VSS clk_in

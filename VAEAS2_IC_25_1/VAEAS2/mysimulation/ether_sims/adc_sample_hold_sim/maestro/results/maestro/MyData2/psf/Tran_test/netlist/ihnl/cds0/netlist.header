@@ -1,5 +1,0 @@
-
-// Library name: ether
-// Cell name: inv_2x_hv
-// View name: schematic
-subckt inv_2x_hv A Y inh_DVDD inh_DVSS
