@@ -1,0 +1,69 @@
+//Verilog-AMS HDL for "drouillard_ph2", "adc_wo_decode" "verilogams"
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_wo_decode ( adc_out, adcflash_out, BASEFX_DIS, CLK, VSS, I100_ext1,
+    I100_ext2, I100_poly1, I100_poly2, INM, INP, SIDDQ, TEST_ENABLE, TEST_INM,
+    TEST_INP, VDD, ph1, ph1b, FX_BIT );
+
+output [62:0]	adc_out;
+output [5:0]	adcflash_out;
+output		ph1, ph1b;
+output		FX_BIT;
+input		INP, INM;
+input		CLK;
+input		TEST_ENABLE, TEST_INP, TEST_INM;
+input		SIDDQ, BASEFX_DIS;
+input		I100_ext1, I100_ext2, I100_poly1, I100_poly2;
+input		VDD, VSS;
+
+electrical      net107;
+real res_mirror = 6500;
+
+ 
+adc_IREF_ext ADC_IREF_EXT (  .BIAS100A(BIAS100A),   .BIAS100B(BIAS100B),
+	.BIAS100C(BIAS100C), .BIAS100D(BIAS100D),   .BIAS100E(BIAS100E),
+	.BIAS100F(BIAS100F), .BIAS100G(BIAS100G),   .BIAS100H(BIAS100H),
+	.BIAS100V(BIAS100V), .BIAS100Z(net107),     .BIAS50Y(BIAS50Y),
+	.BIAS50f(BIAS50f),   .BIAS100fA(BIAS100fA), .BIAS100fB(BIAS100fSH),
+	.I100_ext1(I100_ext1), .I100_ext2(I100_ext2),
+	.SIDDQ(SIDDQ), .VDD(VDD), .VSS(VSS) );
+
+adc_IREF_poly ADC_IREF_POLY ( .BIAS100RL(BIAS100RL), .BIAS1000Z(BIAS1000f),
+	.BIAS100INT(BIAS100Z), .I100_poly1(I100_poly1), .I100_poly2(I100_poly2),
+	.SIDDQ(SIDDQ), .VDD(VDD), .VSS(VSS) );
+
+adc_clk_nonoverlap ADC_CLK_NONOVERLAP ( .sample_f(sample_f), .hold_f(hold_f),
+	.sample_test_f(sample_test_f), .hold_test_f(hold_test_f),
+	.sample(sample),  .sample_test(sample_test),
+	.hold(hold), .hold_test(hold_test),
+	.ph1(ph1), .ph1b(ph1b), .ph2(ph2), .ph2b(ph2b),
+	.clk_in(CLK), .TEST_ENABLE(TEST_ENABLE), .SIDDQ(SIDDQ),
+	.VDD(VDD), .VSS(VSS) );
+
+adcflash ADCFLASH ( .out(adcflash_out), .FX_BIT(FX_BIT), .inp(INP), .inm(INM),
+	.inp_test(TEST_INP), .inm_test(TEST_INM), .ph1(ph2), .ph2b(ph1b),
+	.sample(sample_f), .hold(hold_f),
+	.sample_test(sample_test_f), .hold_test(hold_test_f),
+	.SIDDQ(SIDDQ), .BASEFX_DIS(BASEFX_DIS),
+	.ibias50_ext(BIAS50f), .bias100(BIAS100fA), .i1000_poly(BIAS1000f), 
+	.bias100_ext(BIAS100fSH), .VDD(VDD), .VSS(VSS) );
+   
+ 
+adc ADC ( .out(adc_out), .INP(INP), .INM(INM), .INP_TEST(TEST_INP),
+	  .INM_TEST(TEST_INM), .ref_ladder_100uA(BIAS100RL),
+	  .ibias100(BIAS100Z),  .ibias100A(BIAS100A), .ibias100B(BIAS100B),
+	  .ibias100C(BIAS100C), .ibias100D(BIAS100D), .ibias100E(BIAS100E),
+	  .ibias100F(BIAS100F), .ibias100G(BIAS100G), .ibias100H(BIAS100H),
+	  .ibias100V(BIAS100V), .ibias50Y(BIAS50Y), 
+	  .ph1(ph1), .ph2b(ph2b), .sample(sample), .hold(hold),
+	  .sample_test(sample_test), .hold_test(hold_test),
+	  .SIDDQ(SIDDQ), .VDD(VDD), .VSS(VSS) );
+
+
+analog begin
+//      V(net107) <+ transition(I(net107)*res_mirror,0,10n,10n);
+      V(net107) <+ slew(I(net107)*res_mirror,2.5e8);
+end
+
+endmodule

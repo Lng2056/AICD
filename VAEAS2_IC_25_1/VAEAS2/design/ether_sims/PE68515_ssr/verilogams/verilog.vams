@@ -1,0 +1,30 @@
+//Verilog-AMS HDL for "schroeder_sims", "PE68515_ssr" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module PE68515_ssr ( Pplus, Pminus, Sminus, Splus, cnt_line, cnt_chip );
+
+  inout Pplus;
+  inout cnt_chip;
+  inout Pminus;
+  inout cnt_line;
+  inout Splus;
+  inout Sminus;
+  
+  electrical Pplus;
+  electrical cnt_chip;
+  electrical Pminus;
+  electrical cnt_line;
+  electrical Splus;
+  electrical Sminus;
+  
+  analog begin
+  	V(Pplus,cnt_chip) <+ V(Splus,cnt_line);
+//	  	I(Pplus,cnt_chip) <+ I(Splus,cnt_line);
+  	V(Pminus,cnt_chip) <+ V(Sminus,cnt_line);
+//	  	I(Pminus,cnt_chip) <+ I(Sminus,cnt_line);		
+  end
+  
+  
+endmodule

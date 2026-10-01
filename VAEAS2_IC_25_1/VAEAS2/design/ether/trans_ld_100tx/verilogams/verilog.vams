@@ -1,0 +1,82 @@
+//------------------------------------------------------------------------------
+// Name   : trans_ld_100tx
+// View   : verilogams
+// Purpose: 100TX Driver
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module trans_ld_100tx ( neg_out, pos_out, MLT3ENC_DATA, TX_on, VSS, 
+			ibias_100tx_100u, ibias_rext_50u, siddq, VDD, 
+			ibias_100tx_400u );
+
+output		pos_out, neg_out;	// Current Sinks
+
+input	[1:0]	MLT3ENC_DATA;
+input		ibias_100tx_400u, ibias_100tx_100u, ibias_rext_50u;
+input		VDD, VSS;
+input		TX_on, siddq;
+
+electrical pos_out, neg_out;	// Current Sinks
+electrical ibias_100tx_400u, ibias_100tx_100u, ibias_rext_50u;
+electrical VDD, VSS;
+
+logic	[1:0]	MLT3ENC_DATA;
+logic		TX_on, siddq;
+
+// internal nodes
+real Ivbias;				// Input Bias Current
+real Ibiasc;				// Total Bias Current per cell
+real Ia, Ib;				// Current contribution by cell
+integer acnt, ancnt, bcnt, bncnt;
+// real tfr = 8n/22;			// 727/2ps - used for tr, tf
+real tfr = 0.364n;
+real res_mirror = 6500;			// for termination of currents
+real v400u, v100u, v50u;
+
+// Code to avoid x/z states
+`include "myfunctions.vams"
+
+wire on = noxz(TX_on,1'b0) & !noxz(siddq,1'b0);
+wire a  = (on) ? noxz(MLT3ENC_DATA[0],1'b0): 1'b0;
+wire b  = (on) ? noxz(MLT3ENC_DATA[1],1'b0): 1'b0;
+wire an = ~a; 
+wire bn = ~b;
+
+analog begin
+	
+	acnt  =  a;
+	ancnt =  an;
+	bcnt  =  b;
+	bncnt =  bn;
+
+	Ivbias = (on) ? I(ibias_100tx_400u): 0.0;
+	Ibiasc = (Ivbias * 38.0/4.0);
+	Ia     = -5.0*((ancnt + bcnt )*Ibiasc + Ivbias);
+	Ib     = -5.0*((acnt  + bncnt)*Ibiasc + Ivbias);
+
+        v400u = -1*I(ibias_100tx_400u)*res_mirror/4;
+        v100u = -1*I(ibias_100tx_100u)*res_mirror;
+        v50u  = I(ibias_rext_50u)*res_mirror*2;
+
+//        V(ibias_100tx_400u) <+ transition(v400u,0,10n,10n);
+//        V(ibias_100tx_100u) <+ transition(v100u,0,10n,10n);
+//        V(ibias_rext_50u)   <+ transition(v50u,0,10n,10n);
+
+        V(ibias_100tx_400u) <+ slew(v400u,2.5e8);
+        V(ibias_100tx_100u) <+ slew(v100u,2.5e8);
+        V(ibias_rext_50u)   <+ slew(v50u,2.5e8);
+	
+//	I(neg_out) <+ transition(Ia,0,364p,364p);
+//	I(pos_out) <+ transition(Ib,0,364p,364p);
+
+	I(neg_out) <+ slew(Ia,3e9);
+        I(pos_out) <+ slew(Ib,3e9);
+end
+
+
+endmodule

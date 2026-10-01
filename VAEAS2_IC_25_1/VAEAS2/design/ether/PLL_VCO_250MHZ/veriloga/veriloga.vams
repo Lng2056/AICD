@@ -1,0 +1,109 @@
+// Verilog-A model created Fri Dec 17 2004 15:49:45
+// Using VCME version 04.10_USR1.150 by user volden
+// The user accepts full responsibility for the use of this model.
+`include "disciplines.h"
+// Model ./generated/m_vco/spectre/r_vco.va created by jmedero on Thu Jan 8 2004 at 12:18:53
+// Created from /project/tsmc13lv98/sims/aptivia/workarea/pll/vco_migrate/reference/r_vco.va
+// Using odcm_migrate version 1.0
+ 
+module PLL_VCO_250MHZ(VCO_CLK_PH,IEXT_100u,PD,VDD,VSS,Vcontrol);
+output     [10:0] VCO_CLK_PH;
+input      IEXT_100u,Vcontrol,PD;
+inout      VDD,VSS;
+electrical IEXT_100u,PD,VDD,VSS,Vcontrol;
+electrical [10:0] VCO_CLK_PH;
+//electrical [10:0]VCO_CLK_PH;
+parameter real ttol=110e-12;
+parameter real start_time=10e-9;
+real	next_rise,next_fall,period,width;
+real    VCO_CLK_PH_0_low,  VCO_CLK_PH_0_high;
+real    VCO_CLK_PH_0_rise, VCO_CLK_PH_0_fall;
+real	PD_thr;
+ 
+real VCO_CLK_PH_10_delay;
+real VCO_CLK_PH_9_delay;
+real VCO_CLK_PH_8_delay;
+real VCO_CLK_PH_7_delay;
+real VCO_CLK_PH_6_delay;
+real VCO_CLK_PH_5_delay;
+real VCO_CLK_PH_4_delay;
+real VCO_CLK_PH_3_delay;
+real VCO_CLK_PH_2_delay;
+real VCO_CLK_PH_1_delay;
+ 
+integer	fun,run;
+real       VSS_value,VDD_value,thr;
+analog begin
+	VSS_value=V(VSS);
+	VDD_value=V(VDD);
+	thr=VDD_value/2.0;
+	I(Vcontrol,VSS) <+ ddt($table_model(VDD_value,"PLL_VCO_250MHZ_Vcontrol_incap.vat","")*V(Vcontrol,VSS));
+	I(PD,VSS) <+ ddt($table_model(VDD_value,"PLL_VCO_250MHZ_PD_incap.vat","")*V(PD,VSS));
+	@(initial_step) begin
+		VCO_CLK_PH_0_rise = 1n;
+		VCO_CLK_PH_0_fall = 1n;
+VCO_CLK_PH_10_delay = 0;
+VCO_CLK_PH_9_delay = 0;
+VCO_CLK_PH_8_delay = 0;
+VCO_CLK_PH_7_delay = 0;
+VCO_CLK_PH_6_delay = 0;
+VCO_CLK_PH_5_delay = 0;
+VCO_CLK_PH_4_delay = 0;
+VCO_CLK_PH_3_delay = 0;
+VCO_CLK_PH_2_delay = 0;
+VCO_CLK_PH_1_delay = 0;
+		fun=1;
+		next_rise = 1n;
+		next_fall = start_time;
+		PD_thr = (VDD_value/2);		// Powder Down threshold
+	end
+	run=(V(PD)<PD_thr);
+	@(cross(run-0.5,1,ttol)) next_fall=$abstime+10n;
+	
+	@(cross(V(PD)-PD_thr,1)) fun=0;
+	@(timer(next_rise,0)) begin
+		fun=1;
+		next_fall=$abstime+width-VCO_CLK_PH_0_fall+VCO_CLK_PH_0_rise;
+	end
+	@(timer(next_fall,0)) begin
+		if (run) begin
+			VCO_CLK_PH_0_rise=$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_rise.vat","");
+			VCO_CLK_PH_0_fall=$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_fall.vat","");
+			VCO_CLK_PH_0_low =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_low.vat","");
+			VCO_CLK_PH_0_high=$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_high.vat","");
+			period          =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_period.vat","");
+			width           =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_my_vco_comp_width.vat","");
+VCO_CLK_PH_10_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_10.vat","");
+VCO_CLK_PH_9_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_9.vat","");
+VCO_CLK_PH_8_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_8.vat","");
+VCO_CLK_PH_7_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_7.vat","");
+VCO_CLK_PH_6_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_6.vat","");
+VCO_CLK_PH_5_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_5.vat","");
+VCO_CLK_PH_4_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_4.vat","");
+VCO_CLK_PH_3_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_3.vat","");
+VCO_CLK_PH_2_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_2.vat","");
+VCO_CLK_PH_1_delay     =$table_model(V(Vcontrol),VDD_value,"PLL_VCO_250MHZ_delay_VCO_CLK_PH_1.vat","");
+ 
+			if ((period>0) && (width>0) && (VCO_CLK_PH_0_rise>0) && (VCO_CLK_PH_0_fall>0)) begin
+				next_rise=$abstime+period-width-VCO_CLK_PH_0_rise+VCO_CLK_PH_0_fall;
+				if (!(next_rise>$abstime)) next_fall=$abstime+10n;
+			end else
+				next_fall=$abstime+10n;
+			fun=0;
+		end
+	end
+	V(IEXT_100u) <+ VDD_value/2.0;
+	V(VCO_CLK_PH[0])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,0,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[10])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_10_delay<0)?0:VCO_CLK_PH_10_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[9])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_9_delay<0)?0:VCO_CLK_PH_9_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[8])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_8_delay<0)?0:VCO_CLK_PH_8_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[7])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_7_delay<0)?0:VCO_CLK_PH_7_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[6])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_6_delay<0)?0:VCO_CLK_PH_6_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[5])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_5_delay<0)?0:VCO_CLK_PH_5_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[4])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_4_delay<0)?0:VCO_CLK_PH_4_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[3])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_3_delay<0)?0:VCO_CLK_PH_3_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[2])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_2_delay<0)?0:VCO_CLK_PH_2_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+V(VCO_CLK_PH[1])<+transition(fun?VCO_CLK_PH_0_high:VCO_CLK_PH_0_low,(VCO_CLK_PH_1_delay<0)?0:VCO_CLK_PH_1_delay,VCO_CLK_PH_0_rise*2.0,VCO_CLK_PH_0_fall*2.0);
+ 
+end
+endmodule

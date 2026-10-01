@@ -1,0 +1,20 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* adcflash_ref_ladder *
+reflad0
+
+#CELL
+* adc_sample_hold *
+sh0
+
+#CELL
+* adcflash_comparator_actr *
+fx0
+comp5
+comp4
+comp3
+comp2
+comp1
+comp0
+

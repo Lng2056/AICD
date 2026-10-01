@@ -1,0 +1,39 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1136308073=5-ether10-nor2_1x_hv;
+	1136308073=5-ether10-nor2_1x_hv6-symbol;
+	1136308073=5-ether9-or2_2x_hv;
+	1136308074=5-ether9-or2_2x_hv6-symbol;
+	1136308077=5-ether10-and4_2x_hv;
+	1136308077=5-ether10-and4_2x_hv6-symbol;
+	1136308071=5-ether10-and4_1x_hv;
+	1136308071=5-ether10-and4_1x_hv6-symbol;
+	1136308072=5-ether10-and3_2x_hv;
+	1136308072=5-ether10-and3_2x_hv6-symbol;
+	1136308074=5-ether11-nand3_2x_hv;
+	1136308075=5-ether11-nand3_2x_hv6-symbol;
+	1136308078=5-ether9-inv_2x_hv;
+	1136308078=5-ether9-inv_2x_hv6-symbol;
+	1136308076=5-ether12-clkbuf_2x_hv;
+	1136308076=5-ether12-clkbuf_2x_hv6-symbol;
+	1136308075=5-ether11-nand2_2x_hv;
+	1136308076=5-ether11-nand2_2x_hv6-symbol;
+	1136308074=5-ether10-nor2_4x_hv;
+	1136308074=5-ether10-nor2_4x_hv6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308078=5-ether11-nand2_1x_hv;
+	1136308079=5-ether11-nand2_1x_hv6-symbol;
+	1136308077=5-ether9-inv_1x_hv;
+	1136308078=5-ether9-inv_1x_hv6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387779=verilog.vams;
+$END

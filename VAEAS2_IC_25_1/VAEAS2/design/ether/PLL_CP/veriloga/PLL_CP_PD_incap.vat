@@ -1,0 +1,10 @@
+# Table File  : '/usr1/volden/etherPhy90/design/custom_cdba/VSdE_Workspace/VCME_PLL/dcmlib/PLL_CP/veriloga/PLL_CP_PD_incap.vat'
+# Result File : 'results/ether/PLL_CPDCM/configDCM/results/charge_pump_VerilogA_incap_sweep-charge_pump_incap.res'
+# Created on  : 'Mon Dec 13 2004 at 15:40:46'
+# Created by  : 'volden'
+
+# dcm_VDD_value
+# 	PD_incap
+2.4	2.19548e-14 	# keys='2.4'
+2.5	2.21049e-14 	# keys='2.5'
+2.6	2.22319e-14 	# keys='2.6'

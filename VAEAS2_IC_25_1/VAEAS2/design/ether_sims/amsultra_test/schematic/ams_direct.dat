@@ -1,0 +1,63 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	VDD!:::;
+	gnd!:::;
+	GND!:::;
+$END
+$INH_CONN_PARAMETERS
+	I18:VSS=GND;
+	I18:VDD=VDD;
+	I27:VSS=GND;
+	I27:VDD=VDD;
+	I30:VDD=VDD;
+	I30:VSS=GND;
+	I29:VSS=GND;
+	I29:VDD=VDD;
+	I28:VDD=VDD;
+	I28:VSS=GND;
+	I4:DVDD=VDDTX;
+	I4:DVSS=GNDTX;
+	I2:DVDD=VDDTX;
+	I2:DVSS=GNDTX;
+	I1:DVSS=GNDTX;
+	I1:DVDD=VDDTX;
+	I0:DVSS=GNDTX;
+	I0:DVDD=VDDTX;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:GND!:cds_globals.\\GND! ;
+	net:VDD!:cds_globals.\\VDD! ;
+	net:gnd!:cds_globals.\\gnd! ;
+$END
+$TIMESTAMP
+	-1=9-gsclib0909-INVX1_inh;
+	1095107581=9-gsclib0909-INVX1_inh6-symbol;
+	-1=9-gsclib0905-INVX4;
+	1076461363=9-gsclib0905-INVX46-symbol;
+	-1=9-gsclib0905-INVX8;
+	1076461363=9-gsclib0905-INVX86-symbol;
+	-1=5-basic4-opin;
+	1034185461=5-basic4-opin6-symbol;
+	1096271240=9-analogLib3-vdc;
+	1065417990=9-analogLib3-vdc6-symbol;
+	1082075669=14-VFS_AMS_PHY18010-inv_16x_hv;
+	1083105400=14-VFS_AMS_PHY18010-inv_16x_hv6-symbol;
+	1082075669=14-VFS_AMS_PHY1809-inv_8x_hv;
+	1083105400=14-VFS_AMS_PHY1809-inv_8x_hv6-symbol;
+	1082075669=14-VFS_AMS_PHY1809-inv_3x_hv;
+	1083105400=14-VFS_AMS_PHY1809-inv_3x_hv6-symbol;
+	1082075669=14-VFS_AMS_PHY1809-inv_1x_hv;
+	1083105401=14-VFS_AMS_PHY1809-inv_1x_hv6-symbol;
+	1096271240=9-analogLib6-vpulse;
+	1065418124=9-analogLib6-vpulse6-symbol;
+	1096577255=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:vdc:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+	analogLib:vpulse:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+$END

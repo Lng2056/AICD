@@ -1,0 +1,74 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I22:DVSS=VSS;
+	I22:DVDD=VDD;
+	I23:DVDD=VDD;
+	I23:DVSS=VSS;
+	I62:DVDD=VDD;
+	I62:DVSS=VSS;
+	I64:DVDD=VDD;
+	I64:DVSS=VSS;
+	I65:DVDD=VDD;
+	I65:DVSS=VSS;
+	I61:DVDD=VDD;
+	I61:DVSS=VSS;
+	I21:DVDD=VDD;
+	I21:DVSS=VSS;
+	I24:DVSS=VSS;
+	I24:DVDD=VDD;
+	I32:DVDD=VDD;
+	I32:DVSS=VSS;
+	I36:DVSS=VSS;
+	I36:DVDD=VDD;
+	I31:DVDD=VDD;
+	I31:DVSS=VSS;
+	I35:DVSS=VSS;
+	I35:DVDD=VDD;
+	I34:DVSS=VSS;
+	I34:DVDD=VDD;
+	I33:DVSS=VSS;
+	I33:DVDD=VDD;
+	I15:DVSS=VSS;
+	I15:DVDD=VDD;
+	I14:DVDD=VDD;
+	I14:DVSS=VSS;
+	I47:DVSS=VSS;
+	I47:DVDD=VDD;
+	I45:DVDD=VDD;
+	I45:DVSS=VSS;
+	I13:DVSS=VSS;
+	I13:DVDD=VDD;
+	I12:DVDD=VDD;
+	I12:DVSS=VSS;
+$END
+$TIMESTAMP
+	1133909520=9-analogLib10-pcapacitor;
+	1133909382=9-analogLib10-pcapacitor6-symbol;
+	1136308118=5-ether10-dly1_1x_hv;
+	1136308118=5-ether10-dly1_1x_hv6-symbol;
+	1136308073=5-ether9-or2_2x_hv;
+	1136308074=5-ether9-or2_2x_hv6-symbol;
+	1136308119=5-ether13-clkbuf_16x_hv;
+	1136308119=5-ether13-clkbuf_16x_hv6-symbol;
+	1136308119=5-ether12-clkbuf_3x_hv;
+	1136308120=5-ether12-clkbuf_3x_hv6-symbol;
+	1136308120=5-ether11-dffnr_2x_hv;
+	1136308121=5-ether11-dffnr_2x_hv6-symbol;
+	1136308100=5-ether8-tiehi_hv;
+	1136308100=5-ether8-tiehi_hv6-symbol;
+	1136308121=5-ether10-nor2_2x_hv;
+	1136308121=5-ether10-nor2_2x_hv6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387819=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:pcapacitor:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+$END

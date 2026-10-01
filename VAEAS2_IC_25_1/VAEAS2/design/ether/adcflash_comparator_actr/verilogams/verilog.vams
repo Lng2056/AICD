@@ -1,0 +1,39 @@
+//------------------------------------------------------------------------------
+// Name   : adcflash_comparator_actr
+// View   : verilogams
+// Purpose: Comparator Model
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adcflash_comparator_actr ( outm, outp, SIDDQ, VDD, VSS, inn, inp, ph1,
+    ph2b, refn, refp, vbias );
+
+output	outp, outm;
+input	inp, inn;
+input	ph1, ph2b;
+input	refp, refn;
+input	VDD, VSS, vbias;
+input	SIDDQ;
+
+logic		outp, outm;
+logic		ph1, ph2b;
+logic		SIDDQ;
+electrical	inp, inn;
+electrical	refp, refn;
+electrical	VDD, VSS;
+electrical	vbias;
+
+real vinp, vinm;
+reg  outp;
+wire outm = ~outp;
+
+analog  vinp = (SIDDQ) ? 0.0: V(inp);
+initial outp = 1'b0;
+always @(posedge ph1 or posedge ph2b) outp = (vinp > V(refp));
+
+endmodule

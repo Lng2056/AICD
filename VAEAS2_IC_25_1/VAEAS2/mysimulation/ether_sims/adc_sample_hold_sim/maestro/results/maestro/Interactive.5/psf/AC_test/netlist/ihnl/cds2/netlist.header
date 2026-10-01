@@ -1,0 +1,7 @@
+
+// Library name: ether
+// Cell name: adc_IREF_ext
+// View name: schematic
+subckt adc_IREF_ext BIAS100A BIAS100B BIAS100C BIAS100D BIAS100E BIAS100F \
+        BIAS100G BIAS100H BIAS100V BIAS100Z BIAS100fA BIAS100fB BIAS50Y \
+        BIAS50f I100_ext1 I100_ext2 SIDDQ VDD VSS

@@ -1,0 +1,57 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I0:DVDD=VDD;
+	I0:DVSS=VSS;
+	I2:DVSS=VSS;
+	I2:DVDD=VDD;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:I_RPOLY_100:I_RPOLY_100_netclash;
+	net:I_REXT_50:I_REXT_50_netclash;
+	net:I_REXT_100:I_REXT_100_netclash;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103883=7-gpdk0906-nmos2v;
+	1134103884=7-gpdk0906-nmos2v6-symbol;
+	1134103898=7-gpdk0906-pmos2v;
+	1134103898=7-gpdk0906-pmos2v6-symbol;
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1134103902=7-gpdk0909-pmoscap2v;
+	1134103902=7-gpdk0909-pmoscap2v6-symbol;
+	1136308068=5-ether27-Bias_I_100u_Rpoly_cell_port;
+	1136308068=5-ether27-Bias_I_100u_Rpoly_cell_port6-symbol;
+	1136308089=5-ether9-inv_4x_hv;
+	1136308090=5-ether9-inv_4x_hv6-symbol;
+	1136308089=5-ether12-clkbuf_4x_hv;
+	1136308089=5-ether12-clkbuf_4x_hv6-symbol;
+	1136308068=5-ether26-Bias_I_400u_Rext_cell_port;
+	1136308068=5-ether26-Bias_I_400u_Rext_cell_port6-symbol;
+	-1=5-ether25-Bias_I_50u_Rext_cell_port;
+	1136308069=5-ether25-Bias_I_50u_Rext_cell_port6-symbol;
+	1136308067=5-ether26-Bias_I_100u_Rext_cell_port;
+	1136308068=5-ether26-Bias_I_100u_Rext_cell_port6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387557=verilog.vams;
+$END
+$VERILOG_ANCILLARY_INSTANTIATIONS
+	cds_alias:ams_alias_inst_0;
+	cds_alias:ams_alias_inst_1;
+	cds_alias:ams_alias_inst_2;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	P100:9:0:::;
+	I4:1:0:::;
+	I3:2:0:::;
+	E100:8:0:::;
+$END

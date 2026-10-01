@@ -1,0 +1,211 @@
+// Verilog-AMS HDL for "drouillard_ph2", "blw_dac" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module blw_dac ( OUTM, OUTP, ADC_TEST, AEQ_DIS, AGND, AVDD_2p5V, BASE100_DIS,
+               DGND, DVDD, IN, INM, INP, I_RPOLY_100_1, I_RPOLY_100_2, SIDDQ );
+
+output		OUTP, OUTM;
+input		ADC_TEST;
+input		BASE100_DIS;
+input	[6:0]	IN;
+input		INP, INM;
+input		SIDDQ, AEQ_DIS;
+input		DVDD, DGND;
+input		AVDD_2p5V, AGND;
+input		I_RPOLY_100_1, I_RPOLY_100_2;
+
+logic		ADC_TEST;
+logic		BASE100_DIS;
+logic	[6:0]	IN;
+logic		SIDDQ, AEQ_DIS;
+electrical	OUTP, OUTM;
+electrical	INP, INM;
+electrical	DVDD, DGND;
+electrical	AVDD_2p5V, AGND;
+electrical	I_RPOLY_100_1, I_RPOLY_100_2;
+
+//-----------------------------------------------------------------------------
+// Parameters
+//-----------------------------------------------------------------------------
+parameter real td = 0.0;			// delay time
+parameter real trf = 100e-12;			// Rise/fall time
+parameter real res_poly_scale = 1.0;
+
+//-----------------------------------------------------------------------------
+// Avoid X/Z conditions in analog blocks
+//-----------------------------------------------------------------------------
+`include "myfunctions.vams"
+wire rADC_TEST    = noxz(ADC_TEST,1'b0);
+wire rBASE100_DIS = noxz(BASE100_DIS,1'b0);
+wire rSIDDQ       = noxz(SIDDQ,1'b0);
+wire rAEQ_DIS     = noxz(AEQ_DIS,1'b0);
+wire [6:0] rIN    = {noxz(IN[6],1'b0),noxz(IN[5],1'b0),noxz(IN[4],1'b0),
+		     noxz(IN[3],1'b0),noxz(IN[2],1'b0),noxz(IN[1],1'b0),
+		     noxz(IN[0],1'b0) };
+
+//-----------------------------------------------------------------------------
+// Internal Analog Nodes
+//-----------------------------------------------------------------------------
+  electrical	V_CM;
+  electrical	VINT_OUTP;
+  electrical	VINT_OUTM;
+  electrical	VINT_DAC;	
+
+  integer sign     ;		// sets polarity of output
+
+  real res_mirror = 6500;	// Termination resistor
+  real vi100_1, vi100_2;	// termination voltage
+  real rin         ;            // single ended input res at current temp
+  real rin_lb      ;            // single ended loopback resistance   
+  real out_scaled  ;		// output scaled as fraction of 128 
+  real vcm_out     ;		// common mode output voltage
+  real vcm_in;                  // common mode input voltage
+  real temp0       ;		// nominal temperature (in K)
+  real rin0        ;		// nominal single ended input res at temp0
+  real rin_shunt0  ;		// nominal single ended loopback shunt res at
+                                //  temp0
+  real rin_series0 ;		// nominal single ended cmos switch series res
+  real tc1         ;		// linear rpoly temp coefficient 1
+  real tc2         ;		// linear rpoly temp coefficient 2
+  real iout_dac    ;
+  real flp_dac     ;		  
+  real ddt_vint_dac;
+  real outp_sum    ;
+  real outm_sum    ;
+  real low_bias   = 80e-6 ;
+  real high_bias  = 120e-6 ;
+  real minAVDD	   = 2.0;	    // minimum allowable supply voltage
+  
+analog begin
+
+  @(initial_step) begin
+   sign        = 1;		// sets polarity of output  
+   out_scaled  = 0.0;		// output scaled as fraction of 128
+   vcm_out     = 1.6;		// common mode output voltage
+   vcm_in      = 1.6;		// common mode input voltage
+   temp0       = 62.5 + 273.15; // nominal temperature (in K)
+   rin0        = 800.0;		// nominal single ended input res at temp0
+   rin_shunt0  = 250.0;		// nominal single ended loopback shunt res at
+				//  temp0
+   rin_series0 = 25.0;		// nominal single ended cmos switch series res
+   tc1         = 0.0007;	// linear rpoly temp coefficient 1
+   tc2         = 0.0;		// linear rpoly temp coefficient 2
+   iout_dac    = 0.0;
+   flp_dac     = 8e6; 	    
+   ddt_vint_dac= 0.0;
+   outp_sum    = 0.0;
+   outm_sum    = 0.0;  
+   vi100_1     = 0.0;
+   vi100_2     = 0.0;
+  end
+//-----------------------------------------------------------------------------
+// Models
+//-----------------------------------------------------------------------------
+    // differentials for modeling dominant poles
+    ddt_vint_dac = ddt(V(VINT_DAC));
+    
+    // model input resistance as rpoly
+    rin = rin0 * res_poly_scale;	  
+    rin_lb = rin_shunt0 * res_poly_scale;
+
+  // model input port by:
+    // calculating input common-mode voltage,
+    vcm_in = (V(INP, AGND) + V(INM, AGND))/2;
+
+    // forming basic attenuator network,
+    V(INP, VINT_OUTP)  <+ rin*I(INP, VINT_OUTP);
+    V(INM, VINT_OUTM)  <+ rin*I(INM, VINT_OUTM);
+    V(VINT_OUTP, V_CM) <+ rin*I(VINT_OUTP, V_CM);
+    V(VINT_OUTM, V_CM) <+ rin*I(VINT_OUTM, V_CM);
+
+//-----------------------------------------------------------------------------
+// SIDDQ mode
+//-----------------------------------------------------------------------------
+    if (rSIDDQ) begin
+      vcm_out = vcm_in;
+      V(VINT_DAC) <+ 0;  
+      vcm_out = vcm_in;
+      
+      if (rADC_TEST  && rAEQ_DIS )
+	V(VINT_OUTP, VINT_OUTM) <+ 2*55*I(VINT_OUTP, VINT_OUTM);      
+    end
+
+//-----------------------------------------------------------------------------
+// normal operation
+//----------------------------------------------------------------------------- 
+    else begin
+      vcm_out =  1.6;
+      //-----------------------------------------------------
+      // actively forcing output common-mode to reqired value
+      //-----------------------------------------------------
+       I(VINT_OUTP, AGND) <+ (1/rin)*(vcm_in - vcm_out);
+       I(VINT_OUTM, AGND) <+ (1/rin)*(vcm_in - vcm_out);
+   
+      //-----------------------------------------------------
+      // Reset; if high, output only common mode voltage
+      //-----------------------------------------------------
+      if (rBASE100_DIS) begin
+        iout_dac = 0;
+      end
+
+      else begin
+
+        if (rIN[6]) begin
+          sign = 1;     
+     	  out_scaled = 0;
+     	  out_scaled = out_scaled + (rIN[5]) ? 32 : 0;
+     	  out_scaled = out_scaled + (rIN[4]) ? 16 : 0;
+     	  out_scaled = out_scaled + (rIN[3]) ? 8 : 0;
+     	  out_scaled = out_scaled + (rIN[2]) ? 4 : 0;
+     	  out_scaled = out_scaled + (rIN[1]) ? 2 : 0;
+     	  out_scaled = out_scaled + (rIN[0]) ? 1 : 0;
+          end 
+        else begin
+          sign = -1;
+     	  out_scaled = 1;
+     	  out_scaled = out_scaled + (rIN[5]) ? 32 : 0;
+          out_scaled = out_scaled + (rIN[4]) ? 16 : 0;
+     	  out_scaled = out_scaled + (rIN[3]) ? 8 : 0;
+     	  out_scaled = out_scaled + (rIN[2]) ? 4 : 0;
+     	  out_scaled = out_scaled + (rIN[1]) ? 2 : 0;
+     	  out_scaled = out_scaled + (rIN[0]) ? 1 : 0;
+        end 
+        iout_dac = sign*I(I_RPOLY_100_2)/10*out_scaled; 
+      end
+
+      //-----------------------------------------------------
+      //Low pass poles on transistion
+      //-----------------------------------------------------
+      V(VINT_DAC) <+ iout_dac*(rin*0.5+rin_series0)  - (1/(2*`M_PI*flp_dac))*ddt_vint_dac;
+
+    end
+
+    outp_sum = V(VINT_OUTP) + V(VINT_DAC);
+    outm_sum = V(VINT_OUTM) - V(VINT_DAC);
+
+    //-----------------------------------------------------
+    // Output Voltage
+    //-----------------------------------------------------
+//    V(OUTP) <+ transition(outp_sum, td, trf, trf);
+//    V(OUTM) <+ transition(outm_sum, td, trf, trf);
+    
+    V(OUTP) <+ slew(outp_sum,2.5e10);
+    V(OUTM) <+ slew(outm_sum,2.5e10);    
+
+    //-----------------------------------------------------
+    // Output Voltage
+    //-----------------------------------------------------
+    vi100_1 = I(I_RPOLY_100_1) * res_mirror;
+    vi100_2 = I(I_RPOLY_100_2) * res_mirror;
+    
+//    V(I_RPOLY_100_1) <+ transition(vi100_1,td,10n,10n);
+//    V(I_RPOLY_100_2) <+ transition(vi100_2,td,10n,10n);
+
+    V(I_RPOLY_100_1) <+ slew(vi100_1,2.5e8);
+    V(I_RPOLY_100_2) <+ slew(vi100_2,2.5e8);
+
+end
+
+endmodule

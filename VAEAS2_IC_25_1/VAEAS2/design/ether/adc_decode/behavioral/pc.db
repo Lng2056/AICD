@@ -1,0 +1,14 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* adcflash_latches *
+flash_lat
+
+#CELL
+* adc_therm2bin *
+adc_t2b
+
+#CELL
+* adcflash_therm2bin *
+flash_t2b
+

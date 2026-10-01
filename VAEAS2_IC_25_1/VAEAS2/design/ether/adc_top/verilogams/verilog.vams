@@ -1,0 +1,129 @@
+//Verilog-AMS HDL for "bmsextra", "adc_top" "verilogams"
+// Created  10/7/04 (ronv) prior to spec description verification
+// Modified 10/8/04 (erich) after spec clarification
+// Modified 11/11/04 (zfan) to meet the expectation
+// --------- Integrated inot Ether DB: Wed Nov 17 12:08:03 PST 2004, RayV ---------
+`include "constants.vams"
+`include "disciplines.vams"
+`timescale 1s/10ps
+
+module adc_top ( adc_flash, adc_latch_clk, adc_out,
+		 BASE100TX_DIS, BASEFX_DIS_1p0, CLK, DVDD, DVSS,
+		 I100_ext1, I100_ext2, I100_poly1, I100_poly2,
+		 INM, INP, SIDDQ, TEST_ENABLE, TEST_INM, TEST_INP,
+		 VDD, VSS ); 
+//
+// primary I/O
+//
+output	[2:0]	adc_flash;	// 1.0V binary output of 3-bit flash ADC
+output	[5:0]	adc_out;	// 1.0V binary output of 6-bit ADC
+output		adc_latch_clk;	// 1.0V clock output (outputs change on negedge)
+wire             adc_latch_clk;
+input		INP, INM;	// differential analog input
+input		CLK;		// 1.0V input sampling clock
+input		BASE100TX_DIS;	// Active-high disable for 6-bit output
+input		BASEFX_DIS_1p0;	// Active-high disable for 3-bit output
+
+//
+// reference currents and supplies (retain ports but do not model functionality)
+//
+input		I100_ext1, I100_ext2, I100_poly1, I100_poly2;
+input		DVDD, DVSS, VDD, VSS;
+
+//
+// unused inputs (retain ports but do not model functionality)
+//
+input		TEST_INP, TEST_INM;
+input		SIDDQ;
+input		TEST_ENABLE;
+
+electrical INP,INM, VDD,VSS ;
+wire I100_ext1,I100_ext2,I100_poly1,I100_poly2, TEST_INP,TEST_INM;
+
+parameter real VH=0.4, VL=-0.4;	// differential Vin for full output range
+parameter real Tck_latch=0.7n;	// delay from input clock to output latch
+parameter real Tck_samp=0.7n;		// delay from input clock to sampling
+parameter real Tsamp_out=0.4n;  	// delay from sampling until output update
+
+real Vsamp;  			// sampled input voltage
+reg [5:0] Dout,Dlat;		// output value, and latched value 
+real Vlsb=(VH-VL)/64;		// lsb size in volts
+
+always @(negedge CLK) begin
+  #(Tck_samp)				// wait for sampling delay
+  Vsamp=V(INP,INM);			// sample analog input
+  #(Tsamp_out)
+  if (Vsamp<=VL)      Dout=6'b000000;	// low results in minimum count
+  else if (Vsamp>=VH) Dout=6'b111111;	// high results in maximum count
+  //else Dout=floor((Vsamp-VL)/Vlsb);// linear scale, 1/64th for each level
+  else Dout=(Vsamp*64)/0.8 - 1 ; 
+end
+
+assign #(Tck_latch) adc_latch_clk = CLK ;
+
+always @(negedge adc_latch_clk)
+begin
+  Dlat = Dout;
+end
+
+assign adc_out = (BASE100TX_DIS)? 6'b000000 : Dlat;
+assign adc_flash = (BASEFX_DIS_1p0)? 3'b111 : Dlat[5:3];
+
+endmodule
+
+
+// Specs for 6bit and 3bit 125MHz ADC
+//  * Sampling delay from negedge CLK = 1.5 ns (parameterized)
+//  * Delay from sample time to D input of output latches = 4.0 ns (param'ized)
+//  * Delay from input clock to adc_latch_clk output = 1.5 ns (parameterized)
+//  * Outputs latched on negedge of adc_latch_clk (transparent high)
+//  * Input clock freq = 125MHz (50% duty cycle)
+//  * Half-scale common mode = 765 mV (parameterized)
+//  * High end of scale: INP = 965 mV, INM = 565 mV
+//  * Low end of scale: INP = 565 mV, INM = 965 mV
+//  * High end of scale adc_out value: 6'b111111
+//  * Low end of scale adc_out value: 6'b000000
+//  * High end of scale adc_flash value: 3'b111
+//  * Low end of scale adc_flash value: 3'b000
+
+/*
+Here's my interpretation of what I see in the model, and a bunch of questions
+with respect to that.  Please correct anything in my interpretation that
+doesn't sound right, and supply answers to the questions.
+
+Input signal is V(INP,INM), Differential value range is -0.4 to +0.4 volts.
+Half scale common mode input voltage is 765mV?
+  -- You mention an input common mode level, but nothing in the model appears 
+     to care about it.  Can I ignore the common mode and just model the 
+     differential effect?
+
+Outputs are:  adc_out[5:0], adc_flash[2:0].
+negedge of adc_latch_clk latches adc_out.
+6bit output disabled when BASE100TX_DIS is high
+3bit output disabled when BASEFX_DIS_1p0 is high
+  -- What kind of model do you want: AMS, Verilog-A, or both?
+  -- Is 3bit output just the top 3 bits of 6bit output (aside from disables)?
+     If not, what else if different?
+  -- What do outputs do when they're disabled?  Is it high impedance?
+
+125MHz typical input clock frequency, so it's 4ns high + 4ns low.
+CLK +1.5ns drives adc_latch_clk
+  -- So adc_latch_clk output is just delayed version of clock input signal?
+
+adc_latch_clk negedge latches outputs;
+adc_latch_clk high passes outputs.
+CLK negedge +1.5ns is input sample time;
+Sample time +4ns to D input of output latch. 
+  -- Do both the output & flash change at that point?
+  -- I think I interpret this as:  
+    . High clock outputs are changing, will settle to proper result 
+        sometime during that half-period;
+    . Low clock latches output value & begins next sample measurement.
+
+A simple logic diagram (AKA a picture) might be worth somewhat more than 
+a thousand words here.  Or send me a test schematic for this block, and 
+tell me what the output waveform should do based on the signals you're
+driving into it.  I can build a model to do whatever you describe.  I 
+just can't easily guess based on a few shreds of info what all the 
+clocking etc. should be doing for all cases.  
+*/

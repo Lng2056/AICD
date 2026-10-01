@@ -1,0 +1,47 @@
+Simulation:     top_bias_sim_usim 
+
+Purpose:        Transient simulation of the top level macro using UltraSim. 
+Verify that various various internal nodes are checked to see if they bias 
+up correctly when the power supplies are ramped up slowly over 1us.  
+
+States:         tt
+Note:
+
+Description:    The top_bias_sim_usim test-bench contains  an instantiation of 
+the top level macro and the transformer network for external loopback operation.
+The SIDDQ pin is tied to GND. The control bits are tied of such that the macro
+is set to 100 BaseT mode.  The power supplies are ramped up slowly over 1us
+using vpulse sourses.
+
+UltraSim simulation options are set for various blocks in the hierarchy based 
+on their type ( digital, analog, etc and function ). These options are set by
+setting a property on the individual instances of the blocks in the hierarchy.
+For analog blocks in the hierarchy such as the PLL_250MHZ, PLL_160MHZ, 
+Bias_top, top_1_port_analog the UltraSim simulation options are set to 
+sim_mod=ms acc=2 analog=2 
+For digital blocks in the hierarchy such as top_1_port_pnr, the UltraSim
+simulation options are set to
+sim_mod=df acc=2
+
+The simulation is run through the Analog Design Environment.
+
+Verification:   The simulation is run for 2us. The simulation results can be
+verified by looking at the following signals. The  /pos_xfmr_i0 and /neg_xfmr_i0
+track the /V1p8 supply. The common-mode voltage of the outputs of the base-line 
+wander DAC, /I0/I00/I20/blw_outp and  /I0/I00/I20/blw_outm signals track the 
+reference signal /I0/I00/I20/I12/Icm_200uA due to the common-mode feedback 
+block, blw_dac_ixf_cmf_v2. Similarly, the common-mode voltage of the outputs 
+of the analog equalizer block, /I0/I00/I20/aneq_outp and /I0/I00/I20/aneq_outm 
+signals tracks the reference signal, /I0/I00/I20/I1/net514 due to the 
+common-mode feedback block, Analog_eq_cmf. This gives an indication that the 
+circuit is biasing up properly.
+
+Input Signals:  /VDDTX, /VDDRX, /VDDA, /VDD, /V1p8
+
+Output Signals: /pos_xfmr_i0, /neg_xfmr_i0, /V1p8, /I0/I00/I20/blw_outp, 
+/I0/I00/I20/blw_outm, /I0/I00/I20/I12/Icm_200uA, /I0/I00/I20/aneq_outp, 
+/I0/I00/I20/aneq_outm, /I0/I00/I20/I1/net514
+
+UltraSim Notes: The simulation took about 5 days to complete. 
+                Please refer to PCR650123
+

@@ -1,0 +1,97 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  Bias_top
+// Project :  shawnee
+// Author  :  dshelton
+// Notes   :  based on Bias_Top_100u_2 model by tomw, 12/20/00, updated on 2/19/2002
+// To Do   : 
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+`include "constants.h"
+`include "discipline.h"
+
+module Bias_top(
+   I_100u_Rext_PLL,
+   I_25u_Rext_PLL,
+   I_25u_Rpoly_PLL,  
+   I_100u_Rext,  
+   I_400u_Rext, 
+   I_100u_Rpoly, 
+   Vkelvin, 
+   Rext, 
+   siddq, 
+   vdd, 
+   vss, 
+   BGTRIM);
+
+   output [1:0] I_100u_Rext_PLL;
+   output [1:0] I_25u_Rext_PLL;
+   output [1:0] I_25u_Rpoly_PLL;     
+   output	I_100u_Rext;
+   output	I_400u_Rext;
+   output	I_100u_Rpoly;
+   inout Vkelvin;
+   inout Rext;
+   input siddq;
+   input vdd;
+   input vss;
+   input [3:0] BGTRIM;
+
+
+   electrical [1:0] I_100u_Rext_PLL;
+   electrical [1:0] I_25u_Rext_PLL;
+   electrical [1:0] I_25u_Rpoly_PLL;   
+   electrical	    I_100u_Rext;
+   electrical	    I_400u_Rext;
+   electrical	    I_100u_Rpoly;
+   electrical Vkelvin;
+   electrical Rext;
+   electrical siddq;
+   electrical vdd;
+   electrical vss;
+   electrical [3:0] BGTRIM;
+
+   real    vbg;
+   real    iext_val;
+   real    ipol_val;
+   real    rext_val;
+   
+   integer enble;
+   integer bg3;
+   integer bg2;
+   integer bg1;
+   integer bg0;
+
+   analog begin
+      bg3    = V(BGTRIM[3]) > 1.1;
+      bg2    = V(BGTRIM[2]) > 1.1;
+      bg1    = V(BGTRIM[1]) > 1.1;
+      bg0    = V(BGTRIM[0]) > 1.1;
+      vbg    = 1.21 * (0.95 + 
+                        0.05 * bg3 + 
+                        0.025 * bg2 + 
+                        0.0125 * bg1 + 
+                        0.00625 * bg0); 
+      enble    = V(siddq) <1.1;
+      iext_val = (enble) ? I(Rext,vss) :0;
+      ipol_val = (enble) ? -1*vbg/12400 :0;
+
+      V(Rext,vss) <+ vbg;  
+
+      I(I_100u_Rext_PLL[0], vss) <+ -iext_val + V(I_100u_Rext_PLL[0], vss)/10M;  
+      I(I_100u_Rext_PLL[1], vss) <+ -iext_val + V(I_100u_Rext_PLL[1], vss)/10M;
+
+      I(I_25u_Rext_PLL[0], vss) <+ -0.25*iext_val + V(I_25u_Rext_PLL[0], vss)/10M;
+      I(I_25u_Rext_PLL[1], vss) <+ -0.25*iext_val + V(I_25u_Rext_PLL[1], vss)/10M; 
+
+      I(I_25u_Rpoly_PLL[0], vss) <+ -0.25*ipol_val + V(I_25u_Rpoly_PLL[0], vss)/10M;
+      I(I_25u_Rpoly_PLL[1], vss) <+ -0.25*ipol_val + V(I_25u_Rpoly_PLL[1], vss)/10M;
+      
+      I(I_100u_Rext, vss) <+ iext_val + V(I_100u_Rext, vss)/10M;
+
+      I(I_400u_Rext, vss) <+ iext_val*4  + V(I_400u_Rext, vss)/10M;
+
+      I(I_100u_Rpoly, vss) <+ ipol_val + V(I_100u_Rpoly, vss)/10M;
+   end 
+   
+endmodule

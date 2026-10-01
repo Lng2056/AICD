@@ -1,0 +1,21 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	gnd!:::;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:gnd!:cds_globals.\\gnd! ;
+$END
+$TIMESTAMP
+	1083104335=19-VFS_AMS_PHY180_sims12-pkg_80LD_QFP;
+	1083105356=19-VFS_AMS_PHY180_sims12-pkg_80LD_QFP6-symbol;
+	-1=5-basic4-opin;
+	1034185461=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1034185458=5-basic4-ipin6-symbol;
+	1092231872=verilog.vams;
+$END

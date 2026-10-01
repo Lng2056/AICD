@@ -1,0 +1,103 @@
+                  
+		  README on "adcflash" cell
+		  =========================
+		  
+I. Block Functionality and Overview:
+   --------------------------------
+   
+   The "adcflash" block samples and holds two input signals in 125MHz. Then, 
+   it converts the differential input into 6 quantized levels. Thus, the 
+   adcflash block output is ready for decode into digital 3-bits.
+   
+II. Circuitry design (or Signal design):
+   1. Circuitry (lib/cell/view):  
+      ether_adcflash_RAD90/adcflash/schematic  
+         
+   2. Testbench (lib/cell/view):  
+      ether_adcflash_RAD90_sims/adc_adcflash_sim/config_ams
+      
+   3. Design simulation in ADE:
+      (a) Open both "config_ams" and "schematic".
+          Note: Traverse through the testbench and design via HED on
+	        both "Tree" and "Table" design structure.
+      (b) On schematic window, access to menu: Tools -> Anlog Environment
+          Then, the Virtuoso Analog Design Environment window (ADE) appears.
+      (c) Load ADE simulation state: trans700n
+          Run simulation
+      (d) Analyze the simulation results.
+          Note: Waveform snapshot:
+	    
+
+III. Physical design (or IC mask design):
+
+   0. Tools used: Neocell, VLE, Assura DRC/LVS/RCX
+
+   1. Enter the physical design constraints into NeoCell Constraints Editor:
+      (a) Specify device generator to "VXL Cell" 
+          (Ref: Device Style tab).
+      (b) Specify device orientation with all [x] for allowing permutation.
+          (Ref: Device Orientation tab)
+      (c) Specify pin locations: 
+         (Ref: Pin Style tab).
+          Note: 
+	  -Specify all pins except VDD/VSS which will be specified as rail. 
+	  -Rail is equivalent to pin in NeoCell ... thus don't specify twice.
+      (d) Specify floor-plan by using "cellPlan" utility. 
+          (Ref: Group Form tab)
+      (f) Specify wire width for some important nets (Ref: Wire Style tab).
+
+   2. Use NeoCell to for device placement and floor-plan:
+      (a) Perfrom initial placement.
+          (see ether_adcflash_RAD90/adcflash/layout_place1a )
+      (b) Fine tune floor-plan and placement with NeoCell ECO:
+          o. It's obvious that the 6 standard cells and 6 comparator blocks
+	     should be abutted for sharing power rail and saving area.
+	  i. Go back to NeoCell Constraint Editor, tab: Device Matching:
+	     Specify 'Device Proximity' for  cell abutment as below:
+	     -Matched Devices: <Enter device instances here>
+	     -[x]Match Device Proximity
+	         Align: <[x] Horiztiotal (for the 6 std.cells) > 
+		        <[x] Horiztiotal (for the 6 comparators) >
+		 Spacing: [x] Custom: 0 nm
+          ii. Save schematic (for taking constraint changes into account)      
+  	  iii. NeoCell ECO:
+	       -Turn off the 'Intaractive Place' mode
+	       -Excecute ECO from menu: ECO -> Update from source
+	       -Turn on the 'Interactive Place' mode
+	        Now, you will those cells are properly abutted.
+	       -Optional, correct DRC with EC0 -> Fix DRCs
+         iv. Save the placement: adcflash/layout_place<1b>
+      (c) Route the design:
+          i. Perform nets routing
+	     Note: 
+         ii. Perfrom clean route
+	iii. Use "Save As" to save the route: adcflash/layout_route<1b>
+      (d) End the NoeCell session.
+
+III. Design Verification:      
+  1. Verify the physical design:
+     (a) Copy "adcflash/layout_route<1b>" to "adcflash/layout<1b>"
+     (b) Open "layout<1b>" and run DRC and LVS:
+         DRC state: gpdk090_generic
+	 LVS state: gpdk090_lvs_generic
+     (c) Extract the RC parasitics on the interconnected nets:
+         LVS state: adcflash_blackbox
+	 RCX state: adcflash_rcx
+	
+  2. Verify the signal design:
+     (a) Run circuit simulation with the extracted view.
+         (refer to II.3 step)	  	  	      
+
+----------------------------------------------------------------------------
+Data Integrity tests:
+2005-10-07: RayV
+            (1) ADE, Spectre simulation:  OK
+            (2) NeoCell placement: No DRC violation .... OK
+	    (3) NeoCell routing: Finished 53 out of 54 nets.
+	                         VSS has partially routed .... incomplete.
+				 (Either use NeoCell Interactive route or
+				  VLE for complete the VSS connection )
+	    (4) Assura DRC: Clean
+	    (5) LVS: All matches.
+	    (6) RCX: ether_adcflash_RAD90/adcflash/av_rcx1b
+	    (7) Re-simulation with interconnected RC parasitics: TBA		 		  

@@ -1,0 +1,10 @@
+# Table File  : '/usr1/volden/etherPhy90/design/custom_cdba/VSdE_Workspace/VCME_PLL/dcmlib/PLL_VCO_250MHZ/veriloga/PLL_VCO_250MHZ_Vcontrol_incap.vat'
+# Result File : 'results/ether/PLL_VCO_250MHZDCM/configDCM/results/vco_VerilogA_incap_sweep-vco_incap.res'
+# Created on  : 'Fri Dec 17 2004 at 16:53:37'
+# Created by  : 'volden'
+
+# dcm_VDD_value
+# 	Vcontrol_incap
+2.4	3.30083e-14 	# keys='2.4 1.1'
+2.5	3.1961e-14 	# keys='2.5 1.1'
+2.6	3.09064e-14 	# keys='2.6 1.1'

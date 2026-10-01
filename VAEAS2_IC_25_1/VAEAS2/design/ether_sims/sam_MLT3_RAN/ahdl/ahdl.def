@@ -1,0 +1,79 @@
+// Spectre AHDL for hp00001, MLT3_RAN, ahdl
+
+module MLT3_RAN (vclk, out_pos, out_neg ) (td, tr, tf)
+node[V,I] vclk, out_pos, out_neg;
+
+parameter real td=0;
+parameter real tr =4n;
+parameter real tf = 4n;
+
+
+{
+
+integer old_state = 1;
+integer new_state = 1;
+real output = 0;
+real x;
+real vthresh;
+
+analog
+{
+
+vthresh = 0.9;
+
+if($threshold(V(vclk) -vthresh, -1, 0.001,1))
+{
+  
+    x = $random();
+    //x =0;
+   old_state = new_state;
+   }
+  
+
+
+if($threshold(V(vclk) -vthresh, +1, 0.001,1))
+{
+
+if(x <0.5)
+ {
+   if(old_state == 0)
+    {
+    
+      new_state = 2;
+      output = 0;
+      
+    }
+    
+   else if(old_state == 1)
+     {
+       new_state = 0;
+       output = -0.5;
+       }
+    else if(old_state == 2)
+      {
+        new_state = 3;
+	output = 0.5;
+	}
+    else
+     {
+       new_state =1;
+       output = 0;
+     }
+     
+   }
+   
+   }
+   
+   V(out_pos) <- $transition(output,td,tr,tf);
+   V(out_neg) <- $transition((-1)*output,td,tr,tf);
+       
+     	
+	     
+      
+  } 
+   
+   
+
+
+
+}

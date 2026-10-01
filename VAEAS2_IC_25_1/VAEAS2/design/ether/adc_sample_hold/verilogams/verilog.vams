@@ -1,0 +1,68 @@
+//------------------------------------------------------------------------------
+// Name   : adc_sample_hold
+// View   : verilogams
+// Purpose: Model the sample and hold portion of an AD converter
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_sample_hold ( outm, outp, SIDDQ, VDD, VSS, bias100, hold, hold_test,
+    inm, inm_test, inp, inp_test, sample, sample_test );
+
+parameter rsw     = 1500;		// Switch Resistance
+parameter chold   = 250f;		// Sample and Hold Capacitor
+parameter vgain   = 0.600;		// Level Shift of output
+parameter delay   = rsw * chold; 
+parameter vcm     = 0.765;		// common mode
+
+output	outp, outm;			// Sampled Analog Data
+input	inp, inp_test;			// Input Analog Data
+input	inm, inm_test;			// Input Analog Data
+input	sample, sample_test;		// Sample Control
+input	hold, hold_test;		// Hold Control		
+input	bias100;			// Bias Current
+input	SIDDQ;				// Static IDDQ control
+input	VDD, VSS;			// Power Supply
+
+electrical	outp, outm;			// Sampled Analog Data
+electrical	inp, inp_test;			// Input Analog Data
+electrical	inm, inm_test;			// Input Analog Data
+electrical	bias100;			// Bias Current
+electrical	VDD, VSS;			// Power Supply
+
+logic		sample, sample_test;		// Sample
+logic		hold, hold_test;		// Hold Time Data		
+logic		SIDDQ;				// Static IDDQ control
+
+real vcap_p, vcap_m;
+real vcaptest_p, vcaptest_n;
+
+// Avoid X/Z states in analog statements
+`include "myfunctions.vams"
+wire SIDDQ_noxz = noxz(SIDDQ,1'b0);
+wire sample_noxz = noxz(sample,1'b0);
+wire sample_test_noxz = noxz(sample_test,1'b0);
+
+analog begin
+	@(initial_step) begin
+		vcap_p = vcm;
+		vcap_m = vcm;
+	end
+	vcap_p = (SIDDQ_noxz) ? 0.0: (sample_noxz) ? absdelay(V(inp), delay):
+				(sample_test_noxz) ? V(inp_test): vcap_p;
+	vcap_m = (SIDDQ_noxz) ? 0.0: (sample_noxz) ? absdelay(V(inm), delay):
+				(sample_test_noxz) ? V(inm_test): vcap_m;
+
+	V(bias100) <+ 0.65;			// Terminate the signal
+//	V(outp) <+ transition(vgain + vcap_p,333p,200p,200p);
+//	V(outm) <+ transition(vgain + vcap_m,333p,200p,200p);
+	
+	V(outp) <+ slew(vgain + vcap_p,1.25e10);
+	V(outm) <+ slew(vgain + vcap_m,1.25e10);
+end
+
+endmodule

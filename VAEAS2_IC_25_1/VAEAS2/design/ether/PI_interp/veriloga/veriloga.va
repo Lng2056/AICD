@@ -1,0 +1,138 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  PI_interp
+// Project :  shawnee
+// Author  :  dshelton
+// Notes   :  
+// To Do   : 
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+`include "constants.h"
+`include "discipline.h"
+
+module PI_interp (
+  OUT, 
+  IN, 
+  VDD, 
+  VSS);
+
+  output [21:0] OUT;
+  input [10:0] IN;
+  input VDD;
+  input VSS;
+
+  electrical [21:0] OUT;
+  electrical [10:0] IN;
+  electrical VDD;
+  electrical VSS;
+
+  parameter real td = 1.6e-9;
+  parameter real tr = 0.37e-9;
+  parameter real tf = 0.27e-9;
+
+  real vtrans;
+  real latest;
+  real earlier;
+  real period;
+  real tapspacing;
+  real vout_real[10:0];
+
+  integer crosscount; 
+  integer vin[10:0];
+
+  analog begin
+
+    @(initial_step) begin
+      crosscount = 0;    
+      earlier    = 0;
+      period     = 4e-9;      
+      vin[0]     = 0;
+      vin[1]     = 0;
+      vin[2]     = 0;
+      vin[3]     = 0;
+      vin[4]     = 0;
+      vin[5]     = 0;
+      vin[6]     = 0;
+      vin[7]     = 0;
+      vin[8]     = 0;
+      vin[9]     = 0;
+      vin[10]     = 0;
+    end
+
+    vtrans = 0.5*(V(VDD) - V(VSS)) + V(VSS);
+    tapspacing = period/11e0;
+
+    @ (cross(V(IN[0]) - vtrans, +1)) begin
+      crosscount = crosscount + 1;
+      earlier = latest;
+    end   
+
+    latest = last_crossing(V(IN[0]) - vtrans, +1);
+
+    if (crosscount >= 2) 
+      period = latest - earlier; 
+
+    @ (cross(V(IN[0]) - vtrans, 1)) vin[0] = 1;
+    @ (cross(V(IN[1]) - vtrans, 1)) vin[1] = 1;
+    @ (cross(V(IN[2]) - vtrans, 1)) vin[2] = 1;
+    @ (cross(V(IN[3]) - vtrans, 1)) vin[3] = 1;
+    @ (cross(V(IN[4]) - vtrans, 1)) vin[4] = 1;
+    @ (cross(V(IN[5]) - vtrans, 1)) vin[5] = 1;
+    @ (cross(V(IN[6]) - vtrans, 1)) vin[6] = 1;
+    @ (cross(V(IN[7]) - vtrans, 1)) vin[7] = 1;
+    @ (cross(V(IN[8]) - vtrans, 1)) vin[8] = 1;
+    @ (cross(V(IN[9]) - vtrans, 1)) vin[9] = 1;
+    @ (cross(V(IN[10]) - vtrans, 1)) vin[10] = 1;
+
+    @ (cross(V(IN[0]) - vtrans, -1)) vin[0] = 0;
+    @ (cross(V(IN[1]) - vtrans, -1)) vin[1] = 0;
+    @ (cross(V(IN[2]) - vtrans, -1)) vin[2] = 0;
+    @ (cross(V(IN[3]) - vtrans, -1)) vin[3] = 0;
+    @ (cross(V(IN[4]) - vtrans, -1)) vin[4] = 0;
+    @ (cross(V(IN[5]) - vtrans, -1)) vin[5] = 0;
+    @ (cross(V(IN[6]) - vtrans, -1)) vin[6] = 0;
+    @ (cross(V(IN[7]) - vtrans, -1)) vin[7] = 0;
+    @ (cross(V(IN[8]) - vtrans, -1)) vin[8] = 0;
+    @ (cross(V(IN[9]) - vtrans, -1)) vin[9] = 0;
+    @ (cross(V(IN[10]) - vtrans, -1)) vin[10] = 0;
+
+    vout_real[0] = vin[0] ? V(VDD) : V(VSS);
+    vout_real[1] = vin[1] ? V(VDD) : V(VSS);
+    vout_real[2] = vin[2] ? V(VDD) : V(VSS);
+    vout_real[3] = vin[3] ? V(VDD) : V(VSS);
+    vout_real[4] = vin[4] ? V(VDD) : V(VSS);
+    vout_real[5] = vin[5] ? V(VDD) : V(VSS);
+    vout_real[6] = vin[6] ? V(VDD) : V(VSS);
+    vout_real[7] = vin[7] ? V(VDD) : V(VSS);
+    vout_real[8] = vin[8] ? V(VDD) : V(VSS);
+    vout_real[9] = vin[9] ? V(VDD) : V(VSS);
+    vout_real[10] = vin[10] ? V(VDD) : V(VSS);
+ 
+    V(OUT[0])  <+ transition(vout_real[0],  td, tr, tf);
+    V(OUT[2])  <+ transition(vout_real[1],  td, tr, tf);
+    V(OUT[4])  <+ transition(vout_real[2],  td, tr, tf);
+    V(OUT[6])  <+ transition(vout_real[3],  td, tr, tf);
+    V(OUT[8])  <+ transition(vout_real[4],  td, tr, tf);
+    V(OUT[10]) <+ transition(vout_real[5],  td, tr, tf);
+    V(OUT[12]) <+ transition(vout_real[6],  td, tr, tf);
+    V(OUT[14]) <+ transition(vout_real[7],  td, tr, tf);
+    V(OUT[16]) <+ transition(vout_real[8],  td, tr, tf);
+    V(OUT[18]) <+ transition(vout_real[9],  td, tr, tf);
+    V(OUT[20]) <+ transition(vout_real[10], td, tr, tf);
+
+
+    V(OUT[1])  <+ transition(vout_real[0],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[3])  <+ transition(vout_real[1],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[5])  <+ transition(vout_real[2],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[7])  <+ transition(vout_real[3],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[9])  <+ transition(vout_real[4],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[11]) <+ transition(vout_real[5],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[13]) <+ transition(vout_real[6],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[15]) <+ transition(vout_real[7],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[17]) <+ transition(vout_real[8],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[19]) <+ transition(vout_real[9],  td + 0.5*tapspacing, tr, tf);
+    V(OUT[21]) <+ transition(vout_real[10], td + 0.5*tapspacing, tr, tf);
+
+  end
+
+endmodule

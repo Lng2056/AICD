@@ -1,0 +1,22 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* adc_clk_nonoverlap *
+ADC_CLK_NONOVERLAP
+
+#CELL
+* adc_IREF_ext *
+ADC_IREF_EXT
+
+#CELL
+* adc_IREF_poly *
+ADC_IREF_POLY
+
+#CELL
+* adc *
+ADC
+
+#CELL
+* adcflash *
+ADCFLASH
+

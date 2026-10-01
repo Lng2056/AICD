@@ -1,0 +1,109 @@
+//------------------------------------------------------------------------------
+// Name   : adc_64comparators
+// View   : verilogams
+// Purpose: Model a Comparator array (64 instances)
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_64comparators ( out, SIDDQ, VDD, VSS, dm0n, dm0p, dm8n, dm8p, ibiasA100,
+    ibiasB100, ibiasC100, ibiasD100, ibiasE100, ibiasF100, ibiasG100, ibiasH100,
+    in0n, in0p, in1n, in1p, in2n, in2p, in3n, in3p, in4n, in4p, in5n, in5p,
+    in6n, in6p, in7n, in7p, in8n, in8p, ph1, ph2b );
+
+output  [62:0] out;				// Output Thermometer Code
+input	ph1;					// In-phase clock
+input	ph2b;					// 					
+input	dm0p, dm0n;				// Load Matching
+input	dm8p, dm8n;				// Load Matching
+input	in0p, in0n;
+input	in1p, in1n;
+input	in2p, in2n;
+input	in3p, in3n;
+input	in4p, in4n;
+input	in5p, in5n;
+input	in6p, in6n;
+input	in7p, in7n;
+input	in8p, in8n;
+input	VDD, VSS;
+input	ibiasA100, ibiasB100, ibiasC100, ibiasD100;
+input	ibiasE100, ibiasF100, ibiasG100, ibiasH100;
+input	SIDDQ;
+
+logic [62:0]	out;
+logic		ph1, ph2b;
+logic		SIDDQ;
+
+electrical	dm0p, dm0n;
+electrical	dm8p, dm8n;
+electrical	in0p, in0n;
+electrical	in1p, in1n;
+electrical	in2p, in2n;
+electrical	in3p, in3n;
+electrical	in4p, in4n;
+electrical	in5p, in5n;
+electrical	in6p, in6n;
+electrical	in7p, in7n;
+electrical	in8p, in8n;
+electrical	VDD, VSS;
+electrical	ibiasA100, ibiasB100, ibiasC100, ibiasD100;
+electrical	ibiasE100, ibiasF100, ibiasG100, ibiasH100;
+
+logic out63, out64, out_m1;
+
+// 8-Comparator Array Instantiations
+adc_comparator_array_actr I8 (	.out({out63,out[62:56]}),
+				.In1p(in7p), .In1n(in7n),
+				.in2p(in8p), .in2n(in8n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasH100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I7 (	.out(out[47:40]),
+				.In1p(in5p), .In1n(in5n),
+				.in2p(in6p), .in2n(in6n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100( ibiasF100 ), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I6 (	.out(out[31:24]),
+				.In1p(in3p), .In1n(in3n),
+				.in2p(in4p), .in2n(in4n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasD100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I5 (	.out(out[15:8]),
+				.In1p(in1p), .In1n(in1n),
+				.in2p(in2p), .in2n(in2n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasB100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I4 (	.out(out[55:48]),
+				.In1p(in6p), .In1n(in6n),
+				.in2p(in7p), .in2n(in7n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasG100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I3 (	.out(out[39:32]),
+				.In1p(in4p), .In1n(in4n),
+				.in2p(in5p), .in2n(in5n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasE100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I2 (	.out(out[23:16]),
+				.In1p(in2p), .In1n(in2n),
+				.in2p(in3p), .in2n(in3n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasC100), .VSS(VSS), .VDD(VDD));
+adc_comparator_array_actr I1 (	.out(out[7:0]),
+				.In1p(in0p), .In1n(in0n),
+				.in2p(in1p), .in2n(in1n),
+				.ph1(ph1), .ph2b(ph2b), .SIDDQ( SIDDQ ),
+				.ibias100(ibiasA100), .VSS(VSS), .VDD(VDD));
+
+// Load Balancing Comparators Out[-1] and Out[64]
+adc_comparator_actr dummy0 ( .outp(out_m1), .inp(dm0p), .inm(dm0n),
+			 .ph2b(ph2b), .ph1(ph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibiasA100), .VSS(VSS), .VDD(VDD));
+
+adc_comparator_actr dummy8 ( .outp(out64), .inp(dm8p), .inm(dm8n),
+			 .ph2b(ph2b), .ph1(ph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibiasH100), .VSS(VSS), .VDD(VDD));
+
+endmodule

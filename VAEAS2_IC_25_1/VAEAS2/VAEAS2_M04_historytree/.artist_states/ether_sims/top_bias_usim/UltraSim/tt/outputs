@@ -1,0 +1,20 @@
+savedComponent = (let
+(tmp1 tmp2)
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'allAnalogTC
+tmp2 = 't
+list(tmp1 tmp2)
+)
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = 'allAnalogNV
+tmp2 = 't
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)

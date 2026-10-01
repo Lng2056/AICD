@@ -1,0 +1,21 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	gnd!:::;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:gnd!:cds_globals.\\gnd! ;
+$END
+$TIMESTAMP
+	1136321319=10-ether_sims7-QFP80LD;
+	1136321319=10-ether_sims7-QFP80LD6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136393734=verilog.vams;
+$END

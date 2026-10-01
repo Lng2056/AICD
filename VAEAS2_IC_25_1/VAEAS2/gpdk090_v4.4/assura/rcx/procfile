@@ -1,0 +1,137 @@
+process gpdk090
+
+deposition
+*step  #   type        p/n  layer_name        thickness  permit/bias  trap_metal
+ step  1   substrate        sti               0.35       3.9        
+ step  1   substrate        diff              0.005      3.9        
+ step  2   metal            poly              0.15           0
+ step  3   dielectric  p    ild               0.3        3.9         
+ step  4   metal            mt1               0.3            0
+ step  5   dielectric  p    imd1              0.3        2.9         
+ step  6   metal            mt2               0.36           0
+ step  7   dielectric  p    imd2              0.3        2.9         
+ step  8   metal            mt3               0.36           0
+ step  9   dielectric  p    imd3              0.3        2.9         
+ step  10  metal            mt4               0.36           0
+ step  11  dielectric  p    imd4              0.3        2.9         
+ step  12  metal            mt5               0.36           0
+ step  13  dielectric  p    imd5              0.3        2.9         
+ step  14  metal            mt6               0.36           0
+ step  15  dielectric  p    imd6              0.3        2.9         
+ step  16  metal            mt7               0.36           0
+ step  17  dielectric  p    imd7              0.6        4.2         
+ step  18  metal            mt8               1              0
+ step  19  dielectric  p    imd8              0.6        4.2         
+ step  20  metal            mt9               1              0
+ step  21  dielectric  p    pass1             1          4.2         
+ step  22  dielectric  p    pass2             0.7        7.9         
+ step  23  dielectric  p    air               40         1           
+enddeposition
+
+metal_variations
+layer   poly   s   0.12   0.24   0.12
+layer   poly   s   0.48   1.2   0.72
+layer   poly   w   0.1   0.2   0.1
+layer   poly   w   0.4   1   0.6
+layer   mt1   s   0.12   0.24   0.12
+layer   mt1   s   0.48   1.2   0.72
+layer   mt1   w   0.12   0.24   0.12
+layer   mt1   w   0.48   1.2   0.72
+layer   mt2   s   0.14   0.28   0.14
+layer   mt2   s   0.56   1.4   0.84
+layer   mt2   w   0.14   0.28   0.14
+layer   mt2   w   0.56   1.4   0.84
+layer   mt3   s   0.14   0.28   0.14
+layer   mt3   s   0.56   1.12   0.56
+layer   mt3   s   2.1   2.101   2
+layer   mt3   w   0.14   0.28   0.14
+layer   mt3   w   0.56   1.4   0.84
+layer   mt4   s   0.14   0.28   0.14
+layer   mt4   s   0.56   1.12   0.56
+layer   mt4   s   2.1    2.101   2
+layer   mt4   w   0.14   0.28   0.14
+layer   mt4   w   0.56   1.4   0.84
+layer   mt5   s   0.14   0.28   0.14
+layer   mt5   s   0.56   1.12   0.56
+layer   mt5   s   2.1    2.101   2
+layer   mt5   w   0.14   0.28   0.14
+layer   mt5   w   0.56   1.4   0.84
+layer   mt6   s   0.14   0.28   0.14
+layer   mt6   s   0.56   1.12   0.56
+layer   mt6   s   2.1    2.101   2
+layer   mt6   w   0.14   0.28   0.14
+layer   mt6   w   0.56   1.4   0.84
+layer   mt7   s   0.14   0.28   0.14
+layer   mt7   s   0.56   1.12   0.56
+layer   mt7   s   2.1    2.101   2
+layer   mt7   w   0.14   0.28   0.14
+layer   mt7   w   0.56   1.4   0.84
+layer   mt8   s   0.44   0.88   0.44
+layer   mt8   s   1.76   3.52   1.76
+layer   mt8   s   6.6   6.601   2
+layer   mt8   w   0.44   0.88   0.44
+layer   mt8   w   1.76   4.4   2.64
+layer   mt9   s   0.44   0.88   0.44
+layer   mt9   s   1.76   3.52   1.76
+layer   mt9   s   6.6   6.601   2
+layer   mt9   w   0.44   0.88   0.44
+layer   mt9   w   1.76   4.4   2.64
+endmetal_variations
+
+metal_combinations
+layers   poly   mt1   0   0.12   0.12
+layers   poly   mt1   0.279   0.6   0.321
+layers   poly   mt1   1.2   1.201   2
+layers   poly   mt2   0   0.12   0.12
+layers   poly   mt2   0.313   0.7   0.387
+layers   poly   mt2   1.4   1.401   2
+layers   mt1   mt2   0   0.12   0.12
+layers   mt1   mt2   0.313   0.7   0.387
+layers   mt1   mt2   1.4   1.401   2
+layers   mt1   mt3   0   0.12   0.12
+layers   mt1   mt3   0.43   1.05   0.62
+layers   mt1   mt3   2.1  2.101   2
+layers   mt2   mt3   0   0.14   0.14
+layers   mt2   mt3   0.443   1.05   0.607
+layers   mt2   mt3   2.1  2.101   2
+layers   mt2   mt4   0   0.14   0.14
+layers   mt2   mt4   0.443   1.05   0.607
+layers   mt2   mt4   2.1  2.101   2
+layers   mt3   mt4   0   0.14   0.14
+layers   mt3   mt4   0.443   1.05   0.607
+layers   mt3   mt4   2.1  2.101   2
+layers   mt3   mt5   0   0.14   0.14
+layers   mt3   mt5   0.443   1.05   0.607
+layers   mt3   mt5   2.1  2.101   2
+layers   mt4   mt5   0   0.14   0.14
+layers   mt4   mt5   0.443   1.05   0.607
+layers   mt4   mt5   2.1  2.101   2
+layers   mt4   mt6   0   0.14   0.14
+layers   mt4   mt6   0.443   1.05   0.607
+layers   mt4   mt6   2.1  2.101   2
+layers   mt5   mt6   0   0.14   0.14
+layers   mt5   mt6   0.443   1.05   0.607
+layers   mt5   mt6   2.1  2.101   2
+layers   mt5   mt7   0   0.14   0.14
+layers   mt5   mt7   0.443   1.05   0.607
+layers   mt5   mt7   2.1  2.101   2
+layers   mt6   mt7   0   0.14   0.14
+layers   mt6   mt7   0.443   1.05   0.607
+layers   mt6   mt7   2.1  2.101   2
+layers   mt6   mt8   0   0.14   0.14
+layers   mt6   mt8   0.678   2.304   1.626
+layers   mt6   mt8   3.3   6.6   3.3
+layers   mt7   mt8   0   0.14   0.14
+layers   mt7   mt8   0.678   2.304   1.626
+layers   mt7   mt8   3.3   6.6   3.3
+layers   mt7   mt9   0   0.14   0.14
+layers   mt7   mt9   0.678   2.304   1.626
+layers   mt7   mt9   3.3   6.6   3.3
+layers   mt8   mt9   0   0.44   0.44
+layers   mt8   mt9   1.393   3.3   1.907
+layers   mt8   mt9   6.6   6.601   2
+endmetal_combinations
+
+endprocess
+
+

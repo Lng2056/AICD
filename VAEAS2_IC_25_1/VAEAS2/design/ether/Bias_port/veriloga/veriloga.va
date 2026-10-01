@@ -1,0 +1,111 @@
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+// Title   :  Bias_top
+// Project :  shawnee
+// Author  :  dshelton
+// Notes   :  updated on 2/19/2003
+// To Do   : 
+//-----------------------------------------------------------------------
+//-----------------------------------------------------------------------
+`include "constants.h"
+`include "discipline.h"
+
+module Bias_port(
+   I_REXT_100_NC, 
+   I_REXT_REF100, 
+   I_RPOLY_REF100, 
+   SIDDQ, 
+   VDD,
+   VSS, 
+   I_RPOLY_100, 
+   I_REXT_100, 
+   I_REXT_50);
+
+   output [1:0] I_REXT_50;
+   output [6:0] I_REXT_100;
+   output       I_REXT_100_NC;
+   output [5:0] I_RPOLY_100;
+   input        I_REXT_REF100;
+   input        I_RPOLY_REF100;
+   input        SIDDQ;
+   input        VDD;
+   input        VSS;
+
+   electrical [1:0] I_REXT_50;
+   electrical [6:0] I_REXT_100;
+   electrical       I_REXT_100_NC;
+   electrical [5:0] I_RPOLY_100;
+   electrical       I_REXT_REF100;
+   electrical       I_RPOLY_REF100;
+   electrical       SIDDQ;
+   electrical       VDD;
+   electrical       VSS;
+
+   electrical       net12;
+   electrical       net13;   
+   
+   relay #(.vt1(500.0m), .vt2(1.4), .ropen(1T), .rclosed(1.0)) W2 
+     (net12, I_REXT_REF100, VDD, SIDDQ);
+   vsource #(.dc(500.0m)) V0 (net12, VSS);
+
+   relay #(.vt1(500.0m), .vt2(1.4), .ropen(1T), .rclosed(1.0)) W3 
+     (net13, I_RPOLY_REF100, VDD, SIDDQ);
+   vsource #(.dc(500.0m)) V1 (net13, VSS);   
+
+
+   // I_REXT_100_NC source
+   cccs #(.gain(1.0), .probe(V0)) F1 (VDD, I_REXT_100_NC);
+   resistor #(.r(10M)) R1 (I_REXT_100_NC, VSS);
+
+
+   // I_REXT_50 sources
+   cccs #(.gain(0.5), .probe(V0)) F2 (VDD, I_REXT_50[0]);
+   resistor #(.r(10M)) R2 (I_REXT_50[0], VSS);  
+
+   cccs #(.gain(0.5), .probe(V0)) F3 (VDD, I_REXT_50[1]);
+   resistor #(.r(10M)) R3 (I_REXT_50[1], VSS);  
+
+
+   // I_REXT_100 sources
+   cccs #(.gain(1.0), .probe(V0)) F5 (VDD, I_REXT_100[0]);
+   resistor #(.r(10M)) R5 (I_REXT_100[0], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F6 (VDD, I_REXT_100[1]);
+   resistor #(.r(10M)) R6 (I_REXT_100[1], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F7 (VDD, I_REXT_100[2]);
+   resistor #(.r(10M)) R7 (I_REXT_100[2], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F8 (VDD, I_REXT_100[3]);
+   resistor #(.r(10M)) R8 (I_REXT_100[3], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F9 (VDD, I_REXT_100[4]);
+   resistor #(.r(10M)) R9 (I_REXT_100[4], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F10 (VDD, I_REXT_100[5]);
+   resistor #(.r(10M)) R10 (I_REXT_100[5], VSS);
+
+   cccs #(.gain(1.0), .probe(V0)) F11 (VDD, I_REXT_100[6]);
+   resistor #(.r(10M)) R11 (I_REXT_100[6], VSS);
+
+
+   // I_RPOLY_100 sources
+   cccs #(.gain(1.0), .probe(V1)) F17 (VDD, I_RPOLY_100[0]);
+   resistor #(.r(10M)) R17 (I_RPOLY_100[0], VSS); 
+
+   cccs #(.gain(1.0), .probe(V1)) F18 (VDD, I_RPOLY_100[1]);
+   resistor #(.r(10M)) R18 (I_RPOLY_100[1], VSS); 
+
+   cccs #(.gain(1.0), .probe(V1)) F19 (VDD, I_RPOLY_100[2]);
+   resistor #(.r(10M)) R19 (I_RPOLY_100[2], VSS); 
+
+   cccs #(.gain(1.0), .probe(V1)) F20 (VDD, I_RPOLY_100[3]);
+   resistor #(.r(10M)) R20 (I_RPOLY_100[3], VSS); 
+
+   cccs #(.gain(1.0), .probe(V1)) F21 (VDD, I_RPOLY_100[4]);
+   resistor #(.r(10M)) R21 (I_RPOLY_100[4], VSS); 
+
+   cccs #(.gain(1.0), .probe(V1)) F22 (VDD, I_RPOLY_100[5]);
+   resistor #(.r(10M)) R22 (I_RPOLY_100[5], VSS); 
+
+endmodule

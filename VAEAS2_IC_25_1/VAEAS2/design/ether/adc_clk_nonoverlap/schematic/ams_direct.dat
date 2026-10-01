@@ -1,0 +1,29 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1136308161=5-ether11-adc_nandx10;
+	1136308161=5-ether11-adc_nandx106-symbol;
+	1136308162=5-ether13-adc_invertx30;
+	1136308162=5-ether13-adc_invertx306-symbol;
+	1136308162=5-ether14-adc_invertx300;
+	1136308162=5-ether14-adc_invertx3006-symbol;
+	1136308163=5-ether14-adc_invertx100;
+	1136308163=5-ether14-adc_invertx1006-symbol;
+	1136308163=5-ether13-adc_invertx10;
+	1136308163=5-ether13-adc_invertx106-symbol;
+	1136308164=5-ether10-adc_nandx3;
+	1136308164=5-ether10-adc_nandx36-symbol;
+	1136308164=5-ether12-adc_invertx3;
+	1136308164=5-ether12-adc_invertx36-symbol;
+	1136308165=5-ether12-adc_invertx1;
+	1136308165=5-ether12-adc_invertx16-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387653=verilog.vams;
+$END

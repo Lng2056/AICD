@@ -1,0 +1,17 @@
+keepouts =
+Poly AND Oxide = Metal3
+Poly AND Resdum = Metal2
+Poly AND Resdum = Metal3
+Poly AND Oxide = Metal4
+Poly AND Oxide = Metal5
+Metal1 AND Nwell = Metal1
+Metal1 AND Nwell = Metal2
+Oxide SIZE -.10 = oxidetemp TEMP
+Metal1 AND oxidetemp TEMP = Metal1
+Metal1 AND oxidetemp TEMP = Metal2
+Metal1 AND Pimp = Metal2
+Metal1 AND Nimp = Metal2
+Metal1 AND Oxide = Metal3
+Metal1 AND Oxide = Metal4
+Metal1 AND Oxide = Metal5
+Metal3 AND CapMetal = Metal1

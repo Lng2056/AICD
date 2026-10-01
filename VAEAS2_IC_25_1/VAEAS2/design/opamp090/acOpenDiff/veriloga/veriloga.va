@@ -1,0 +1,34 @@
+// VerilogA for opamp018, acOpenDiff, veriloga
+
+`include "constants.h"
+`include "discipline.h"
+
+module acOpenDiff( inp, inn, inref, outp, outn, vos);
+   input inp, inn, inref;
+   output outp, outn, vos;
+   electrical inp, inn, inref, outp, outn, vos;
+   parameter real gain = 1;
+   real vin, vbias;
+   analog begin
+      @(initial_step("static")) begin
+         vin = gain*V(inn,inp); // Had to reverse to make opamp work right :(
+         vbias = (V(inp,inref) + V(inn,inref)) / 2;
+      end
+      if (analysis("ac","noise")) begin
+         V(vos) <+ vin;
+         V(outp,inref) <+ vbias;
+         V(outn,inref) <+ vbias;
+      end
+      else if (analysis("static","xf")) begin
+         V(vos) <+ gain*V(inp,inn);
+         V(outp,inref) <+ (V(inp,inref)+V(inn,inref))/2;
+         V(outn,inref) <+ (V(inp,inref)+V(inn,inref))/2;
+      end
+      else begin
+         V(outp,inref) <+ V(inp,inref);
+         V(outn,inref) <+ V(inn,inref);
+         V(vos) <+ 0;
+      end
+   end
+endmodule
+

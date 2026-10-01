@@ -1,0 +1,17 @@
+CADENCE IHNL111415
+
+ether inv_2x_hv schematic cds0
+ether adc_IREF_bias schematic cds1
+ether adc_IREF_ext schematic cds2
+ether adc_sample_hold schematic cds3
+ether adc_nandx10 schematic cds4
+ether adc_invertx30 schematic cds5
+ether adc_invertx300 schematic cds6
+ether adc_invertx100 schematic cds7
+ether adc_invertx10 schematic cds8
+ether adc_nandx3 schematic cds9
+ether adc_invertx3 schematic cds10
+ether adc_invertx1 schematic cds11
+ether adc_clk_nonoverlap schematic cds12
+gpdk090 resnsnpoly_pcell_0 schematic cds13
+ether_sims adc_sample_hold_sim schematic cds14

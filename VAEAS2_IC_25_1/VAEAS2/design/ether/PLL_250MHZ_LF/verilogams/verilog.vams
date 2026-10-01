@@ -1,0 +1,73 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "PLL_250MHZ_LF" "verilogams"
+// loop filter with NMOS25 capacitors modeled
+  
+`include "constants.vams"
+`include "disciplines.vams"
+
+`undef _debug
+
+
+module PLL_250MHZ_LF ( VSS, DUMP, LF, TAP );
+
+  input VSS;
+  input DUMP;
+  input LF;
+  output TAP;
+
+  electrical VSS, LF, TAP;
+  logic	     DUMP;
+  real	     DUMPreal,c1v,c2v;
+  
+`ifdef _debug
+   real vc1_probe, vc2_probe,
+	iin_probe, iout_probe,
+	rangec1,   rangec2;
+`endif
+
+  parameter real C1  = 2.0p;
+  parameter real R2  = 9.96k;
+  parameter real C2  = 59.5p;
+  parameter real RON = 200.0; // not measured in schematic
+
+  always @(DUMP) begin 
+    case(DUMP) 
+      1'b0: DUMPreal = 0;
+      1'b1: DUMPreal = 1;
+      1'bx: DUMPreal = 0;
+      1'bz: DUMPreal = 0;
+    endcase
+  end
+
+  analog  function real  cmult;
+    input vcap;
+    real  vcap;
+//	cmult = 0.65 + 0.35*tanh(12*(vcap - 0.5));
+	cmult = 0.65 + 0.35*tanh(12*(vcap - 0.56));
+  endfunction
+
+
+  analog begin
+`ifdef _debug
+  vc1_probe = V(LF,VSS);
+  vc2_probe = V(TAP,VSS);
+  iin_probe = I(LF,VSS);
+  iout_probe = I(TAP,VSS);
+  rangec1 = cmult(V(LF,VSS));
+  rangec2 = cmult(V(TAP,VSS));
+`endif
+     I(LF,TAP)    <+  V(LF,TAP)/R2;
+     c1v          =   C1*cmult(V(LF,VSS));
+     c2v	  =   C2*cmult(V(TAP,VSS));
+// note that since cxv = C(Vx), we must include
+// cxv inside the derivatives
+     I(LF,VSS)    <+  ddt(V(LF,VSS)*c1v);
+     I(TAP,VSS)   <+  ddt(V(TAP,VSS)*c2v);
+// try to eliminate singular matrix with R to gnd
+     I(TAP,VSS)   <+  V(TAP,VSS)/1.0e08;
+// dump connection
+     I(TAP,VSS)	  <+  DUMPreal*V(LF,VSS)/RON;
+     I(LF,VSS)	  <+  DUMPreal*V(LF,VSS)/RON;
+  end
+
+`undef _debug
+endmodule

@@ -1,0 +1,13 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$GLOBAL_SIGNALS
+	VDD1!:::4-user5-false11-inUseByCDBA5-false4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	VSS!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	GND!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	gnd!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd4-true5-alias5-false5-alsIx1-0;
+	VDD!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+$END
+$TIMESTAMP
+	1096577271000=verilog.vams;
+$END

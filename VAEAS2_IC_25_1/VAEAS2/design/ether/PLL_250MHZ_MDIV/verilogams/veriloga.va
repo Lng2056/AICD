@@ -1,0 +1,65 @@
+// Verilog-A model created Wed Jan  7 2004 18:01:18
+// Using DCM version 03.3.2 by user jmedero
+// The user accepts full responsibility for the use of this model.
+`include "disciplines.h"
+// Warning: If this cellview is edited, inherited connection information may be lost.
+//          To restore this information, type acvInhConnToVeriloga() in the CIW,
+//          enter the lib/cellview and click OK
+module PLL_250MHZ_MDIV(CLKFB,CLKVCO,global_VSS,global_VDD);
+output     CLKFB;
+input      CLKVCO;
+input           (* integer inh_conn_prop_name="DVSS";
+         integer inh_conn_def_value="cds_globals.\\VSS! "; *) global_VSS;
+input           (* integer inh_conn_prop_name="DVDD";
+         integer inh_conn_def_value="cds_globals.\\VDD! "; *) global_VDD;
+electrical CLKFB,CLKVCO,global_VSS,global_VDD;
+ 
+ 
+real	CLKFB_delay,CLKFB_t1,CLKFB_t2;
+integer fun_CLKFB,count_CLKFB;
+ 
+ 
+ 
+integer CLKVCO_dir;
+ 
+real       global_VSS_value,global_VDD_value,thr;
+analog begin
+	global_VSS_value=V(global_VSS);
+	global_VDD_value=V(global_VDD);
+	thr=global_VDD_value/2;
+	I(CLKVCO,global_VSS) <+ ddt($table_model(global_VDD_value,"PLL_250MHZ_MDIV_CLKVCO_incap.vat","")*V(CLKVCO,global_VSS));
+	@(initial_step) begin
+		CLKFB_t1=0;
+		CLKFB_delay=5e-10;
+		CLKFB_t2=1e-09;
+ 
+ 
+		CLKVCO_dir = +1;
+ 
+ 
+	end
+ 
+	@(initial_step) begin
+		count_CLKFB = 0;
+		fun_CLKFB = 0;
+	end
+	@(cross(V(CLKVCO)-thr,CLKVCO_dir)) begin
+			count_CLKFB = count_CLKFB+1;
+			if (count_CLKFB==10/2) begin
+				fun_CLKFB=1;
+				CLKFB_t1=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_rise_CLKVCO_CLKFB_t1.vat","");
+				CLKFB_delay=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_rise_CLKVCO_CLKFB_delay.vat","");
+				CLKFB_t2=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_rise_CLKVCO_CLKFB_t2.vat","");
+			end else if (count_CLKFB==10) begin
+				fun_CLKFB=0;
+				CLKFB_t1=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_fall_CLKVCO_CLKFB_t1.vat","");
+				CLKFB_delay=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_fall_CLKVCO_CLKFB_delay.vat","");
+				CLKFB_t2=$table_model(global_VDD_value,"PLL_250MHZ_MDIV_fall_CLKVCO_CLKFB_t2.vat","");
+				count_CLKFB=0;
+			end
+	end
+	V(CLKFB)<+transition(fun_CLKFB?(global_VDD_value/2):0,(CLKFB_t1<0)?0:CLKFB_t1,((CLKFB_delay-CLKFB_t1)>0)?CLKFB_delay-CLKFB_t1:1e-12);
+	V(CLKFB)<+transition(fun_CLKFB?(global_VDD_value/2):0,(CLKFB_delay<0)?0:CLKFB_delay,((CLKFB_t2-CLKFB_delay)>0)?CLKFB_t2-CLKFB_delay:1e-12);
+	V(CLKFB) <+ I(CLKFB) * 0.1;
+end
+endmodule

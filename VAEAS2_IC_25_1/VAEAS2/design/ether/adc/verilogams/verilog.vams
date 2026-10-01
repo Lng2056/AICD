@@ -1,0 +1,66 @@
+//------------------------------------------------------------------------------
+// Name   : adc
+// View   : verilogams
+// Purpose: Model the 6-bit AD converter
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc ( out, VDD, INM, INP, SIDDQ, INP_TEST, INM_TEST, sample_test, hold_test,
+    hold, sample, ph2b, ph1, VSS, ref_ladder_100uA, ibias100, ibias100A, ibias100B,
+    ibias100C, ibias100D, ibias100E, ibias100F, ibias100G, ibias100H, ibias100V,
+    ibias50Y );
+
+
+output	[62:0]	out;
+input		INP, INM, INP_TEST, INM_TEST;
+input		ph1, ph2b;
+input		sample, sample_test, hold, hold_test;
+input		ibias100A, ibias100B, ibias100C, ibias100D;
+input		ibias100E, ibias100F, ibias100G, ibias100H;
+input		ibias100,  ibias100V, ibias50Y;
+input		ref_ladder_100uA;
+input		VDD, VSS;
+input		SIDDQ;
+
+adc_sample_hold ADC_SAMPLE_HOLD ( .outp(shoutp), .outm(shoutm), .inp(INP), .inm(INM),
+	.inp_test(INP_TEST), .inm_test(INM_TEST), .sample(sample), .hold(hold),
+	.sample_test(sample_test), .hold_test(hold_test), 
+	.VDD(VDD), .VSS(VSS), .SIDDQ(SIDDQ), .bias100(ibias100V) );
+
+adc_ref_ladder ADC_REF_LADDER ( .INP(shoutp), .INM(shoutm), .ref0(ref0), .ref1(ref1),
+	.ref2(ref2), .ref3(ref3), .ref4(ref4), .ref5(ref5), .ref6(ref6), 
+	.ref7(ref7), .ref8(ref8), .ref9(ref9), .ref10(ref_ladder_100uA), 
+	.ibias50(ibias50Y), .VDD(VDD), .VSS(VSS), .SIDDQ(SIDDQ));
+
+adc_interp_array ADC_INTERP_ARRAY ( .dm0p(net080), .dm0n(net90), 
+	.out0p(out0p), .out0n(out0n), .out1p(out1p), .out1n(out1n),
+	.out2p(out2p), .out2n(out2n), .out3p(out3p), .out3n(out3n),
+	.out4p(out4p), .out4n(out4n), .out5p(out5p), .out5n(out5n), 
+	.out6p(out6p), .out6n(out6n), .out7p(out7p), .out7n(out7n), 
+	.out8p(out8p), .out8n(out8n), .dm8p(net55),  .dm8n(net56), 
+	.ref0(ref0),   .ref1(ref1),   .ref2(ref2),   .ref3(ref3), 
+	.ref4(ref4),   .ref5(ref5),   .ref6(ref6),   .ref7(ref7),
+	.ref8(ref8),   .ref9(ref9),   .ref10(ref_ladder_100uA), 
+	.vinp(shoutp), .vinm(shoutm),
+	.VDD(VDD),     .VSS(VSS),  .SIDDQ(SIDDQ), .bias100(ibias100) );
+ 
+adc_64comparators ADC_64COMPS ( .out(out[62:0]), .in0p(out0p), .in0n( out0n ),
+	.in1p(out1p), .in1n(out1n), .in2p(out2p), .in2n(out2n),
+	.in3p(out3p), .in3n(out3n), .in4p(out4p), .in4n(out4n),
+	.in5p(out5p), .in5n(out5n), .in6p(out6p), .in6n(out6n), 
+	.in7p(out7p), .in7n(out7n), .in8p(out8p), .in8n(out8n), 
+	.dm0p(net080),.dm0n(net90), .dm8p(net55), .dm8n(net56),
+	.ph1(ph1),  .ph2b( ph2b ),
+	.ibiasA100(ibias100A), .ibiasB100(ibias100B), .ibiasC100(ibias100C),
+	.ibiasD100(ibias100D), .ibiasE100(ibias100E), .ibiasF100(ibias100F),
+	.ibiasG100(ibias100G), .ibiasH100(ibias100H),
+	.VDD(VDD), .VSS(VSS),  .SIDDQ(SIDDQ) );
+
+ 
+endmodule

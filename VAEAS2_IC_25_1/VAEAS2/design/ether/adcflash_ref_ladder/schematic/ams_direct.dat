@@ -1,0 +1,33 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103898=7-gpdk0906-pmos2v;
+	1134103898=7-gpdk0906-pmos2v6-symbol;
+	1134103902=7-gpdk0909-pmoscap2v;
+	1134103902=7-gpdk0909-pmoscap2v6-symbol;
+	1136308143=5-ether17-adc_cascode_opamp;
+	1136308144=5-ether17-adc_cascode_opamp6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387660=verilog.vams;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	R3:1:0:::;
+	R7:1:0:::;
+	R8:4:0:::;
+	R12:4:0:::;
+	R13:1:0:::;
+	R17:1:0:::;
+	R18:4:0:::;
+	R19:4:0:::;
+	R20:1:0:::;
+	R21:1:0:::;
+$END

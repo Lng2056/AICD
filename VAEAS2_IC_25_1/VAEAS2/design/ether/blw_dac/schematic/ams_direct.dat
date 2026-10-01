@@ -1,0 +1,61 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I49:DVDD=AVDD_2p5V;
+	I49:DVSS=AGND;
+	I48:DVDD=AVDD_2p5V;
+	I48:DVSS=AGND;
+	I46:DVDD=AVDD_2p5V;
+	I46:DVSS=AGND;
+	I30:VDD=DVDD;
+	I30:VSS=DGND;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1134103898=7-gpdk0906-pmos2v;
+	1134103898=7-gpdk0906-pmos2v6-symbol;
+	1136308197=5-ether14-blw_dac_mirror;
+	1136308198=5-ether14-blw_dac_mirror6-symbol;
+	1136308198=5-ether17-blw_dac_vbias_dac;
+	1136308198=5-ether17-blw_dac_vbias_dac6-symbol;
+	1136308199=5-ether25-blw_dac_typIsource_1p26mA;
+	1136308199=5-ether25-blw_dac_typIsource_1p26mA6-symbol;
+	1136308089=5-ether9-inv_4x_hv;
+	1136308090=5-ether9-inv_4x_hv6-symbol;
+	1136308077=5-ether9-inv_1x_hv;
+	1136308078=5-ether9-inv_1x_hv6-symbol;
+	1136308074=5-ether11-nand3_2x_hv;
+	1136308075=5-ether11-nand3_2x_hv6-symbol;
+	1136308200=5-ether15-blw_dac_lvshift;
+	1136308201=5-ether15-blw_dac_lvshift6-symbol;
+	1136308201=5-ether18-blw_dac_ixf_cmf_v2;
+	1136308202=5-ether18-blw_dac_ixf_cmf_v26-symbol;
+	1136308204=5-ether17-blw_dac_in_res_v2;
+	1136308204=5-ether17-blw_dac_in_res_v26-symbol;
+	1136308207=5-ether20-blw_dac_cell_new_8_8;
+	1136308207=5-ether20-blw_dac_cell_new_8_86-symbol;
+	1136308208=5-ether16-blw_dac_new_bias;
+	1136308208=5-ether16-blw_dac_new_bias6-symbol;
+	1136308208=5-ether17-blw_dac_bin2therm;
+	1136308209=5-ether17-blw_dac_bin2therm6-symbol;
+	1133909520=9-analogLib10-pcapacitor;
+	1133909382=9-analogLib10-pcapacitor6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387632=verilog.vams;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	C0:8:0:::;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:pcapacitor:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+$END

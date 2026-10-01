@@ -1,0 +1,41 @@
+// Verilog-A model created Mon Dec 13 2004 15:39:10 
+// Using VCME version 04.10.2.1 by user volden
+// The user accepts full responsibility for the use of this model.
+`include "disciplines.h"
+module PLL_CP(CP_ITEST_25u,OUT,IPLY_25u,DN,PD,UP,VDD,VSS);
+output     OUT;
+input      UP,DN,PD,CP_ITEST_25u,IPLY_25u;
+inout      VDD,VSS;
+electrical CP_ITEST_25u,OUT,IPLY_25u,DN,PD,UP,VDD,VSS;
+parameter  real ttol = 1e-12;
+real       OUT_up_current, OUT_down_current;
+real CP_ITEST_25u_voltage;
+real IPLY_25u_voltage;
+real       VSS_value,VDD_value,thr;
+analog begin
+	VSS_value=V(VSS);
+	VDD_value=V(VDD);
+	thr=VDD_value/2.0;
+	I(UP,VSS) <+ ddt($table_model(VDD_value,"PLL_CP_UP_incap.vat","")*V(UP,VSS));
+	I(DN,VSS) <+ ddt($table_model(VDD_value,"PLL_CP_DN_incap.vat","")*V(DN,VSS));
+	I(PD,VSS) <+ ddt($table_model(VDD_value,"PLL_CP_PD_incap.vat","")*V(PD,VSS));
+	@(cross(V(UP)-(VDD_value/2.0),0,ttol));
+	if (V(UP) > (VDD_value/2.0)) begin
+		OUT_up_current=$table_model(VDD_value,V(OUT),"PLL_CP_up_iv_OUT.vat","");
+		I(OUT) <+ OUT_up_current*-1;
+	end
+ 
+	@(cross(V(DN)-(VDD_value/2.0),0,ttol));
+	if (V(DN) > (VDD_value/2.0)) begin
+		OUT_down_current=$table_model(VDD_value,V(OUT),"PLL_CP_down_iv_OUT.vat","");
+		I(OUT) <+ OUT_down_current*-1;
+	end
+ 
+	I(OUT) <+ V(OUT)/1e15;
+ 
+	CP_ITEST_25u_voltage=$table_model(VDD_value,"PLL_CP_eval_CP_ITEST_25u.vat","");
+	V(CP_ITEST_25u) <+ VDD_value + CP_ITEST_25u_voltage;
+	IPLY_25u_voltage=$table_model(VDD_value,"PLL_CP_eval_IPLY_25u.vat","");
+	V(IPLY_25u) <+ VDD_value + IPLY_25u_voltage;
+end
+endmodule

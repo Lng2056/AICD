@@ -1,0 +1,29 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "adc_IREF_poly" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_IREF_poly ( BIAS1000Z, BIAS100INT, BIAS100RL, I100_poly1, I100_poly2,
+    SIDDQ, VDD, VSS );
+
+output	BIAS1000Z, BIAS100INT, BIAS100RL;
+input	I100_poly1, I100_poly2;
+input	VDD, VSS;
+input	SIDDQ;
+
+electrical BIAS1000Z, BIAS100INT, BIAS100RL;
+electrical I100_poly1, I100_poly2;
+electrical VDD, VSS;
+logic	   SIDDQ;
+
+real i100uA, i1mA;
+analog begin
+	i100uA = (SIDDQ) ? 0: (I(I100_poly1)+I(I100_poly2))/2;
+	i1mA   = i100uA * 10.0;
+	
+	I(BIAS1000Z)  <+ -1*i1mA;
+	I(BIAS100INT) <+ -1*i100uA; 
+	I(BIAS100RL)  <+ -1*i100uA;
+end
+
+endmodule

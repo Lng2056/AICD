@@ -1,0 +1,93 @@
+//------------------------------------------------------------------------------
+// Name   : adc_comparator_array_actr
+// View   : verilogams
+// Purpose: Model a Comparator array (8 instances)
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_comparator_array_actr ( out, In1n, In1p, SIDDQ, VDD, VSS, ibias100,
+    in2n, in2p, ph1, ph2b );
+
+output [7:0] out;
+input	In1p, In1n;
+input	in2p, in2n;
+input	ph1, ph2b;
+input	SIDDQ;
+input	VDD, VSS;
+input	ibias100;
+
+electrical	In1p, In1n;
+electrical	in2p, in2n;
+electrical	VDD, VSS;
+electrical	ibias100;
+
+logic		ph1, ph2b;
+logic		SIDDQ;
+
+electrical in0,  in1,  in2,  in3,  in4,  in5,  in6,  in7;
+electrical in0m, in1m, in2m, in3m, in4m, in5m, in6m, in7m;
+real irefp, irefm;
+real vibias;
+real res_mirror = 6500;			// Current Bias
+electrical ibias;
+
+wire iph1   = (ph1==1'b1)   ? 1'b1: 1'b0;
+wire iph2b  = (ph2b==1'b1)  ? 1'b1: 1'b0;
+wire iSIDDQ = (SIDDQ==1'b1) ? 1'b1: 1'b0;
+
+analog begin
+	irefp  = (V(In1p)-V(in2p))/8;
+	V(in7) <+ V(in2p);
+	V(in6) <+ V(in2p) + irefp*1;
+	V(in5) <+ V(in2p) + irefp*2;
+	V(in4) <+ V(in2p) + irefp*3;
+	V(in3) <+ V(in2p) + irefp*4;
+	V(in2) <+ V(in2p) + irefp*5;
+	V(in1) <+ V(in2p) + irefp*6;
+	V(in0) <+ V(in2p) + irefp*7;
+
+	irefm   = (V(In1n)-V(in2n))/8;
+	V(in7m) <+ V(in2n);
+	V(in6m) <+ V(in2n) + irefm*1;
+	V(in5m) <+ V(in2n) + irefm*2;
+	V(in4m) <+ V(in2n) + irefm*3;
+	V(in3m) <+ V(in2n) + irefm*4;
+	V(in2m) <+ V(in2n) + irefm*5;
+	V(in1m) <+ V(in2n) + irefm*6;
+	V(in0m) <+ V(in2n) + irefm*7;
+	
+	vibias  = (iSIDDQ) ? 0.0: I(ibias100)*res_mirror;
+	V(ibias) <+ vibias;
+end
+
+adc_comparator_actr I8 ( .outp(out[6]), .inp(in6), .inm(in6m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I7 ( .outp(out[7]), .inp(in7), .inm(in7m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I6 ( .outp(out[3]), .inp(in3), .inm(in3m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I5 ( .outp(out[2]), .inp(in2), .inm(in2m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I4 ( .outp(out[5]), .inp(in5), .inm(in5m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I3 ( .outp(out[4]), .inp(in4), .inm(in4m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I2 ( .outp(out[0]), .inp(in0), .inm(in0m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+adc_comparator_actr I1 ( .outp(out[1]), .inp(in1), .inm(in1m),
+			 .ph2b(iph2b), .ph1(iph1), .SIDDQ(SIDDQ),
+			 .Vbias(ibias), .VSS(VSS), .VDD(VDD));
+
+endmodule

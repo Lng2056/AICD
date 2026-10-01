@@ -1,0 +1,49 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	gnd!:::;
+	vss!:::;
+	VSS!:::;
+	vdda!:::;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:VSS!:cds_globals.\\VSS! ;
+	net:vss!:cds_globals.\\vss! ;
+	net:gnd!:cds_globals.\\gnd! ;
+	net:vdda!:cds_globals.\\vdda! ;
+$END
+$TIMESTAMP
+	1136308409=5-ether3-top;
+	1136308414=5-ether3-top6-symbol;
+	1136308119=5-ether13-clkbuf_16x_hv;
+	1136308119=5-ether13-clkbuf_16x_hv6-symbol;
+	1136321319=10-ether_sims11-PE68515_ssr;
+	1136321319=10-ether_sims11-PE68515_ssr6-symbol;
+	1136321332=10-ether_sims8-pkg_80LD;
+	1136321332=10-ether_sims8-pkg_80LD6-symbol;
+	1136321340=10-ether_sims8-testcase;
+	1136321340=10-ether_sims8-testcase6-symbol;
+	1133909522=9-analogLib5-tline;
+	1133909395=9-analogLib5-tline6-symbol;
+	1133909521=9-analogLib3-vdc;
+	1133909405=9-analogLib3-vdc6-symbol;
+	1133909520=9-analogLib3-res;
+	1133909388=9-analogLib3-res6-symbol;
+	1136393736=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	vdd_nom:9-CDBAValue3-2.5;
+	vdd_1p0:9-CDBAValue3-1.0;
+	R:9-CDBAValue3-100;
+	fvco:9-CDBAValue7-2.5E+09;
+	freg:9-CDBAValue6-416.7M;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:tline:symbol:*:3-IN+2-t14-OUT-2-b23-IN-2-b14-OUT+2-t2;
+	analogLib:vdc:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+	analogLib:res:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-1;
+$END

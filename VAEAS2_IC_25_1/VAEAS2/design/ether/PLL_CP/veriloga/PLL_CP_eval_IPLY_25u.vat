@@ -1,0 +1,10 @@
+# Table File  : '/usr1/volden/etherPhy90/design/custom_cdba/VSdE_Workspace/VCME_PLL/dcmlib/PLL_CP/veriloga/PLL_CP_eval_IPLY_25u.vat'
+# Result File : 'results/ether/PLL_CPDCM/configDCM/results/charge_pump_VerilogA_gain_sweep-charge_pump_down_test.res'
+# Created on  : 'Mon Dec 13 2004 at 15:40:46'
+# Created by  : 'volden'
+
+# dcm_VDD_value
+# 	eval_IPLY_25u
+2.4	1.04873e-06 	# keys='2.4'
+2.5	1.09242e-06 	# keys='2.5'
+2.6	1.13612e-06 	# keys='2.6'

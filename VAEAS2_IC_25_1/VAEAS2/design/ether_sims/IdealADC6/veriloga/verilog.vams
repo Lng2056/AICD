@@ -1,0 +1,85 @@
+// ---------------------------------------------------------------
+// AHDLIdealADC 
+// Luca Ravezzi
+// Dec 14, 2000
+// Pins:
+// inA, outD : output pins
+// inA: analog input
+// Parameters:		
+// tdel			time delay used in $transition.
+// trise		rise time used in $transition
+// tfall		fall time used in $transition
+// 
+// ---------------------------------------------------------------
+`include "discipline.h"
+`include "constants.h"
+
+`define Nbit 6
+
+module IdealADC6(inA, outD, CTime, clkin_p,clkin_n);
+inout inA;
+electrical inA;
+inout [`Nbit-1:0] outD;
+electrical [`Nbit-1:0] outD;
+inout CTime;
+electrical CTime;
+inout clkin_p,clkin_n;
+electrical clkin_p,clkin_n;
+    
+parameter real fullscale=5 from [0:inf);
+parameter real Vhigh=5 from [0:inf);
+parameter real Vlow=5 from [0:inf);
+parameter real tdel=0 from [0:inf);
+parameter real trise=100p from (0:inf);
+parameter real tfall=100p from (0:inf);
+
+real Thr;
+real AThr;
+real rdA [`Nbit:0];
+real Vin;
+integer thresh;
+integer i;
+
+analog begin
+
+	@(initial_step) begin
+  	for (i=1;i<`Nbit;i=i+1)
+    		rdA[i]=Vlow;
+  	Thr=(Vlow+Vhigh)/2; 
+  	AThr=fullscale/2;
+  	Vin=0;
+	end
+
+  @(cross(V(clkin_p)-V(clkin_n), +1));
+  	thresh = V(CTime)<Thr ? 1 : 0;
+
+  //thresh = ((cross(V(clkin_p)-V(clkin_n), +1, abstol("V"))) && V(CTime)<Thr);
+  //thresh = (($threshold(V(clkin_p)-V(clkin_n), +1, $abstol("V"), 1)) && V(CTime)<Thr);
+  //if ((V(CTime)>Thr) || (($threshold(V(clkin_p)-V(clkin_n), +1, $abstol("V"))) && V(CTime)<Thr))
+  if ((V(CTime)>Thr) || thresh)
+  begin
+     Vin=V(inA);
+     for (i=`Nbit;i>0;i=i-1)
+     begin
+      if (Vin>AThr) 
+      begin
+       rdA[i]=Vhigh;
+       Vin=(Vin-AThr)*2;
+      end
+      else
+      begin
+       rdA[i]=Vlow;
+       Vin=Vin*2;
+      end
+     end 
+  end 
+  
+  //generate (i=`Nbit:1:-1)
+  generate i(`Nbit,1,-1)
+  begin
+     V(outD[i-1]) <+ transition(rdA[i], tdel,trise,tfall);
+  end
+ 
+end
+
+endmodule

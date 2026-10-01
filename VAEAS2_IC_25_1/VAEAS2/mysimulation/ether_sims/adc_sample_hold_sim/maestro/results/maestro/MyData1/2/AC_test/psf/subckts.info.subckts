@@ -1,0 +1,256 @@
+HEADER
+"PSFversion" "1.00"
+"simulator" "spectre"
+"version" "23.1.0.063"
+"date" "12:36:13 PM, Wed Aug 9, 2023"
+"design" "// Point Netlist Generated on: Aug  9 12:36:12 2023"
+"analysis type" "info.subckts"
+"analysis name" "subckts"
+"analysis description" "Circuit Information"
+"xVecSorted" "unknown"
+"tolerance.relative" 0.00100000
+TYPE
+"subckt" STRUCT(
+"subckt_params" STRING *
+"subckt_terminals" STRING *
+"subckt_instances" STRING *
+) PROP(
+"key" "sub"
+)
+VALUE
+"gpdk090_vpnp" "subckt" (
+""
+""
+""
+)
+"resnsnpoly_pcell_0" "subckt" (
+"segL segW"
+"B MINUS PLUS"
+"R11 R1"
+)
+"gpdk090_nmos1v" "subckt" (
+""
+""
+""
+)
+"gpdk090_nmos1v_hvt" "subckt" (
+""
+""
+""
+)
+"gpdk090_resspdiff" "subckt" (
+""
+""
+""
+)
+"gpdk090_vpnp5" "subckt" (
+""
+""
+""
+)
+"gpdk090_ressndiff" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm2" "subckt" (
+""
+""
+""
+)
+"gpdk090_pmos1v_hvt" "subckt" (
+""
+""
+""
+)
+"gpdk090_ndio_na25" "subckt" (
+""
+""
+""
+)
+"adc_IREF_ext" "subckt" (
+""
+"BIAS100A BIAS100B BIAS100C BIAS100D BIAS100E BIAS100F BIAS100G BIAS100H BIAS100V BIAS100Z BIAS100fA BIAS100fB BIAS50Y BIAS50f I100_ext1 I100_ext2 SIDDQ VDD VSS"
+"I33"
+)
+"adc_IREF_bias" "subckt" (
+""
+"Iin1 Iin2 SIDDQ VDD VSS pbias pbias_cas"
+"I33.ADC_IREF_BIAS"
+)
+"gpdk090_ndio_hvt" "subckt" (
+""
+""
+""
+)
+"gpdk090_ndio_25" "subckt" (
+""
+""
+""
+)
+"gpdk090_vpnp10" "subckt" (
+""
+""
+""
+)
+"gpdk090_nwdio" "subckt" (
+""
+""
+""
+)
+"gpdk090_ressppoly" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm1" "subckt" (
+""
+""
+""
+)
+"gpdk090_resnspdiff" "subckt" (
+""
+""
+""
+)
+"gpdk090_npn" "subckt" (
+""
+""
+""
+)
+"adc_sample_hold" "subckt" (
+""
+"outm outp SIDDQ VDD VSS bias100 hold hold_test inm inm_test inp inp_test sample sample_test"
+"I1"
+)
+"gpdk090_ndio_na" "subckt" (
+""
+""
+""
+)
+"gpdk090_pmos1v" "subckt" (
+""
+""
+""
+)
+"gpdk090_pdio" "subckt" (
+""
+""
+""
+)
+"gpdk090_pnp" "subckt" (
+""
+""
+""
+)
+"gpdk090_resnsppoly" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm3" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm7" "subckt" (
+""
+""
+""
+)
+"inv_2x_hv" "subckt" (
+""
+"A Y inh_DVDD inh_DVSS"
+"I33.ADC_IREF_BIAS.I1 I1.I58"
+)
+"gpdk090_nmos2v_nat" "subckt" (
+""
+""
+""
+)
+"gpdk090_ressnpoly" "subckt" (
+""
+""
+""
+)
+"gpdk090_mimcap" "subckt" (
+""
+""
+""
+)
+"gpdk090_nmos1v_iso" "subckt" (
+""
+""
+""
+)
+"gpdk090_pdio_hvt" "subckt" (
+""
+""
+""
+)
+"gpdk090_ndio" "subckt" (
+""
+""
+""
+)
+"gpdk090_pdio_25" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm6" "subckt" (
+""
+""
+""
+)
+"gpdk090_nmos2v" "subckt" (
+"geo_fac mm_dl ad mm_mu0 nrs as mm_delvt mm_dtox pd w mm_dw ps varvt l simM nrd"
+"D G S B"
+"I33.ADC_IREF_BIAS.NM5 I33.ADC_IREF_BIAS.NM23 I33.ADC_IREF_BIAS.NM28 I33.ADC_IREF_BIAS.NM14 I33.ADC_IREF_BIAS.NM15 I33.ADC_IREF_BIAS.NM11 I33.ADC_IREF_BIAS.NM12 I33.ADC_IREF_BIAS.NM13 I33.ADC_IREF_BIAS.NM16 I33.ADC_IREF_BIAS.NM18 I33.ADC_IREF_BIAS.NM10 I33.ADC_IREF_BIAS.NM17 I33.ADC_IREF_BIAS.NM21 I33.ADC_IREF_BIAS.C1 I33.ADC_IREF_BIAS.C2 I33.ADC_IREF_BIAS.C0 I33.ADC_IREF_BIAS.I1.NM0 I1.I58.NM0 I1.NM1 I1.NM3 I1.NM14 I1.NM9 I1.NM12 I1.NM16 I1.NM0 I1.NM2 I1.NM8 I1.NM4 I1.NM6 I1.NM10 I1.NM7 I1.NM5 I1.NM11"
+)
+"gpdk090_resnsndiff" "subckt" (
+""
+""
+""
+)
+"gpdk090_pmos2v" "subckt" (
+"geo_fac mm_dl ad mm_mu0 nrs as mm_delvt mm_dtox pd w mm_dw ps varvt l simM nrd"
+"D G S B"
+"I33.PM30 I33.PM28 I33.PM4 I33.PM3 I33.PM1 I33.PM0 I33.PM15 I33.PM13 I33.PM12 I33.PM11 I33.PM10 I33.PM18 I33.PM24 I33.PM14 I33.PM25 I33.PM27 I33.PM33 I33.PM32 I33.PM31 I33.PM19 I33.PM16 I33.PM20 I33.PM21 I33.PM23 I33.PM26 I33.PM22 I33.PM17 I33.PM29 I33.ADC_IREF_BIAS.PM35 I33.ADC_IREF_BIAS.PM2 I33.ADC_IREF_BIAS.PM6 I33.ADC_IREF_BIAS.PM49 I33.ADC_IREF_BIAS.PM51 I33.ADC_IREF_BIAS.PM50 I33.ADC_IREF_BIAS.PM7 I33.ADC_IREF_BIAS.PM34 I33.ADC_IREF_BIAS.PM9 I33.ADC_IREF_BIAS.PM5 I33.ADC_IREF_BIAS.PM8 I33.ADC_IREF_BIAS.I1.PM0 I1.I58.PM0 I1.PM4 I1.PM0 I1.PM3 I1.PM1 I1.PM6 I1.PM2 I1.C4 I1.C3"
+)
+"gpdk090_resm9" "subckt" (
+""
+""
+""
+)
+"gpdk090_nmos1v_nat" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm5" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm4" "subckt" (
+""
+""
+""
+)
+"gpdk090_resm8" "subckt" (
+""
+""
+""
+)
+"gpdk090_resnsnpoly" "subckt" (
+"geo_fac Pwl w w_mc l simM delmis"
+"PLUS MINUS B"
+"R11.R1 R11.R0 R1.R1 R1.R0"
+)
+"gpdk090_vpnp2" "subckt" (
+""
+""
+""
+)
+END

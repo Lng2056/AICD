@@ -1,0 +1,22 @@
+To: zfan
+Subject: Where can Sergei get Verilog A & sim data for a PLL 
+Cc: kent, rayv
+
+Hey Zhong,
+
+1. Can you answer Sergei's question (he's waiting for you).
+
+2. Did you run analog simulation of the lower-lever blocks of the PLL in
+   the Parrot Ethernet Phy or did you just run transient for the whole PLL?
+
+3. Sergei needs data to put together a jitter flow ...
+   He just needs some pointers to the DATA he needs!
+
+   We tried looking in /net/flow/u/database/integration/
+   FLOW_ETHER_CDK090/design/data/artist_states/ether_sims 
+   but we can't find your veriloga (*.va) for a PLL in the Ethernet Phy 
+
+PLEASE HELP ... 
+   Where can Sergei get PLL verilog.a with separate block testbenches?
+
+jjg

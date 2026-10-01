@@ -1,0 +1,43 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I14:DVSS=vss;
+	I14:DVDD=vdd;
+	I13:DVDD=vdd;
+	I13:DVSS=vss;
+	I12:DVSS=vss;
+	I12:DVDD=vdd;
+	I7:DVDD=vdd;
+	I7:DVSS=vss;
+	I11:DVSS=vss;
+	I11:DVDD=vdd;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103898=7-gpdk0906-pmos2v;
+	1134103898=7-gpdk0906-pmos2v6-symbol;
+	1134103883=7-gpdk0906-nmos2v;
+	1134103884=7-gpdk0906-nmos2v6-symbol;
+	1136308188=5-ether9-inv_8x_hv;
+	1136308189=5-ether9-inv_8x_hv6-symbol;
+	1136308089=5-ether9-inv_4x_hv;
+	1136308090=5-ether9-inv_4x_hv6-symbol;
+	1136308108=5-ether9-inv_3x_hv;
+	1136308108=5-ether9-inv_3x_hv6-symbol;
+	1136308078=5-ether9-inv_2x_hv;
+	1136308078=5-ether9-inv_2x_hv6-symbol;
+	1136308077=5-ether9-inv_1x_hv;
+	1136308078=5-ether9-inv_1x_hv6-symbol;
+	1136308058=5-ether6-inv_1X;
+	1136308058=5-ether6-inv_1X6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387566=verilog.vams;
+$END

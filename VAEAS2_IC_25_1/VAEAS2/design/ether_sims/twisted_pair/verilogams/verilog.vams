@@ -1,0 +1,57 @@
+//Verilog-AMS HDL for "schroeder_sims", "twisted_pair" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module twisted_pair ( out_neg, out_pos, in_neg, in_pos );
+
+  output out_pos;
+  input in_pos;
+  output out_neg;
+  input in_neg;
+  
+  electrical out_pos;
+  electrical in_pos;
+  electrical out_neg;
+  electrical in_neg;  
+
+parameter real L = 100 ;
+parameter real alpha = 9.76e-7 ;
+
+real L0 = 100;
+real alpha0 = 1.51e-6;
+real zeros[3:0];
+real poles[13:0];
+
+analog begin
+
+  @(initial_step) begin 
+    zeros[0]  = -2*`M_PI*0.23844e6*pow((alpha0*L0)/(alpha*L),2);
+    zeros[1]  = 0;
+    zeros[2]  = -2*`M_PI*3.6857e6*pow((alpha0*L0)/(alpha*L),2);
+    zeros[3]  = 0;
+
+    poles[0]  = -2*`M_PI*0.17539e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[1]  = 0;
+    poles[2]  = -2*`M_PI*2.0514e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[3]  = 0;
+    poles[4]  = -2*`M_PI*10.458e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[5]  = 0;
+    poles[6]  = -2*`M_PI*77.657e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[7]  = 0;
+    poles[8]  = -2*`M_PI*323.76e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[9]  = 0;
+    poles[10] = -2*`M_PI*323.76e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[11] = 0;
+    poles[12] = -2*`M_PI*323.76e6*pow((alpha0*L0)/(alpha*L),2);
+    poles[13] = 0;
+  end
+
+V(out_pos) <+ laplace_zp(V(in_pos), zeros, poles);
+V(out_neg) <+ laplace_zp(V(in_neg), zeros, poles);
+
+end
+
+
+
+endmodule

@@ -1,0 +1,39 @@
+//Verilog-AMS HDL for "drouillard_ph2", "analog_test_dec_lvshift" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module analog_test_dec_lvshift ( ADC_DIS_2p5, ADC_TEST_2p5, AEQ_DIS_2p5,
+	BLW_DIS_2p5, TX100_DIS_2p5, X10_DIS_2p5, ADC_DIS_1p0, ADC_TEST_1p0,
+	AEQ_DIS_1p0, GND, AVDD_2p5V, BLW_DIS_1p0, DVDD, TX100_DIS_1p0,
+	X10_DIS_1p0 );
+
+output ADC_DIS_2p5;
+output ADC_TEST_2p5;
+output AEQ_DIS_2p5;
+output BLW_DIS_2p5;
+output X10_DIS_2p5;
+output TX100_DIS_2p5;
+
+input  ADC_DIS_1p0;
+input  ADC_TEST_1p0;
+input  AEQ_DIS_1p0;
+input  BLW_DIS_1p0;
+input  X10_DIS_1p0;
+input  TX100_DIS_1p0;
+input  AVDD_2p5V, DVDD, GND;
+
+level_shifter_1p0_2p5 I0 ( .OUT(ADC_DIS_2p5),   .IN(ADC_DIS_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+level_shifter_1p0_2p5 I1 ( .OUT(ADC_TEST_2p5),  .IN(ADC_TEST_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+level_shifter_1p0_2p5 I2 ( .OUT(AEQ_DIS_2p5),   .IN(AEQ_DIS_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+level_shifter_1p0_2p5 I3 ( .OUT(BLW_DIS_2p5),   .IN(BLW_DIS_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+level_shifter_1p0_2p5 I4 ( .OUT(X10_DIS_2p5),   .IN(X10_DIS_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+level_shifter_1p0_2p5 I5 ( .OUT(TX100_DIS_2p5), .IN(TX100_DIS_1p0),
+			   .VDD_2p5(AVDD_2p5V), .VDD_1p0(DVDD), .VSS(GND) );
+
+endmodule

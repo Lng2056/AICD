@@ -1,0 +1,23 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1136308165=5-ether18-adc_clk_nonoverlap;
+	1136308167=5-ether18-adc_clk_nonoverlap6-symbol;
+	1136308176=5-ether8-adcflash;
+	1136308177=5-ether8-adcflash6-symbol;
+	1136308146=5-ether3-adc;
+	1136308157=5-ether3-adc6-symbol;
+	1136308159=5-ether13-adc_IREF_poly;
+	1136308160=5-ether13-adc_IREF_poly6-symbol;
+	1136308159=5-ether12-adc_IREF_ext;
+	1136308159=5-ether12-adc_IREF_ext6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387680=verilog.vams;
+$END

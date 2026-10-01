@@ -1,0 +1,14 @@
+Simulation  :   adcflash_comparator_actr_SIM
+Purpose     :   Test the operation of the Comparators 
+
+Description :   Tests that the ADC Comparators are sensing level changes
+                at the inputs.
+
+Verification:   Verify that at the rising edge of ph2b/ph1 the Comparators
+                are switching corresponding to the positive/negative input
+                relationship.
+
+Simulator   :   Spectre
+View        :   schematic
+States      :   tt
+

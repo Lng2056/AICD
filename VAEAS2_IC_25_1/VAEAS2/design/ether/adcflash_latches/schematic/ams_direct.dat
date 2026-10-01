@@ -1,0 +1,15 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=9-gsclib0905-DFFX1;
+	1134107287=9-gsclib0905-DFFX16-symbol;
+	1136387638=verilog.vams;
+$END

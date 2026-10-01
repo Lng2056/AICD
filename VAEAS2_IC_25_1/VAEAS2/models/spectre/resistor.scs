@@ -1,0 +1,133 @@
+**************************************************************
+*   Generic PDK Resistor models                       05/17/03
+*                                              PDK Tech Center
+**************************************************************
+
+simulator lang=spectre
+library gpdk
+
+section res
+*
+*
+* Nplus Resistor
+*
+model nplusreslw rdiff level=1 tr=27 dta=0 rshr=50 tcr1=3e-3 tcr2=-2e-6
+*model nplusreslw phy_res subtype=p rsh=50 tc1=3e-3 tc2=-2e-6
+
+inline subckt nplusres(PLUS MINUS B)
+  parameters \
+       sl = 0.6e-6 \
+       w = 0.6e-6 \
+       rcont =  15/int(((w*1e6)-0.19999)/0.4)
+  rcont1 PLUS PLUSHEAD resistor r=rcont/2
+  nplusres PLUSHEAD MINUSHEAD B nplusreslw l=sl w=w
+  rcont2 MINUSHEAD MINUS resistor r=rcont/2
+ends nplusres
+*
+*
+* Pplus Resistor
+*
+model pplusreslw rdiff level=1 tr=27 dta=0 rshr=158 tcr1=3e-3 tcr2=-4e-6
+*model pplusreslw phy_res subtype=n rsh=158 tc1=3e-3 tc2=-4e-6
+
+inline subckt pplusres(PLUS MINUS B)
+  parameters \
+       sl = 0.6e-6 \
+       w = 0.6e-6 \
+       rcont =  15/int(((w*1e6)-0.19999)/0.4)
+  rcont1 PLUS PLUSHEAD resistor r=rcont/2
+  pplusres PLUSHEAD MINUSHEAD B pplusreslw l=sl w=w
+  rcont2 MINUSHEAD MINUS resistor r=rcont/2
+ends pplusres
+*
+*
+*
+* Low Poly Resistor
+model polyreslw phy_res subtype=poly rsh=7.5 cj=1.33e-3 cjsw=3.15e-10 tc1=3e-3 tc2=-2e-6 tc1c=9.26e-4
+
+inline subckt polyres(PLUS MINUS)
+  parameters \
+       sl = 0.6e-6 \
+       w = 0.6e-6 \
+       rcont =  10/int(((w*1e6)-0.19999)/0.4)
+  rcont1 PLUS PLUSHEAD resistor r=rcont/2
+  polyres PLUSHEAD MINUSHEAD polyreslw l=sl w=w
+  rcont2 MINUSHEAD MINUS resistor r=rcont/2
+ends polyres
+*
+*
+* High Poly Resistor
+*
+model polyhreslw phy_res subtype=poly rsh=352 cj=1.33e-3 cjsw=3.15e-10 tc1=3e-3 tc2=-2e-6 tc1c=9.26e-4
+
+inline subckt polyhres(PLUS MINUS)
+  parameters \
+       sl = 0.6e-6 \
+       w = 0.6e-6 \
+       rend = 15/(w*1e6) \
+       rcont =  10/int(((w*1e6)-0.19999)/0.4)
+  rcont1 PLUS PLUSHEAD resistor r=rcont/2
+  rend1 PLUSHEAD PLUSEND resistor r=rend/2
+  polyhres PLUSEND MINUSEND polyhreslw l=sl w=w
+  rend2 MINUSEND MINUSHEAD resistor r=rend/2
+  rcont2 MINUSHEAD MINUS resistor r=rcont/2
+ends polyhres
+
+*
+model nwellreslw phy_res subtype=p rsh=415 etch=0 tc1=3e-3 tc2=-2e-6
+inline subckt nwellres(PLUS MINUS)
+  parameters \
+       sl = 2.0e-6 \
+       w = 1.6e-6 \
+       rend = 320/(w*1e6) \
+       rcont = 15/int(((w*1e6)-1.199999)/0.4)
+  rcont1 PLUS PLUSHEAD resistor r=rcont/2
+  rend1 PLUSHEAD PLUSEND resistor r=rend/2
+  nwellres PLUSEND MINUSEND nwellreslw l=sl w=w
+  rend2 MINUSEND MINUSHEAD resistor r=rend/2
+  rcont2 MINUSHEAD MINUS resistor r=rcont/2
+ends nwellres
+*
+*
+model m1reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m1res(PLUS MINUS)
+  parameters sl w
+  m1res PLUS MINUS m1reslw l=sl w=w
+ends m1res
+
+model m2reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m2res(PLUS MINUS)
+  parameters sl w
+  m2res PLUS MINUS m2reslw l=sl w=w
+ends m2res
+
+model m3reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m3res(PLUS MINUS)
+  parameters sl w
+  m3res PLUS MINUS m3reslw l=sl w=w
+ends m3res
+
+model m4reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m4res(PLUS MINUS)
+  parameters sl w
+  m4res PLUS MINUS m4reslw l=sl w=w
+ends m4res
+
+model m5reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m5res(PLUS MINUS)
+  parameters sl w
+  m5res PLUS MINUS m5reslw l=sl w=w
+ends m5res
+
+model m6reslw resistor rsh=0.01 tnom=27 tc1=3e-3 tc2=-2e-6
+inline subckt m6res(PLUS MINUS)
+  parameters sl w
+  m6res PLUS MINUS m6reslw l=sl w=w
+ends m6res
+
+*
+*
+*
+endsection res
+
+endlibrary gpdk

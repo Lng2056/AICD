@@ -1,0 +1,21 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	-1=5-basic4-ipin;
+	1034185458=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1034185461=5-basic4-opin6-symbol;
+	-1=5-ether16-adcflash_latches;
+	1111455605=5-ether16-adcflash_latches6-symbol;
+	-1=5-ether13-adc_therm2bin;
+	1111455604=5-ether13-adc_therm2bin6-symbol;
+	-1=5-ether18-adcflash_therm2bin;
+	1111455608=5-ether18-adcflash_therm2bin6-symbol;
+	-1=9-gsclib0905-INVX1;
+	1098372752=9-gsclib0905-INVX16-symbol;
+	1114445762=verilog.vams;
+$END

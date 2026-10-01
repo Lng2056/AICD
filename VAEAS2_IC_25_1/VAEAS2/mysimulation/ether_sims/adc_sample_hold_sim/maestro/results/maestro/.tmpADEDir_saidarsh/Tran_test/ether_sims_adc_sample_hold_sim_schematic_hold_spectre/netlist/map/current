@@ -1,0 +1,34 @@
+( ( nil
+  version "2.1"
+  mapType "incremental"
+  blockName "adc_sample_hold_sim"
+  repList "spectre veriloga schematic cmos_sch ahdl"
+  stopList "spectre"
+  globalList "gnd!"
+  hierDelim "."
+  netlistDir "/servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/.tmpADEDir_saidarsh/Tran_test/ether_sims_adc_sample_hold_sim_schematic_hold_spectre/netlist"
+ )
+( net
+( "gnd!" "0" )
+ )
+( model
+( "ether/adc_nandx3/schematic" "adc_nandx3" )
+( "ether/adc_invertx1/schematic" "adc_invertx1" )
+( "ether/adc_invertx3/schematic" "adc_invertx3" )
+( "ether/adc_sample_hold/schematic" "adc_sample_hold" )
+( "ether/inv_2x_hv/schematic" "inv_2x_hv" )
+( "ether/adc_IREF_bias/schematic" "adc_IREF_bias" )
+( "gpdk090/resnsnpoly_pcell_0/schematic" "resnsnpoly_pcell_0" )
+( "ether_sims/adc_sample_hold_sim/schematic_hold" "adc_sample_hold_sim" )
+( "ether/adc_IREF_ext/schematic" "adc_IREF_ext" )
+ )
+( "adc_IREF_bias" "ihnl/cds1/map" )
+( "adc_sample_hold_sim" "ihnl/cds8/map" )
+( "adc_invertx3" "ihnl/cds7/map" )
+( "adc_invertx1" "ihnl/cds5/map" )
+( "adc_nandx3" "ihnl/cds6/map" )
+( "resnsnpoly_pcell_0" "ihnl/cds4/map" )
+( "adc_IREF_ext" "ihnl/cds2/map" )
+( "adc_sample_hold" "ihnl/cds3/map" )
+( "inv_2x_hv" "ihnl/cds0/map" )
+ )

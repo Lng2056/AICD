@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<setupdb version="7">history
+	<active>Active Setup</active>
+	<history>History
+		<historyentry roOrView="view">Interactive.0
+			<timestamp>Tue Sep 2 09:49:33 2014</timestamp>
+			<uuid>{9d807771-8984-4ae3-b99d-00d966dee498}</uuid>
+			<locked>1</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname></resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog></runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir></psfdir>
+			<simdir></simdir>
+		</historyentry>
+	</history>
+</setupdb>

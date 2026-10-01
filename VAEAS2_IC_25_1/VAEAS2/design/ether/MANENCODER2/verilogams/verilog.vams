@@ -1,0 +1,36 @@
+//Verilog-AMS HDL for "tsmc13fLucy_sim", "MANENCODER2" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module MANENCODER2 ( enc_data, clk, data, gnd, vdd );
+
+output enc_data;
+input  clk;
+input  data;
+input  vdd, gnd;
+
+electrical clk, data, vdd, gnd;
+logic      enc_data;
+
+real vth;
+real venc_data;
+reg  clkd, datad, enc_data;
+
+initial begin
+        enc_data = 1'b0;
+        datad    = 1'b0;
+        clkd     = 1'b0;
+end
+
+analog @(initial_step) vth = V(vdd)/2;
+
+// a2d conversion
+always @(cross(V(clk)-vth,+1))  clkd = 1'b1;
+always @(cross(V(clk)-vth,-1))  clkd = 1'b0;
+always @(cross(V(data)-vth,+1)) datad = 1'b1;
+always @(cross(V(data)-vth,-1)) datad = 1'b0;
+
+always @(clkd) enc_data = (datad) ? ~clkd: clkd;
+
+endmodule

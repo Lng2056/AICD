@@ -1,0 +1,68 @@
+//Verilog-AMS HDL for "tsmc13fLucy_sim", "clock_monitor2" "verilogams"
+// ported Broomes AHDL to verilogAMS, heron 3/20/03
+`include "constants.vams"
+`include "disciplines.vams"
+`timescale 1ps / 1ps
+module clock_monitor2 ( freq, duty, clockref, clockref_bar,
+                       threshvoltp, threshvoltm,jitter_e2e );
+
+  input clockref;
+  output duty;
+  input clockref_bar;
+  output freq;
+  output jitter_e2e;
+  input  threshvoltp,
+         threshvoltm;
+
+  electrical
+    freq, 
+    duty,
+    clockref,
+    clockref_bar,
+    jitter_e2e,
+    threshvoltp,
+    threshvoltm;
+
+  real
+    old_rise,
+    new_rise,
+    old_fall,
+    new_fall,
+    old_period,
+    new_period,
+    dutycycle,
+    frequency,
+    e2ejitter,
+    threshref;
+    
+	    
+  
+  analog
+  begin
+    @(cross(V(clockref,clockref_bar)-threshref,+1))
+    begin
+      old_rise = new_rise;
+      new_rise = $abstime;
+      if(old_rise != 0)
+      begin
+        old_period = new_period;
+        new_period = new_rise - old_rise;
+        frequency  = (1.0/(new_rise - old_rise));
+        if(old_period != 0)
+          e2ejitter = new_period - old_period;
+      end
+    end  // always
+
+    @(cross(V(clockref,clockref_bar)-threshref,-1))
+    begin
+      old_fall = new_fall;
+      new_fall = $abstime;
+      if(old_fall != 0)
+        dutycycle = (new_fall-new_rise)/(new_fall-old_fall);
+    end  // always
+    threshref = V(threshvoltp,threshvoltm);  
+    V(duty) <+ 100*dutycycle;
+    V(freq) <+ frequency/1.0e9;
+    V(jitter_e2e) <+ e2ejitter;
+  end   // analog
+endmodule

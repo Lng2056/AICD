@@ -1,0 +1,5 @@
+rule "ConnRules_5V_full"
+userRuleView "connect"
+selectRules "User defined"
+userRuleCell "mps_sample_inh"
+userRuleLib "connectLib"

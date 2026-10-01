@@ -1,0 +1,10 @@
+(envOpts UltraSimVectorFile) ""
+(envOpts printComments) nil
+(envOpts userCmdLineOption) ""
+(envOpts UltraSimVcdInfo) ""
+(envOpts switchViewList) ("UltraSim" "spice" "cmos_sch" "cmos.sch" "schematic")
+(envOpts autoDisplay) t
+(envOpts UltraSimIncludeFile) ""
+(envOpts UltraSimVcdFile) ""
+(envOpts UltraSimStimulusFile) ""
+(envOpts stopViewList) ("UltraSim" "spice")

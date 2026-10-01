@@ -1,0 +1,33 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I26:DVDD=vdd;
+	I26:DVSS=vss;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103883=7-gpdk0906-nmos2v;
+	1134103884=7-gpdk0906-nmos2v6-symbol;
+	1136308089=5-ether12-clkbuf_4x_hv;
+	1136308089=5-ether12-clkbuf_4x_hv6-symbol;
+	-1=5-ether25-Bias_bg_current_source2_2;
+	1136308087=5-ether25-Bias_bg_current_source2_26-symbol;
+	-1=5-ether25-Bias_bg_current_source1_2;
+	1136308085=5-ether25-Bias_bg_current_source1_26-symbol;
+	1136308082=5-ether23-Bias_bg_Vt_current_ref2;
+	1136308083=5-ether23-Bias_bg_Vt_current_ref26-symbol;
+	1136308080=5-ether12-Bias_bandgap;
+	1136308082=5-ether12-Bias_bandgap6-symbol;
+	-1=5-basic5-iopin;
+	1133906589=5-basic5-iopin7-symbolr;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	1136387786=verilog.vams;
+$END

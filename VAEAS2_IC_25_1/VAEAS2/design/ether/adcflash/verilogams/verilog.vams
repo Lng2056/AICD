@@ -1,0 +1,110 @@
+//------------------------------------------------------------------------------
+// Name   : adcflash
+// View   : verilogams
+// Purpose: Model the 3-bit A to D converter
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adcflash ( out, BASEFX_DIS, SIDDQ, VDD, VSS, bias100_ext,
+    hold, hold_test, i1000_poly, ibias50_ext, bias100, 
+    inm, inm_test, inp, inp_test,
+    ph1, ph2b, sample, sample_test, FX_BIT );
+
+output	[5:0]	out;
+output		FX_BIT;
+input		sample, hold, sample_test, hold_test;
+input		inp, inm, inp_test, inm_test;
+input		ph1, ph2b;
+input		SIDDQ, BASEFX_DIS;
+input		VDD, VSS;
+input		i1000_poly, ibias50_ext, bias100, bias100_ext;
+
+logic	[5:0]	out;
+logic		FX_BIT;
+logic		sample, hold, sample_test, hold_test;
+electrical	inp, inm, inp_test, inm_test;
+logic		ph1, ph2b;
+logic		SIDDQ, BASEFX_DIS;
+electrical	VDD, VSS;
+electrical	i1000_poly, ibias50_ext, bias100, bias100_ext;
+
+// Avoid X/Z states in analog sections
+`include "myfunctions.vams"
+wire SIDDQ_noxz = noxz(SIDDQ,1'b0);
+wire fxdis_noxz = noxz(BASEFX_DIS,1'b1);
+
+wire EN1_BIT = ~SIDDQ_noxz & ~fxdis_noxz;
+wire EN3_BIT = ~SIDDQ_noxz & fxdis_noxz;
+
+real res_mirror = 6500;			// Mirror Resistance
+real bit1, bit3;
+electrical bias_1bit, bias_3bit;
+analog begin
+	bit1 = (EN1_BIT) ? I(bias100)*res_mirror: 0.0;
+	bit3 = (EN3_BIT) ? I(bias100)*res_mirror: 0.0;
+	V(bias_1bit) <+ bit1;
+	V(bias_3bit) <+ bit3;
+	
+	V(ibias50_ext) <+ 0.8;
+	V(bias100)     <+ 0.8;
+end
+
+wire DIS_FX    = SIDDQ_noxz | fxdis_noxz;
+wire DIS_CABLE = SIDDQ_noxz | ~fxdis_noxz;
+
+wire out0m, out1m, out2m, out3m, out4m, out5m;
+
+adc_sample_hold sh0 ( .outm(shoutm), .outp(shoutp),
+	.inm(inm), .inp(inp), .inm_test(inm_test), .inp_test(inp_test),
+	.sample(sample), .hold(hold), .sample_test(sample_test),
+	.hold_test(hold_test), .bias100(bias100_ext), 
+	.SIDDQ(SIDDQ), .VDD(VDD), .VSS(VSS) );
+
+adcflash_ref_ladder reflad0 ( .INP(shoutp), .INM(shoutm),
+	.ref0(ref0), .ref1(ref1), .ref2(ref2), .ref3(ref3), .ref4(ref4),
+	.ref5(ref5), .ref6(ref6), .ref7(ref7), .ref8(ref8), .ref9(ref9),
+	.ref10(i1000_poly), 
+	.ibias50(ibias50Y), .VDD(VDD), .VSS(VSS), .SIDDQ(SIDDQ_noxz));
+
+adcflash_comparator_actr fx0 ( .outm(fx_bitm), .outp(FX_BIT), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref5), .refp(ref5), .SIDDQ(DIS_FX), 
+	.vbias(bias_1bit),
+	.VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp0 ( .outm(out0m), .outp(out[0]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref8), .refp(ref2), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp1 ( .outm(out1m), .outp(out[1]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref7), .refp(ref3), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp2 ( .outm(out2m), .outp(out[2]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref6), .refp(ref4), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp3 ( .outm(out3m), .outp(out[3]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref4), .refp(ref6), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp4 ( .outm(out4m), .outp(out[4]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref3), .refp(ref7), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+adcflash_comparator_actr comp5 ( .outm(out5m), .outp(out[5]), 
+	.inn(shoutm), .inp(shoutp), .ph1(ph1), .ph2b(ph2b),
+	.refn(ref2), .refp(ref8), .vbias(bias_3bit),
+	.SIDDQ(DIS_CABLE), .VDD(VDD), .VSS(VSS) );
+
+endmodule

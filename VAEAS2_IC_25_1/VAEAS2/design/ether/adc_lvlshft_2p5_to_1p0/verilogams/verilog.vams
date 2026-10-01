@@ -1,0 +1,34 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "adc_lvlshft_2p5_to_1p0" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_lvlshft_2p5_to_1p0 ( FX_BIT_1p0, adc_1p0, flash_1p0, ph1_1p0, ph1b_1p0,
+    FX_BIT_2p5, VDD_1p0, VDD_2p5, adc_2p5, flash_2p5, ph1_2p5, ph1b_2p5, vss
+    );
+
+output		ph1_1p0, ph1b_1p0;
+output		FX_BIT_1p0;
+output	[5:0]	flash_1p0;
+output	[62:0]	adc_1p0;
+input	[62:0]	adc_2p5;
+input	[5:0]	flash_2p5;
+input		FX_BIT_2p5;
+input		ph1_2p5, ph1b_2p5;
+input		VDD_2p5, VDD_1p0, vss;
+
+
+logic	     ph1_2p5, ph1b_2p5, ph1_1p0, ph1b_1p0;
+logic	     FX_BIT_1p0, FX_BIT_2p5;
+logic [5:0]  flash_1p0, flash_2p5;
+logic [62:0] adc_1p0, adc_2p5;
+electrical   VDD_2p5, VDD_1p0, vss;
+
+
+wire	    ph1_1p0    = ph1_2p5;
+wire	    ph1b_1p0   = ph1b_2p5;
+wire        FX_BIT_1p0 = FX_BIT_2p5;
+wire [5:0]  flash_1p0  = flash_2p5;
+wire [62:0] adc_1p0    = adc_2p5;
+
+endmodule

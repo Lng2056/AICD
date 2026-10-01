@@ -1,0 +1,115 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "PLL_VCO_250MHZ" "verilogams"
+// Heron 04/03 CDF.
+// output 11 phase taps based on input voltage
+// output frequency is determined by input frequency
+// and the transfer function 
+// fout =  fcn(Vcontrol)/((1+tvco*S)(1+treg*S))
+// where fcn(x) = 0.221+0.18*tanh(1.65*(x-1.2))
+// values come from curve fitting to simulations
+// timescale should not be modified for correct module
+// function.
+
+`timescale 1ps / 1ps
+`include "constants.vams"
+`include "disciplines.vams"
+`undef _debug
+                         
+module PLL_VCO_250MHZ ( VCO_CLK_PH, IEXT_100u, PD, VDD, VSS, Vcontrol );
+
+  input VSS;
+  input IEXT_100u;
+  input Vcontrol;
+  output  [10:0] VCO_CLK_PH;
+  input VDD;
+  input PD;
+
+  electrical VSS, VDD, IEXT_100u;
+  electrical Vcontrol;
+  logic [10:0] VCO_CLK_PH;
+  logic PD;
+
+  reg [10:0] VCO_CLK_PH;
+
+//  parameter real fvco  = 55M;      // from Shawnee CDR
+//  parameter real freg  = 34M;      // from Shawnee CDR
+//  parameter real fvco  = 1.0/0.8n;// to match xistor level sims
+  parameter real fvco  = 1.0/0.4n;// to match xistor level sims
+//  parameter real freg  = 1.0/3.54n;// from Lucy simulation after port near 250MHz
+  parameter real freg = 1.0/2.4n; // for startup sim
+  parameter real tvco  = 1.0/fvco;
+  parameter real treg  = 1.0/freg;
+//  parameter real KVCO  = 280.0; // MHz/Volt
+//  parameter real KVCO  = 232.0; // MHz/Volt typical
+  parameter real KVCO  = 340.0; // MHz/Volt (near 250MHz oscillation).
+//  parameter real VCTHRESH = 0.577; 
+  parameter  real VCTHRESH = 0.3;
+
+
+  electrical fout;
+//  electrical f1;
+  real freq;
+  real	         phasenow,
+		 osc, phasedelay,
+		 digdelay,period,
+		 controlVoltage,
+		 vcont_mod;
+
+  real	 	aclk0;
+  integer 	ii,jj;
+
+// variables for debug
+`ifdef _debug
+  real  sum0,sum1;
+`endif                       
+// end variables for debug
+
+  initial
+     VCO_CLK_PH = 11'b0;
+ 
+  analog begin
+     // 2nd order model of VCO
+//     V(f1)    <+  ddt(V(fout));
+//     V(fout)  <+  KVCO*V(Vcontrol)-(tvco+treg)*V(f1)-tvco*treg*ddt(V(f1)); 
+// use integral representation as per Ron Vogelsong
+// also model gain compression
+//     vcont_mod = 0.221 + 0.18*tanh(1.65*(V(Vcontrol)-1.2));      
+     vcont_mod = 221.0 + 180.0*tanh(1.65*(V(Vcontrol)-1.2));      
+     V(fout) <+ idt(idt(vcont_mod-V(fout))-(tvco+treg)*V(fout))/(tvco*treg);
+     // determine phase and time delay for phase taps
+     freq      =  1.0M*V(fout);    //in Hz
+     phasenow  =  idtmod(freq,0,1);
+     period    =  (freq > 1.0e-3) ? (1.0/freq) : 1.0e3;
+     phasedelay=  period/(11.0*1p); // timescale must be 1p for this to work
+     aclk0   =  (phasenow > 0.5) ? 0 : 1;
+     controlVoltage = V(Vcontrol);
+  end // analog
+
+  // generate the digital clocks from the aclk0
+  // note, there is no output unless Vcontrol>VCTHRESH
+  // producing minimum oscillation frequency output
+
+  always@(cross((aclk0-0.5),+1)) begin
+     digdelay = phasedelay;
+`ifdef _debug
+     sum0 = sum0 + 1;
+`endif     
+     if (controlVoltage > VCTHRESH) begin
+`ifdef _debug                       
+       sum1 = sum1 + 1;
+`endif
+       VCO_CLK_PH[0]  =  1'b1;
+       for (ii=1; ii<11; ii = ii + 1) 
+       #(digdelay) VCO_CLK_PH[ii] = 1'b1;
+     end
+  end
+
+  always@(cross((aclk0-0.5),-1)) begin
+     digdelay = phasedelay;
+     if (controlVoltage > VCTHRESH) begin
+       VCO_CLK_PH[0]  =  1'b0;
+       for (jj=1; jj<11; jj = jj + 1) 
+       #(digdelay) VCO_CLK_PH[jj] = 1'b0;
+     end
+  end
+
+endmodule

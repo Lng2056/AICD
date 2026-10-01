@@ -1,0 +1,53 @@
+/* Copyright (C) 2021 Cadence Design Systems, Inc. All rights reserved. */
+
+body {
+    background-color: #eee;
+    color: #222;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100%;
+}
+
+body > div {
+    border: none; 
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #c40016;
+}
+
+.boxed {
+    border: 1px solid #dcdcdc;
+}
+
+.boxedContent {
+    margin: 5px;
+}
+
+.boxed h2 {
+    padding: 5px;
+    margin: 0 0 1ex 0;
+    border-bottom: 2px solid #dcdcdc;
+}
+
+#cadenceLogo {
+    grid-area: headerright;
+    background: none;
+    text-align: right;
+    margin: 0 2ex 0 0;
+}
+
+#header {
+    grid-area: header;
+    background: none;
+    text-align: center;
+    color: #c40016;
+}
+
+#footer { 
+    grid-area: footer;
+    margin: 1em 0 0 0;
+    background-color: #eee;
+    font-size: small;
+}

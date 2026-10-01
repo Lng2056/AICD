@@ -1,0 +1,12 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1090968965555=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1083257331000:7-dirName68-/.automount/lnx-ent3/root/usr1/vfs_amsflow/simulation/aeq_ac_sim_run8-snapShot27-aeq_ac_sim:ams1083173407559;
+	1083712940000:7-dirName71-/.automount/lnx-ent3/root/usr1/vfs_amsflow/simulation/aeq_ac_sim_run_tr8-snapShot27-aeq_ac_sim:ams1083680138553;
+	1083793112000:7-dirName75-/.automount/lnx-ent3/root/usr1/vfs_amsflow/simulation/aeq_ac_sim_run_tr_new8-snapShot27-aeq_ac_sim:ams1083791937340;
+	1090968976000:7-dirName70-/.automount/lnx-ent3/root/usr1/vfs_flow_90nm/simulation/aeq_ac_sim_run8-snapShot27-aeq_ac_sim:ams1090964967278;
+$END

@@ -1,0 +1,36 @@
+//Verilog-AMS HDL for "drouillard_ph2", "level_shifter_2p5_1p0" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module level_shifter_2p5_1p0_inh ( OUT, IN, VDD_2p5, VSS, VDD_1p0 );
+
+output	OUT;				// 2.5V Level Shifted Signal
+input	IN;				// 1.0V signal
+input	VSS;				// Common Ground
+input	VDD_2p5;			// 2.5V Power Supply
+input	VDD_1p0;			// 1.0V Power Supply
+
+parameter real td  = 0.0;		// cell delay
+parameter real trf = 100p;		// Rise/Fall time
+
+`ifdef ANALOG 
+   electrical OUT, IN;			// Level Shifted signal, input signal
+   electrical VSS, VDD_2p5, VDD_1p0;	// Power Supplies and Ground
+
+   real vth_2p5;
+   real vout;
+
+   analog begin
+	@(initial_step) vth_2p5 = V(VDD_2p5)/2;
+	@(cross(V(IN)-vth_2p5,+1)) vout = V(VDD_1p0);
+	@(cross(V(IN)-vth_2p5,-1)) vout = V(VSS);
+//	V(OUT) <+ transition(vout,td,trf,trf);
+	V(OUT) <+ slew(vout,2.5e10);	
+   end
+`else
+   logic OUT, IN;				// Logical Output, Logical Input
+   wire OUT = IN;				// Equivalent Digital Value
+`endif
+
+endmodule

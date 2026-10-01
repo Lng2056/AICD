@@ -1,0 +1,15 @@
+(envOpts licQueueSleep) ""
+(envOpts userCmdLineOption) ""
+(envOpts checkpoint) ""
+(envOpts printComments) nil
+(envOpts useCsfe) nil
+(envOpts recover) ""
+(envOpts switchViewList) ("spectre" "cmos_sch" "cmos.sch" "schematic" "veriloga" "ahdl")
+(envOpts analysisOrder) nil
+(envOpts autoDisplay) t
+(envOpts enableArclength) nil
+(envOpts licQueueTimeOut) "900"
+(envOpts paramRangeCheckFile) ""
+(envOpts spp) ""
+(envOpts firstRun) nil
+(envOpts stopViewList) ("spectre")

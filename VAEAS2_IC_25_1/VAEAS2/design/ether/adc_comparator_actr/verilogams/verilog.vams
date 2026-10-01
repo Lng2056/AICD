@@ -1,0 +1,71 @@
+//------------------------------------------------------------------------------
+// Name   : adc_comparator_actr
+// View   : verilogams
+// Purpose: Comparator Model
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_comparator_actr ( outp, SIDDQ, VDD, VSS, Vbias, inm, inp, ph1, ph2b
+    );
+
+output	outp;
+input	inp, inm;
+input	ph1, ph2b;
+input	VDD, VSS;
+input	Vbias;
+input	SIDDQ;
+
+parameter min_ibias = 150u;			// Min Bias Current
+parameter max_ibias = 250u;			// Max Bias Current
+
+logic		outp;
+logic		ph1, ph2b;
+logic		SIDDQ;
+electrical	inp, inm;
+electrical	VDD, VSS;
+electrical	Vbias;
+
+// internal nodes
+electrical ibias;
+real iibias, vinp, vinm;
+reg  ampp, ampm;
+reg  a0, b0;
+wire a1, b1;
+integer start;
+//initial begin
+// The following line is causing a G-min exception
+//	ibias = I(Vbias);
+//	a1 = 1'b1;
+//	b1 = 1'b1;
+//end
+
+analog begin
+	@(initial_step) start = 1;
+	vinp = V(inp);
+	vinm = V(inm);
+//	ibias = Vbias;
+//	I(ibias) <+ I(Vbias);
+end
+
+always @(start or cross(vinp-vinm) or SIDDQ) begin
+	ampp <= (SIDDQ) ? 1'b1: (vinp > vinm) ? 1'b1: 1'b0;
+	ampm <= (SIDDQ) ? 1'b1: (vinp > vinm) ? 1'b0: 1'b1;
+end
+
+wire clk = ph2b & ph1;
+always @(negedge clk) begin
+	a0 <= ~ampp;
+	b0 <= ~ampm;
+end
+
+assign a1 = ~(a0 & b1);
+assign b1 = ~(b0 & a1);
+
+assign outp = a1;
+
+endmodule

@@ -1,0 +1,3 @@
+projectDir = '"/servers/esd_noida/anthonys/AnaSimTech/simulation/ether_adcflash_RAD90_sims/adc_cascode_opamp_sim/adexl/results/data/.tmpADEDir_anthonys/ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1/simulation"
+designInfo = '("ether_adcflash_RAD90_sims" "adc_cascode_opamp_sim" "config_Gain_Vio_CMRR_SR" "spectre")
+descriptionText = "None"

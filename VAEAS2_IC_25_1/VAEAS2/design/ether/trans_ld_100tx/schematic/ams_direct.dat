@@ -1,0 +1,28 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I2:DVSS=VSS;
+	I2:DVDD=VDD;
+$END
+$TIMESTAMP
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1136308189=5-ether10-inv_16x_hv;
+	1136308189=5-ether10-inv_16x_hv6-symbol;
+	1136308355=5-ether29-trans_ld_100TX_current_mirror;
+	1136308357=5-ether29-trans_ld_100TX_current_mirror6-symbol;
+	1136308360=5-ether19-trans_ld_100tx_bias;
+	1136308360=5-ether19-trans_ld_100tx_bias6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387759=verilog.vams;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	C0:9:0:::;
+$END

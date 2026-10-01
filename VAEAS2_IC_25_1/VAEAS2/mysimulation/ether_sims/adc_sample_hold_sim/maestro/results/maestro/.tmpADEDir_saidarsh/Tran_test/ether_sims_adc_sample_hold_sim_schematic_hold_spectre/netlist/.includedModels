@@ -1,0 +1,4 @@
+simulator lang=spectre
+include "gpdk090_nmos2v.scs"
+include "gpdk090_pmos2v.scs"
+include "gpdk090_resnsnpoly.scs"

@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------
+// Name   : trans_ld_tenbt
+// View   : verilogams
+// Purpose: 10BaseT Driver
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module trans_ld_tenbt ( neg_out, pos_out, gnd, ibias_rext2_50u, ibias_tenbt,
+    siddq, MAN_ENC, tenbt_on, avdd, dvdd, dgnd, ibias_tenbt_cas, tenbt_trans_off
+    );
+
+output neg_out, pos_out;
+input  ibias_tenbt, ibias_tenbt_cas, ibias_rext2_50u;
+input  avdd, gnd, dvdd, dgnd;
+input  MAN_ENC, tenbt_on, tenbt_trans_off, siddq;
+
+parameter real td  = 0.0;                              // delay time
+parameter real tfr = 11.0n;                            // rise/fall time
+
+electrical neg_out, pos_out;
+electrical ibias_tenbt, ibias_tenbt_cas, ibias_rext2_50u;
+electrical avdd, gnd, dvdd, dgnd;
+logic      MAN_ENC, tenbt_on, tenbt_trans_off, siddq;
+
+real ibias, itenBT_vbias;
+real iout_pos, iout_neg;		// bias currents
+real ipos_out, ineg_out;		// output currents
+
+real v10bt, vcas, v50u;			// Current mirror voltages
+real res_mirror = 6500;			// Current mirror bias resistance
+
+// Code to avoid x-states in analog sections
+`include "myfunctions.vams"
+wire on = noxz(tenbt_on,1'b0) & !noxz(tenbt_trans_off,1'b0) & !noxz(siddq,1'b0);
+wire a  = noxz(MAN_ENC,1'b0)  & on;
+wire b  = !noxz(MAN_ENC,1'b0) & on;
+
+analog begin
+	iout_neg = (a) ? itenBT_vbias: 0.0;
+	iout_pos = (b) ? itenBT_vbias: 0.0;
+
+	// Bias the current mirrors
+	v10bt = I(ibias_tenbt)*res_mirror;
+	vcas  = I(ibias_tenbt_cas)*res_mirror;
+	v50u  = I(ibias_rext2_50u)*2*res_mirror;
+
+	// Using ibias_tenbt_cas and ibias_rext_50u to cancel each other
+	ibias = I(ibias_tenbt)+I(ibias_tenbt_cas)-I(ibias_rext2_50u)*2;
+	itenBT_vbias = 3*ibias;
+
+	ipos_out = iout_neg*(26.0/28.0)*4.0;
+	ineg_out = iout_pos*(26.0/28.0)*4.0;
+
+//	I(pos_out) <+ transition(ipos_out,td,tfr,tfr);
+//	I(neg_out) <+ transition(ineg_out,td,tfr,tfr);
+
+//        V(ibias_tenbt)     <+ transition(v10bt,0,tfr,tfr);
+//        V(ibias_tenbt_cas) <+ transition(vcas,0,tfr,tfr);
+//        V(ibias_rext2_50u) <+ transition(v10bt,0,tfr,tfr);	
+	
+	I(pos_out) <+ slew(ipos_out,2.5e8);
+	I(neg_out) <+ slew(ineg_out,2.5e8);
+
+        V(ibias_tenbt)     <+ slew(v10bt,2.5e8);
+        V(ibias_tenbt_cas) <+ slew(vcas,2.5e8);
+        V(ibias_rext2_50u) <+ slew(v10bt,2.5e8);
+end
+
+endmodule

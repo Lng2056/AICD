@@ -1,0 +1,32 @@
+generate netlist...
+*Warning*	Following unset design variables have been found during netlisting Assembler test 'AC_test' :
+			'ampl','cload','fsignal','siddq','vdd'.
+			If these variables are important for simulation then set appropriate values for them
+			in the 'Design Variable' section and run the simulation again.
+      ...successful.
+compose simulator input file...
+      ...successful.
+generate netlist...
+*Warning*	Following unset design variables have been found during netlisting Assembler test 'AC_test' :
+			'ampl','cload','fsignal','siddq','vdd'.
+			If these variables are important for simulation then set appropriate values for them
+			in the 'Design Variable' section and run the simulation again.
+      ...successful.
+compose simulator input file...
+      ...successful.
+generate netlist...
+*Warning*	Following unset design variables have been found during netlisting Assembler test 'AC_test' :
+			'ampl','cload','fsignal','siddq','vdd'.
+			If these variables are important for simulation then set appropriate values for them
+			in the 'Design Variable' section and run the simulation again.
+      ...successful.
+compose simulator input file...
+      ...successful.
+generate netlist...
+*Warning*	Following unset design variables have been found during netlisting Assembler test 'AC_test' :
+			'ampl','cload','fsignal','siddq','vdd'.
+			If these variables are important for simulation then set appropriate values for them
+			in the 'Design Variable' section and run the simulation again.
+      ...successful.
+compose simulator input file...
+      ...successful.

@@ -1,0 +1,3 @@
+projectDir = '"./simulation"
+designInfo = '("opamp090" "full_diff_opamp_TRAN" "schematic" "spectre")
+descriptionText = "None"

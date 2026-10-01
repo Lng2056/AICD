@@ -1,0 +1,41 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	gnd!:::;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:gnd!:cds_globals.\\gnd! ;
+$END
+$TIMESTAMP
+	1096513467=5-ether10-PLL_250MHZ;
+	1097450623=5-ether10-PLL_250MHZ6-symbol;
+	1099339054=10-ether_sims14-clock_monitor2;
+	1099339054=10-ether_sims14-clock_monitor26-symbol;
+	1098955553=9-analogLib3-res;
+	1065417390=9-analogLib3-res6-symbol;
+	-1=5-basic4-opin;
+	1034185461=5-basic4-opin6-symbol;
+	1098955556=9-analogLib6-vpulse;
+	1065418124=9-analogLib6-vpulse6-symbol;
+	1098955556=9-analogLib3-idc;
+	1065415918=9-analogLib3-idc6-symbol;
+	1098955562=9-analogLib4-cccs;
+	1065415676=9-analogLib4-cccs6-symbol;
+	1098955556=9-analogLib3-vdc;
+	1065417990=9-analogLib3-vdc6-symbol;
+	1099514947=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	VMULT:;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:res:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-1;
+	analogLib:vpulse:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+	analogLib:idc:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS4-sink;
+	analogLib:cccs:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS4-sink;
+	analogLib:vdc:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+$END

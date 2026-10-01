@@ -1,0 +1,61 @@
+savedComponent = (let
+(tmp1 tmp2)
+tmp1 = (let
+(tmp1 tmp2)
+(unless tmp1
+tmp1 = make_sevOutputStruct()
+)
+(unless tmp1
+tmp1 = (ncons nil)
+)
+tmp1->name = "Current"
+tmp1->expression = (let
+(tmp1 tmp2)
+tmp1 = 'IT
+tmp2 = "/I29/VDD"
+list(tmp1 tmp2)
+)
+tmp1->signal = nil
+tmp1->type = nil
+tmp1->selectionDetail = nil
+tmp1->value = nil
+tmp1->plot = 't
+tmp1->save = nil
+tmp1->march = nil
+tmp1->index = 1
+(unless tmp2
+tmp2 = make_sevOutputStruct()
+)
+(unless tmp2
+tmp2 = (ncons nil)
+)
+tmp2->inLastSet = nil
+tmp2->name = nil
+tmp2->expression = nil
+tmp2->signal = "/I29/VDD"
+tmp2->type = 'terminal
+tmp2->selectionDetail = nil
+tmp2->value = nil
+tmp2->plot = nil
+tmp2->save = 't
+tmp2->march = nil
+tmp2->index = 2
+list(tmp1 tmp2)
+)
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'allAnalogTC
+list(tmp1 tmp2)
+)
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = 'allAnalogNV
+tmp2 = 't
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)

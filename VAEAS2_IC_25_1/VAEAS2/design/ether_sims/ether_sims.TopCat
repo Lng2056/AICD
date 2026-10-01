@@ -1,0 +1,7 @@
+TDMCHECKPOINT="1.0"
+ether_sims/ADC.Cat type="category"
+ether_sims/ANLG_CNTL.Cat type="category"
+ether_sims/Bias.Cat type="category"
+ether_sims/PLL.Cat type="category"
+ether_sims/Sheets.Cat type="category"
+ether_sims/TOP.Cat type="category"

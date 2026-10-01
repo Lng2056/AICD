@@ -1,0 +1,3 @@
+projectDir = '"./simulation"
+designInfo = '("training" "eyediagram" "schematic" "spectre")
+descriptionText = "None"

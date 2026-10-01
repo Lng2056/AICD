@@ -1,0 +1,30 @@
+//Verilog-AMS HDL for "drouillard_ph2", "pi" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module pi ( RCLK125, ADC_TEST_MODE, PHASE_DOWN, PHASE_UP, RCLK125_TEST, RESET,
+    VDD, VSS, phin, AVDD_2p5V, AGND );
+
+output       RCLK125;
+input [10:0] phin;
+input	     RCLK125_TEST;
+input	     RESET;
+input	     ADC_TEST_MODE;
+input	     PHASE_UP, PHASE_DOWN;
+input 	     VDD, VSS;
+input 	     AVDD_2p5V, AGND;
+
+wire  [21:0] phase_2p5v;
+wire  [21:0] phase_1p0v;
+ 
+PI_interp  I0 ( .OUT(phase_2p5v), .IN(phin), .VDD(AVDD_2p5V), .VSS(AGND) );
+pi_lvshift I3 ( .phase_1p0v(phase_1p0v),.phase_2p5v(phase_2p5v),
+		.AVDD_2p5V(AVDD_2p5V), .DVDD(VDD), .AGND(AGND) );
+ 
+pi_dig_phase I1 ( .RCLK125(RCLK125), .CLK250_TAPS(phase_1p0v),
+		  .PHASE_UP(PHASE_UP), .PHASE_DN(PHASE_DOWN), 
+		  .RCLK125_TEST(RCLK125_TEST), .RESET( RESET ), 
+		  .ADC_TEST_MODE( ADC_TEST_MODE ) );
+
+endmodule

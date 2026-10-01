@@ -1,0 +1,65 @@
+// $Date: 1997/08/28 02:40:16 $
+// $Revision: 1.3 $
+//
+//
+//The sample SpectreHDL library is unsupported and subject to change
+//without notice. Future versions of SpectreHDL may not be compatible
+//with this library.
+ 
+ 
+
+//--------------------
+// rand_bit_stream
+//
+// -  Random bit stream generator
+//
+// vout:	[V,A]
+//
+// INSTANCE parameters
+//    tperiod     = period of stream [s]
+//    seed        = random number seed []
+//    vlogic_high = output voltage for high [V]
+//    vlogic_low  = output voltage for low  [V]
+//    tdel, trise, tfall = {usual} [s]
+//
+// MODEL parameters
+//    {none}
+//
+// This model generates a random stream of bits.
+//
+
+module rand_bit_stream (vout)
+   (tperiod,seed,vlogic_high,vlogic_low,tdel,trise,tfall)
+node[V,I] vout;
+parameter real tperiod = 1 from (0:inf);
+parameter integer seed;
+parameter real vlogic_high = 5;
+parameter real vlogic_low  = 0 ;
+parameter real tdel=0 from [0:inf);
+parameter real trise=1n;
+parameter real tfall=1n;
+{
+   real next;
+   integer bit;
+
+   real vout_val;
+
+   initial {
+      next = $time() + tperiod;
+      bit = 0;
+   }
+
+   analog {
+      $bound_step(tperiod);
+
+      bit = $random(seed) + 0.5;
+      if ($break_point( next )) {
+         vout_val = (vlogic_high - vlogic_low) * bit + vlogic_low;
+         next += tperiod;
+      }
+
+      V(vout) <- $transition(vout_val,tdel,trise,tfall);
+    }
+}
+
+

@@ -1,0 +1,14 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* trans_ld_tenbt *
+i10bt
+
+#CELL
+* trans_ld_100tx *
+i100tx
+
+#CELL
+* trans_ld_bias_mux *
+bias0
+

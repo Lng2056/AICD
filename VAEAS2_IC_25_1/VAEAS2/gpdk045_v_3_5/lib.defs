@@ -1,0 +1,9 @@
+# Base IC61 gpdk045 library definition file
+DEFINE analogLib $CDSHOME/tools/dfII/etc/cdslib/artist/analogLib
+ASSIGN analogLib libMode readOnly
+DEFINE US_8ths $CDSHOME/tools/dfII/etc/cdslib/sheets/US_8ths
+ASSIGN US_8ths libMode readOnly
+DEFINE basic $CDSHOME/tools/dfII/etc/cdslib/basic
+ASSIGN basic libMode readOnly
+DEFINE gpdk045 ./gpdk045
+ASSIGN gpdk045 libMode readOnly

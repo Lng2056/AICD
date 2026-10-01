@@ -1,0 +1,6 @@
+(envOpts runMode) "Batch"
+(envOpts userCmdLineOption) ""
+(envOpts printComments) nil
+(envOpts autoDisplay) t
+(envOpts netlistFormat) "spectre"
+(envOpts interactiveCtrFile) ""

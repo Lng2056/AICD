@@ -1,0 +1,25 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I1:VDD=VDD;
+	I1:VSS=VSS;
+	I0:DVDD=VDD;
+	I0:DVSS=VSS;
+$END
+$TIMESTAMP
+	1136308332=5-ether10-pi_lvshift;
+	1136308333=5-ether10-pi_lvshift6-symbol;
+	1136308333=5-ether12-pi_dig_phase;
+	1136308333=5-ether12-pi_dig_phase6-symbol;
+	1136308096=5-ether9-PI_interp;
+	1136308096=5-ether9-PI_interp6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136393729=verilog.vams;
+$END

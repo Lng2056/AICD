@@ -1,0 +1,6 @@
+    PM0 (OUT IN VDD VDD) gpdk090_pmos2v w=(7u) l=280.0n as=4.2p ad=4.2p \
+        ps=15.2u pd=15.2u m=(1)*(1) simM=(1)*(1)
+    NM0 (OUT IN VSS VSS) gpdk090_nmos2v w=(3.5u) l=280.0n as=2.1p ad=2.1p \
+        ps=8.2u pd=8.2u m=(1)*(1) simM=(1)*(1)
+ends adc_invertx3
+// End of subcircuit definition.

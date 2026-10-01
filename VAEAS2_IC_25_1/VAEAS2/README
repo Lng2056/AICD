@@ -1,0 +1,89 @@
+Last Updated: July 2, 2025   saidarsh
+
+**********************************
+The Training Data is the property of Cadence or third parties from whom 
+Cadence has obtained rights, and they contain intellectual property of
+Cadence and/or its licensors. In order to protect Cadence's and its licensors
+rights, Customer shall not create a derivative work thereof or Use any of 
+the Training Data to develop the same or similar item or let any third party 
+do so. Customer shall not: (i) rent, lease, sub-license, time share, lend 
+or transfer any Training Data to a third party; or (ii) let any the Training 
+Data be accessed or Used by anyone other than Customer; or (iii) distribute 
+externally or to any third party any communication that compares the features,
+functions or performance characteristics of any Cadence Product with any other
+similar product of Customer or a third party; or (iv) use the Training Data 
+to benchmark a competitors tools without Cadence's express prior written
+approval. Customer shall not remove or alter any of Cadence's or its licensors
+copyright notices; or restrictive or ownership legends appearing on or in 
+any Training Data and shall reproduce such legends on all copies permitted to 
+be made. Third party licensors are listed in the Documentation.
+********************************
+
+README file is for the Virtuoso ADE Explorer and Assembler S2: ADE Assembler and Multi Test Corner Analysis 
+using IC 25.1 Base and SPECTRE24.1 ISR6 This software will only run on Red Hat Linux 8.4 and above.
+  
+Course Developer: 
+
+Sai Darshan S Nishani
+Cadence Design Systems
+
+Course Editor:
+Karishma Choudhary
+Cadence Design Systems
+
+Software Required: 
+
+The VAEAS2: ADE Assembler and Multi Test Corner Analysis Course requires the install of: 
+    IC25.1 Base
+    SPECTRE24.1 ISR6
+    
+Licenses:
+    VSE L, XL
+    Virtuoso ADE Explorer
+    Virtuoso ADE Assembler
+    ViVA 
+    SPECTRE + tokens 
+
+Course install:
+
+Copy and untar the VAEAS2_IC_25_1.tar.gz (or.Z) database to the login directory (user30 or whatever).
+In a Cadence classroom, you should automatically be changed to the VAEAS2
+directory upon login. 
+
+Environment setup:
+
+A .class_steup file should automatically source the software in a Cadence onsite classroom.
+
+For offsite classes, the VAEAS2 directory contains a cshrc file which
+contains the variables:
+CDSHOME pointing to the install directory for IC 25.1, and 
+SPECTREHOME which points to the install directory for SPECTRE24.1
+ 
+These paths will need to be modified
+for the installed software, and added to the login cshrc file,
+or sourced before starting lab.
+
+source cshrc
+
+Checking the install:
+
+Run the .testscript file to properly test and install the 
+course before teaching it. It should report PASSED
+without any errors. The testscript only works if nothing has been
+changed, such as paths in the .class_setup file.
+
+Lecture Slides:
+
+PDFs of the lecture slides can be accessed from the ESD homepage.
+The lecture also exists as a PPT file.
+
+Instructor Guide:
+
+A detailed instructor guide is available to assist you in
+teaching this course, which can be accessed from the ESD homepage.
+
+If you have any comments or corrections on the course or the install
+or problems with any of the labs, please let me know.
+
+Course Developer: Sai Darshan S Nishani
+Email : saidarsh@cadence.com

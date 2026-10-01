@@ -1,0 +1,37 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I10:DVSS=gnd;
+	I10:DVDD=vdd;
+	I11:DVSS=gnd;
+	I11:DVDD=vdd;
+	I12:DVDD=vdd;
+	I12:DVSS=gnd;
+$END
+$TIMESTAMP
+	1134103922=7-gpdk09010-resnsppoly;
+	1134103924=7-gpdk09010-resnsppoly6-symbol;
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1136308342=5-ether28-tenbt_rec_squelch_comparator;
+	1136308342=5-ether28-tenbt_rec_squelch_comparator6-symbol;
+	1136308343=5-ether22-tenbt_rec_4_input_comp;
+	1136308343=5-ether22-tenbt_rec_4_input_comp6-symbol;
+	1136308344=5-ether16-tenbt_rec_slicer;
+	1136308344=5-ether16-tenbt_rec_slicer6-symbol;
+	1136308336=5-ether22-tenbt_rec_input_filter;
+	1136308337=5-ether22-tenbt_rec_input_filter6-symbol;
+	1136308339=5-ether23-tenbt_rec_bias_voltages;
+	1136308340=5-ether23-tenbt_rec_bias_voltages6-symbol;
+	1136308337=5-ether22-tenbt_rec_current_bias;
+	1136308337=5-ether22-tenbt_rec_current_bias6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387577=verilog.vams;
+$END

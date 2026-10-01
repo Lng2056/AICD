@@ -1,0 +1,33 @@
+Simulation:     VCO_250MHz_pss_sim 
+
+Purpose:        Transient, Periodic Steady State and Phase Noise simulation of
+the 250MHz VCO block PLL_VCO_250MHZ. The simulation is meant to check the
+contribution of the VCO to the internal phase noise of the PLL and there by to
+the jitter on the PLL output clock. 
+
+States:         tt, ff, ss 
+
+Description:    The VCO_250MHz_pss_sim test bench contains an instantiation of
+the VCO block, PLL_VCO_250MHZ.Ideal sources are used for power and current 
+references. The control voltage is set by a dc voltage source through the net
+Vcntl. The control voltage on the Vcntl node is set such that the frequency of
+the output clock from the VCO is close to 250MHz. The power down signal, PD is 
+connected to ground through a zero voltage source. 
+
+The internal phase noise of the VCO can be a significant contributor to the 
+overall jitter of the PLL block.The simulation is meant to check the 
+contribution of the VCO to the internal phase noise of the PLL and there by 
+to the jitter on the PLL output clock.
+
+Verification:   Transient, Periodic Steady State and Phase Noise simulations
+are run using spectre and spectreRF. The phase noise can be plotted from the 
+Results->Direct Plot->Main Menu option in the Analog Design Environment 
+window. The phase noise plot gives a measure of the contribution of the 
+internal phase noise of the VCO to the internal phase noise and jitter of 
+the PLL. The VCO_CLK<0> output signal is monitored.
+
+Input Signals:  Vcntl
+
+Output Signals: VCO_CLK<0>
+
+

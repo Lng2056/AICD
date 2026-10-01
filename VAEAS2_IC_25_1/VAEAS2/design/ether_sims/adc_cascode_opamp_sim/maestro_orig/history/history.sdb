@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<setupdb version="7">history
+	<active>Active Setup</active>
+	<history>History
+		<historyentry roOrView="view">Interactive.0
+			<timestamp>Thu Sep 11 14:25:56 2014</timestamp>
+			<uuid>{179080b6-6c60-4d7f-a410-baf11a161fc5}</uuid>
+			<locked>0</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname>/servers/esd_noida/anthonys/AnaSimTech/design/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME.rdb</resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog>/servers/esd_noida/anthonys/AnaSimTech/design/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME.log</runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir>/servers/esd_noida/anthonys/AnaSimTech/simulation/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME</psfdir>
+			<simdir>$AXL_PROJECT_DIR/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME</simdir>
+		</historyentry>
+		<historyentry roOrView="view">Interactive.1
+			<timestamp>Thu Sep 11 14:52:37 2014</timestamp>
+			<uuid>{4f8bc4d3-c58a-4fa5-a89a-c073b25e08a6}</uuid>
+			<locked>0</locked>
+			<mode>Single Run, Sweeps and Corners</mode>
+			<resultsname>/servers/esd_noida/anthonys/AnaSimTech/design/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME.rdb</resultsname>
+			<simresults>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.rdb</simresults>
+			<runlog>/servers/esd_noida/anthonys/AnaSimTech/design/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME.log</runlog>
+			<runlogfile>$AXL_SETUPDB_DIR/results/data/$AXL_HISTORY_NAME.log</runlogfile>
+			<psfdir>/servers/esd_noida/anthonys/AnaSimTech/simulation/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME</psfdir>
+			<simdir>$AXL_PROJECT_DIR/ether_sims/adc_cascode_opamp_sim/adexl/results/data/$AXL_HISTORY_NAME</simdir>
+		</historyentry>
+	</history>
+</setupdb>

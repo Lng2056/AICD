@@ -1,0 +1,49 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=9-gsclib0907-NAND2X1;
+	1134107396=9-gsclib0907-NAND2X16-symbol;
+	-1=9-gsclib0907-NAND3X1;
+	1134107411=9-gsclib0907-NAND3X16-symbol;
+	-1=9-gsclib0908-OAI211X1;
+	1134107504=9-gsclib0908-OAI211X16-symbol;
+	-1=9-gsclib0907-OAI21XL;
+	1134107514=9-gsclib0907-OAI21XL6-symbol;
+	-1=9-gsclib0906-NOR3X1;
+	1134107464=9-gsclib0906-NOR3X16-symbol;
+	-1=9-gsclib0906-AO21X1;
+	1134107106=9-gsclib0906-AO21X16-symbol;
+	-1=9-gsclib0905-OR2X1;
+	1134107562=9-gsclib0905-OR2X16-symbol;
+	-1=9-gsclib0906-NOR2X1;
+	1134107451=9-gsclib0906-NOR2X16-symbol;
+	-1=9-gsclib0905-BUFX2;
+	1134107176=9-gsclib0905-BUFX26-symbol;
+	-1=9-gsclib0908-NAND2BX2;
+	1134107393=9-gsclib0908-NAND2BX26-symbol;
+	-1=9-gsclib0908-NAND2BX1;
+	1134107391=9-gsclib0908-NAND2BX16-symbol;
+	-1=9-gsclib0906-AND2X2;
+	1134107083=9-gsclib0906-AND2X26-symbol;
+	-1=9-gsclib0905-INVX3;
+	1134107337=9-gsclib0905-INVX36-symbol;
+	-1=9-gsclib0908-CLKINVX1;
+	1134107200=9-gsclib0908-CLKINVX16-symbol;
+	-1=9-gsclib0907-OAI31XL;
+	1134107547=9-gsclib0907-OAI31XL6-symbol;
+	-1=9-gsclib0906-NOR2X2;
+	1134107453=9-gsclib0906-NOR2X26-symbol;
+	-1=9-gsclib0907-OAI21X1;
+	1134107509=9-gsclib0907-OAI21X16-symbol;
+	-1=9-gsclib0908-CLKBUFX3;
+	1134107197=9-gsclib0908-CLKBUFX36-symbol;
+	1136387628=verilog.vams;
+$END

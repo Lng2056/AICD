@@ -1,0 +1,91 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I48:DVSS=VSS;
+	I48:DVDD=VDD;
+	I54:DVDD=VDD;
+	I54:DVSS=VSS;
+	I46:DVDD=VDD;
+	I46:DVSS=VSS;
+	I11:DVDD=VDD;
+	I11:DVSS=VSS;
+	I7:DVDD=VDD;
+	I7:DVSS=VSS;
+	I10:DVSS=VSS;
+	I10:DVDD=VDD;
+	I50:DVDD=VDD;
+	I50:DVSS=VSS;
+	I40:DVSS=VSS;
+	I40:DVDD=VDD;
+	I43:DVSS=VSS;
+	I43:DVDD=VDD;
+	I37:DVSS=VSS;
+	I37:DVDD=VDD;
+	I20:DVSS=VSS;
+	I20:DVDD=VDD;
+	I51:DVDD=VDD;
+	I51:DVSS=VSS;
+	I57:DVDD=VDD;
+	I57:DVSS=VSS;
+	I39:DVSS=VSS;
+	I39:DVDD=VDD;
+	I44:DVSS=VSS;
+	I44:DVDD=VDD;
+	I33:DVSS=VSS;
+	I33:DVDD=VDD;
+	I38:DVSS=VSS;
+	I38:DVDD=VDD;
+	I17:DVSS=VSS;
+	I17:DVDD=VDD;
+	I34:DVSS=VSS;
+	I34:DVDD=VDD;
+	I53:DVDD=VDD;
+	I53:DVSS=VSS;
+	I59:DVSS=VSS;
+	I59:DVDD=VDD;
+	I36:DVDD=VDD;
+	I36:DVSS=VSS;
+	I42:DVDD=VDD;
+	I42:DVSS=VSS;
+	I41:DVDD=VDD;
+	I41:DVSS=VSS;
+	I52:DVDD=VDD;
+	I52:DVSS=VSS;
+	I58:DVDD=VDD;
+	I58:DVSS=VSS;
+	I35:DVDD=VDD;
+	I35:DVSS=VSS;
+	I49:DVSS=VSS;
+	I49:DVDD=VDD;
+$END
+$TIMESTAMP
+	1136308098=5-ether9-or4_1x_hv;
+	1136308099=5-ether9-or4_1x_hv6-symbol;
+	1136308098=5-ether10-nor3_2x_hv;
+	1136308098=5-ether10-nor3_2x_hv6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308089=5-ether12-clkbuf_4x_hv;
+	1136308089=5-ether12-clkbuf_4x_hv6-symbol;
+	1136308076=5-ether12-clkbuf_2x_hv;
+	1136308076=5-ether12-clkbuf_2x_hv6-symbol;
+	1136308101=5-ether8-tielo_hv;
+	1136308101=5-ether8-tielo_hv6-symbol;
+	1136308078=5-ether11-nand2_1x_hv;
+	1136308079=5-ether11-nand2_1x_hv6-symbol;
+	1136308051=5-ether9-dff_1x_hv;
+	1136308051=5-ether9-dff_1x_hv6-symbol;
+	1136308099=5-ether13-mux2inv_1x_hv;
+	1136308099=5-ether13-mux2inv_1x_hv6-symbol;
+	1136308100=5-ether8-tiehi_hv;
+	1136308100=5-ether8-tiehi_hv6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387837=verilog.vams;
+$END

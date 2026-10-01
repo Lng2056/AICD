@@ -1,0 +1,19 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1133909522=9-analogLib4-vcvs;
+	1133909363=9-analogLib4-vcvs6-symbol;
+	-1=5-basic5-iopin;
+	1133906589=5-basic5-iopin7-symbolr;
+	1133909520=9-analogLib3-res;
+	1133909388=9-analogLib3-res6-symbol;
+	1136393734=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:vcvs:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))3-NC-29-(FUNCTION zero(root("PLUS")))4-PLUS1-p3-NC+29-(FUNCTION zero(root("PLUS")));
+	analogLib:res:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-1;
+$END

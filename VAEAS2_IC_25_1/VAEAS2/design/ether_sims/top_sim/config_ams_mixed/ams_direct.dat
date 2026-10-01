@@ -1,0 +1,15 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1110240048486=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1110239682000:7-dirName41-$AMS/design/custom_cdba/top_sim_run_mixed8-snapShot24-top_sim:ams1103831985495;
+	1110240053000:7-dirName45-$AMS/design/custom_cdba/top_sim_run_mixed_new8-snapShot24-top_sim:ams1110238893342;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot24-top_sim:ams11102388933426-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11038319854956-Solver7-Spectre7-CdsPlat5-lnx86;
+	8-Snapshot24-top_sim:ams11038319854956-Solver7-Spectre7-CdsPlat5-sun4v;
+$END

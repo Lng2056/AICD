@@ -1,0 +1,9 @@
+ahdlcmicompile: Compiling ahdlcmi in /export/home/glawson/ADE5141/training/ampv/veriloga/veriloga.va.ahdlcmi/ for SunOS5.10+gcc with optimize using gcc on Thu Nov  8 15:05:29 CST 2007 [0]
+ahdlcmicompile: Generating makefile
+PATH:  /export/home/glawson/IC5141USR5/tools.sun4v/systemc/gcc/install/bin:.:/export/home/glawson/bin:/usr2/vnc:/usr/local:/usr/local/bin:/usr/openwin/bin/xview:/usr1/glawson/hpnpl/bin:/usr/sbin:/usr/ucb:/usr/dt/bin:/bin:/sbin:/usr/bin:/usr/sbin:/etc:/usr/etc:/usr/openwin/bin:/usr/platform/SUNW,A70/sbin:/export/home/glawson/IC5141USR5/tools/bin:/export/home/glawson/IC5141USR5/tools/dfII/bin:/export/home/glawson/netscape:/usr/openwin:/usr/lib/X11:/export/home/glawson/IC5141USR5/tools/dfII/bin:/export/home/glawson/IC5141USR5/tools/bin
+LD_LIBRARY_PATH:  /export/home/glawson/IC5141USR5/tools.sun4v/systemc/gcc/install/lib:/export/home/glawson/IC5141USR5/tools.sun4v/mdl/lib:/export/home/glawson/IC5141USR5/tools.sun4v/dfII/lib:/export/home/glawson/IC5141USR5/tools.sun4v/lib:/usr/openwin/lib:/usr/lib/X11:/usr/lib
+Compiling C file installdev.c (optimize)
+/export/home/glawson/IC5141USR5/tools.sun4v/systemc/gcc/install/bin/gcc  -O3 -DSYSV -DSVR4 -D_REENTRANT -fPIC   -DconfigSPECTRE -I. -I/export/home/glawson/IC5141USR5/tools.sun4v/spectre/ahdlcmi/include -c installdev.c -o obj/SunOS5.10+gcc/optimize/installdev.o || rm -f -f obj/SunOS5.10+gcc/optimize/installdev.o;
+Compiling C file ampv.c (optimize)
+/export/home/glawson/IC5141USR5/tools.sun4v/systemc/gcc/install/bin/gcc  -O3 -DSYSV -DSVR4 -D_REENTRANT -fPIC   -DconfigSPECTRE -I. -I/export/home/glawson/IC5141USR5/tools.sun4v/spectre/ahdlcmi/include -c ampv.c -o obj/SunOS5.10+gcc/optimize/ampv.o || rm -f -f obj/SunOS5.10+gcc/optimize/ampv.o;
+/export/home/glawson/IC5141USR5/tools.sun4v/systemc/gcc/install/bin/gcc -shared -O3 -fPIC -o obj/SunOS5.10+gcc/optimize/libahdlcmi.so ./obj/SunOS5.10+gcc/optimize/installdev.o ./obj/SunOS5.10+gcc/optimize/ampv.o  -i -s 

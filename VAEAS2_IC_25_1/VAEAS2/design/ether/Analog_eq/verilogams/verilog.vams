@@ -1,0 +1,386 @@
+//Verilog-AMS HDL for "drouillard_ph2", "Analog_eq" "verilogams"
+// rules for using fscan and arrays in AMS
+// 1. must use fscan in digital "inital" block (arrays are digital)
+// 2. analog can only access digital arrays in initial_step block
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module Analog_eq ( fdbk_out, outm, outp, I_rext_100_1, I_rext_100_2, I_rext_100_3,
+    I_rext_100_4, Vref, agc_eq, agc_eq_bypass, agnd, avdd, dgnd, dvdd, fdbk_in,
+    inm, inp, siddq, timing_mode );
+
+output outp, outm;
+output fdbk_out;
+input  fdbk_in;
+input  timing_mode;
+input  inp, inm;
+input  siddq, agc_eq_bypass;
+input  avdd, agnd, dvdd, dgnd;
+input  Vref;
+input  I_rext_100_1, I_rext_100_2, I_rext_100_3, I_rext_100_4;
+input  [4:0] agc_eq;
+
+parameter real strobes_on = 0 ;
+
+  electrical  agnd, avdd;
+  logic	      siddq;
+  electrical  I_rext_100_1, 
+	      I_rext_100_2, 
+	      I_rext_100_3,
+	      I_rext_100_4;
+  electrical Vref, inm,  inp, 
+		   outm, outp;
+  logic [4:0] agc_eq; 
+  logic	      agc_eq_bypass,
+	      timing_mode;
+  electrical  fdbk_in, fdbk_out, dvdd, dgnd;
+
+// for filter equations
+  electrical n1, n2,
+	     n3, n4,
+	     n5, n6;
+
+  reg  rtiming_mode;
+  real Av;
+  real zero_out[1:0];
+  real pole_out[9:0];
+  real rbias1      = 9000;          // close to effective input  
+  real rbias2      = 6000;          //   resistance on current bias inputs
+  real roff        = 10e6;          // resistance through NFET switch
+  real r1;
+  real r2;
+  real vcm;                         // nominal common-mode output voltage
+  real vtrans;
+  real low_bias    = 80e-6;
+  real high_bias   = 120e-6;
+  real minAVDD	   = 2.0;	    // minimum allowable supply voltage
+  
+  integer agc_eq_decimal;
+  integer analog_agc_decimal;
+  integer h;
+  integer i;
+  integer j;
+  integer pow2;
+  reg	  enable;
+
+
+// variables for matlab data
+  integer matlab_data1,
+	  matlab_data2;
+
+// arrays owned by the digital context
+  real Dzero1A[33:0]; 
+  real Dpole1A[33:0]; 
+  real Dpole2A[33:0]; 
+  real Dpole3A[33:0]; 
+  real Dpole4A[33:0];
+  real Dpole5A[33:0];   
+  real DGainA[33:0];
+  real Dzero1B[33:0]; 
+  real Dpole1B[33:0]; 
+  real Dpole2B[33:0]; 
+  real Dpole3B[33:0]; 
+  real Dpole4B[33:0];
+  real Dpole5B[33:0]; 
+  real DGainB[33:0];
+// arrays owned by the analog context
+  real Azero1A[33:0]; 
+  real Apole1A[33:0]; 
+  real Apole2A[33:0]; 
+  real Apole3A[33:0]; 
+  real Apole4A[33:0];
+  real Apole5A[33:0];   
+  real AGainA[33:0];
+  real Azero1B[33:0]; 
+  real Apole1B[33:0]; 
+  real Apole2B[33:0]; 
+  real Apole3B[33:0]; 
+  real Apole4B[33:0];
+  real Apole5B[33:0]; 
+  real AGainB[33:0];
+  real zero1[33:0]; 
+  real pole1[33:0]; 
+  real pole2[33:0]; 
+  real pole3[33:0]; 
+  real pole4[33:0];
+  real pole5[33:0];  
+  real Gain[33:0];
+// fscanf cannot read directly into an array  
+  real a0,a1,a2,a3,a4,a5,a6;
+
+  initial begin
+    rtiming_mode = 1'b0; // avoid X conditions
+//  read matlab data into digital arrays
+`ifdef _debug
+  $strobe(" Digital initialization ");
+`endif    
+    matlab_data1 = 
+  $fopen("/net/lnx-ent3/usr1/vfs_amsflow/VFS_AMS_PHY180/Analog_eq/atlas_finT2/text.txt", "r");
+    if(matlab_data1 != 0) begin
+`ifdef _debug
+ $strobe(" loading digital array1 ");
+`endif
+      i=0; 
+      while( $fscanf(matlab_data1, "%e %e %e %e %e %e %e",
+	  a0,a1,a2,a3,a4,a5,a6) == 7) 
+      begin
+          Dzero1A[i]=a0;	 Dpole1A[i]=a1;
+	  Dpole2A[i]=a2;	 Dpole3A[i]=a3;
+          Dpole4A[i]=a4;	 Dpole5A[i]=a5; 
+	  DGainA[i] =a6;
+        i=i+1;
+      end
+    end
+    matlab_data2 = 
+       $fopen("/net/lnx-ent3/usr1/vfs_amsflow/VFS_AMS_PHY180/Analog_eq/atlas_finMM/text.txt", "r");
+
+    if(matlab_data2 != 0) begin
+      i=0; 
+`ifdef _debug
+ $strobe(" loading digital array2 ");
+`endif
+      while($fscanf(matlab_data2, "%e %e %e %e %e %e %e",
+	  a0,a1,a2,a3,a4,a5,a6) == 7)
+       begin
+          Dzero1B[i]=a0;	 Dpole1B[i]=a1;
+	  Dpole2B[i]=a2;	 Dpole3B[i]=a3;
+          Dpole4B[i]=a4;	 Dpole5B[i]=a5; 
+	  DGainB[i] =a6;
+        i=i+1;
+      end
+    end
+    $fclose( matlab_data1);
+    $fclose( matlab_data2);  
+
+// initial value for agc
+    if (agc_eq_bypass == 1'b1)  agc_eq_decimal = 32;
+      else begin 
+        agc_eq_decimal = 0;  
+	pow2 = 1;
+	for(i=0; i<=4; i=i+1)  begin
+          if (agc_eq[i] == 1'b1) 
+            agc_eq_decimal = agc_eq_decimal +  pow2; 
+          pow2 = 2 * pow2;
+        end // for
+      end // else 
+//  power down 
+    if (siddq == 1'b1) begin
+      r1 = roff;
+      r2 = roff;
+      vcm = 0;
+      Av  = 0;
+    end
+//  bad bias
+    else if(enable != 1'b1) begin
+      r1 = rbias1;
+      r2 = rbias2;
+      vcm = 0;
+      Av  = 0;
+    end
+//  normal operation
+    else begin 
+      r1 = rbias1;
+      r2 = rbias2;
+//    calculate nominal common-mode from avdd resistive divide
+      vcm = 0.035 + (15*99.9703)/((15*99.9703)+(34*99.9703))*V(Vref);
+      Av = (timing_mode==1'b1) ? DGainA[agc_eq_decimal]:DGainB[agc_eq_decimal];
+    end 
+  end // initial
+
+// avoid x conditions with timing_mode
+always @(timing_mode) rtiming_mode = timing_mode;
+
+// update agc value
+ always @(agc_eq[0] or agc_eq[1] or agc_eq[2] or agc_eq[3] or agc_eq[4]
+          or agc_eq_bypass)
+ begin
+    if (agc_eq_bypass == 1'b1)  agc_eq_decimal = 32;
+      else begin 
+        agc_eq_decimal = 0;  
+	pow2 = 1;
+	for(i=0; i<=4; i=i+1) begin
+          if (agc_eq[i] == 1'b1)  
+            agc_eq_decimal = agc_eq_decimal +  pow2; 
+	  pow2 = 2 * pow2;
+ 	end // for
+      end // else
+ end  // always
+
+
+// check bias and voltage levels periodically
+  always begin
+    enable =
+      ((V(avdd,agnd) > minAVDD) &&
+      ((I(I_rext_100_1, agnd) > low_bias)  &&
+       (I(I_rext_100_1, agnd) < high_bias) &&
+       (I(I_rext_100_2, agnd) > low_bias)  &&
+       (I(I_rext_100_2, agnd) < high_bias) &&
+       (I(I_rext_100_3, agnd) > low_bias)  &&
+       (I(I_rext_100_3, agnd) < high_bias) &&
+       (I(I_rext_100_4, agnd) > low_bias)  &&
+       (I(I_rext_100_4, agnd) < high_bias))) ;
+   #100;
+  end
+
+
+//  siddq or bias changes
+  always @(siddq or enable) begin // power down
+   if(siddq == 1) begin
+     r1 = roff;
+     r2 = roff;
+     vcm = 0;
+     Av  = 0;
+   end
+   else if(enable == 1'b0) begin // bad bias
+     r1 = rbias1;
+     r2 = rbias2;
+     vcm = 0;
+     Av  = 0;     
+   end
+   else begin // normal operation
+      r1 = rbias1;
+      r2 = rbias2;
+      vcm = 0.035 + (15*99.9703)/((15*99.9703)+(34*99.9703))*V(Vref);
+      Av = (rtiming_mode==1'b1) ? DGainA[agc_eq_decimal]:DGainB[agc_eq_decimal];
+   end
+  end // always
+
+analog begin
+  @(initial_step) begin
+`ifdef _debug
+    $strobe(" Analog initialization");
+`endif
+    zero_out[1] = 0;  zero_out[0]  = 1.0;	
+    pole_out[9] = 0;   pole_out[8] = 1.0; 	
+    pole_out[7] = 0;   pole_out[6] = 1.0;
+    pole_out[5] = 0;   pole_out[4] = 1.0;
+    pole_out[3] = 0;   pole_out[2] = 1.0;
+    pole_out[1] = 0;   pole_out[0] = 1.0;
+
+//  copy data to analog arrays
+    for(j=0; j<34; j=j+1) begin
+      Azero1A[j] = Dzero1A[j];
+      Apole1A[j] = Dpole1A[j];
+      Apole2A[j] = Dpole2A[j];
+      Apole3A[j] = Dpole3A[j];
+      Apole4A[j] = Dpole4A[j];
+      Apole5A[j] = Dpole5A[j];
+      AGainA[j]  = DGainA[j];
+      Azero1B[j] = Dzero1B[j];
+      Apole1B[j] = Dpole1B[j];
+      Apole2B[j] = Dpole2B[j];
+      Apole3B[j] = Dpole3B[j]; 
+      Apole4B[j] = Dpole4B[j];
+      Apole5B[j] = Dpole5B[j];
+      AGainB[j]  = DGainB[j];
+    end
+  end // initial step
+
+// for some reason, I have trouble with agc_eq_decimal
+// in analog context, will this help?
+   analog_agc_decimal =  agc_eq_decimal;
+  
+
+//  establish bias voltages
+    V(I_rext_100_1, agnd) <+ r1*I(I_rext_100_1, agnd);
+    V(I_rext_100_3, agnd) <+ r1*I(I_rext_100_3, agnd);
+    V(I_rext_100_4, agnd) <+ r1*I(I_rext_100_4, agnd);
+    V(I_rext_100_2, agnd) <+ r2*I(I_rext_100_2, agnd);
+
+//  threshold voltage
+    vtrans = 0.5*(V(avdd) + V(agnd));
+
+   if (rtiming_mode == 1'b1) 
+     for (h = 0 ; h <= 32 ; h=h+1) begin
+       zero1[h]=Azero1A[h];
+       pole1[h]=Apole1A[h];
+       pole2[h]=Apole2A[h];
+       pole3[h]=Apole3A[h];
+       pole4[h]=Apole4A[h];
+       pole5[h]=Apole5A[h];				   
+       Gain[h]=AGainA[h];
+     end
+    else 
+     for (h = 0 ; h <= 32 ; h=h+1) begin
+        zero1[h]=Azero1B[h];
+	pole1[h]=Apole1B[h];
+	pole2[h]=Apole2B[h];
+	pole3[h]=Apole3B[h];
+	pole4[h]=Apole4B[h];
+	pole5[h]=Apole5B[h];				   
+	Gain[h]=AGainB[h]; 
+     end
+
+//  we need to change the  filter on the fly,
+//  try to be gentle.
+//  added 1n offset to prevent divide by zero
+//  before arrays get loaded
+//    zero_out[0] = -1.0*`M_TWO_PI*transition(zero1[agc_eq_decimal],0,10n,10n);
+//    zero_out[1] = 0.0;
+//    pole_out[0] = -1.0*`M_TWO_PI*transition(pole1[agc_eq_decimal],0,10n,10n);
+//    pole_out[1] = 0.0;
+//    pole_out[2] = -1.0*`M_TWO_PI*transition(pole2[agc_eq_decimal],0,10n,10n);
+//    pole_out[3] = 0.0; 
+//    pole_out[4] = -1.0*`M_TWO_PI*transition(pole3[agc_eq_decimal],0,10n,10n);
+//    pole_out[5] = 0.0;
+//    pole_out[6] = -1.0*`M_TWO_PI*transition(pole4[agc_eq_decimal],0,10n,10n);
+//    pole_out[7] = 0.0;
+//    pole_out[8] = -1.0*`M_TWO_PI*transition(pole5[agc_eq_decimal],0,10n,10n);
+//    pole_out[9] = 0.0;	  
+
+    zero_out[0] = -1.0*`M_TWO_PI*slew(zero1[agc_eq_decimal],2.5e8);
+    zero_out[1] = 0.0;
+    pole_out[0] = -1.0*`M_TWO_PI*slew(pole1[agc_eq_decimal],2.5e8);
+    pole_out[1] = 0.0;
+    pole_out[2] = -1.0*`M_TWO_PI*slew(pole2[agc_eq_decimal],2.5e8);
+    pole_out[3] = 0.0; 
+    pole_out[4] = -1.0*`M_TWO_PI*slew(pole3[agc_eq_decimal],2.5e8);
+    pole_out[5] = 0.0;
+    pole_out[6] = -1.0*`M_TWO_PI*slew(pole4[agc_eq_decimal],2.5e8);
+    pole_out[7] = 0.0;
+    pole_out[8] = -1.0*`M_TWO_PI*slew(pole5[agc_eq_decimal],2.5e8);
+    pole_out[9] = 0.0;	  
+
+`ifdef _debug
+ $strobe("zero_out, pole_out[i]");
+ $strobe(" %e, %e, %e", zero_out[0],pole_out[0],pole_out[2]);
+ $strobe(" %e, %e, %e", pole_out[4], pole_out[6], pole_out[8]);
+ $strobe(" Av = %e, agc_eq_decimal = %d  ", Av, agc_eq_decimal);
+ $strobe(" timing_mode = %h ", rtiming_mode);
+ $strobe("\n");
+`endif
+
+
+//  Output transfer function
+//  H(s)= mult((1-s/zero_out[agc_eq_decimal]))/
+//            mult((1-s/pole_out[agc_eq_decimal]))      
+    V(n1,agnd) <+ Av*(V(inp,agnd)-V(inm,agnd))-(1.0/zero_out[0])*
+                   ddt(Av*(V(inp,agnd)-V(inm,agnd)));    
+    V(n2,agnd)  <+ V(n1,agnd) + (1.0/pole_out[0])*ddt(V(n2,agnd)); 
+    V(n3,agnd)  <+ V(n2,agnd) + (1.0/pole_out[2])*ddt(V(n3,agnd)); 
+    V(n4,agnd)  <+ V(n3,agnd) + (1.0/pole_out[4])*ddt(V(n4,agnd));
+    V(n5,agnd)  <+ V(n4,agnd) + (1.0/pole_out[6])*ddt(V(n5,agnd)); 	  
+    V(n6,agnd)  <+ V(n5,agnd) + (1.0/pole_out[8])*ddt(V(n6,agnd));  
+
+
+// I tried an integral form of the state equations, 
+// it caused NaN error for ground during initial DC
+// calculations, the problem is how to handle common
+// mode voltage when the inputs are differential?
+// Do I need to add another equation?
+//    V(inp,agnd)<+ V(inm,agnd) + zero_out[0]*
+//	idt(V(n1)-Av*(V(inp,agnd)-V(inm,agnd)));
+//    V(n2,agnd) <+ pole_out[0]*idt(V(n2,agnd)-V(n1,agnd));
+//    V(n3,agnd) <+ pole_out[2]*idt(V(n3,agnd)-V(n2,agnd));
+//    V(n4,agnd) <+ pole_out[4]*idt(V(n4,agnd)-V(n3,agnd));
+//    V(n5,agnd) <+ pole_out[6]*idt(V(n5,agnd)-V(n6,agnd));
+//    V(n6,agnd) <+ pole_out[8]*idt(V(n6,agnd)-V(n5,agnd));
+
+    V(outp,agnd) <+ vcm + 0.65*V(n6,agnd);
+    V(outm,agnd) <+ vcm - 0.55*V(n6,agnd);
+
+end // analog
+
+endmodule
+`undef _debug

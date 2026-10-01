@@ -1,0 +1,61 @@
+// Spectre AHDL for tsmc09001_ms, rad_skew_monitor, ahdl
+//
+// By: Richard Deken, Cadence
+//
+// This module looks for rising and falling edges to cross vthresh volts, and 
+// measures skew based on these crossings.
+//
+// positive skew means sense leads ref
+// negative skew means ref leads sense
+
+module rad_skew_monitor(sense, ref, vthresh, skew)
+  (tstart,sense_edge,ref_edge,order)
+  node [V,I] sense, ref, vthresh, skew;
+
+  parameter real tstart = 1e-9;	    // 1 nsec transient startup
+  parameter real ref_edge = 0;   // Use both edges (-1 falling, +1 rising)
+  parameter real sense_edge = 0; // Use both edges (-1 falling, +1 rising)
+  parameter real order = 0;      // Use either order (-1 sense 1st, +1 ref 1st)
+{
+
+   real old_redge, new_redge, old_sedge, new_sedge;
+   real e_skew;
+  
+   initial {
+      old_redge = 0;
+      new_redge = 0;
+      old_sedge = 0;
+      new_sedge = 0;
+      e_skew = 0;
+   }
+
+  
+   analog {
+      if ($threshold (V(ref) - V(vthresh), ref_edge, 1e-12)) {
+         if (tstart < $time()) {
+            old_redge = new_redge;
+            new_redge = $time();
+	    if (new_sedge - old_redge < new_redge - new_sedge && order != -1 
+	       || order == 1)
+	       e_skew = old_redge - new_sedge;
+	    else
+	       e_skew = new_redge - new_sedge;
+         }
+      }
+      if ($threshold (V(sense) - V(vthresh), sense_edge, 1e-12)) {
+         if (tstart < $time()) {
+            old_sedge = new_sedge;
+            new_sedge = $time();
+	    if (new_redge - old_sedge < new_sedge - new_redge && order != 1
+               || order == -1)
+	       e_skew = new_redge - old_sedge;
+	    else
+	       e_skew = new_redge - new_sedge;
+         }
+      }
+      V(skew)<-e_skew;
+   }
+   
+   final {
+   }
+}

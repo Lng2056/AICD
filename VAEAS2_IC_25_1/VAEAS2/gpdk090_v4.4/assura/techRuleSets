@@ -1,0 +1,34 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; GPDK090 Assura Rule Set File 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ruleSet( "default"
+     (DrcRules             "drc.rul" )
+     (DrcTemplateFile      ".drc_setup.tpl" )
+     (LvsExtractRules      "extract.rul" )
+     (LvsCompareRules      "compare.rul" )
+     (LvsBindingFile       "bind.rul" )
+     (LvsInclude           "LVSinclude.rsf" )
+     (LvsTemplateFile      ".lvs_setup.tpl" )
+     (LvsAVCTemplateFile   ".avc_setup.tpl" )
+     (RcxSetupDir          "rcx" )
+     (RcxTemplateFile      ".rcx_setup.tpl" )
+)
+
+ruleSet( "density"
+     (DrcRules             "density.rul" )
+     (DrcTemplateFile      ".den_setup.tpl" )
+     (DrcSwitchesFile      ".den_switch" )
+)
+
+ruleSet( "antenna"
+     (DrcRules             "antenna.rul" )
+     (DrcTemplateFile      ".ant_setup.tpl" )
+     (DrcSwitchesFile      ".ant_switch" )
+)
+
+ruleSet( "fill"
+     (DrcRules             "fillMetal.rul" )
+     (DrcInclude           "fill.rsf" )
+)
+

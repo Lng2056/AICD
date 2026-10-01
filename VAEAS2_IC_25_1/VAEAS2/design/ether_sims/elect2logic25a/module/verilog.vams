@@ -1,0 +1,33 @@
+//Verilog-AMS HDL for "tsmc13fLucy_sim", "elect2logic25a" "module"
+// this module is an attempt to fix some glitching problems
+// observed in the elect2logic25 connect module
+// CDF 4/25/03 Heron
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+connectmodule elect2logic25a (aVal, dVal );
+  output      dVal;
+  input	      aVal;
+  logic	      dVal;
+  electrical  aVal;
+
+  real vthresh = 0.5;
+  real delta	 = 0.000001;
+  reg	      temp;
+  wire        dVal = temp;
+
+
+  initial begin
+        temp = 1'b0;
+	#1  if(V(aVal) > vthresh) temp = 1'b1;
+    else		  temp = 1'b0;
+  end
+
+  always @(cross(V(aVal)-vthresh-delta,+1))
+	  temp <= 1'b1;
+
+  always @(cross(V(aVal)-vthresh+delta,-1))
+	  temp <= 1'b0;
+
+endmodule

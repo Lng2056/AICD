@@ -1,0 +1,28 @@
+Simulation:     VCO_320MHz_sim 
+
+Purpose:        Transient simulation of the 320MHZ VCO to check the operation of
+the VCO.
+
+States:         tt, ss, ff 
+
+Description:    The VCO_320MHz_sim test bench contains an instantiation of
+the VCO block, PLL_VCO_320MHZ.Ideal sources are used for power and current 
+references. The control voltage is set by a dc voltage source through the net
+Vcntl. The control voltage on the Vcntl node is set such that the frequency of
+the output clock from the VCO is close to 320MHz. The power down signal, PD is 
+connected to ground through a zero voltage source. In addition the 
+misc_clock_monitor block is included to monitor the characteristics of the PLL 
+output clocks, VCO_CLK. 
+
+The simulation is used to check the frequency, duty cycle and the edge to edge 
+jitter on the VCO output clock. The control voltage of the VCO Vcntl may be 
+swept using a parametric simulation to get the VCO tuning curves. 
+
+Verification:  The output clock of the VCO i,e., VCO_CLK is monitored using  
+the misc_clock_monitor block. The frequency, duty cycle and the edge to edge    
+jitter on the VCO_CLK signal maybe read at the outputs of this block for a   
+given control voltage setting. 
+
+Input Signals:  Vcntl 
+
+Output Signals: fVCO_CLK, dcVCO_CLK, jVCO_CLK

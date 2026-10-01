@@ -1,0 +1,57 @@
+//Verilog-AMS HDL for "drouillard_ph2", "Bias_port" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module Bias_port ( I_REXT_100_NC, I_REXT_REF100, I_RPOLY_REF100, SIDDQ, VDD,
+    VSS, I_RPOLY_100, I_REXT_100, I_REXT_50 );
+
+  input 	VDD;
+  input 	SIDDQ;
+  input 	I_REXT_REF100;
+  input 	I_RPOLY_REF100;
+  input 	VSS;
+  output  [1:0] I_REXT_50;
+  output 	I_REXT_100_NC;
+  output  [6:0] I_REXT_100;
+  output  [5:0] I_RPOLY_100;
+  
+  
+  electrical 	    VDD;
+  electrical  [1:0] I_REXT_50;
+  electrical  [5:0] I_RPOLY_100;
+  electrical 	    I_REXT_REF100;
+  electrical 	    I_RPOLY_REF100;
+  electrical 	    I_REXT_100_NC;
+  electrical 	    VSS;
+  electrical  [6:0] I_REXT_100;
+  logic 	    SIDDQ;
+
+real irext;
+real irpoly;  
+
+analog begin
+  irext  = I(VDD,I_REXT_REF100);
+  irpoly = I(VDD,I_RPOLY_REF100);
+
+  I(VDD,I_REXT_50[0]) <+ -irext*0.5;
+  I(VDD,I_REXT_50[1]) <+ -irext*0.5;
+  I(VDD,I_REXT_100_NC) <+ -irext;
+  I(VDD,I_REXT_100[0]) <+ -irext;
+  I(VDD,I_REXT_100[1]) <+ -irext;
+  I(VDD,I_REXT_100[2]) <+ -irext;
+  I(VDD,I_REXT_100[3]) <+ -irext;
+  I(VDD,I_REXT_100[4]) <+ -irext;
+  I(VDD,I_REXT_100[5]) <+ -irext;
+  I(VDD,I_REXT_100[6]) <+ -irext;
+  
+  I(VDD,I_RPOLY_100[0]) <+ -irpoly;
+  I(VDD,I_RPOLY_100[1]) <+ -irpoly; 
+  I(VDD,I_RPOLY_100[2]) <+ -irpoly; 
+  I(VDD,I_RPOLY_100[3]) <+ -irpoly; 
+  I(VDD,I_RPOLY_100[4]) <+ -irpoly; 
+  I(VDD,I_RPOLY_100[5]) <+ -irpoly;  
+  
+end
+
+endmodule

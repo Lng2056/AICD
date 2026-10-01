@@ -1,0 +1,8 @@
+(envOpts runMode) "Batch"
+(envOpts userCmdLineOption) ""
+(envOpts printComments) nil
+(envOpts switchViewList) ("spectre" "veriloga" "schematic" "cmos_sch" "ahdl")
+(envOpts autoDisplay) t
+(envOpts netlistFormat) "spectre"
+(envOpts interactiveCtrFile) ""
+(envOpts stopViewList) ("spectre")

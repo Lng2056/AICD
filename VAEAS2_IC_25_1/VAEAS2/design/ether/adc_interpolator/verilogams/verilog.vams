@@ -1,0 +1,51 @@
+//------------------------------------------------------------------------------
+// Name   : adc_interpolator
+// View   : verilogams
+// Purpose: Interpolator Model
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_interpolator ( outn, outp, VDD, VSS, bias, inn, inp, refn, refp );
+
+output	outp, outn;			// Interpolated Output
+input	refp, refn;			// Reference Voltage
+input	inp,  inn;			// Input signal
+input	bias;				// bias current
+input	VDD, VSS;			// Power Supply and Ground
+
+electrical outp, outn;			// Interpolated Output
+electrical refp, refn;			// Reference Voltage
+electrical inp,  inn;			// Input signal
+electrical bias;			// bias current
+electrical VDD, VSS;			// Power Supply and Ground
+
+parameter ibias   = 400u;
+parameter rint    = 1600;		// Interpolator Resistor
+
+real i_inp, i_inn, i_refp, i_refn;	// currents at different legs
+real v_inp_refp, v_inn_refn;
+
+analog begin
+	v_inp_refp = V(inp) - V(refp);
+	i_inp = (v_inp_refp >  0.2) ? ibias:
+		(v_inp_refp < -0.2) ? 0.0 : (v_inp_refp + 0.2)/1000.0;
+	i_refp = ibias - i_inp;
+	
+	v_inn_refn = V(inn) - V(refn);
+	i_inn = (v_inn_refn >  0.2) ? ibias:
+		(v_inn_refn < -0.2) ? 0.0 : (v_inn_refn + 0.2)/1000.0;
+	i_refn = ibias - i_inn; 
+
+//	V(VDD,outp) <+ transition((i_refp + i_inn)*rint,100p,100p,100p);
+//	V(VDD,outn) <+ transition((i_refn + i_inp)*rint,100p,100p,100p);
+	
+	V(VDD,outp) <+ slew((i_refp + i_inn)*rint,2.5e10);
+	V(VDD,outn) <+ slew((i_refn + i_inp)*rint,2.5e10);
+end
+
+endmodule

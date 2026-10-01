@@ -1,0 +1,26 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1133909520=9-analogLib10-pcapacitor;
+	1133909382=9-analogLib10-pcapacitor6-symbol;
+	1136308102=5-ether11-PLL_VCO_REG;
+	1136308103=5-ether11-PLL_VCO_REG6-symbol;
+	1136308104=5-ether15-PLL_VCO_CMOSDVR;
+	1136308104=5-ether15-PLL_VCO_CMOSDVR6-symbol;
+	1136308105=5-ether18-PLL_VCO_320MHZ_INV;
+	1136308105=5-ether18-PLL_VCO_320MHZ_INV6-symbol;
+	1136308102=5-ether11-PLL_VCO_INV;
+	1136308102=5-ether11-PLL_VCO_INV6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387844=verilog.vams;
+$END
+$PRIMITIVE_TERM_MAP
+	analogLib:pcapacitor:symbol:*:5-MINUS30-(FUNCTION minus(root("PLUS")))4-PLUS1-p;
+$END

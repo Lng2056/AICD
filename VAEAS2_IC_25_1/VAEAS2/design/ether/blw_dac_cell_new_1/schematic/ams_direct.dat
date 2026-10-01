@@ -1,0 +1,33 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I3:DVDD=avdd;
+	I3:DVSS=agnd;
+	I7:DVDD=avdd;
+	I7:DVSS=agnd;
+	I8:DVDD=avdd;
+	I8:DVSS=agnd;
+	I20:DVDD=avdd;
+	I20:DVSS=agnd;
+	I21:DVSS=agnd;
+	I21:DVDD=avdd;
+$END
+$TIMESTAMP
+	1134103898=7-gpdk0906-pmos2v;
+	1134103898=7-gpdk0906-pmos2v6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308077=5-ether9-inv_1x_hv;
+	1136308078=5-ether9-inv_1x_hv6-symbol;
+	1136308204=5-ether19-blw_dac_inv_eqdelay;
+	1136308205=5-ether19-blw_dac_inv_eqdelay6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	1136387617=verilog.vams;
+$END

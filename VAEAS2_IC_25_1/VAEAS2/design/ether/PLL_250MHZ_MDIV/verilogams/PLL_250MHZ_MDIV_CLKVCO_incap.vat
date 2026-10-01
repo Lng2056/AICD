@@ -1,0 +1,8 @@
+# Table File  : '/project/tsmc13lv98/sims/aptivia/workarea/pll/divider/dcmlib/PLL_250MHZ_MDIV/verilogams/PLL_250MHZ_MDIV_CLKVCO_incap.vat'
+# Result File : 'results/schroeder_sims/PLL_250MHZ_MDIVDCM/configDCM/results/_o_div10_VerilogA_incap_sweep-_o_div10_incap.res'
+# Created on  : 'Wed Jan  7 2004 at 18:05:26'
+
+# dcm_global_VDD_value
+# 	CLKVCO_incap
+2	2.4978e-15 	# keys='2 '
+2.65	2.60737e-15 	# keys='2.65 '

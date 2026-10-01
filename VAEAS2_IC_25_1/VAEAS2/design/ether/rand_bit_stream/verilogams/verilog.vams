@@ -1,0 +1,68 @@
+//Verilog-AMS HDL for "drouillard_ph2", "rand_bit_stream" "verilogams"
+
+
+//--------------------
+// rand_bit_stream
+//
+// -  Random bit stream generator
+//
+// vout:	[V,A]
+//
+// INSTANCE parameters
+//    tperiod     = period of stream [s]
+//    seed        = random number seed []
+//    vlogic_high = output voltage for high [V]
+//    vlogic_low  = output voltage for low  [V]
+//    tdel, trise, tfall = {usual} [s]
+//
+// MODEL parameters
+//    {none}
+//
+// This model generates a random stream of bits.
+//
+`timescale 1ns/1ns
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module rand_bit_stream ( vout );
+
+output vout;
+electrical vout;
+
+// The following value is in nano-seconds
+parameter real tperiod = 1 from (0:inf);		// nano-seconds
+
+parameter real trise=1n;
+parameter real tfall=1n;
+
+parameter integer seed = 5;
+parameter real vlogic_high = 2.5;
+parameter real vlogic_low  = 0 ;
+parameter real tdel=0 from [0:inf);
+
+real next;
+integer bit;
+real vout_val;
+reg clock;
+
+initial begin
+  clock = 0;
+//  bit = 0;
+end
+
+always #(tperiod/2) clock = ~clock;
+//always @(posedge clock) bit = $random(seed);
+
+   analog begin
+         @(initial_step) bit =0;
+         @(posedge clock) bit = ($random(seed) >= 0);
+         vout_val = (vlogic_high - vlogic_low) * bit + vlogic_low;
+//         V(vout) <+ transition(vout_val,tdel,trise,tfall);
+         V(vout) <+ slew(vout_val,2.5e9);
+	 
+   end
+
+
+
+endmodule

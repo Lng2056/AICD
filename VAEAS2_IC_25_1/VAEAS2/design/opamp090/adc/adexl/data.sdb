@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<setupdb>data
+	<active>Active Setup
+		<tests>
+			<test>opamp090:adc:1
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>adc</value>
+					</option>
+					<option>lib
+						<value>opamp090</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+				</tooloptions>
+			</test>
+		</tests>
+	</active>
+	<history>History</history>
+</setupdb>

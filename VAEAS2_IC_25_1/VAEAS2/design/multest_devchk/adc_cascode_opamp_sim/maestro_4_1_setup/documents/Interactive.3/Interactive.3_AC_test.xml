@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="datasheetTestDoc.xsl"?>
+<ROOT enableCpkPerc="disEnable" name="AC_test" mainfnameprefix="Interactive.3" dsCreationDateTime="26 Jun 2025 12:45:50" dsAuthorName="Sai Darshan S Nishani" parasiticsRunMode="None" dsUserName="saidarsh" runMode="Single Run, Sweeps and Corners">
+    <RESULTSSUMMARY>
+        <RSITEM test="AC_test" minVal="42.25" maxVal="42.25" expName="value(mag(VF(&quot;/OUT_AC_3BIT&quot;)) 1000)" resultName="AC_gain_1k" expType="expr"/>
+        <RSITEM test="AC_test" minVal="50.33M" maxVal="50.33M" expName="bandwidth(mag(VF(&quot;/OUT_AC_3BIT&quot;)) 3 &quot;low&quot;)" resultName="AC_BW_3dB" expType="expr"/>
+    </RESULTSSUMMARY>
+    <CORNERSPECS/>
+    <WAVEFORMS>
+        <WAVEFORM test="AC_test" isWaveQuickPlot="false" fileName="dsImg_window_17.1.png"/>
+        <WAVEFORM test="AC_test" isWaveQuickPlot="false" fileName="dsImg_window_17.2.png"/>
+    </WAVEFORMS>
+</ROOT>

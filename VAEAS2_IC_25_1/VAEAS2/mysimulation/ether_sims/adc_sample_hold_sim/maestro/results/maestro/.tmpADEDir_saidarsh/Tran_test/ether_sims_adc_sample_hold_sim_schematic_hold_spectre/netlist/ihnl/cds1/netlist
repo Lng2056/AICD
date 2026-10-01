@@ -1,0 +1,57 @@
+    PM35 (net0165 pbias_cas VDD VDD) gpdk090_pmos2v w=(20u) l=500n as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM2 (net13 pbias VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM6 (pbias pbias_cas net13 net13) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM49 (net80 SIDDQ Iin2 VDD) gpdk090_pmos2v w=(25u) l=280.0n as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    PM51 (net20 SIDDQb VDD VDD) gpdk090_pmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    PM50 (net20 SIDDQ Iin1 VDD) gpdk090_pmos2v w=(25u) l=280.0n as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    PM7 (pbias_cas pbias_cas net0157 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM34 (pbias_cas SIDDQb VDD VDD) gpdk090_pmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    PM9 (net0173 pbias_cas net0165 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM5 (net0157 pbias_cas net0175 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM8 (net0175 pbias_cas net0173 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    NM5 (net20 net80 net92 VSS) gpdk090_nmos2v w=(10u) l=1u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM23 (net80 SIDDQ VSS VSS) gpdk090_nmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    NM28 (pbias SIDDQ VSS VSS) gpdk090_nmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    NM14 (net60 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM15 (pbias net80 net60 VSS) gpdk090_nmos2v w=(25u) l=1u as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    NM11 (net0104 net80 net0108 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM12 (net0108 net80 net0112 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM13 (net0112 net80 VSS VSS) gpdk090_nmos2v w=(20u) l=1u as=12p ad=12p \
+        ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM16 (net80 net80 net0113 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM18 (net0113 net80 net0104 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM10 (net92 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM17 (net96 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM21 (pbias_cas net80 net96 VSS) gpdk090_nmos2v w=(10u) l=1u as=4.5p \
+        ad=3p ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    C1 (VSS net20 VSS VSS) gpdk090_nmos2v w=(33.005u) l=17.5u m=(1)*(1) \
+        simM=(1)*(1)
+    C2 (VSS net20 VSS VSS) gpdk090_nmos2v w=(33.005u) l=17.5u m=(1)*(1) \
+        simM=(1)*(1)
+    C0 (VSS net20 VSS VSS) gpdk090_nmos2v w=(35.365u) l=14u m=(1)*(1) \
+        simM=(1)*(1)
+    I1 (SIDDQ SIDDQb VDD VSS) inv_2x_hv
+ends adc_IREF_bias
+// End of subcircuit definition.

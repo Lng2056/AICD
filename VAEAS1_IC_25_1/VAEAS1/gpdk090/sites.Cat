@@ -1,0 +1,4 @@
+TDMCHECKPOINT="1.0"
+gpdk090/corner type="cell"
+gpdk090/gpdk090site type="cell"
+gpdk090/pad type="cell"

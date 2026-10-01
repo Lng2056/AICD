@@ -1,0 +1,2 @@
+parameters temperature=27 clk_freq=125M ampl=300m cload=250f fsignal=10M \
+    siddq=0 vdd=2.25

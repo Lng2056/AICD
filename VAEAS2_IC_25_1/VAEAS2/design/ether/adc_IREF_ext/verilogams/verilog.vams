@@ -1,0 +1,48 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "adc_IREF_ext" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_IREF_ext ( BIAS100A, BIAS100B, BIAS100C, BIAS100D, BIAS100E, BIAS100F,
+    BIAS100G, BIAS100H, BIAS100V, BIAS100Z, BIAS100fA, BIAS100fB, BIAS50Y, BIAS50f,
+    I100_ext1, I100_ext2, SIDDQ, VDD, VSS );
+
+output	BIAS50f,   BIAS50Y;
+output	BIAS100fA, BIAS100fB;
+output	BIAS100A,  BIAS100B,  BIAS100C, BIAS100D;
+output	BIAS100E,  BIAS100F,  BIAS100G, BIAS100H;
+output	BIAS100V,  BIAS100Z;
+input	I100_ext1, I100_ext2;
+input   SIDDQ;
+input	VDD, VSS;
+
+electrical BIAS50f,   BIAS50Y;
+electrical BIAS100fA, BIAS100fB;
+electrical BIAS100A,  BIAS100B,  BIAS100C, BIAS100D;
+electrical BIAS100E,  BIAS100F,  BIAS100G, BIAS100H;
+electrical BIAS100V,  BIAS100Z;
+electrical I100_ext1, I100_ext2;
+electrical VDD, VSS;
+logic	   SIDDQ;
+
+real i50u, i100u;
+analog begin
+	i50u  = (SIDDQ) ? 0.0: -1.0*(I(I100_ext1)+I(I100_ext2))/4.0;
+	i100u = i50u * 2.0;
+	I(BIAS50f)   <+ i50u;
+	I(BIAS50Y)   <+ i50u;
+	I(BIAS100fA) <+ i100u;
+	I(BIAS100fB) <+ i100u;
+	I(BIAS100A)  <+ i100u;
+	I(BIAS100B)  <+ i100u;
+	I(BIAS100C)  <+ i100u;
+	I(BIAS100D)  <+ i100u;
+	I(BIAS100E)  <+ i100u;
+	I(BIAS100F)  <+ i100u;
+	I(BIAS100G)  <+ i100u;
+	I(BIAS100H)  <+ i100u;
+	I(BIAS100V)  <+ i100u;
+	I(BIAS100Z)  <+ i100u;
+end
+
+endmodule

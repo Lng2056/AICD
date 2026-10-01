@@ -1,0 +1,13 @@
+analysis(tran options method) "Backward Euler (be)"
+analysis(tran options readic) ""
+analysis(tran options dc) "Complete DC (1)"
+analysis(tran options max_subckt) ""
+analysis(tran options max_stop) ""
+analysis(tran options max_start) ""
+analysis(tran options maxstep) ""
+analysis(tran options uic) nil
+analysis(tran options step) "1e-9"
+analysis(tran options start) ""
+analysis(tran fields saveOP) nil
+analysis(tran fields stop) "300n"
+analysis(tran fields enable) (t)

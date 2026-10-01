@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="datasheetMainDoc.xsl"?>
+<ROOT viewMode="assembler" fnameprefix="Interactive.3" enableCpkPerc="disEnable" name="Interactive.3" dsCreationDateTime="26 Jun 2025 12:45:44" dsAuthorName="Sai Darshan S Nishani" parasiticsRunMode="None" dsUserName="saidarsh" runMode="Single Run, Sweeps and Corners">
+    <SETUPSUMMARY lib="multest_devchk" view="maestro_4_1_setup" cell="adc_cascode_opamp_sim"/>
+    <SCHDIAGRAMS exportPath="/servers/esd_noida/saidarsh/VAEAS2/design/multest_devchk/adc_cascode_opamp_sim/maestro_4_1_setup/documents/Interactive.3/"/>
+    <CORNERS/>
+    <VARS>
+        <VAR name="siddq">0</VAR>
+        <VAR name="vdd">2.5</VAR>
+    </VARS>
+    <MODELGROUPS/>
+    <TESTS>
+        <TEST simultor="spectre" state="Interactive.3" lib="multest_devchk" view="sch_dc_ac_2" cell="adc_cascode_opamp_sim">AC_test</TEST>
+        <TEST simultor="spectre" state="Interactive.3" lib="multest_devchk" view="sch_Gain_Vio_CMRR_SR" cell="adc_cascode_opamp_sim">TRAN_test</TEST>
+    </TESTS>
+    <RESULTSSUMMARY>
+        <RSITEM test="AC_test" minVal="42.25" maxVal="42.25" expName="value(mag(VF(&quot;/OUT_AC_3BIT&quot;)) 1000)" resultName="AC_gain_1k" expType="expr"/>
+        <RSITEM test="AC_test" minVal="50.33M" maxVal="50.33M" expName="bandwidth(mag(VF(&quot;/OUT_AC_3BIT&quot;)) 3 &quot;low&quot;)" resultName="AC_BW_3dB" expType="expr"/>
+        <RSITEM test="TRAN_test" minVal="1.508" maxVal="1.508" expName="average(VT(&quot;/Vout2&quot;))" resultName="AvgOut" expType="expr"/>
+    </RESULTSSUMMARY>
+    <TESTDOCS>
+        <TESTDOC testFileName="AC_test" testName="AC_test"/>
+        <TESTDOC testFileName="TRAN_test" testName="TRAN_test"/>
+    </TESTDOCS>
+</ROOT>

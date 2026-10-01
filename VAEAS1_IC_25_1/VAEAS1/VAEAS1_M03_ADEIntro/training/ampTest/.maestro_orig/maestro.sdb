@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<setupdb version="5">maestro
+	<active>Active Setup
+		<corners>
+			<corner enabled="1">_default</corner>
+		</corners>
+		<overwritehistory>0</overwritehistory>
+		<tests>
+			<test>training:ampTest:1
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>ampTest</value>
+					</option>
+					<option>lib
+						<value>training</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+					<option>path
+						<value>$AXL_SETUPDB_DIR</value>
+					</option>
+					<option>state
+						<value>active</value>
+					</option>
+				</tooloptions>
+				<vars>
+					<var>CAP
+						<value>0.8p</value>
+					</var>
+				</vars>
+				<origoptions>
+					<option>cell
+						<value>ampTest</value>
+					</option>
+					<option>lib
+						<value>training</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+				</origoptions>
+			</test>
+		</tests>
+		<extensions>
+			<extension>Parasitics
+				<callback>_parSetupDBExtensionCB</callback>
+				<iconvalue></iconvalue>
+				<icontype></icontype>
+			</extension>
+		</extensions>
+		<currentmode>Single Run, Sweeps and Corners</currentmode>
+		<checksasserts netlist="0">
+			<test netlist="0" netlistscope="all">training:ampTest:1</test>
+		</checksasserts>
+	</active>
+	<history>History</history>
+</setupdb>

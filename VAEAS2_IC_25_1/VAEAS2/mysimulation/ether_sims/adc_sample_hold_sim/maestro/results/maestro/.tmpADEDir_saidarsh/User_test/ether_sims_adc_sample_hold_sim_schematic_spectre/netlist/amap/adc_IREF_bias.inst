@@ -1,0 +1,13 @@
+HEADER
+"PSFversion" "1.00"
+"PM35n PM2n PM6n PM49n PM51n PM50n PM7n PM34n PM9n PM5n PM8n" "gpdk090_pmos2v_spectre"
+"NM5n NM23n NM28n NM14n NM15n NM11n NM12n NM13n NM16n NM18n NM10n NM17n NM21n" "gpdk090_nmos2v_spectre"
+"C1n C2n C0n" "gpdk090_nmoscap2v_spectre"
+"I1n" "inv_2x_hv"
+"Iin1v" ":1v"
+"Iin2v" ":2v"
+"SIDDQv" ":3v"
+"VDDv" ":4v"
+"VSSv" ":5v"
+"pbiasv" ":6v"
+"pbias_casv" ":7v"

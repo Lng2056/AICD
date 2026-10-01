@@ -1,0 +1,33 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "PLL_ARST" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module PLL_ARST ( LFTAP, VDD, VSS, Ibias, COMP, PD );
+
+  input VSS;
+  input LFTAP;
+  output COMP;
+  input VDD;
+  input PD;
+  input Ibias;
+
+  electrical VDD, VSS, LFTAP, Ibias;
+  logic	     PD, COMP;
+  reg	     COMP;
+
+  real	     threshold;
+
+  initial COMP = 1'b0;
+
+  analog begin
+     threshold = 0.82 * V(VDD,VSS);
+  end  // analog
+
+  always @(cross(V(LFTAP,VSS)-threshold,+1))
+    COMP = 1'b1;
+
+  always @(cross(V(LFTAP,VSS)-threshold-100m,-1))
+    COMP = 1'b0;
+
+endmodule

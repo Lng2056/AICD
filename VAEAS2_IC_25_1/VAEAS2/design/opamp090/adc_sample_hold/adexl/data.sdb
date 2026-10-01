@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<setupdb>data
+	<active>Active Setup
+		<tests>
+			<test>ether:adc_sample_hold:1
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>adc_sample_hold</value>
+					</option>
+					<option>lib
+						<value>ether</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+				</tooloptions>
+			</test>
+		</tests>
+	</active>
+	<history>History</history>
+</setupdb>

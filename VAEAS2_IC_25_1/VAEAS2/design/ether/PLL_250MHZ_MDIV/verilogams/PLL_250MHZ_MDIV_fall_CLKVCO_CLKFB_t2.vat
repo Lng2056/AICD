@@ -1,0 +1,8 @@
+# Table File  : '/project/tsmc13lv98/sims/aptivia/workarea/pll/divider/dcmlib/PLL_250MHZ_MDIV/verilogams/PLL_250MHZ_MDIV_fall_CLKVCO_CLKFB_t2.vat'
+# Result File : 'results/schroeder_sims/PLL_250MHZ_MDIVDCM/configDCM/results/_o_div10_VerilogA_timing_sweep-_o_div10_timing.res'
+# Created on  : 'Wed Jan  7 2004 at 18:05:26'
+
+# dcm_global_VDD_value
+# 	fall_CLKVCO_CLKFB:t2
+2	8.66571e-10 	# keys='2 '
+2.65	6.95763e-10 	# keys='2.65 '

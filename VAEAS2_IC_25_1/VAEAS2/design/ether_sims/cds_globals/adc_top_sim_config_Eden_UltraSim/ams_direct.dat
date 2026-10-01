@@ -1,0 +1,26 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$GLOBAL_SIGNALS
+	VDD!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	VSS!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	gnd!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd4-true5-alias5-false5-alsIx1-0;
+$END
+$TIMESTAMP
+	1099597200000=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	basefx_dis:4-user5-false11-inUseByCDBA4-true4-type4-real5-value4-dvdd14-valueSetInForm5-false9-CDBAValue4-dvdd;
+	base100tx_dis:4-user5-false11-inUseByCDBA4-true4-type4-real5-value1-014-valueSetInForm5-false9-CDBAValue1-0;
+	clk_freq:4-user5-false11-inUseByCDBA4-true4-type4-real5-value5-125e614-valueSetInForm5-false9-CDBAValue5-125e6;
+	clk_slew:4-user5-false11-inUseByCDBA4-true4-type4-real5-value4-100p14-valueSetInForm5-false9-CDBAValue4-100p;
+	Cout:4-user5-false11-inUseByCDBA4-true4-type4-real5-value4-100f14-valueSetInForm5-false9-CDBAValue4-100f;
+	dvdd:4-user5-false11-inUseByCDBA4-true4-type4-real5-value1-114-valueSetInForm5-false9-CDBAValue1-1;
+	in_freq:4-user5-false11-inUseByCDBA4-true4-type4-real5-value7-56.64e614-valueSetInForm5-false9-CDBAValue7-56.64e6;
+	in_freq_ampl:4-user5-false11-inUseByCDBA4-true4-type4-real5-value3-0.214-valueSetInForm4-true9-CDBAValue2-.2;
+	in_freq_dc:4-user5-false11-inUseByCDBA4-true4-type4-real5-value5-0.76514-valueSetInForm5-false9-CDBAValue5-0.765;
+	isr_100u:4-user5-false11-inUseByCDBA4-true4-type4-real5-value3-97u14-valueSetInForm5-false9-CDBAValue3-97u;
+	siddq:4-user5-false11-inUseByCDBA4-true4-type4-real5-value1-014-valueSetInForm5-false9-CDBAValue1-0;
+	test_enable:4-user5-false11-inUseByCDBA4-true4-type4-real5-value1-014-valueSetInForm5-false9-CDBAValue1-0;
+	vdd:4-user5-false11-inUseByCDBA4-true4-type4-real5-value5-2.37514-valueSetInForm5-false9-CDBAValue5-2.375;
+$END

@@ -1,0 +1,10 @@
+# Table File  : '/usr1/volden/etherPhy90/design/custom_cdba/VSdE_Workspace/VCME_PLL/dcmlib/PLL_250MHZ_MDIV/veriloga/PLL_250MHZ_MDIV_fall_CLKVCO_CLKFB_delay.vat'
+# Result File : 'results/ether/PLL_250MHZ_MDIVDCM/configDCM/results/divider_VerilogA_timing_sweep-divider_timing.res'
+# Created on  : 'Mon Dec 13 2004 at 15:26:53'
+# Created by  : 'volden'
+
+# dcm_global_VDD_value
+# 	fall_CLKVCO_CLKFB:delay
+2.4	7.60552e-10 	# keys='2.4'
+2.5	7.22861e-10 	# keys='2.5'
+2.6	6.89158e-10 	# keys='2.6'

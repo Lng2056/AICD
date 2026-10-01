@@ -1,0 +1,195 @@
+text Metal9_p_text attach Metal9_p metal9_conn
+text Metal9_p_pintext attach Metal9_p metal9_conn
+text Metal8_p_text attach Metal8_p metal8_conn
+text Metal8_p_pintext attach Metal8_p metal8_conn
+text Metal7_p_text attach Metal7_p metal7_conn
+text Metal7_p_pintext attach Metal7_p metal7_conn
+text Metal6_p_text attach Metal6_p metal6_conn
+text Metal6_p_pintext attach Metal6_p metal6_conn
+text Metal5_p_text attach Metal5_p metal5_conn
+text Metal5_p_pintext attach Metal5_p metal5_conn
+text Metal4_p_text attach Metal4_p metal4_conn
+text Metal4_p_pintext attach Metal4_p metal4_conn
+text Metal3_p_text attach Metal3_p metal3_conn
+text Metal3_p_pintext attach Metal3_p metal3_conn
+text Metal2_p_text attach Metal2_p metal2_conn
+text Metal2_p_pintext attach Metal2_p metal2_conn
+text Metal1_p_text attach Metal1_p metal1_conn
+text Metal1_p_pintext attach Metal1_p metal1_conn
+connect Bondpad metal9_conn by bp_tap
+connect Metal9_p metal9_conn by Metal9_v
+connect metal9_conn metal8_conn by Via8
+connect Metal8_p metal8_conn by Metal8_v
+connect metal8_conn metal7_conn by Via7
+connect Metal7_p metal7_conn by Metal7_v
+connect metal7_conn metal6_conn by Via6
+connect Metal6_p metal6_conn by Metal6_v
+connect metal6_conn metal5_conn by Via5
+connect Metal5_p metal5_conn by Metal5_v
+connect metal5_conn metal4_conn by Via4
+connect Metal4_p metal4_conn by Metal4_v
+connect metal4_conn metal3_conn by Via3
+connect Metal3_p metal3_conn by Metal3_v
+connect metal3_conn CapMetal by via2_cap
+connect metal3_conn metal2_conn by via2_out_capInd
+connect Metal2_p metal2_conn by Metal2_v
+connect metal2_conn metal1_conn by Via1
+connect metal2_conn ind_term1 by ind_term1_tap
+connect metal2_conn ind_term2 by ind_term2_tap
+connect Metal1_p metal1_conn by Metal1_v
+connect metal1_conn poly_conn by cont_poly
+connect metal1_conn pdiff_conn by cont_pdiff
+connect metal1_conn ndiff_conn by cont_ndiff
+connect metal1_conn npn_emit by cont_emit
+connect metal1_conn npn_base by cont_base
+connect metal1_conn npn_coll by cont_coll
+stamp ptap by pdiff_conn
+stamp psubstrate by ptap
+stamp ntap by ndiff_conn
+stamp nwell_conn by ntap
+stamp nb_tap by nwell_conn
+stamp Nburied by nb_tap
+model=mos[nmos1v],nmos1v
+dfiimodel=mos[nmos1v],nmos1v
+element mos[nmos1v] _nmos_12_MOS_559 poly_conn ndiff_conn psubstrate 
+model=mos[nmos1v_hvt],nmos1v_hvt
+dfiimodel=mos[nmos1v_hvt],nmos1v_hvt
+element mos[nmos1v_hvt] _nmos_12_hvt_MOS_587 poly_conn ndiff_conn psubstrate 
+model=generic[nmos1v_iso],nmos1v_iso
+dfiimodel=generic[nmos1v_iso],nmos1v_iso
+element generic[nmos1v_iso] _nmos_12_iso_Device_617 poly_conn[G] ndiff_conn[S] ndiff_conn[D] psubstrate[B] Nburied[T] 
+model=mos[nmos1v_nat],nmos1v_nat
+dfiimodel=mos[nmos1v_nat],nmos1v_nat
+element mos[nmos1v_nat] _nmos_12_native_MOS_645 poly_conn ndiff_conn psubstrate 
+model=mos[nmos2v],nmos2v
+dfiimodel=mos[nmos2v],nmos2v
+element mos[nmos2v] _nmos_25_MOS_673 poly_conn ndiff_conn psubstrate 
+model=mos[nmos2v_nat],nmos2v_nat
+dfiimodel=mos[nmos2v_nat],nmos2v_nat
+element mos[nmos2v_nat] _nmos_25_native_MOS_701 poly_conn ndiff_conn psubstrate 
+model=mos[pmos1v],pmos1v
+dfiimodel=mos[pmos1v],pmos1v
+element mos[pmos1v] _pmos_12_MOS_729 poly_conn pdiff_conn nwell_conn 
+model=mos[pmos1v_hvt],pmos1v_hvt
+dfiimodel=mos[pmos1v_hvt],pmos1v_hvt
+element mos[pmos1v_hvt] _pmos_12_hvt_MOS_757 poly_conn pdiff_conn nwell_conn 
+model=mos[pmos2v],pmos2v
+dfiimodel=mos[pmos2v],pmos2v
+element mos[pmos2v] _pmos_25_MOS_785 poly_conn pdiff_conn nwell_conn 
+model=mos[pmoscap1v],pmoscap1v
+dfiimodel=mos[pmoscap1v],pmoscap1v
+element mos[pmoscap1v] _pmoscap_12_MOS_813 poly_conn pdiff_conn nwell_conn 
+model=mos[pmoscap2v],pmoscap2v
+dfiimodel=mos[pmoscap2v],pmoscap2v
+element mos[pmoscap2v] _pmoscap_25_MOS_837 poly_conn pdiff_conn nwell_conn 
+model=mos[pmoscap1v3],pmoscap1v3
+dfiimodel=mos[pmoscap1v3],pmoscap1v3
+element mos[pmoscap1v3] _pmoscap_12_3_MOS_861 poly_conn pdiff_conn nwell_conn 
+model=mos[pmoscap2v3],pmoscap2v3
+dfiimodel=mos[pmoscap2v3],pmoscap2v3
+element mos[pmoscap2v3] _pmoscap_25_3_MOS_885 poly_conn pdiff_conn nwell_conn 
+model=mos[nmoscap1v],nmoscap1v
+dfiimodel=mos[nmoscap1v],nmoscap1v
+element mos[nmoscap1v] _nmoscap_12_MOS_909 poly_conn ndiff_conn psubstrate 
+model=mos[nmoscap2v],nmoscap2v
+dfiimodel=mos[nmoscap2v],nmoscap2v
+element mos[nmoscap2v] _nmoscap_25_MOS_933 poly_conn ndiff_conn psubstrate 
+model=mos[nmoscap1v3],nmoscap1v3
+dfiimodel=mos[nmoscap1v3],nmoscap1v3
+element mos[nmoscap1v3] _nmoscap_12_3_MOS_957 poly_conn ndiff_conn psubstrate 
+model=mos[nmoscap2v3],nmoscap2v3
+dfiimodel=mos[nmoscap2v3],nmoscap2v3
+element mos[nmoscap2v3] _nmoscap_25_3_MOS_981 poly_conn ndiff_conn psubstrate 
+model=res[ressndiff],ressndiff
+dfiimodel=res[ressndiff],ressndiff
+element res[ressndiff] _rndiff_RES_1003 ndiff_conn psubstrate 
+model=res[resnsndiff],resnsndiff
+dfiimodel=res[resnsndiff],resnsndiff
+element res[resnsndiff] _rndiff_nosal_RES_1042 ndiff_conn psubstrate 
+model=res[ressnpoly],ressnpoly
+dfiimodel=res[ressnpoly],ressnpoly
+element res[ressnpoly] _rnpoly_RES_1081 poly_conn psubstrate 
+model=res[ressnpoly_av2],ressnpoly
+dfiimodel=res[ressnpoly_av2],ressnpoly
+element res[ressnpoly_av2] _rnpolynw_RES_1120 poly_conn nwell_conn 
+model=res[resnsnpoly],resnsnpoly
+dfiimodel=res[resnsnpoly],resnsnpoly
+element res[resnsnpoly] _rnpoly_nosal_RES_1159 poly_conn psubstrate 
+model=res[resnsnpoly_av2],resnsnpoly
+dfiimodel=res[resnsnpoly_av2],resnsnpoly
+element res[resnsnpoly_av2] _rnpolynw_nosal_RES_1198 poly_conn nwell_conn 
+model=res[resspdiff],resspdiff
+dfiimodel=res[resspdiff],resspdiff
+element res[resspdiff] _rpdiff_RES_1237 pdiff_conn nwell_conn 
+model=res[resnspdiff],resnspdiff
+dfiimodel=res[resnspdiff],resnspdiff
+element res[resnspdiff] _rpdiff_nosal_RES_1276 pdiff_conn nwell_conn 
+model=res[ressppoly],ressppoly
+dfiimodel=res[ressppoly],ressppoly
+element res[ressppoly] _rppoly_RES_1315 poly_conn psubstrate 
+model=res[ressppoly_av2],ressppoly
+dfiimodel=res[ressppoly_av2],ressppoly
+element res[ressppoly_av2] _rppolynw_RES_1354 poly_conn nwell_conn 
+model=res[resnsppoly],resnsppoly
+dfiimodel=res[resnsppoly],resnsppoly
+element res[resnsppoly] _rppoly_nosal_RES_1393 poly_conn psubstrate 
+model=res[resnsppoly_av2],resnsppoly
+dfiimodel=res[resnsppoly_av2],resnsppoly
+element res[resnsppoly_av2] _rppolynw_nosal_RES_1432 poly_conn nwell_conn 
+model=res[resnwsti],resnwsti
+dfiimodel=res[resnwsti],resnwsti
+element res[resnwsti] _rnwellsti_RES_1471 nwell_conn psubstrate 
+model=res[resnwoxide],resnwoxide
+dfiimodel=res[resnwoxide],resnwoxide
+element res[resnwoxide] _rnwellod_RES_1510 nwell_conn psubstrate 
+model=res[resm1],resm1
+dfiimodel=res[resm1],resm1
+element res[resm1] _resm1_RES_1547 metal1_conn 
+model=res[resm2],resm2
+dfiimodel=res[resm2],resm2
+element res[resm2] _resm2_RES_1584 metal2_conn 
+model=res[resm3],resm3
+dfiimodel=res[resm3],resm3
+element res[resm3] _resm3_RES_1621 metal3_conn 
+model=res[resm4],resm4
+dfiimodel=res[resm4],resm4
+element res[resm4] _resm4_RES_1658 metal4_conn 
+model=res[resm5],resm5
+dfiimodel=res[resm5],resm5
+element res[resm5] _resm5_RES_1695 metal5_conn 
+model=res[resm6],resm6
+dfiimodel=res[resm6],resm6
+element res[resm6] _resm6_RES_1732 metal6_conn 
+model=res[resm7],resm7
+dfiimodel=res[resm7],resm7
+element res[resm7] _resm7_RES_1769 metal7_conn 
+model=res[resm8],resm8
+dfiimodel=res[resm8],resm8
+element res[resm8] _resm8_RES_1806 metal8_conn 
+model=res[resm9],resm9
+dfiimodel=res[resm9],resm9
+element res[resm9] _resm9_RES_1843 metal9_conn 
+model=diode[ndio],ndio
+dfiimodel=diode[ndio],ndio
+element diode[ndio] _ndio_DIODE_1882 psubstrate ndiff_conn 
+model=diode[pdio],pdio
+dfiimodel=diode[pdio],pdio
+element diode[pdio] _pdio_DIODE_1889 pdiff_conn nwell_conn 
+model=bjt[vpnp2],vpnp2
+dfiimodel=bjt[vpnp2],vpnp2
+element bjt[vpnp2] _vpnp2_BJT_1898 psubstrate nwell_conn pdiff_conn 
+model=bjt[vpnp5],vpnp5
+dfiimodel=bjt[vpnp5],vpnp5
+element bjt[vpnp5] _vpnp5_BJT_1907 psubstrate nwell_conn pdiff_conn 
+model=bjt[vpnp10],vpnp10
+dfiimodel=bjt[vpnp10],vpnp10
+element bjt[vpnp10] _vpnp10_BJT_1916 psubstrate nwell_conn pdiff_conn 
+model=bjt[pnp],pnp
+dfiimodel=bjt[pnp],pnp
+element bjt[pnp] _pnp_BJT_1925 psubstrate nwell_conn pdiff_conn 
+model=bjt[npn],npn
+dfiimodel=bjt[npn],npn
+element bjt[npn] _npn_BJT_1934 npn_coll npn_base npn_emit 
+model=cap[mimcap],mimcap
+dfiimodel=cap[mimcap],mimcap
+element cap[mimcap] MIMCAP_CAP_1941 CapMetal metal2_conn 

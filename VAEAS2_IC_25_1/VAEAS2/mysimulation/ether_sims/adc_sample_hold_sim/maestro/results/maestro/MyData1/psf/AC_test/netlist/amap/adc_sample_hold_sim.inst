@@ -1,0 +1,11 @@
+HEADER
+"PSFversion" "1.00"
+"I33n" "adc_IREF_ext"
+"I1n" "adc_sample_hold"
+"R11n R1n" "resnsnpoly_pcell_0"
+"R5n R2n R3n R0n R4n" "analogLib_res_spectre"
+"E1n E0n" "analogLib_vcvs_spectre"
+"V23n V14n" "analogLib_vsin_spectre"
+"C0n" "analogLib_cap_spectre"
+"I15n I16n" "analogLib_idc_spectre"
+"V8n V9n V26n V1n V2n V7n V4n V5n V25n" "analogLib_vdc_spectre"

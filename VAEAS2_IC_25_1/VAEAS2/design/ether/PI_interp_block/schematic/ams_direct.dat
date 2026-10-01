@@ -1,0 +1,17 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1136308094=5-ether18-PI_interp_tap_cell;
+	1136308094=5-ether18-PI_interp_tap_cell6-symbol;
+	-1=5-ether14-PI_interp_cell;
+	1136308096=5-ether14-PI_interp_cell6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	1136387693=verilog.vams;
+$END

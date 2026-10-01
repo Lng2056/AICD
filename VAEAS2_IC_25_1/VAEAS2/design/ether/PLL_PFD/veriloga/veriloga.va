@@ -1,0 +1,109 @@
+// Verilog-A model created  Mon Dec 13 2004 15:51:03
+// Using VCME version 04.10.2.1 by user volden
+// The user accepts full responsibility for the use of this model.
+`include "disciplines.h"
+module PLL_PFD(DN,UP,FBCLK,REFCLK,PD,VDD,VSS,global_VSS,global_VDD);
+output     UP,DN;
+input      FBCLK,REFCLK,PD;
+input           (* integer inh_conn_prop_name="DVSS";
+         integer inh_conn_def_value="cds_globals.\\VSS! "; *) global_VSS;
+input           (* integer inh_conn_prop_name="DVDD";
+         integer inh_conn_def_value="cds_globals.\\VDD! "; *) global_VDD;
+inout      VDD,VSS;
+electrical DN,UP,FBCLK,REFCLK,PD,VDD,VSS,global_VSS,global_VDD;
+parameter real ttol = 1e-12;
+real       dead_region, dead_time,REFCLK_last,FBCLK_last;
+real UP_reset,UP_rise,UP_fall,UP_delay,
+			REFCLK_UP_tran_delay,
+		   FBCLK_UP_tran_delay;
+integer UP_fun;
+real PD_thr;
+real REFCLK_thr;
+real FBCLK_thr;
+real DN_reset,DN_rise,DN_fall,DN_delay,
+		   REFCLK_DN_tran_delay,
+           FBCLK_DN_tran_delay;
+ 
+integer DN_fun;
+real       VSS_value,global_VSS_value,VDD_value,thr;
+analog begin
+	VSS_value=V(VSS);
+	global_VSS_value=V(global_VSS);
+	VDD_value=V(VDD);
+	thr=VDD_value/2.0;
+	I(FBCLK,VSS) <+ ddt($table_model(VDD_value,"PLL_PFD_FBCLK_incap.vat","")*V(FBCLK,VSS));
+	I(REFCLK,VSS) <+ ddt($table_model(VDD_value,"PLL_PFD_REFCLK_incap.vat","")*V(REFCLK,VSS));
+	I(PD,VSS) <+ ddt($table_model(VDD_value,"PLL_PFD_PD_incap.vat","")*V(PD,VSS));
+	@(initial_step) begin
+	UP_rise=1e-9;
+	UP_fall=1e-9;
+	UP_fun=0;
+	DN_rise=1e-9;
+	DN_fall=1e-9;
+	DN_fun=0;
+	end
+ 
+	PD_thr=(VDD_value/2.0);
+ 
+	REFCLK_thr=(VDD_value/2.0);
+	FBCLK_thr=(VDD_value/2.0);
+ 
+	@(cross(V(PD)-PD_thr,+1)) begin
+		UP_delay=1e-9;
+		UP_fun=0;
+		DN_delay=1e-9;
+		DN_fun=0;
+		end
+ 
+	REFCLK_last = last_crossing(V(REFCLK)-REFCLK_thr,+1);
+	@(cross(V(REFCLK)-REFCLK_thr,+1,ttol)) if (V(PD)<PD_thr)  begin
+ 
+		if (($abstime>dead_region) && !UP_fun) begin
+			if (!DN_fun) begin
+				REFCLK_UP_tran_delay=$table_model(VDD_value,"PLL_PFD_REFCLK_tran_UP_delay.vat","");
+				UP_rise=$table_model(VDD_value,"PLL_PFD_REFCLK_tran_UP_slope.vat","")*0.5;
+				UP_delay=max((REFCLK_UP_tran_delay-UP_rise),0);
+				UP_fun=1;
+ 
+			end
+			else begin
+				dead_time=$table_model(VDD_value,"PLL_PFD_dead_time.vat","");
+				dead_region=REFCLK_last+2*dead_time;
+				REFCLK_DN_tran_delay=$table_model(VDD_value,"PLL_PFD_REFCLK_tran_DN_delay.vat","");
+				DN_fall=$table_model(VDD_value,"PLL_PFD_REFCLK_tran_DN_slope.vat","")*0.5;
+				DN_reset=max(DN_reset,REFCLK_last+REFCLK_DN_tran_delay-DN_fall);
+			end
+		end
+	end
+	FBCLK_last = last_crossing(V(FBCLK)-FBCLK_thr,+1);
+ 
+	@(cross(V(FBCLK)-FBCLK_thr,+1,ttol)) if (V(PD)<PD_thr)  begin
+ 
+		if (($abstime>dead_region) && !DN_fun) begin
+			if (!UP_fun) begin
+				FBCLK_DN_tran_delay=$table_model(VDD_value,"PLL_PFD_FBCLK_tran_DN_delay.vat","");
+				DN_rise=$table_model(VDD_value,"PLL_PFD_FBCLK_tran_DN_slope.vat","")*0.5;
+				DN_delay=max((FBCLK_DN_tran_delay-DN_rise),0);
+				DN_fun=1;
+			end
+			else begin
+				dead_time=$table_model(VDD_value,"PLL_PFD_dead_time.vat","");
+				dead_region=FBCLK_last+2*dead_time;
+				FBCLK_UP_tran_delay=$table_model(VDD_value,"PLL_PFD_FBCLK_tran_UP_delay.vat","");
+				UP_fall=$table_model(VDD_value,"PLL_PFD_FBCLK_tran_UP_slope.vat","")*0.5;
+				UP_reset=max(UP_reset,FBCLK_last+FBCLK_UP_tran_delay-UP_fall);
+			end
+		end
+	end
+	@(timer(UP_reset)) begin
+		UP_fun=0;
+		UP_delay=0.0;
+	end
+	@(timer(DN_reset)) begin
+		DN_fun=0;
+		DN_delay=0.0;
+	end
+V(UP)<+transition(UP_fun?VDD_value:0,UP_delay,UP_rise*2.0,UP_fall*2.0);
+V(DN)<+transition(DN_fun?VDD_value:0,DN_delay,DN_rise*2.0,DN_fall*2.0);
+end
+endmodule

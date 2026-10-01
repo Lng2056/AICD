@@ -1,0 +1,83 @@
+
+/****************************************************************************
+ 
+****************************************************************************/
+`include "disciplines.vams"
+
+connectmodule logic2elect25a(dVal, aVal);
+  input dVal;
+  output aVal;
+  logic dVal;
+  electrical aVal;
+
+  parameter ron = 0.1  // Output resistance when in active state
+            from (0:inf];
+  parameter roff = 100M  // Output resistance when in 'Z' state
+            from (0:inf];
+
+  parameter trise = 400p;  // rise and fall times
+  parameter tfall = 400p;
+  parameter tdelay = 0.0;
+
+  real a;
+  real rout;      // real variable, to hold actual output resistance
+
+  reg dValTwoState; // dVal mapped from quad state (0,1,x,z to two-state
+                    // Mapping: 0,x,z->0, 1->1
+
+  assign dVal = dVal;		// direct driver-receiver propagation
+
+  analog begin
+    // make a decision on what the analog output should be
+    a = (dValTwoState == 1) ? 2.5 : 0.0;
+
+    // and transition it, using 1ns rise/fall/delay times
+    V(aVal) <+ transition(a,tdelay,trise,tfall) + rout*I(aVal);
+//    V(aVal) <+ transition(a,tdelay,trise,tfall) ;
+  end
+
+  initial begin
+     // Initialize dValTwoState using mapping
+    case(dVal)
+    1'b0:  begin
+	dValTwoState = 0;
+    	rout = ron;
+      end
+    1'b1: begin 
+	dValTwoState = 1;
+    	rout = ron;
+      end
+    1'bx: begin
+	dValTwoState = 0;
+    	rout = ron;
+      end
+    1'bz: begin 
+	dValTwoState = 0;
+    	rout = roff;
+      end
+    endcase
+  end
+
+  always @dVal begin
+    // Remap dVal to dValTwoState everytime dVal changes.
+    case(dVal)
+    1'b0: begin
+	dValTwoState = 0;
+               rout = ron;
+      end
+    1'b1: begin
+	 dValTwoState = 1;
+               rout = ron;
+      end
+    1'bx: begin 
+	dValTwoState = 0;
+               rout = ron;
+      end
+    1'bz: begin
+	dValTwoState = 0;
+               rout = roff;   // high output impedance in 'Z' state
+      end
+    endcase
+  end
+
+endmodule

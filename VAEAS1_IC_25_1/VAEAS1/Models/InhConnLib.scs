@@ -1,0 +1,22 @@
+;library InhConnLib.scs
+
+;section=cmos
+
+simulator lang=spectre
+
+model nmos mos3 type=n vto=0.7 kp=42e-6 gamma=0.36 cgso=2.4e-10 
++ cgdo=2.4e-10 cj=2.66e-4 mj=0.49 cjsw=1.81e-10 mjsw=0.4 js=1e-8 
++ tox=0.025u nsub=1.13e16 nfs=1e10 ld=0.1u uo=450  
++ vmax=60000
+
+model pmos mos3 type=p
++ tox=20e-9 uo=160 vto=-0.82 nfs=1e11 nsub=4.2e16 
++ vmax=180k  xj=0.225e-6 
++ rss=1.5e-3 rdd=1.5e-3 rs=0 rd=0 
++ ld=0.11e-6 delta=0.47 theta=0.10 eta=0.01 kappa=2 
++ cj=0.354e-3 mj=0.328 cjsw=0.226e-9 mjsw=0.27 pb=0.65 
++ cgdo=0.283e-9 cgso=0.283e-9 js=120e-9 is=0 
++ wd=0.28e-6  kf=4.180e-28  af=1.160 
+
+;endsection
+;endlibrary

@@ -1,0 +1,18 @@
+HOW TO RUN THE FILL ROUTINES ON THE FINISHED CHIP
+
+1. Call up the chip design topcell layout in read only mode.
+
+2. Edit the "fill.rsf" file located in the PDK assura directory.
+
+3. Replace the "TOPCELL_LIBRARY_NAME" with the name of the chip design library.
+
+4. Call up the Assura DRC run form.
+
+5. Choose the "fill" techruleset.
+
+6. By default "prBoundary" "drawing will be used as the fill area.  
+   If you want to do the whole chip, choose the "useBackground" switch.
+
+7. Execute DRC and refresh database after completion.
+
+8. Rerun DRC, Density, and LVS checks to verify results.

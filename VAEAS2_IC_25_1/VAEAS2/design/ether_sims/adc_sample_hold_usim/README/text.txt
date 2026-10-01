@@ -1,0 +1,16 @@
+Simulation  :   adc_sample_hold_USIM
+Purpose     :   Test case for UltraSim for PCR650123
+
+States	    :	tt_resana, tt_rphpoly
+
+Description :   This test bench was created as a testcase for PCR650123. The
+purpose of this testbench was to compare the speed of simulation between the
+case when rphpoly resistors from the tsmc13lv PDK were used versus the case when
+resistors from the analogLib library were used. The test bench
+schematic_usim_resana corresponds to the testcase which uses analogLib
+resistors. The test bench schematic schematic_usim_rphpoly corresponds to the
+testcase which uses rphpoly resistors from the tsmc13lv PDK. The results were
+uploaded to PCR650123 database.
+
+The test bench which is used for verification of adc_sample_hold circuit is
+adc_sample_hold_SIM

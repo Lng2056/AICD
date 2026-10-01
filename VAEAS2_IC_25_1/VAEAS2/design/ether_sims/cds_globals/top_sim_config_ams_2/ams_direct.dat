@@ -1,0 +1,17 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$GLOBAL_SIGNALS
+	VDD!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	VSS!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	gnd!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd4-true5-alias5-false5-alsIx1-0;
+$END
+$TIMESTAMP
+	1105576998000=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	vdd_1p0:4-user5-false11-inUseByCDBA4-true4-type4-real5-value3-1.014-valueSetInForm4-true;
+	vdd_nom:4-user5-false11-inUseByCDBA4-true4-type4-real5-value3-2.514-valueSetInForm4-true;
+	freq:4-user4-true11-inUseByCDBA5-false4-type4-real5-value10-4.16667E+814-valueSetInForm4-true;
+	fvco:4-user4-true11-inUseByCDBA5-false4-type4-real5-value6-2.5E+914-valueSetInForm4-true;
+$END

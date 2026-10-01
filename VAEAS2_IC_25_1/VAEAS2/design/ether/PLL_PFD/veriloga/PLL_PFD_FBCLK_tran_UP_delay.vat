@@ -1,0 +1,10 @@
+# Table File  : '/usr1/volden/etherPhy90/design/custom_cdba/VSdE_Workspace/VCME_PLL/dcmlib/PLL_PFD/veriloga/PLL_PFD_FBCLK_tran_UP_delay.vat'
+# Result File : 'results/ether/PLL_PFDDCM/configDCM/results/phase_frequency_detector_VerilogA_timing_sweep-phase_frequency_detector_timing.res'
+# Created on  : 'Mon Dec 13 2004 at 15:54:35'
+# Created by  : 'volden'
+
+# dcm_VDD_value
+# 	FBCLK_tran_UP:delay
+2.4	2.64499e-09 	# keys='2.4'
+2.5	2.50307e-09 	# keys='2.5'
+2.6	2.3773e-09 	# keys='2.6'

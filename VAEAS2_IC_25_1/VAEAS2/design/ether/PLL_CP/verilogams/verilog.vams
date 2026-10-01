@@ -1,0 +1,74 @@
+//Verilog-AMS HDL for "tsmc13fLucy_rt", "PLL_CP" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module PLL_CP ( CP_ITEST_25u, OUT, IPLY_25u, DN, PD, UP, VDD, VSS );
+
+  input VSS;
+  input IPLY_25u;
+  output OUT;
+  input VDD;
+  input DN;
+  input PD;
+  input UP;
+  output CP_ITEST_25u;
+
+  logic      UP,     DN,     
+	     PD;
+  electrical VSS,    IPLY_25u,
+	     OUT,    VDD,
+	     CP_ITEST_25u;
+
+  
+
+  real    Vsupply, upDelay, dnDelay,
+          upReal, dnReal;
+  integer Vflag;
+
+  parameter real delayToOutput = 100.0p;
+  parameter real RoutP         = 600.0k;
+  parameter real RoutN         = 500.0k;
+  parameter real tailCurrent   = 30u;
+
+  analog
+  begin
+    Vsupply = V(VDD,VSS);
+    Vflag = (Vsupply > 2.0);
+    upDelay  = absdelay(upReal,delayToOutput,400p);
+    dnDelay  = absdelay(dnReal,delayToOutput,400p);
+    
+    if(Vflag && (upDelay > 0.2)) begin
+      I(OUT) <+ -tailCurrent + V(VDD,OUT)/RoutP;
+    end
+    else begin
+      I(OUT) <+ 0.0;
+    end
+
+    if(Vflag && (dnDelay > 0.2)) begin
+      I(OUT) <+ tailCurrent - V(OUT,VSS)/RoutN;                 
+    end
+    else begin
+      I(OUT) <+ 0.0;     
+    end       
+  end  // analog
+        
+
+   always @(UP) begin
+      case(UP)
+        1'b0: upReal = 0;
+        1'b1: upReal = 1;
+        1'bx: upReal = 0;
+        1'bz: upReal = 0;
+      endcase
+   end  // always
+   always @(DN) begin
+      case(DN)
+        1'b0: dnReal = 0;
+        1'b1: dnReal = 1;
+        1'bx: dnReal = 0;
+        1'bz: dnReal = 0;
+      endcase
+   end  // always      
+	     
+endmodule

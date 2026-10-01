@@ -1,0 +1,319 @@
+savedComponent = (let
+(tmp1 tmp2)
+tmp1 = (let
+(tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7)
+(unless tmp1
+tmp1 = make_sevOutputStruct()
+)
+(unless tmp1
+tmp1 = (ncons nil)
+)
+tmp1->inLastSet = nil
+tmp1->name = nil
+tmp1->expression = nil
+tmp1->signal = "/A1_5V"
+tmp1->type = 'net
+tmp1->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y4"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp1->value = nil
+tmp1->plot = 't
+tmp1->save = 't
+tmp1->march = nil
+tmp1->index = 1
+(unless tmp2
+tmp2 = make_sevOutputStruct()
+)
+(unless tmp2
+tmp2 = (ncons nil)
+)
+tmp2->inLastSet = nil
+tmp2->name = nil
+tmp2->expression = nil
+tmp2->signal = "/B1_3V"
+tmp2->type = 'net
+tmp2->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y2"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp2->value = nil
+tmp2->plot = 't
+tmp2->save = 't
+tmp2->march = nil
+tmp2->index = 2
+(unless tmp3
+tmp3 = make_sevOutputStruct()
+)
+(unless tmp3
+tmp3 = (ncons nil)
+)
+tmp3->inLastSet = nil
+tmp3->name = nil
+tmp3->expression = nil
+tmp3->signal = "/C1_3V"
+tmp3->type = 'net
+tmp3->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y5"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp3->value = nil
+tmp3->plot = 't
+tmp3->save = 't
+tmp3->march = nil
+tmp3->index = 3
+(unless tmp4
+tmp4 = make_sevOutputStruct()
+)
+(unless tmp4
+tmp4 = (ncons nil)
+)
+tmp4->inLastSet = nil
+tmp4->name = nil
+tmp4->expression = nil
+tmp4->signal = "/C2_5V"
+tmp4->type = 'net
+tmp4->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y6"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp4->value = nil
+tmp4->plot = 't
+tmp4->save = 't
+tmp4->march = nil
+tmp4->index = 4
+(unless tmp5
+tmp5 = make_sevOutputStruct()
+)
+(unless tmp5
+tmp5 = (ncons nil)
+)
+tmp5->inLastSet = nil
+tmp5->name = nil
+tmp5->expression = nil
+tmp5->signal = "/D1_5V"
+tmp5->type = 'net
+tmp5->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y3"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp5->value = nil
+tmp5->plot = 't
+tmp5->save = 't
+tmp5->march = nil
+tmp5->index = 5
+(unless tmp6
+tmp6 = make_sevOutputStruct()
+)
+(unless tmp6
+tmp6 = (ncons nil)
+)
+tmp6->inLastSet = nil
+tmp6->name = nil
+tmp6->expression = nil
+tmp6->signal = "/D2_3V"
+tmp6->type = 'net
+tmp6->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y7"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp6->value = nil
+tmp6->plot = 't
+tmp6->save = 't
+tmp6->march = nil
+tmp6->index = 6
+(unless tmp7
+tmp7 = make_sevOutputStruct()
+)
+(unless tmp7
+tmp7 = (ncons nil)
+)
+tmp7->inLastSet = nil
+tmp7->name = nil
+tmp7->expression = nil
+tmp7->signal = "/D3_5V"
+tmp7->type = 'net
+tmp7->selectionDetail = (let
+(tmp1)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'color
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = "y8"
+tmp2 = "drawing"
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2)
+)
+list(tmp1)
+)
+tmp7->value = nil
+tmp7->plot = 't
+tmp7->save = 't
+tmp7->march = nil
+tmp7->index = 7
+list(tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7)
+)
+tmp2 = (let
+(tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7 tmp8 tmp9 tmp10 tmp11 tmp12 tmp13 tmp14 tmp15)
+tmp1 = (let
+(tmp1 tmp2)
+tmp1 = 'outputParamInfo
+tmp2 = 't
+list(tmp1 tmp2)
+)
+tmp2 = (let
+(tmp1 tmp2)
+tmp1 = 'elementInfo
+tmp2 = 't
+list(tmp1 tmp2)
+)
+tmp3 = (let
+(tmp1 tmp2)
+tmp1 = 'modelParamInfo
+tmp2 = 't
+list(tmp1 tmp2)
+)
+tmp4 = (let
+(tmp1 tmp2)
+tmp1 = 'infoLabel
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp5 = (let
+(tmp1 tmp2)
+tmp1 = 'infoseparator
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp6 = (let
+(tmp1 tmp2)
+tmp1 = 'currentLevels
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp7 = (let
+(tmp1 tmp2)
+tmp1 = 'currentLevelsToSave
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp8 = (let
+(tmp1 tmp2)
+tmp1 = 'currents
+tmp2 = "selected"
+list(tmp1 tmp2)
+)
+tmp9 = (let
+(tmp1 tmp2)
+tmp1 = 'label2
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp10 = (let
+(tmp1 tmp2)
+tmp1 = 'sep1
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp11 = (let
+(tmp1 tmp2)
+tmp1 = 'netLevels
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp12 = (let
+(tmp1 tmp2)
+tmp1 = 'netLevelsToSave
+tmp2 = ""
+list(tmp1 tmp2)
+)
+tmp13 = (let
+(tmp1 tmp2)
+tmp1 = 'portType
+tmp2 = "Input"
+list(tmp1 tmp2)
+)
+tmp14 = (let
+(tmp1 tmp2)
+tmp1 = 'save
+tmp2 = "selected"
+list(tmp1 tmp2)
+)
+tmp15 = (let
+(tmp1 tmp2)
+tmp1 = 'label1
+tmp2 = ""
+list(tmp1 tmp2)
+)
+list(tmp1 tmp2 tmp3 tmp4 tmp5 tmp6 tmp7 tmp8 tmp9 tmp10 tmp11 tmp12 tmp13 tmp14 tmp15)
+)
+list(tmp1 tmp2)
+)

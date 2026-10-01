@@ -1,0 +1,12 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$TIMESTAMP
+	1099514947754=lastUpdateTime;
+$END
+$RUN_DIR_INFO
+	1099515144000:7-dirName86-/usr1/rayv/FLOW_ETHER_CDK090/design/custom_cdba/simulation/AMS/pll_250MHz_ams_sim_run18-snapShot35-pll_250MHz_ams_sim:ams1099514665691;
+$END
+$SNAPSHOT_LIST
+	8-Snapshot35-pll_250MHz_ams_sim:ams10995146656916-Solver8-UltraSim7-CdsPlat5-lnx86;
+$END

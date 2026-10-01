@@ -1,0 +1,149 @@
+//Verilog-AMS HDL for "drouillard_ph2", "tenbt_rec" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module tenbt_rec ( pos, neg, MR_SQUELCH_RANGE, siddq, MR_BYPASS10RX_FILTER,
+    RX10_PRESENT, gnd, SLICER_OUT, NEG_SIG_DET, POS_SIG_DET, ibias_rpoly2_100u,
+    ibias_rpoly_100u, ibias_rext_100u, vdd, MR_SQUELCH_DISB );
+
+output POS_SIG_DET, NEG_SIG_DET, SLICER_OUT;
+input  pos, neg;
+input  siddq;
+input  RX10_PRESENT;
+input  [1:0] MR_SQUELCH_RANGE;
+input  MR_BYPASS10RX_FILTER, MR_SQUELCH_DISB;
+input  ibias_rpoly_100u, ibias_rpoly2_100u, ibias_rext_100u;
+input  vdd, gnd;
+
+logic  POS_SIG_DET, NEG_SIG_DET, SLICER_OUT;
+logic  siddq;
+logic  RX10_PRESENT;
+logic  [1:0] MR_SQUELCH_RANGE;
+logic  MR_BYPASS10RX_FILTER, MR_SQUELCH_DISB;
+
+electrical  pos, neg;
+electrical  ibias_rpoly_100u, ibias_rpoly2_100u, ibias_rext_100u;
+electrical  vdd, gnd;
+
+reg  POS_SIG_DET, NEG_SIG_DET, SLICER_OUT;
+//--------------------------------------------------
+// Parameters
+//-------------------------------------------------- 
+parameter real td_slice= 1.2;   // delay through slicer path (ns)
+parameter real td_edge = 4.0;   // delay through NEG/POS_SIG_DET paths (ns)
+parameter real tr = 0.5e-9 ;
+parameter real tf = 0.5e-9 ;
+
+//--------------------------------------------------
+// Internal Analog Nodes
+//--------------------------------------------------  
+electrical VFILTEREDp;         // low-pass filtered inputs 
+electrical VFILTEREDm; 
+
+//--------------------------------------------------
+// Other Declarations
+//--------------------------------------------------  
+real pi       = 3.14159;
+real rbias    = 6500;	  // bias resistance for current mirrors
+real sq11low  = 120e-3;   // lowest squelch level     
+real sq10low  = 140e-3;   //	    .		      
+real sq01low  = 160e-3;   //	    .		      
+real sq00low  = 180e-3;   //	    .		      
+real sq01hgh  = 200e-3;   //	    .		      
+real sq00hgh  = 220e-3;   // highest squelch level    
+
+real flp;		       // typical cutoff frequency for lp filter
+			       //   filter enabled  -> 21.2MHz
+			       //   filter disabled -> 110MHz 
+real voffset;		       // squelch reference
+ 
+integer slicer_out_int;
+integer neg_sig_det_int;
+integer pos_sig_det_int;
+real vfilteredp_int;
+real vfilteredm_int;
+real vext100u, vp1_100u, vp2_100u;
+
+// avoid X states in analog section
+reg isiddq, bpfilter, rx10p, sq_disb;
+reg [1:0] sq_range;
+initial begin
+    isiddq   = 1'b1;
+    bpfilter = 1'b1;
+    rx10p    = 1'b0;
+    sq_disb  = 1'b1;
+    sq_range = 2'b00;
+end
+// always @(bpfilter) 
+//        flp = bpfilter === 1'b1 ? 110e6: 21.2e6; // low pass filter
+always @(siddq) isiddq = siddq;
+always @(MR_BYPASS10RX_FILTER) bpfilter = MR_BYPASS10RX_FILTER;
+always @(RX10_PRESENT) rx10p = RX10_PRESENT;
+always @(MR_SQUELCH_DISB) sq_disb = MR_SQUELCH_DISB;
+always @(MR_SQUELCH_RANGE) sq_range = MR_SQUELCH_RANGE;
+
+analog begin
+    @(initial_step) begin
+       flp     = 110e6;		// typical cutoff frequency for lp filter
+				//   filter enabled  -> 21.2MHz
+				//   filter disabled -> 110MHz 
+       voffset = 200e-3;	// squelch reference    
+    end
+	
+    // siddq mode
+    if (isiddq) begin 
+       vext100u = 0.0;
+       vp1_100u = 0.0;
+       vp2_100u = 0.0;
+
+       slicer_out_int  = -1;
+       neg_sig_det_int = -1;
+       pos_sig_det_int = -1;
+
+    end
+    // operational mode  
+    else begin
+       vext100u = I(ibias_rext_100u)   * rbias;
+       vp1_100u = I(ibias_rpoly_100u)  * rbias;
+       vp2_100u = I(ibias_rpoly2_100u) * rbias;
+
+       // internal node for filter pole  
+       flp = (bpfilter === 1'b1) ? 110e6: 21.2e6; // low pass filter
+
+       voffset = (sq_disb === 1'b1) ? 0.0:
+       		 (sq_range === 2'b11)
+		 	? (rx10p === 1'b1) ? sq11low: sq01low:
+       		 (sq_range === 2'b10)
+		 	? (rx10p === 1'b1) ? sq10low: sq00low:
+       		 (sq_range === 2'b01)
+		 	? (rx10p === 1'b1) ? sq01low: sq01hgh:
+       		 (sq_range === 2'b00)
+		 	? (rx10p === 1'b1) ? sq00low: sq00hgh: 0.0;
+      
+       slicer_out_int  = (V(VFILTEREDp) > (V(VFILTEREDm)+1u)) ? 1: -1;
+       neg_sig_det_int = ((V(neg) - voffset) > V(pos)) ? 1: -1;
+       pos_sig_det_int = ((V(pos) - voffset) > V(neg)) ? 1: -1;
+      
+    end
+
+    V(VFILTEREDp) <+ V(pos) - (1/(2*pi*flp))*ddt(V(VFILTEREDp));
+    V(VFILTEREDm) <+ V(neg) - (1/(2*pi*flp))*ddt(V(VFILTEREDm)); 
+    vfilteredp_int = V(VFILTEREDp);
+    vfilteredm_int = V(VFILTEREDm);  
+
+//    V(ibias_rext_100u)   <+ transition(vext100u,0,tr,tf);
+//    V(ibias_rpoly_100u)  <+ transition(vp1_100u,0,tr,tf);
+//    V(ibias_rpoly2_100u) <+ transition(vp2_100u,0,tr,tf);
+
+    V(ibias_rext_100u)   <+ slew(vext100u,5e9);
+    V(ibias_rpoly_100u)  <+ slew(vp1_100u,5e9);
+    V(ibias_rpoly2_100u) <+ slew(vp2_100u,5e9);
+
+end
+
+always @(cross(slicer_out_int))  #(td_slice) SLICER_OUT  = (slicer_out_int==1);
+always @(cross(neg_sig_det_int)) #(td_edge)  NEG_SIG_DET = (neg_sig_det_int==1);
+always @(cross(pos_sig_det_int)) #(td_edge)  POS_SIG_DET = (pos_sig_det_int==1);
+
+endmodule

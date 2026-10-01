@@ -1,0 +1,9 @@
+#
+ether_adcflash_RAD90_sims adcflash_therm2bin symbol
+flash_t2b
+#
+ether_adcflash_RAD90_sims adc_therm2bin symbol
+adc_t2b
+#
+ether_adcflash_RAD90_sims adcflash_latches symbol
+flash_lat

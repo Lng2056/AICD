@@ -1,0 +1,30 @@
+
+--
+--           Library Manager Resource file 
+--  
+-- ------------------------------------------------------------------------ 
+-- 
+-- Cadence libraries:
+DEFINE cdsDefTechLib ${CDSHOME}/tools/dfII/etc/cdsDefTechLib
+DEFINE basic         ${CDSHOME}/tools/dfII/etc/cdslib/basic
+DEFINE analogLib     ${CDSHOME}/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE sample        ${CDSHOME}/tools/dfII/samples/cdslib/sample
+-- 
+-- Fab foundary library:
+DEFINE gpdk045    ../gpdk045_v_3_5/gpdk045
+DEFINE gpdk090    ../gpdk090_v4.4/libs.oa22/gpdk090
+
+-- Design library:
+DEFINE ether         ../design/ether
+DEFINE ether_sims    ../design/ether_sims
+DEFINE ether_label   ../design/ether_label
+DEFINE ether_adcflash_RAD90 ../design/ether_adcflash_RAD90
+DEFINE ether_adcflash_RAD90_sims ../design/ether_adcflash_RAD90_sims
+DEFINE opamp090 ../design/opamp090
+
+
+-- Personal and new created library:
+DEFINE multest_devchk ../design/multest_devchk
+DEFINE myoalib ../design/ampTest_lab/myoalib
+
+

@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JavaBean CLASS="COM.cadence.awd.graph.GraphFrame">
+  <Properties>
+    <Property NAME="width">898</Property>
+    <Property NAME="height">879</Property>
+    <Property NAME="labelText">Transient Response</Property>
+    <Property NAME="yLocation">0</Property>
+    <Property NAME="graph">
+      <JavaBean CLASS="COM.cadence.awd.graph.Rect2DGraph">
+        <Properties>
+          <Property NAME="runVarName">time</Property>
+          <Property NAME="title">Transient: Lef_Ladder in 90n node</Property>
+          <Property NAME="stripChartOn">False</Property>
+          <Property NAME="fontSize">12</Property>
+          <Property NAME="minorGridsForegroundName">0x505050</Property>
+          <Property NAME="dependentAxis">
+            <JavaBean CLASS="COM.cadence.awd.graph.DepAxis">
+              <Properties>
+                <Property NAME="baseUnit">V</Property>
+                <Property NAME="forceOrigin">False</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="logScale">False</Property>
+                <Property NAME="defaultTitle">V</Property>
+                <Property NAME="scaleMode">1</Property>
+                <Property NAME="sigDigits">3</Property>
+                <Property NAME="majGridsOn">True</Property>
+                <Property NAME="minGridsOn">True</Property>
+                <Property NAME="minorForegroundName">0x505050</Property>
+                <Property NAME="userMax">0.020000002000000003</Property>
+                <Property NAME="useDefaultTitle">True</Property>
+                <Property NAME="foregroundName">black</Property>
+                <Property NAME="userMin">-0.020000002000000003</Property>
+                <Property NAME="tempStripFlag">False</Property>
+                <Property NAME="sigDigitsDefault">True</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="subTitle"></Property>
+          <Property NAME="peakSnapOn">False</Property>
+          <Property NAME="freeze">False</Property>
+          <Property NAME="fontStyle">0</Property>
+          <Property NAME="displayType">5</Property>
+          <Property NAME="minorGridsOn">True</Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref9</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">9</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref9</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">0</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref9</Property>
+                      <Property NAME="convertedName">ref9</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">cyan</Property>
+                <Property NAME="name">/ref9</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref8</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">14</Property>
+                <Property NAME="nameId">1</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref8</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">1</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref8</Property>
+                      <Property NAME="convertedName">ref8</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xcc66</Property>
+                <Property NAME="name">/ref8</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref7</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">8</Property>
+                <Property NAME="nameId">2</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref7</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">2</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref7</Property>
+                      <Property NAME="convertedName">ref7</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0x9900e6</Property>
+                <Property NAME="name">/ref7</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref6</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">15</Property>
+                <Property NAME="nameId">3</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref6</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">3</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref6</Property>
+                      <Property NAME="convertedName">ref6</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xff8000</Property>
+                <Property NAME="name">/ref6</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref5</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">8</Property>
+                <Property NAME="nameId">4</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref5</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">4</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref5</Property>
+                      <Property NAME="convertedName">ref5</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">magenta</Property>
+                <Property NAME="name">/ref5</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref4</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">15</Property>
+                <Property NAME="nameId">5</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref4</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">5</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref4</Property>
+                      <Property NAME="convertedName">ref4</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xd9cc00</Property>
+                <Property NAME="name">/ref4</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref3</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">9</Property>
+                <Property NAME="nameId">6</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref3</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">6</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref3</Property>
+                      <Property NAME="convertedName">ref3</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">blue</Property>
+                <Property NAME="name">/ref3</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref2</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">14</Property>
+                <Property NAME="nameId">7</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref2</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">7</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref2</Property>
+                      <Property NAME="convertedName">ref2</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xd9e6ff</Property>
+                <Property NAME="name">/ref2</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref1</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">14</Property>
+                <Property NAME="nameId">8</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref1</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">8</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref1</Property>
+                      <Property NAME="convertedName">ref1</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">cyan</Property>
+                <Property NAME="name">/ref1</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/ref0</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">6</Property>
+                <Property NAME="nameId">9</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/ref0</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">9</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">ref0</Property>
+                      <Property NAME="convertedName">ref0</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xcc66</Property>
+                <Property NAME="name">/ref0</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/SAMPLE</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">7</Property>
+                <Property NAME="nameId">10</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/SAMPLE</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">10</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">SAMPLE</Property>
+                      <Property NAME="convertedName">SAMPLE</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0x9900e6</Property>
+                <Property NAME="name">/SAMPLE</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/OUTM</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">6</Property>
+                <Property NAME="nameId">11</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/OUTM</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">11</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">OUTM</Property>
+                      <Property NAME="convertedName">OUTM</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xff8000</Property>
+                <Property NAME="name">/OUTM</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/OUTP</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">9</Property>
+                <Property NAME="nameId">12</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/OUTP</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">12</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">OUTP</Property>
+                      <Property NAME="convertedName">OUTP</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">magenta</Property>
+                <Property NAME="name">/OUTP</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/INM</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">14</Property>
+                <Property NAME="nameId">13</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/INM</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">13</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">INM</Property>
+                      <Property NAME="convertedName">INM</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">0xd9cc00</Property>
+                <Property NAME="name">/INM</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="title">/INP</Property>
+                <Property NAME="directoryName">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                <Property NAME="traceType">31</Property>
+                <Property NAME="symbolStyle">8</Property>
+                <Property NAME="nameId">14</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="defaultTitle">/INP</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="stripIndex">14</Property>
+                <Property NAME="depUnit">V</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="dataDirectory">/am/l2b/FLOW/FLOW_REUSE_GPDK/design/custom_cdb/neowa_gpdk090/simulation/adc_refladder_sim/spectre/schematic/psf</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                      <Property NAME="dataSet">tran-tran</Property>
+                      <Property NAME="name">INP</Property>
+                      <Property NAME="convertedName">INP</Property>
+                      <Property NAME="compound">False</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="foregroundName">blue</Property>
+                <Property NAME="name">/INP</Property>
+                <Property NAME="dataSetName">tran-tran</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="fontName">Dialog</Property>
+          <Property NAME="useDefaultSubTitle">True</Property>
+          <Property NAME="visibleDigitalRows">3</Property>
+          <Property NAME="nameId">0</Property>
+          <Property NAME="backgroundName">black</Property>
+          <Property NAME="visibleStripChartRows">5</Property>
+          <Property NAME="independentAxis">
+            <JavaBean CLASS="COM.cadence.awd.graph.IndepAxis">
+              <Properties>
+                <Property NAME="baseUnit">s</Property>
+                <Property NAME="forceOrigin">False</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="defaultTitle">time</Property>
+                <Property NAME="logScale">False</Property>
+                <Property NAME="scaleMode">1</Property>
+                <Property NAME="sigDigits">3</Property>
+                <Property NAME="majGridsOn">True</Property>
+                <Property NAME="minGridsOn">True</Property>
+                <Property NAME="minorForegroundName">0x505050</Property>
+                <Property NAME="userMax">1.0000001</Property>
+                <Property NAME="useDefaultTitle">True</Property>
+                <Property NAME="foregroundName">black</Property>
+                <Property NAME="userMin">-1.0000001</Property>
+                <Property NAME="sigDigitsDefault">True</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="dataSnapOn">False</Property>
+          <Property NAME="majorGridsForegroundName">0x6e6e6e</Property>
+          <Property NAME="displayDate">True</Property>
+          <Property NAME="majorGridsOn">True</Property>
+          <Property NAME="useDefaultTitle">False</Property>
+          <Property NAME="visible">True</Property>
+          <Property NAME="foregroundName">black</Property>
+          <Property NAME="cursorOn">False</Property>
+        </Properties>
+      </JavaBean>
+    </Property>
+    <Property NAME="xLocation">291</Property>
+    <Property NAME="stripChartState">False</Property>
+  </Properties>
+</JavaBean>
+

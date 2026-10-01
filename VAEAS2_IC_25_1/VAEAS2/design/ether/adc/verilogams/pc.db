@@ -1,0 +1,18 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* adc_sample_hold *
+ADC_SAMPLE_HOLD
+
+#CELL
+* adc_64comparators *
+ADC_64COMPS
+
+#CELL
+* adc_interp_array *
+ADC_INTERP_ARRAY
+
+#CELL
+* adc_ref_ladder *
+ADC_REF_LADDER
+

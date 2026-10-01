@@ -1,0 +1,5 @@
+
+// Library name: ether
+// Cell name: adc_invertx30
+// View name: schematic
+subckt adc_invertx30 IN OUT VDD VSS

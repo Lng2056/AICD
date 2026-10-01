@@ -1,0 +1,153 @@
+              
+	      Design Specifications of Comparator/Actuator
+	      -------------------------------------------
+	      
+I. Supply:
+   DC supply volgage: 2.5V (Power net: VDD, Ground net: VSS)
+   
+II. Operating condition:
+    Tempature: 0 C to 125 C
+    
+III. Operating specifications:
+     Three operating scenerios base on input signals as below:
+     1. Case of no difference on input signal: ==> output: toggle and latch
+                
+     2. Case of input difference in too small: ==> output: no change
+        [(inp != inm) AND (dV <= 200mV) AND (higher than (refp=refn)]  
+	
+     3. Case of inpud difference is in range:  ==> output: toggle
+        [(inp != inm) AND (dV > 200mV) AND higher than (refp=refn)] 		 
+     
+     
+      Illustrated operating table:
+     ---------------------------------------------------------------------------
+               Inputs                              |     Outputs      |  Notes
+      pb1   inp       inm       refp  refn   vbias |  outp    outn    |
+     ===========================================================================
+      rise  1.7Vconst 1.7Vconst 1.37V 1.37V  vdd     toggle and latch  
+      
+      rise  1.75V     1.55V     1.37V 1.37V  vdd     no change
+      
+      rise  1.775V    1.525V    1.37V 1.37V  vdd     toggle
+            1.525V    1.775V    1.37V 1.37V  vdd     toggle
+     -------------------------------------------------------------------------
+     Note: pb1 = Non-overlapped clock phase 1.
+           1.7Vcont = Constant value on 1.7V	    
+
+IV. Block behavioral and  discrete timing (will use as NeoCircuit Goals):
+   (base on testbench: Lib  = ether_adcflash_RAD90_sims
+                       Cell = adc_adcflash_comparator_actr_sim
+		       View = config_generic )		       
+		       
+    ----------------------------------------------------------------------
+    SignalName | Discrete Time and Value  |      Note
+               |  5.00n |  6.25n |  14.24n|
+    ======================================================================
+     OUTN2     |   0    |  0     |  vdd   |
+     OUTP2     |   0    |  vdd   |  0     |
+     OUTN3     |  vdd   |  0     |  0     |
+     OUTP3     |   0    |  vdd   |  vdd   |
+    ---------------------------------------------------------------------
+    Note: Wavefrom snapshot: ./snapshot/comp_rcx4b_vs_schematic.png
+    
+    
+V. Miscellaneous
+   A. Design Optimization with ADE, NeoCircuit, NeoCell, Assura, VXL:
+   
+      ---------------------------------------------------------- (120 character width) ---------------------------------
+	  Activity                                    |      View         |   NeoCktDB                    | Notes
+      =================================================================================================================
+      0. Pre-Requisite:                               |                   |                               |
+         a. Simulate design in 180n node.             |                   |                               |
+         b. Create ADE state: "trans_20n_2"           |                   |                               |
+	    with specifying the discrete timing (see  |                   |                               |
+	    above table) for using in NeoCkt golas.   |                   |                               |
+	 
+      1. Simulate "Schematic Points" in NeoCircuit:   |                   |                               |
+         a. In NeoCkt, specify design variables.      |                   |                               |
+	 b. Import ADE state into NeoCkt.             |                   |                               |
+	 c. Specify design goals in NeoCkit           |                   |                               |
+	 d. Run simulation with "Schematic Points"    |                   | comp1_schematicPoints.NeoCktDB|
+            => Fail -> Run Local Optimize             |                   | comp2a_local_sizing.NeoCktDB  | Optional
+	       =>Fail -> Run Global Optimize          |                   | comp2b_global_sizing.NeoCktDB |                            |
+	 e. Optinal, Save the schematic for reference | schematic_initial |                               |
+	 f. Back annotate device size to "schematic", | schematic         |                               |
+	    and also save it for reference.           | schematic_1b      | comp3_schematic1b.NeoCktDB    |
+	    
+      2. Physical design with NeoCell, VLE, Assura:   |                   |                               |
+         a. From schematic, enter NeoCell setup.      |                   |                               |
+	 b. From schematic, enter NeoCell             |                   |                               |
+	    design constraints.                       |                   |                               |
+	 c. Invoke NeoCell and perform auto-placement.| layout_place1a    |                               |
+	    ***Analize the placement: NM5 and NM12    |                   |                               |
+	       should be update for reducing the cell |                   |                               |
+	       height.                                |                   |                               |
+	 d. On schematic, change M from 3 to 2 on NM5,|                   |                               |
+	    NM12 and adjust "fw" on schematic.        |                   |                               |
+	 e. Run NeoCell ECO for update the component  | layout_place1b    |                               |
+	    changes in schematic.                     |                   |                               |
+	 f. In NeoCell perform auto-route.            | layout_route1b    |                               |	 
+	 g. Refine the layout with VLE:               |                   |                               |
+	    -Open the "layout_route1b" and use        |                   |                               |
+	     'Save As' to another view: "layout1b"    |                   |                               |
+	    -Open the "layout1b":                     |                   |                               |
+	      Add ESD latch-up protection (see template view              |                               |
+              Run DRC and LVS (refine until 0 error). | layout1b          |                               |
+	      Run Assura-RCX for extract RC parasitics| av_rcx1b          |                               | 
+
+       3. Refine design with including RC parasitics: |                   |                               |
+          a. In NeoCkt, run ECO to extracted view.    |                   |                               |
+	     => Fail                                  |                   | comp4a_eco_rcx1b.NeoCktDB     |
+	        -> Run Local Optimization             |                   | comp4a_eco_rcx1b_lsize.NeoCktDB |
+         	   o Use "Compare" for detect the     |                   |                               |
+		     changed device size (NM5, NM12)  |                   |                               |
+		   o Annote device size to schematic  |                   |                               |	
+
+	  b. In VXL, update NM5 and NM12 from sch.    | layout2b          |                               |
+	     Run Assura DRC and LVS                   |                   |                               |
+	     Run Assura-RCX                           | av_rcx2b          |                               |
+	   
+	  c. Repeat (a)                               |                   |comp5a_eco_rcx2b.NeoCktDB        |
+	     => Fail -> Local optimize                |                   |comp5b_eco_rcx2b2_lsize.NeoCktDB |
+	     Repeat (b) and update PM0, PM2           | layout3b,av_rcx3b |                               |
+
+	  d. Repeate (c)                              |                   |comp6a_eco_rcx3b.NeoCktDB
+             Fails => Local Optimize                  |                   |comp6b_eco_rcx3b_lsize.NeoCktDB
+	     Repeat (b) and update PM0 and PM2        | layout4b,av_rcx4b |
+	      
+	  e. Repleat (d)                              |                   |comp7a_eco_rcx4b.NeoCktDB
+	     Yahoo! ... specs are met ... save layout.| layout            |                               |
+	     Optional, save the schematic for ref     | schematic4b       |                               |
+	                                            
+        4.  Verify schematic vs. av_rcx4b             |                   |comp7b_eco_rcx4b_vs_schematic.NeoCktDB
+	    *** ADE simulation with "schematic" view  |                   |                               |
+	    *** has incorrect functionality. This     |                   |                               |
+	    *** the parasitics must be included, else |                   |                               |
+	    *** use "av_rcx4" view for simulation.    |                   |                               |
+	  a. Back annotage parasitic to schematic:    |                   |                               |
+	     o Refer to online doc for background:    |                   |                               |
+	       "Virtuso Parasitic User Guide"         |                   |                               |
+	     i. Open the "config_generic" view and    |                   |                               |
+	        use "av_rcx4" for simulation.         |                   |                               |
+	    ii. In ADE analysis, add DC opt to the    |                   |                               |
+	        existed state, "trans_20n".           |                   |                               |
+	   iii. Run simulation for generate DC points.|                   |                               |
+	    iv. Descend to <comp_actr>/schematic view,|                   |                               |
+	        and access to: Tools -> Parasitics.   |                   |                               |
+		Then, the "Parasitics" menu will be   |                   |                               |
+		inserted into Composer Editor.        | schematic         |                               |
+	     v. Proceed to menu: setup, option, Show  |                   |                               |
+	        parasitics.                           |                   |                               |
+		Then, the parasitic is visible on     |                   |                               |
+		each nets.                            |                   |                               |
+	    vi. Manually, add capacitors with         |                   |                               |
+	        "lvsIgnore" for presenting those      |                   |                               |
+		parasitics.                           |                   |                               |
+		
+	  b. Using ADE, simulate this block with      |                   |                               |
+	     "av_rcx4" and "schematic" for            |                   |                               |
+	     comparision and closing the loop.        |                   |                               |
+	     
+	  c. Run LVS for validate data integrity.     |                   |                               |   
+----------------------------------------------------------------------------------------------------------------
+				    

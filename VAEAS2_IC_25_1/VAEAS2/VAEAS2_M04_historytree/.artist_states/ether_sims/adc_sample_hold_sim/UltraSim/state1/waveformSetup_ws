@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JavaBean CLASS="COM.cadence.awd.graph.GraphFrame">
+  <Properties>
+    <Property NAME="frameHeight">592</Property>
+    <Property NAME="frameWidth">870</Property>
+    <Property NAME="graph">
+      <JavaBean CLASS="COM.cadence.awd.graph.Rect2DGraph">
+        <Properties>
+          <Property NAME="backgroundName">black</Property>
+          <Property NAME="cursorOn">False</Property>
+          <Property NAME="dataSnapOn">False</Property>
+          <Property NAME="dependentAxis">
+            <JavaBean CLASS="COM.cadence.awd.graph.DepAxis">
+              <Properties>
+                <Property NAME="baseUnit">v</Property>
+                <Property NAME="forceOrigin">False</Property>
+                <Property NAME="foregroundName">black</Property>
+                <Property NAME="logScale">False</Property>
+                <Property NAME="majGridsOn">True</Property>
+                <Property NAME="minGridsOn">True</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="scaleMode">1</Property>
+                <Property NAME="sigDigits">3</Property>
+                <Property NAME="sigDigitsDefault">True</Property>
+                <Property NAME="tempStripFlag">True</Property>
+                <Property NAME="title">Y0</Property>
+                <Property NAME="useDefaultTitle">True</Property>
+                <Property NAME="userMax">2.250000225</Property>
+                <Property NAME="userMin">0.50000005</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="displayDate">True</Property>
+          <Property NAME="displayType">5</Property>
+          <Property NAME="fontName">Dialog</Property>
+          <Property NAME="fontSize">12</Property>
+          <Property NAME="fontStyle">0</Property>
+          <Property NAME="foregroundName">black</Property>
+          <Property NAME="freeze">False</Property>
+          <Property NAME="independentAxis">
+            <JavaBean CLASS="COM.cadence.awd.graph.IndepAxis">
+              <Properties>
+                <Property NAME="baseUnit">s</Property>
+                <Property NAME="forceOrigin">False</Property>
+                <Property NAME="foregroundName">black</Property>
+                <Property NAME="logScale">False</Property>
+                <Property NAME="majGridsOn">True</Property>
+                <Property NAME="minGridsOn">True</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="scaleMode">1</Property>
+                <Property NAME="sigDigits">3</Property>
+                <Property NAME="sigDigitsDefault">True</Property>
+                <Property NAME="title">time</Property>
+                <Property NAME="useDefaultTitle">True</Property>
+                <Property NAME="userMax">5.0000005E-7</Property>
+                <Property NAME="userMin">0.0</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="majorGridsOn">True</Property>
+          <Property NAME="minorGridsOn">True</Property>
+          <Property NAME="nameId">0</Property>
+          <Property NAME="peakSnapOn">False</Property>
+          <Property NAME="runVarName">time</Property>
+          <Property NAME="stripChartOn">False</Property>
+          <Property NAME="title">Transient Response</Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">/OUTM</Property>
+                <Property NAME="defaultTitleOn">True</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="foregroundName">red</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">/OUTM</Property>
+                <Property NAME="nameId">0</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">6</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTM</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTM</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">/OUTP</Property>
+                <Property NAME="defaultTitleOn">True</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="foregroundName">blue</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">/OUTP</Property>
+                <Property NAME="nameId">1</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">6</Property>
+                <Property NAME="symbolsOnFlag">False</Property>
+                <Property NAME="traceStyle">36</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTP</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTP</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">VT("/OUTP")</Property>
+                <Property NAME="defaultTitleOn">True</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">VT("/OUTP")</Property>
+                <Property NAME="nameId">4</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">8</Property>
+                <Property NAME="symbolsOnFlag">True</Property>
+                <Property NAME="traceStyle">37</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTP</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTP</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">VT("/OUTM")</Property>
+                <Property NAME="defaultTitleOn">True</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="foregroundName">red</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">VT("/OUTM")</Property>
+                <Property NAME="nameId">4</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">15</Property>
+                <Property NAME="symbolsOnFlag">True</Property>
+                <Property NAME="traceStyle">37</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTM</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTM</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">/OUTP</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">VT("/OUTP")</Property>
+                <Property NAME="nameId">4</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">14</Property>
+                <Property NAME="symbolsOnFlag">True</Property>
+                <Property NAME="traceStyle">37</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTP</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTP</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="trace">
+            <JavaBean CLASS="COM.cadence.awd.graph.RectTrace">
+              <Properties>
+                <Property NAME="dataSetName">timeSweep</Property>
+                <Property NAME="defaultTitle">/OUTM</Property>
+                <Property NAME="defaultTitleOn">False</Property>
+                <Property NAME="depAxisId">0</Property>
+                <Property NAME="depUnit">v</Property>
+                <Property NAME="directoryName">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic</Property>
+                <Property NAME="foregroundName">red</Property>
+                <Property NAME="indepAxisId">0</Property>
+                <Property NAME="indepUnit">s</Property>
+                <Property NAME="modifier">Identity</Property>
+                <Property NAME="name">VT("/OUTM")</Property>
+                <Property NAME="nameId">5</Property>
+                <Property NAME="symbolCount">20</Property>
+                <Property NAME="symbolStyle">6</Property>
+                <Property NAME="symbolsOnFlag">True</Property>
+                <Property NAME="traceStyle">37</Property>
+                <Property NAME="traceToken">
+                  <JavaBean CLASS="COM.cadence.awd.graph.TraceToken">
+                    <Properties>
+                      <Property NAME="compound">False</Property>
+                      <Property NAME="convertedName">OUTM</Property>
+                      <Property NAME="dataDirectory">/net/lnx-ent3/usr1/vfs_amsflow/simulation/adc_sample_hold_sim/UltraSim/schematic/psf</Property>
+                      <Property NAME="dataSet">timeSweep</Property>
+                      <Property NAME="index">0</Property>
+                      <Property NAME="name">OUTM</Property>
+                      <Property NAME="type">SIGNAL</Property>
+                    </Properties>
+                  </JavaBean>
+                </Property>
+                <Property NAME="traceType">31</Property>
+              </Properties>
+            </JavaBean>
+          </Property>
+          <Property NAME="useDefaultSubTitle">True</Property>
+          <Property NAME="useDefaultTitle">False</Property>
+          <Property NAME="visibleDigitalRows">3</Property>
+          <Property NAME="visibleStripChartRows">0</Property>
+        </Properties>
+      </JavaBean>
+    </Property>
+    <Property NAME="labelText"></Property>
+    <Property NAME="stripChartState">False</Property>
+    <Property NAME="xLocation">185</Property>
+    <Property NAME="yLocation">45</Property>
+  </Properties>
+</JavaBean>
+

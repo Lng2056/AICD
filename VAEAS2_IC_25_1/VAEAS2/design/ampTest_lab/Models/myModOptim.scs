@@ -1,0 +1,48 @@
+simulator lang=spectre
+
+;nmos24 
+model trnmos mos2 type=n vto = 0.775 tox = 400e-10 nsub = 8e+15 \
+ xj = 0.15u ld = 0.20u uo = 650 ucrit = 0.62e+5 uexp = 0.125 \
+ vmax = 5.1e+4 neff = 4.0 delta = 1.4 rsh = 36 cgso = 1.95e-10 \
+ cgdo = 1.95e-10 cj = 195u cjsw = 500p mj = 0.76 mjsw = 0.30 \
+ pb = 0.8
+ 
+;pmos24
+model trpmos mos2 type=p vto = -0.75 tox = 400e-10 nsub = 6e+15 \
+ xj = 0.05u ld = 0.20u uo = 255 ucrit = 0.86e+5 uexp = 0.29 \
+ vmax = 3.0e+4 neff = 2.65 delta = 1.0 rsh = 101 cgso = 1.90e-10 \
+ cgdo = 1.90e-10 cj = 250u cjsw = 350p mj = 0.535 mjsw = 0.34 \
+ pb = 0.8
+
+model trnpn bjt type=npn is=10e-15 bf=beta \
+ va=58.7 ik=5.63e-3 rb=565 rbm=86 re=3.2 cje=1.3e-12 pe=0.76 \
+ me=0.34 tf=249e-12 cjc=0.8e-12 pc=0.55 mc=0.35 ccs=2.4e-12 \
+ ms=0.35 ps=0.53 rc=169 vsubfwd=10
+
+model trpnp bjt type=pnp is=1.2e-16 bf=80 nf=1 vaf=60 ikf=4e-5 ne=1.5\
+ br=80 nr=1 var=5 ikr=5e-5 isc=0 nc=1.5 rb=100 re=15 rc=30\
+ cje=30e-15 vje=.72 mje=.45 tf=5e-10 ptf=40 cjc=60e-15 vjc=.72\
+ mjc=.45 xcjc=.9 tr=5e-10 cjs=0 vjs=.99 mjs=.99
+
+ 
+;nmos301
+model nmos301 mos3  type=n   \
+ vto=0.725  uo=585.0  tox=23.5n  nsub=3.27e+16 \
+ nfs=3.5e+11  vmax=1.6e+05  eta=0.012  kappa=0.13  theta=0.080 \
+ delta=2.62  xj=0.08u    rsh=533.0 \
+ ld=0.250u  cgdo=2.1e-10  cgso=2.1e-10  af=1.0  kf=2.5e-28 \
+ cj=4.4e-04  mj=0.370  cjsw=3.4e-10  mjsw=0.220  pb=1.100
+
+;pmos301
+model pmos301 mos3 type=p \
+ vto=-0.925  uo=200.0  tox=23.5n  nsub=2.53e+16 \
+ nfs=1.8e+12  vmax=2.9e+05  eta=0.047  kappa=7.00  theta=0.139 \
+ delta=0.89  xj=0.14u    rsh=1102.0 \
+ ld=0.225u  cgdo=2.9e-10  cgso=2.9e-10  af=1.0  kf=2.6e-29 \
+ cj=3.1e-04  mj=0.370  cjsw=2.6e-10  mjsw=0.170  pb=0.360
+
+model tp1 bjt type=pnp is=1.2e-16 bf=80 nf=1 vaf=60 ikf=4e-5 ne=1.5 \
+br=80 nr=1 var=5 ikr=5e-5 isc=0 nc=1.5 rb=100 re=15 rc=30 \
+cje=30e-15 vje=.72 mje=.45 tf=5e-10 ptf=40 cjc=60e-15 vjc=.72 \
+mjc=.45 xcjc=.9 tr=5e-10 cjs=0 vjs=.99 mjs=.99 \
+eg=1.17 fc=.5

@@ -1,0 +1,45 @@
+//--------------------
+// dac_3bit_ideal
+//
+// -  3 bit digital analog converter
+//
+// vd0..vd2:	data inputs [V,A]
+// vout:	[V,A]
+//
+// INSTANCE parameters
+//    vcm    = ADC input signal Common Mode
+//    vswing = A to D input signal swingD
+//    trf    = Rise/fall time
+//
+`include "constants.vams"
+`include "disciplines.vams"
+
+module lye_dac_3bits ( vout, vd0, vd1, vd2 );
+
+output vout;
+input  vd2, vd1, vd0;
+
+electrical vout;
+logic vd2, vd1, vd0;
+
+parameter real vref   = 0.4;		// Common Mode VOltage of ADC input
+parameter real vswing = 0.200;		// ADC Input Signal Swing
+parameter real tdel   = 0;
+parameter real trf    = 100p ;
+
+integer iscale;
+real sign, vvout;
+
+initial iscale = 0;
+always @(vd2 or vd1 or vd0) begin
+	iscale  =  vd1*2 + vd0;
+        sign = vd2;
+end
+
+analog begin
+        @(initial_step) vvout = 0;
+	vvout = (sign > 0) ? (vref*iscale/4.0)-vref :(vref*iscale/3.0);
+//	V(vout) <+ transition( vvout,0,trf,trf);
+	V(vout) <+ slew( vvout,2.5e10);	
+end
+endmodule

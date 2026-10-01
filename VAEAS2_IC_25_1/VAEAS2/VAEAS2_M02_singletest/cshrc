@@ -1,0 +1,56 @@
+#! /bin/csh
+########################################################################
+# Course:    VAEAS2: ADE Assembler and Multi Test Corner Analysis 
+# Filename:  cshrc
+########################################################################
+#
+# This file assumes that the Cadence Suite of products are in the
+# hierarchy /cds.
+#
+# If the Cadence products are installed elsewhere, change the
+# variable CDS to point to the correct path.
+#
+
+#! /bin/csh
+
+# Set environment variables for Cadence software,
+
+setenv LANG en_US
+
+# These unset any environment variables that have been previously set
+unsetenv CDSHOME
+unsetenv SPECTREHOME
+
+# This Course uses IC25.1 Base or later, SPECTRE24.1 ISR6 or later
+
+setenv CDSHOME /ccstools/cdsind1/Software/IC251Base_lnx86
+setenv SPECTREHOME /ccstools/cdsind1/Software/SPECTRE241ISR6_lnx86
+
+# This sets the netlisting mode to analog
+setenv CDS_Netlisting_Mode Analog
+
+setenv LD_LIBRARY_PATH $CDSHOME/tools/lib
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:$CDSHOME/tools/lib
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:$SPECTREHOME/tools/lib
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/usr/lib
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/lib
+
+set history = 100
+
+set path = ( $CDSHOME/tools/dfII/bin 		\
+             $CDSHOME/tools/bin      		\
+             $CDSHOME/tools/plot/bin 		\
+             $CDSHOME/tools/etc      		\
+	     $CDSHOME/bin                       \
+	     $SPECTREHOME/tools.lnx86/bin 	\
+             /usr/local/bin $path		)
+     
+	     
+# Set license file location for Cadence software
+#setenv 	CDS_LIC_FILE 	$MYHOME/common_dir/license/cds_license.dat
+setenv LM_LICENSE_FILE 5280@noiflex:5280@noidalic01
+
+echo "Virtuoso Tool used is : "
+virtuoso -W
+echo "Spectre Tool used is : "
+spectre -W

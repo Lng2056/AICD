@@ -1,0 +1,105 @@
+//------------------------------------------------------------------------------
+// Name   : adc_interp_array
+// View   : verilogams
+// Purpose: Interpolator Array Model
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_interp_array ( dm0n, dm0p, dm8n, dm8p, out0n, out0p, out1n, out1p,
+    out2n, out2p, out3n, out3p, out4n, out4p, out5n, out5p, out6n, out6p, out7n,
+    out7p, out8n, out8p, SIDDQ, VDD, VSS, bias100, ref0, ref1, ref10, ref2,
+    ref3, ref4, ref5, ref6, ref7, ref8, ref9, vinm, vinp );
+
+output	out0p, out0n;
+output	out1p, out1n;
+output	out2p, out2n;
+output	out3p, out3n;
+output	out4p, out4n;
+output	out5p, out5n;
+output	out6p, out6n;
+output	out7p, out7n;
+output	out8p, out8n;
+output	dm8p, dm8n, dm0p, dm0n;			// Load Balance Outputs
+input	vinp, vinm;
+input	ref0, ref1, ref2, ref3, ref4, ref5;	// Reference Ladder Voltages
+input	ref6, ref7, ref8, ref9, ref10;
+input	bias100;				// Reference Current
+input	SIDDQ;
+input	VDD, VSS;
+
+electrical out0p, out0n, out1p, out1n, out2p, out2n;
+electrical out3p, out3n, out4p, out4n, out5p, out5n;
+electrical out6p, out6n, out7p, out7n, out8p, out8n;
+electrical dm8p, dm8n, dm0p, dm0n;
+electrical vinp, vinm;
+electrical ref0, ref1, ref2, ref3, ref4, ref5;
+electrical ref6, ref7, ref8, ref9, ref10;
+electrical bias100;
+electrical VDD, VSS;
+logic	   SIDDQ;
+
+real idm8p, idm8n, idm0p, idm0n;
+real vbias;
+real res_mirror = 6500;	// Termination resistor
+electrical dout8p, dout8n, dout0p, dout0n;
+
+analog begin
+	idm0p = (V(out0p)-V(dout0p))/8;
+	idm0n = (V(out0n)-V(dout0n))/8;
+	V(dm0p) <+ idm0p*7 + V(dout0p);	
+	V(dm0n) <+ idm0n*7 + V(dout0n);	
+
+	idm8p = (V(out8p)-V(dout8p))/8;
+	idm8n = (V(out8n)-V(dout8n))/8;
+	V(dm8p) <+ idm8p*7 + V(dout8p);	
+	V(dm8n) <+ idm8n*7 + V(dout8n);	
+
+	vbias = I(bias100) * res_mirror;
+	V(bias100) <+ vbias;  
+		
+//	vbias = (SIDDQ) ? V(VSS): V(bias100);
+//	V(bias100,VSS) <+ vbias;
+end
+
+adc_interpolator I8 (.outp(out8p), .outn(out8n), .refp(ref9), .refn(ref1),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I7 (.outp(out7p), .outn(out7n), .refp(ref8), .refn(ref2),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I6 (.outp(out6p), .outn(out6n), .refp(ref7), .refn(ref3),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I5 (.outp(out5p), .outn(out5n), .refp(ref6), .refn(ref4),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I4 (.outp(out4p), .outn(out4n), .refp(ref5), .refn(ref5),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I3 (.outp(out3p), .outn(out3n), .refp(ref4), .refn(ref6),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I2 (.outp(out2p), .outn(out2n), .refp(ref3), .refn(ref7),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I1 (.outp(out1p), .outn(out1n), .refp(ref2), .refn(ref8),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I0 (.outp(out0p), .outn(out0n), .refp(ref1), .refn(ref9),
+                     .inp(vinp), .inn(vinm), 
+		     .bias(bias100), .VSS(VSS), .VDD(VDD) );	 
+
+// Load Balancing Instances
+adc_interpolator I8d (.outp(dout8p), .outn(dout8n), .refp(ref0), .refn(ref10),
+                      .inp(vinp), .inn(vinm), 
+		      .bias(bias100), .VSS(VSS), .VDD(VDD) );
+adc_interpolator I0d (.outp(dout0p), .outn(dout0n), .refp(ref10), .refn(ref0),
+                      .inp(vinp), .inn(vinm), 
+		      .bias(bias100), .VSS(VSS), .VDD(VDD) );
+
+endmodule

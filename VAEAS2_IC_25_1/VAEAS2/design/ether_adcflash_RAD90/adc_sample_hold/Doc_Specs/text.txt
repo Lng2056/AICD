@@ -1,0 +1,198 @@
+
+                 S/H design specifications
+		 -------------------------
+		 
+I. Supply: 
+   DC Supply voltage: 2.5V (Power net: VDD, Ground net: VSS)
+   Bias Current: 101.135uA
+   
+II. Specs for discrete S/H:
+     ---------------------------------------------------------------------------
+         Spec item              } Value         |  Notes
+     --------------------------------------------------------------------------- 
+     1. Small signal BW         | 7.5M          | on "p" channel, AC analysis
+     2. Differential Gain       | 571mV         | 'OUTP-INP', Transient analysis
+     3. Differential Gain Error | +-0.13%       | On "p" channel
+     4. Slew Rate               | 60V/uSec      | On "p" channel
+     5. Droop Rate              | 50pV/uSec     | On "p" channel
+     6. Input Offset voltage    | +-20mV        | OUTP crosses OUTM
+     ---------------------------------------------------------------------------
+
+III. Specs for system design:
+    1. Input signals:
+       -------------------------------------------------------------------------
+        Sig Name      | Value     |         Notes
+       -------------------------------------------------------------------------	
+         Bias100      | 101.135uA | Bias Current
+         SIDDQ        | 0 (low)   | Active low
+	 inp          | 10MHz,    | AC Sine wave wtth amplitude=200mV
+	 inm          | 10MHz     | Sine wave with 180 degree of "inm"
+	 inp_test     | 56.64MHz  | AC sine wave with amplitude = 180mV
+	 inm_test     | 56.64MHz  | Sine wave with 180 degree of "inp_test"
+	 sample       | 125MHz    | Square pulse clock
+	 hold         | 125MHz    | Sq. pulse clock with non-overlap to "sample" 
+	 sample_test  | 0.0V      |
+	 hold_test    | 2.5V      |
+        ------------------------------------------------------------------------
+	
+     2. Output Singals:
+        ------------------------------------------------------------------------
+        Sig Name      | Value     |         Notes
+        ------------------------------------------------------------------------	
+         outp         | 1.751(inp)| Replicated to "inp" with ~1.751 ratio gain
+	 outm         | 1.751(inm)| Replicated to "inm" with ~1.751 ratio gain
+        ------------------------------------------------------------------------
+     	 
+   		 
+IV. Miscellaneous:
+
+   1. Gain goal for NeoCircuit setup:		 
+   
+      Equation: {VT("OUTM") - VT("INM")] @ (TN+Tdelay) = 570mV
+                {VT("OUTM") - VT("INM")] @ (8N+4.35)  ~= 570mV, Tol=3%
+            
+      Where:[VT("OUTM") - VT("INM")]: Differential Transient Gain
+	     VT("OUTM"): Transient voltage on "OUTM" signal
+	     N = Sample_Hold# = 0,1,2,3 .... 11,12,13 
+	         There are 13 samplesderstv/holds in one cycle of 10MHz sine 
+		 wave input, S/H rate=125MHz, T=8n.
+             T = Interval time = 8n (for 125MHz). 
+             Tdelay = 4.35n constant delay for stable signal during sampling.
+	    
+	    
+   2. Equations used in ADE calculator:
+   
+      A. State File: Trans150n_AC_SmallSignal_BW
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         Differential_Gain_P = (VT("OUTM") - VT("INM")
+       
+         DifferentialGainAvg_P  = average(VT("OUTM") - VT("INM") 
+                                = 571.1mV
+         Ratio_Gain_P = (VF("/OUTP") / VF("/INP"))
+       
+         RatioGain_BW_P  = bandwidth((VF("/OUTP") / VF("/INP")) 40 "low")
+	                  or
+			 = bandwidth(VF("/OUTP") 100 "low")	                  
+   
+       B. State File: Trans120n_GainError_InputOffsetV_MP
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          GainDiffAvg_P: = average((VT("/OUTP") - VT("/INP")))
+                         = 569.1mV
+                        (Differential Transient Gain Average)
+                      
+          GainDiffErr6Avg_P: (( value((VT("/OUTP")-VT("/INP")) 4.35n)+
+                                value((VT("/OUTP")-VT("/INP")) 12.35n)+
+			        value((VT("/OUTP")-VT("/INP")) 20.35n)+
+			        value((VT("/OUTP")-VT("/INP")) 28.35n)+
+			        value((VT("/OUTP")-VT("/INP")) 36.35n)+
+			        value((VT("/OUTP")-VT("/INP")) 44.35n) )/6) 
+			
+          GainDiffError_pct__P: 
+	  = (1 - (GainDiffAvg_P / GainDiffErr6Avg_P) )*100     
+	  = (1 - (average((VT("/OUTP") - VT("/INP"))) / (
+                 (value((VT("/OUTP")-VT("/INP")) 4.35n)+
+                  value((VT("/OUTP")-VT("/INP")) 12.35n)+
+	          value((VT("/OUTP")-VT("/INP")) 20.35n)+
+                  value((VT("/OUTP")-VT("/INP")) 28.35n)+
+                  value((VT("/OUTP")-VT("/INP")) 36.35n)+
+	          value((VT("/OUTP")-VT("/INP")) 44.35n))/6)) )*100
+	    Where: pct: percentage or "%". 
+	                If not use "%" in variable name, will have problem when
+			import ADE-State into NeoCircuit (Ref: PCR  805209)	
+					  		         		   		           	        		    
+          Time_OUTP_equal_OUTM: 
+	  =  cross(VT("/OUTP") 1.33969 2 "either" nil nil)
+          =  104.9918n
+	
+          InputOffsetVoltage: 
+	  = (value(VT("/INP") 104.9918n) - value(VT("/INM") 104.9918n))
+	  
+       C. State File: Trans200n_SlewRate_DroopRate
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          SlewRate_P:  
+	  = dV/dT
+          = ((value(VT("/I1/Vcp") 19.3n) - value(VT("/I1/Vcp") 17.3n)) / 2e-3)
+          or
+          = ( (value(VT("/OUTP") 19.3n) - value(VT("/OUTP") 17.3n)) /
+	      ((19.3 - 17.3)*1e-3) )
+               Where: 2-e3 = 0.002uSec interval from T=17.3n to T=19.3n 
+               ==> Unit: V/uSec. 
+	 
+	  DroopRate_P
+	  = dV(from_leakage_charge)/dT
+	  = ((value(VT("/OUTP") 50n) - value(VT("/OUTP") 195n))/(195 - 50)*1E-3)
+	    Where: Droop Rate is the rate which the output voltage is changing
+	           due to leakage from the hold capacitor during the hold state.
+		   Unit: V/uSec.     
+      -----------------------------------------------------------------------
+
+  3. Neo Optimization:
+     A. Initial schematic:
+        (a) Save schematic view "schematic_initial_size" to "schematic"
+        (b) Run "Submit Schematic Point" from the initial schematic.
+             => DB snapshot: SH1_initial_schematic_size.NeoCktDB 
+	
+     B. Run global optimization:
+        (a) On NeoCircuit Goals, set gain tol to 3%
+	(b) Run 'Global Optimization'
+             => DB snapshot: SH2_global_size_3percent_tol.NeoCktDB	
+	
+     C. Run local optimization:
+        (a) On NeoCircuit Goals, set gain tol to 1% 
+	(b) Run 'Local Optimization'
+             => DB snapshot: SH3_local_size_1percent_tol.NeoCktDB
+	        Note:  -Data ID 0: schematic point
+		       -Data ID 1: Global sizing
+		       -Data ID 2: Local sizing 
+	(c) Back annotate device size to schematic: 
+	    cellView: schematic_nckt_local_size1
+	
+     D. Run NeoCell for doing layout and Assura for DRC/LVS/RCX:
+        -Place view:  "place1a" (Initial device size without adjusting 
+	                         "fw" and "w" for suitable floor-plan )
+	              "place1b" (After device shape adjustment for 
+		                 better floor-plan)
+	-Route view:  "route1b" (As original from NeoCell, without ESD protection)
+	-Layout view: "layout1b" (With ESD and VDD rail adjustment)
+	-RCX view     "av_rcx1b" (RCX view for NeoCkt ECO )
+	
+     E. Run NeoCircuit on ECO mode for verifying RC parastics effects:
+        (a) Access to menu: ECO => Extracted Netlist Mode
+	(b) On the pop form, 
+	    i. Set Extractor = Assura
+	    ii. Set lib/cell/view = ether_adcflash_RAD90/adc_sample_hold/av_rcx1b
+	    iii. Set [X]Generate Netlist
+	(c) Run simulation from menu: ECO => Summit_Schematic_Point    
+         => DB snapshot: SH4_eco_rcx1b.NeoCktDB
+	    Note: Some parameters failed to specs:
+	          small_BW, Input_Offset_Voltage, Slew Rate
+		  
+     F. Run NeoCircuit for local sizing with RC parasitic included:
+        (a) Select the reference: "Point from schemtic" 
+	                          (in 'Result' and 'Points' tab).
+	(b) Launch simulation from menu: ECO => Local Optimize
+	 ==> DB snapshot: SH5_eco_rcx1b_lsize.NeoCktDB
+	 
+     D. Run NeoCell for ECO layout and run Assura for DRC/LVS/RCX:	 
+	-Place view:  "place1c"
+	-Route view:  "route1c"
+	-Layout view: "layout1c"
+	-RCX view     "av_rcx1b"
+	
+     G. Repeat E for verifying parastic effects:
+        ==> DB snapshot: SH6_eco_rcx1c.NeoCktDB
+	
+	
+     Run Time Table:
+     -------------------------------------------------------------------------
+      Run Nam              |Elapsed Time (Min)|     Note
+     -------------------------------------------------------------------------
+     Submit Schematic Point    |   1.2| 6 Linux servers: 2.8GHz, 2 CPUs, 4GB RAM
+     Initial Global Sizing     |   4  | (same env)
+     Local Sizing              |  22  | (same env)
+     Submit Sch Point with RCX |   2.5| (same env)
+     Local Sizing with RCX     | ~5H  | (same env), lengthy computing time 
+                                      | depends to the layout.
+     -------------------------------------------------------------------------
+     				    	         	 	 		 	
+=========================== End of File ========================================

@@ -1,0 +1,8 @@
+# Table File  : '/export/home/jmedero/project/tsmc13lv98/aptivia/workarea/pll/pfd_cplf/dcmlib/PLL_PFD/veriloga/PLL_PFD_REFCLK_tran_DN_t1.vat'
+# Result File : 'results/drouillard_ph2/PLL_PFDDCM/configDCM/results/_o_pfd_VerilogA_timing_sweep-_o_pfd_timing.res'
+# Created on  : 'Wed Dec 10 2003 at 15:58:51'
+
+# dcm_VDD_value
+# 	REFCLK_tran_DN:t1
+2	2.65325e-09 	# keys='2 '
+2.65	2.07298e-09 	# keys='2.65 '

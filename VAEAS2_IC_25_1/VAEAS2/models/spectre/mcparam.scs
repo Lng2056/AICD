@@ -1,0 +1,70 @@
+// ----------------------------------------------
+// SPECTRE MONTE CARLO PARAMETER SECTION
+// ----------------------------------------------
+//
+// This file must be included for Monte Carlo 
+// Simulation using Spectre Direct.
+//
+// Globla process variations are defined in the 
+// section "process". 
+//
+// Matching variations are defined in the 
+// section "mismatch".
+//
+// ----------------------------------------------
+
+parameters
++g_toxp=0
++g_dvthp=0
++g_dxlp=0 
++g_dxwp=0
++g_cjp=0 
++g_cjswp=0
++g_cjswgp=0
++g_cgop=0
++g_toxn=0
++g_dvthn=0
++g_dxln=0
++g_dxwn=0
++g_cjn=0
++g_cjswn=0
++g_cjswgn=0
++g_cgon=0
++m_dvthp=0 m_dvthn=0 //mismatch for vth
++m_u0p=0 m_u0n=0 //mismatch for mobility
++m_akshat=0
+
+// Statistic information:
+statistics {
+  process {
+	vary g_toxp dist=gauss std=5.0e-11 percent=no
+	vary g_dvthp dist=gauss std=0.0233 percent=no
+	vary g_dxlp dist=gauss std=4.333e-09 percent=no 
+	vary g_dxwp dist=gauss std=5.0e-09 percent=no
+	vary g_cjp dist=gauss std=1.667e-05 percent=no 
+	vary g_cjswp dist=gauss std=3.333e-12 percent=no
+	vary g_cjswgp dist=gauss std=6.667e-12 percent=no
+	vary g_cgop dist=gauss std=5.0e-12 percent=no
+	vary g_toxn dist=gauss std=5.0e-11 percent=no
+	vary g_dvthn dist=gauss std=0.0333 percent=no
+	vary g_dxln dist=gauss std=4.333e-09 percent=no
+	vary g_dxwn dist=gauss std=5.0e-09 percent=no
+	vary g_cjn dist=gauss std=3.333e-05 percent=no
+	vary g_cjswn dist=gauss std=3.333e-12 percent=no
+	vary g_cjswgn dist=gauss std=5e-12 percent=no
+	vary g_cgon dist=gauss std=5.0e-12 percent=no
+	}
+	
+  mismatch {
+    vary m_dvthp dist=gauss std=1
+    vary m_dvthn dist=gauss std=1  
+    vary m_u0p dist=gauss std=1
+    vary m_u0n dist=gauss std=1  
+    vary m_akshat dist=gauss std=1
+	}
+
+    correlate param=[g_toxp g_toxn]      cc=0.999
+    correlate param=[g_dxlp g_dxln]      cc=0.999
+    correlate param=[g_dxwp g_dxwn]      cc=0.999
+}
+

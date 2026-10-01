@@ -1,0 +1,286 @@
+simulator lang=spectre
+
+// Library name: ether
+// Cell name: inv_2x_hv
+// View name: schematic
+subckt inv_2x_hv A Y inh_DVDD inh_DVSS
+    PM0 (Y A inh_DVDD inh_DVDD) gpdk090_pmos2v w=(2.8u) l=280.0n as=1.68p \
+        ad=1.68p ps=6.8u pd=6.8u m=(1)*(1) simM=(1)*(1)
+    NM0 (Y A inh_DVSS inh_DVSS) gpdk090_nmos2v w=(1.12u) l=280.0n as=672f \
+        ad=672f ps=3.44u pd=3.44u m=(1)*(1) simM=(1)*(1)
+ends inv_2x_hv
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_IREF_bias
+// View name: schematic
+subckt adc_IREF_bias Iin1 Iin2 SIDDQ VDD VSS pbias pbias_cas
+    PM35 (net0165 pbias_cas VDD VDD) gpdk090_pmos2v w=(20u) l=500n as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM2 (net13 pbias VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM6 (pbias pbias_cas net13 net13) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM49 (net80 SIDDQ Iin2 VDD) gpdk090_pmos2v w=(25u) l=280.0n as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    PM51 (net20 SIDDQb VDD VDD) gpdk090_pmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    PM50 (net20 SIDDQ Iin1 VDD) gpdk090_pmos2v w=(25u) l=280.0n as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    PM7 (pbias_cas pbias_cas net0157 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM34 (pbias_cas SIDDQb VDD VDD) gpdk090_pmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    PM9 (net0173 pbias_cas net0165 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM5 (net0157 pbias_cas net0175 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM8 (net0175 pbias_cas net0173 VDD) gpdk090_pmos2v w=(20u) l=500n \
+        as=12p ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    NM5 (net20 net80 net92 VSS) gpdk090_nmos2v w=(10u) l=1u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM23 (net80 SIDDQ VSS VSS) gpdk090_nmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    NM28 (pbias SIDDQ VSS VSS) gpdk090_nmos2v w=(1u) l=280.0n as=600f \
+        ad=600f ps=3.2u pd=3.2u m=(1)*(1) simM=(1)*(1)
+    NM14 (net60 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM15 (pbias net80 net60 VSS) gpdk090_nmos2v w=(25u) l=1u as=11.25p \
+        ad=7.5p ps=38.4u pd=25.6u m=(1)*(4) simM=(1)*(4)
+    NM11 (net0104 net80 net0108 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM12 (net0108 net80 net0112 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM13 (net0112 net80 VSS VSS) gpdk090_nmos2v w=(20u) l=1u as=12p ad=12p \
+        ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM16 (net80 net80 net0113 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM18 (net0113 net80 net0104 VSS) gpdk090_nmos2v w=(20u) l=1u as=12p \
+        ad=12p ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    NM10 (net92 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM17 (net96 net20 VSS VSS) gpdk090_nmos2v w=(10u) l=2.5u as=4.5p ad=3p \
+        ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    NM21 (pbias_cas net80 net96 VSS) gpdk090_nmos2v w=(10u) l=1u as=4.5p \
+        ad=3p ps=15.9u pd=10.6u m=(1)*(4) simM=(1)*(4)
+    C1 (VSS net20 VSS VSS) gpdk090_nmos2v w=(33.005u) l=17.5u m=(1)*(1) \
+        simM=(1)*(1)
+    C2 (VSS net20 VSS VSS) gpdk090_nmos2v w=(33.005u) l=17.5u m=(1)*(1) \
+        simM=(1)*(1)
+    C0 (VSS net20 VSS VSS) gpdk090_nmos2v w=(35.365u) l=14u m=(1)*(1) \
+        simM=(1)*(1)
+    I1 (SIDDQ SIDDQb VDD VSS) inv_2x_hv
+ends adc_IREF_bias
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_IREF_ext
+// View name: schematic
+subckt adc_IREF_ext BIAS100A BIAS100B BIAS100C BIAS100D BIAS100E BIAS100F \
+        BIAS100G BIAS100H BIAS100V BIAS100Z BIAS100fA BIAS100fB BIAS50Y \
+        BIAS50f I100_ext1 I100_ext2 SIDDQ VDD VSS
+    PM30 (BIAS100Z net97 net66 net66) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM28 (net70 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM4 (net34 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM3 (BIAS100fA net97 net34 net34) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM1 (BIAS100fB net97 net38 net38) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM0 (net38 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM15 (BIAS100B net97 net106 net106) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM13 (BIAS50f net97 net46 net46) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM12 (net46 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(1)*(4) simM=(1)*(4)
+    PM11 (net114 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM10 (BIAS100A net97 net114 net114) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM18 (net126 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM24 (BIAS100G net97 net86 net86) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM14 (net106 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM25 (net86 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM27 (BIAS100H net97 net78 net78) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM33 (BIAS50Y net97 net54 net54) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(1)*(2) simM=(1)*(2)
+    PM32 (net54 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(1)*(4) simM=(1)*(4)
+    PM31 (net66 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM19 (BIAS100D net97 net126 net126) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM16 (BIAS100C net97 net138 net138) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM20 (BIAS100E net97 net142 net142) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM21 (net142 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM23 (BIAS100F net97 net150 net150) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    PM26 (net78 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM22 (net150 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM17 (net138 net135 VDD VDD) gpdk090_pmos2v w=(20u) l=2.5u as=9p ad=6p \
+        ps=30.9u pd=20.6u m=(2)*(4) simM=(2)*(4)
+    PM29 (BIAS100V net97 net70 net70) gpdk090_pmos2v w=(20u) l=1u as=12p \
+        ad=6p ps=41.2u pd=20.6u m=(2)*(2) simM=(2)*(2)
+    ADC_IREF_BIAS (I100_ext1 I100_ext2 SIDDQ VDD VSS net135 net97) \
+        adc_IREF_bias
+ends adc_IREF_ext
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_sample_hold
+// View name: schematic
+subckt adc_sample_hold outm outp SIDDQ VDD VSS bias100 hold hold_test inm \
+        inm_test inp inp_test sample sample_test
+    I58 (SIDDQ SIDDQb VDD VSS) inv_2x_hv
+    NM1 (inm_test sample_test net0154 VSS) gpdk090_nmos2v w=(3u) l=280n \
+        as=900f ad=900f ps=3.6u pd=3.6u m=(2)*(1) simM=(2)*(1)
+    NM3 (inp_test sample_test net58 VSS) gpdk090_nmos2v w=(3u) l=280n \
+        as=900f ad=900f ps=3.6u pd=3.6u m=(2)*(1) simM=(2)*(1)
+    NM14 (net58 hold_test net58 VSS) gpdk090_nmos2v w=(3u) l=280n as=900f \
+        ad=900f ps=3.6u pd=3.6u m=(1)*(1) simM=(1)*(1)
+    NM9 (net58 hold net58 VSS) gpdk090_nmos2v w=(3u) l=280n as=900f \
+        ad=900f ps=3.6u pd=3.6u m=(1)*(1) simM=(1)*(1)
+    NM12 (net58 sample inp VSS) gpdk090_nmos2v w=(3u) l=280n as=900f \
+        ad=900f ps=3.6u pd=3.6u m=(2)*(1) simM=(2)*(1)
+    NM16 (net0154 hold_test net0154 VSS) gpdk090_nmos2v w=(3u) l=280n \
+        as=900f ad=900f ps=3.6u pd=3.6u m=(1)*(1) simM=(1)*(1)
+    NM0 (net0154 sample inm VSS) gpdk090_nmos2v w=(3u) l=280n as=900f \
+        ad=900f ps=3.6u pd=3.6u m=(2)*(1) simM=(2)*(1)
+    NM2 (net0154 hold net0154 VSS) gpdk090_nmos2v w=(3u) l=280n as=900f \
+        ad=900f ps=3.6u pd=3.6u m=(1)*(1) simM=(1)*(1)
+    NM8 (bias100 SIDDQ VSS VSS) gpdk090_nmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    NM4 (bias1 bias100 VSS VSS) gpdk090_nmos2v w=(10u) l=1u as=2.4p \
+        ad=1.8p ps=5.48u pd=360n m=(2)*(4) simM=(2)*(4)
+    NM6 (net0154 SIDDQ VSS VSS) gpdk090_nmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    NM10 (outp SIDDQ VSS VSS) gpdk090_nmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    NM7 (outm SIDDQ VSS VSS) gpdk090_nmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    NM5 (bias100 bias100 VSS VSS) gpdk090_nmos2v w=(10u) l=1u as=3p \
+        ad=1.8p ps=10.6u pd=360n m=(1)*(2) simM=(1)*(2)
+    NM11 (net58 SIDDQ VSS VSS) gpdk090_nmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    PM4 (VSS net58 outp outp) gpdk090_pmos2v w=(20u) l=280n as=4.08p \
+        ad=3.6p ps=4.408u pd=360n m=(2)*(10) simM=(2)*(10)
+    PM0 (VSS net0154 outm outm) gpdk090_pmos2v w=(20u) l=280n as=4.08p \
+        ad=3.6p ps=4.408u pd=360n m=(2)*(10) simM=(2)*(10)
+    PM3 (outp bias1 VDD VDD) gpdk090_pmos2v w=(20u) l=500n as=6p ad=3.6p \
+        ps=20.6u pd=360n m=(10)*(2) simM=(10)*(2)
+    PM1 (outm bias1 VDD VDD) gpdk090_pmos2v w=(20u) l=500n as=6p ad=3.6p \
+        ps=20.6u pd=360n m=(10)*(2) simM=(10)*(2)
+    PM6 (bias1 bias1 VDD VDD) gpdk090_pmos2v w=(20u) l=500n as=6p ad=3.6p \
+        ps=20.6u pd=360n m=(4)*(2) simM=(4)*(2)
+    PM2 (bias1 SIDDQb VDD VDD) gpdk090_pmos2v w=(1.2u) l=280n as=360f \
+        ad=360f ps=1.8u pd=1.8u m=(1)*(1) simM=(1)*(1)
+    C4 (VDD net58 VDD VDD) gpdk090_pmos2v w=(6.755u) l=7.2u m=(2)*(1) \
+        simM=(2)*(1)
+    C3 (VDD net0154 VDD VDD) gpdk090_pmos2v w=(6.755u) l=7.2u m=(2)*(1) \
+        simM=(2)*(1)
+ends adc_sample_hold
+// End of subcircuit definition.
+
+// Library name: gpdk090
+// Cell name: resnsnpoly
+// View name: schematic
+subckt resnsnpoly_pcell_0 B MINUS PLUS
+parameters segL=8u segW=1.5u
+    R1 (n1 MINUS B) gpdk090_resnsnpoly l=segL w=segW
+    R0 (PLUS n1 B) gpdk090_resnsnpoly l=segL w=segW
+ends resnsnpoly_pcell_0
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_invertx1
+// View name: schematic
+subckt adc_invertx1 IN OUT VDD VSS
+    PM0 (OUT IN VDD VDD) gpdk090_pmos2v w=(2.335u) l=280.0n as=1.401p \
+        ad=1.401p ps=5.87u pd=5.87u m=(1)*(1) simM=(1)*(1)
+    NM0 (OUT IN VSS VSS) gpdk090_nmos2v w=(1.165u) l=280.0n as=699f \
+        ad=699f ps=3.53u pd=3.53u m=(1)*(1) simM=(1)*(1)
+ends adc_invertx1
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_nandx3
+// View name: schematic
+subckt adc_nandx3 A B OUT VDD VSS
+    NM0 (OUT A net6 VSS) gpdk090_nmos2v w=(3.5u) l=280.0n as=2.1p ad=2.1p \
+        ps=8.2u pd=8.2u m=(1)*(1) simM=(1)*(1)
+    NM1 (net6 B VSS VSS) gpdk090_nmos2v w=(3.5u) l=280.0n as=2.1p ad=2.1p \
+        ps=8.2u pd=8.2u m=(1)*(1) simM=(1)*(1)
+    PM0 (OUT A VDD VDD) gpdk090_pmos2v w=(7u) l=280.0n as=4.2p ad=4.2p \
+        ps=15.2u pd=15.2u m=(1)*(1) simM=(1)*(1)
+    PM1 (OUT B VDD VDD) gpdk090_pmos2v w=(7u) l=280.0n as=4.2p ad=4.2p \
+        ps=15.2u pd=15.2u m=(1)*(1) simM=(1)*(1)
+ends adc_nandx3
+// End of subcircuit definition.
+
+// Library name: ether
+// Cell name: adc_invertx3
+// View name: schematic
+subckt adc_invertx3 IN OUT VDD VSS
+    PM0 (OUT IN VDD VDD) gpdk090_pmos2v w=(7u) l=280.0n as=4.2p ad=4.2p \
+        ps=15.2u pd=15.2u m=(1)*(1) simM=(1)*(1)
+    NM0 (OUT IN VSS VSS) gpdk090_nmos2v w=(3.5u) l=280.0n as=2.1p ad=2.1p \
+        ps=8.2u pd=8.2u m=(1)*(1) simM=(1)*(1)
+ends adc_invertx3
+// End of subcircuit definition.
+
+// Library name: ether_sims
+// Cell name: adc_sample_hold_sim
+// View name: schematic_hold
+I33 (net078 net079 net080 net081 net082 net083 net084 net085 BIAS100V \
+        net040 net074 net073 net087 net072 net29 net31 SIDDQ VDD_IEXT 0) \
+        adc_IREF_ext
+I1 (OUTM OUTP SIDDQ VDD 0 net041 HOLD HOLD_TEST INM TEST_INM INP TEST_INP \
+        SAMPLE SAMPLE_TEST) adc_sample_hold
+R11 (0 INP_OPAMP OUTM) resnsnpoly_pcell_0 segL=8u segW=1.5u
+R1 (0 INP_OPAMP OUTP) resnsnpoly_pcell_0 segL=8u segW=1.5u
+R5 (net041 BIAS100V) resistor r=0
+R2 (net054 INM) resistor r=500
+R3 (net061 TEST_INM) resistor r=500
+R0 (net056 INP) resistor r=500
+R4 (net065 TEST_INP) resistor r=500
+E1 (net061 net094 net065 net094) vcvs gain=-1
+E0 (net054 net075 net056 net075) vcvs gain=-1
+V23 (net065 net094) vsource mag=1 type=sine delay=5n ampl=180.0m \
+        freq=56.640625M
+V14 (net056 net075) vsource dc=0 mag=1 type=sine delay=5n ampl=ampl \
+        freq=fsignal
+C0 (INP_OPAMP 0) capacitor c=cload
+I15 (0 net31) isource dc=100u type=dc
+I16 (0 net29) isource dc=100u type=dc
+V26 (net094 0) vsource dc=765m type=dc
+V1 (HOLD_TEST 0) vsource dc=vdd type=dc
+V2 (SAMPLE_TEST 0) vsource dc=0 type=dc
+V7 (SIDDQ 0) vsource dc=siddq type=dc
+V4 (VDD 0) vsource dc=vdd type=dc
+V5 (VDD_IEXT 0) vsource dc=vdd type=dc
+V25 (net075 0) vsource dc=765.0m type=dc
+V3 (net071 0) vsource type=pwl delay=0 wave=[ 0 vdd 100n vdd 100.01n 0 \
+        105n 0 105.01n vdd ]
+I78 (net0160 net0178 VDD 0) adc_invertx1
+I77 (net0142 net0182 VDD 0) adc_invertx1
+I79 (net071 net0135 VDD 0) adc_invertx1
+I74 (net0168 net0135 net0160 VDD 0) adc_nandx3
+I73 (net071 net0172 net0142 VDD 0) adc_nandx3
+I76 (net0178 net0172 VDD 0) adc_invertx3
+I75 (net0182 net0168 VDD 0) adc_invertx3
+I81 (net0172 SAMPLE VDD 0) adc_invertx3
+I83 (net0168 HOLD VDD 0) adc_invertx3

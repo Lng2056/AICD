@@ -1,0 +1,9 @@
+(envOpts UltraSimVectorFile) ""
+(envOpts printComments) nil
+(envOpts userCmdLineOption) ""
+(envOpts UltraSimVcdInfo) ""
+(envOpts switchViewList) ("spectre" "cmos_sch" "cmos.sch" "schematic" "veriloga" "ahdl")
+(envOpts autoDisplay) t
+(envOpts netlistFormat) "spectre"
+(envOpts UltraSimVcdFile) ""
+(envOpts stopViewList) ("spectre")

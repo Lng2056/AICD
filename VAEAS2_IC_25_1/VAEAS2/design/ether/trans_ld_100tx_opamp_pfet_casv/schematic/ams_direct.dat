@@ -1,0 +1,13 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	1134103883=7-gpdk0906-nmos2v;
+	1134103884=7-gpdk0906-nmos2v6-symbol;
+	-1=5-basic5-iopin;
+	1133906589=5-basic5-iopin7-symbolr;
+	1136387754=verilog.vams;
+$END

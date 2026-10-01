@@ -1,0 +1,37 @@
+
+// Library name: ether_sims
+// Cell name: adc_sample_hold_sim
+// View name: schematic
+I33 (net078 net079 net080 net081 net082 net083 net084 net085 BIAS100V \
+        net040 net074 net073 net087 net072 net29 net31 SIDDQ VDD_IEXT 0) \
+        adc_IREF_ext
+I1 (OUTM OUTP SIDDQ VDD_ADC_SAMPLE_HOLD 0 net041 HOLD HOLD_TEST INM \
+        TEST_INM INP TEST_INP SAMPLE SAMPLE_TEST) adc_sample_hold
+I4 (HOLD net89 HOLD_TEST net90 net81 net82 net84 net83 SAMPLE net87 \
+        SAMPLE_TEST net88 SIDDQ TEST_ENABLE VDD_CLK_NONOVERLAP 0 CLK) \
+        adc_clk_nonoverlap
+R11 (0 INP_OPAMP OUTM) resnsnpoly_pcell_0 segL=8u segW=1.5u
+R1 (0 INP_OPAMP OUTP) resnsnpoly_pcell_0 segL=8u segW=1.5u
+R5 (net041 BIAS100V) resistor r=0
+R2 (net054 INM) resistor r=500
+R3 (net061 TEST_INM) resistor r=500
+R0 (net056 INP) resistor r=500
+R4 (net065 TEST_INP) resistor r=500
+E1 (net061 net094 net065 net094) vcvs gain=-1
+E0 (net054 net075 net056 net075) vcvs gain=-1
+V23 (net065 net094) vsource mag=1 type=sine delay=5n ampl=180.0m \
+        freq=56.640625M
+V14 (net056 net075) vsource dc=0 mag=1 type=sine delay=5n ampl=ampl \
+        freq=fsignal
+C0 (INP_OPAMP 0) capacitor c=cload
+I15 (0 net31) isource dc=100u type=dc
+I16 (0 net29) isource dc=100u type=dc
+V26 (net094 0) vsource dc=765m type=dc
+V3 (SIDDQ 0) vsource dc=0 type=dc
+V1 (VDD_CLK_NONOVERLAP 0) vsource dc=vdd type=dc
+V2 (TEST_ENABLE 0) vsource dc=0 type=dc
+V4 (VDD_ADC_SAMPLE_HOLD 0) vsource dc=vdd type=dc
+V5 (VDD_IEXT 0) vsource dc=vdd type=dc
+V25 (net075 0) vsource dc=765.0m type=dc
+V12 (CLK 0) vsource dc=0 type=pulse val0=0 val1=vdd period=1/clk_freq \
+        delay=0 rise=100p fall=100p width=((1/clk_freq)/2)-100p

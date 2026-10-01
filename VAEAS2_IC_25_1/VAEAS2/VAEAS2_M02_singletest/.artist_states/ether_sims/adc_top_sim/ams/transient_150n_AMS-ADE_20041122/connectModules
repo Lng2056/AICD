@@ -1,0 +1,5 @@
+rule "mixedsignal_2"
+userRuleView "connect"
+selectRules "User defined"
+userRuleCell "mixedsignal_25a"
+userRuleLib "ether_sims"

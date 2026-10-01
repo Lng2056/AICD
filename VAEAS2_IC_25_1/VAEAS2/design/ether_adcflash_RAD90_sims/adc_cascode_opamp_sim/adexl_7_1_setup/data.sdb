@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<setupdb version="5">data
+	<active>Active Setup
+		<corners>
+			<corner enabled="1">_default</corner>
+		</corners>
+		<extensions>
+			<extension>Parasitics
+				<callback>_parSetupDBExtensionCB</callback>
+				<iconvalue></iconvalue>
+				<icontype></icontype>
+			</extension>
+		</extensions>
+		<currentmode>Single Run, Sweeps and Corners</currentmode>
+		<overwritehistory>0</overwritehistory>
+		<tests>
+			<test>ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>adc_cascode_opamp_sim</value>
+					</option>
+					<option>lib
+						<value>ether_adcflash_RAD90_sims</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>config_Gain_Vio_CMRR_SR</value>
+					</option>
+					<option>path
+						<value>$AXL_SETUPDB_DIR/test_states</value>
+					</option>
+					<option>state
+						<value>ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1_active</value>
+					</option>
+				</tooloptions>
+				<origoptions>
+					<option>cell
+						<value>adc_cascode_opamp_sim</value>
+					</option>
+					<option>lib
+						<value>ether_adcflash_RAD90_sims</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>config_Gain_Vio_CMRR_SR</value>
+					</option>
+				</origoptions>
+			</test>
+		</tests>
+		<vars>
+			<var>siddq
+				<value>0</value>
+				<dependentTests>
+					<dependentTest omitted="0">ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vdd
+				<value>2.5</value>
+				<dependentTests>
+					<dependentTest omitted="0">ether_adcflash_RAD90_sims:adc_cascode_opamp_sim:1</dependentTest>
+				</dependentTests>
+			</var>
+		</vars>
+	</active>
+	<history>History</history>
+</setupdb>

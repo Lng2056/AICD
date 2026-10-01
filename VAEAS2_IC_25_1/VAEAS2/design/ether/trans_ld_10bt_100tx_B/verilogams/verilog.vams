@@ -1,0 +1,63 @@
+//Verilog-AMS HDL for "drouillard_ph2", "trans_ld_10bt_100tx_B" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module trans_ld_10bt_100tx_B ( BI_DAM, BASE100_DIS, MLT3ENC_DATA, gnd, vdd,
+    siddq, ibias_rext_400u, I_100u_Rext_NC, BASE10_TX_DIS, ibias_rext_50u,
+    BASE10_DIS, ibias_rext2_50u, dgnd, dvdd, TP_DIS, BI_DAP, tenbt_filter,
+    clk_160mhz, reset
+    );
+    
+output      BI_DAP, BI_DAM;
+input [1:0] MLT3ENC_DATA;
+input [4:0] tenbt_filter;
+input	    reset, siddq;
+input	    clk_160mhz;
+input	    TP_DIS, BASE10_TX_DIS;
+input	    BASE10_DIS, BASE100_DIS;
+input	    vdd, dvdd, gnd, dgnd;
+input	    I_100u_Rext_NC, ibias_rext_400u;
+input	    ibias_rext_50u, ibias_rext2_50u;
+
+electrical  BI_DAP, BI_DAM;
+logic [1:0] MLT3ENC_DATA;
+logic [4:0] tenbt_filter;
+logic	    reset, siddq;
+logic	    clk_160mhz;
+logic	    TP_DIS, BASE10_TX_DIS;
+logic	    BASE10_DIS, BASE100_DIS;
+electrical  vdd, dvdd, gnd, dgnd;
+electrical  I_100u_Rext_NC, ibias_rext_400u;
+electrical  ibias_rext_50u, ibias_rext2_50u;
+
+// handle the x/z cases
+`include "myfunctions.vams"
+wire txon     = !noxz(BASE100_DIS,1'b1) & noxz(BASE10_DIS,1'b1);
+wire tenbt_on = !noxz(BASE10_DIS,1'b1);
+wire isiddq   = noxz(TP_DIS,1'b0) & noxz(siddq,1'b0);
+
+trans_ld_bias_mux bias0 ( .ibias_100tx(ibias_100tx),
+		.ibias_100tx_100u(ibias_100tx_100u),
+		.ibias_tenbt(ibias_tenbt), .ibias_tenbt_cas(ibias_tenbt_cas),
+		.ibias_rext_100u(I_100u_Rext_NC), 
+		.ibias_rext_400u(ibias_rext_400u),
+		.siddq(isiddq), .tenbt_on(tenbt_on), .tx_on(txon),
+		.dvdd(dvdd), .dgnd(dgnd) );
+
+trans_ld_tenbt i10bt ( .neg_out(BI_DAM), .pos_out(BI_DAP), .MAN_ENC(clk_160mhz),
+		.siddq(siddq), .tenbt_on(tenbt_on),
+		.tenbt_trans_off(BASE10_TX_DIS),
+		.ibias_rext2_50u(ibias_rext2_50u),
+		.ibias_tenbt(ibias_tenbt), 
+		.ibias_tenbt_cas(ibias_tenbt_cas),
+		.avdd(vdd), .dvdd(dvdd), .dgnd(dgnd), .gnd(gnd) );
+
+trans_ld_100tx i100tx ( .neg_out(BI_DAM), .pos_out(BI_DAP), 
+		.MLT3ENC_DATA(MLT3ENC_DATA), .TX_on(txon), .siddq(siddq), 
+		.ibias_100tx_100u(ibias_100tx_100u),
+		.ibias_100tx_400u(ibias_100tx),
+		.ibias_rext_50u(ibias_rext_50u), 
+		.VDD(vdd), .VSS(gnd) );
+
+endmodule

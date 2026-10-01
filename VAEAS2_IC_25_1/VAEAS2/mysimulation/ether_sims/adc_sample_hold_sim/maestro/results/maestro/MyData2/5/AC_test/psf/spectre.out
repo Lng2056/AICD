@@ -1,0 +1,419 @@
+
+Spectre (R) Circuit Simulator
+Version 23.1.0.063 64bit -- 10 Jun 2023
+Copyright (C) 1989-2023 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: saidarsh   Host: noivl-saidarsh   HostID: 17AC8659   PID: 24696
+Memory  available: 5.6977 GB  physical: 8.2015 GB
+Linux   : Red Hat Enterprise Linux Workstation release 7.9 (Maipo)
+CPU Type: Intel(R) Xeon(R) Gold 6140 CPU @ 2.30GHz
+All processors running at 2294.6 MHz
+        Socket: Processors
+        0:       0
+        2:       1
+        
+System load averages (1min, 5min, 15min) : 36.5 %, 22.5 %, 14.5 %
+This is a virtual machine
+
+
+Simulating `input.scs' on noivl-saidarsh at 12:43:07 PM, Wed Aug 9, 2023 (process id: 24696).
+Current working directory: /servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/MyData2/5/AC_test/netlist
+Command line:
+     \
+        /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/bin/spectre  \
+        -64 input.scs +escchars +log ../psf/spectre.out -format psfxl  \
+        -raw ../psf  \
+        -I/servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre  \
+        +lqtimeout 900 -maxw 5 -maxn 5 -env ade -ahdllibdir  \
+        /servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/MyData2/sharedData/Job1/ahdl/input.ahdlSimDB  \
+        +logstatus  \
+        +adespetkn=0001089D13A302B663E41FB550AF0DF415A679A322D5069144BF588C12F604E07EF416DC01A319B562BB63D351A217EB45A366A529DD06BC5CA80EC657C04F9271CB79D15D9175FF349871C718F107BB55EA7C8A05F607B258B5229244AA41E50EA979D12FF874D3349879D118F874D334981D02247A4851504B00003627
+
+Simulation Id: c8CJwDh0roty2DES
+Licensing Information:
+[12:43:07.227722] Configured Lic search path (22.01-s002): 5280@noiflex:5280@noidalic01
+
+Licensing Information:
+[12:43:07.202291] Periodic Lic check successful
+
+Loading /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...
+Loading /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...
+Loading /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...
+Loading /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/MyData2/5/AC_test/netlist/input.scs
+Reading file:  /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_mos.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_mos_iso.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_resistor.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/resd_va.va
+Reading link:  /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/spectre/etc/ahdl/constants.h
+Reading file:  /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/spectre/etc/ahdl/constants.vams
+Reading link:  /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/spectre/etc/ahdl/discipline.h
+Reading file:  /ccstools/cdsind1/Software/SPECTRE231Base_lnx86/tools.lnx86/spectre/etc/ahdl/disciplines.vams
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/rnoise_va.va
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_capacitor.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_diode.scs
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/gpdk090_v4.4/models/spectre/gpdk090_bipolar.scs
+Reading link:  /servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/MyData2/5/AC_test/netlist/netlist
+Reading file:  /servers/esd_noida/saidarsh/VAEAS2/mysimulation/ether_sims/adc_sample_hold_sim/maestro/results/maestro/MyData2/psf/AC_test/netlist/netlist
+Time for NDB Parsing: CPU = 111.159 ms, elapsed = 205.228 ms.
+Time accumulated: CPU = 223.877 ms, elapsed = 205.232 ms.
+Peak resident memory used = 89.8 Mbytes.
+
+Time for Elaboration: CPU = 30.748 ms, elapsed = 33.2942 ms.
+Time accumulated: CPU = 254.765 ms, elapsed = 238.665 ms.
+Peak resident memory used = 97 Mbytes.
+
+
+Notice from spectre during hierarchy flattening.
+    The value 'psf' specified for the 'checklimitdest' option will no longer be supported in future releases. Use 'spectre -h' to see other recommended values for the 'checklimitdest' option.
+
+
+Time for EDB Visiting: CPU = 3.622 ms, elapsed = 3.62301 ms.
+Time accumulated: CPU = 258.548 ms, elapsed = 242.449 ms.
+Peak resident memory used = 98.3 Mbytes.
+
+
+Warning from spectre during initial setup.
+    WARNING (CMI-2477): I1.C3: `Rds' = 1.15641 uOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I1.C4: `Rds' = 1.15641 uOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I1.PM2: `Rds' = 6.55462 uOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I1.PM6: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I1.PM1: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+        Further occurrences of this warning will be suppressed.
+Notice from spectre during topology check.
+    Only one connection to the following 13 nodes:
+        net078
+        net079
+        net080
+        net081
+        net082
+        Further occurrences of this notice will be suppressed.
+
+
+Global user options:
+         psfversion = 1.4.0
+            vabstol = 1e-06
+            iabstol = 1e-12
+               temp = 27
+               gmin = 1e-12
+             rforce = 1
+           maxnotes = 5
+           maxwarns = 5
+             digits = 5
+               cols = 80
+             pivrel = 0.001
+           sensfile = ../psf/sens.output
+     checklimitdest = psf
+               save = allpub
+             reltol = 0.001
+               tnom = 27
+             scalem = 1
+              scale = 1
+
+Scoped user options:
+
+Circuit inventory:
+              nodes 74
+            bsim3v3 82    
+          capacitor 1     
+            isource 2     
+            phy_res 4     
+           resistor 5     
+               vcvs 2     
+            vsource 11    
+
+Analysis and control statement inventory:
+                 ac 1     
+               info 6     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 1     
+
+
+Notice from spectre during initial setup.
+    1 resistor is changed to resistance form because its value is less than 'rthresh'.
+    1 notice suppressed.
+    159 warnings suppressed.
+
+Time for parsing: CPU = 6.694 ms, elapsed = 8.27909 ms.
+Time accumulated: CPU = 265.373 ms, elapsed = 250.858 ms.
+Peak resident memory used = 101 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+
+Warning from spectre.
+    WARNING (CMI-2477): I33.PM30: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM3: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM1: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM15: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM10: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+        Further occurrences of this warning will be suppressed.
+
+
+*****************************************
+AC Analysis `ac': freq = (1 Hz -> 10 GHz)
+*****************************************
+
+Notice from spectre during DC analysis, during AC analysis `ac'.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 3.876 ms, elapsed = 3.932 ms.
+
+Opening the PSF file ../psf/ac.ac ...
+    ac: freq = 1.778 Hz     (2.5 %), step = 193.4 mHz    (500 m%)
+    ac: freq = 1.995 Hz       (3 %), step = 217 mHz      (500 m%)
+    ac: freq = 2.239 Hz     (3.5 %), step = 243.5 mHz    (500 m%)
+    ac: freq = 2.512 Hz       (4 %), step = 273.2 mHz    (500 m%)
+    ac: freq = 2.818 Hz     (4.5 %), step = 306.5 mHz    (500 m%)
+    ac: freq = 3.162 Hz       (5 %), step = 343.9 mHz    (500 m%)
+    ac: freq = 3.548 Hz     (5.5 %), step = 385.9 mHz    (500 m%)
+    ac: freq = 3.981 Hz       (6 %), step = 432.9 mHz    (500 m%)
+    ac: freq = 4.467 Hz     (6.5 %), step = 485.8 mHz    (500 m%)
+    ac: freq = 5.012 Hz       (7 %), step = 545 mHz      (500 m%)
+    ac: freq = 5.623 Hz     (7.5 %), step = 611.5 mHz    (500 m%)
+    ac: freq = 6.31 Hz        (8 %), step = 686.2 mHz    (500 m%)
+    ac: freq = 7.079 Hz     (8.5 %), step = 769.9 mHz    (500 m%)
+    ac: freq = 7.943 Hz       (9 %), step = 863.8 mHz    (500 m%)
+    ac: freq = 8.913 Hz     (9.5 %), step = 969.2 mHz    (500 m%)
+    ac: freq = 10 Hz         (10 %), step = 1.087 Hz     (500 m%)
+    ac: freq = 11.22 Hz    (10.5 %), step = 1.22 Hz      (500 m%)
+    ac: freq = 12.59 Hz      (11 %), step = 1.369 Hz     (500 m%)
+    ac: freq = 14.13 Hz    (11.5 %), step = 1.536 Hz     (500 m%)
+    ac: freq = 15.85 Hz      (12 %), step = 1.724 Hz     (500 m%)
+    ac: freq = 17.78 Hz    (12.5 %), step = 1.934 Hz     (500 m%)
+    ac: freq = 19.95 Hz      (13 %), step = 2.17 Hz      (500 m%)
+    ac: freq = 22.39 Hz    (13.5 %), step = 2.435 Hz     (500 m%)
+    ac: freq = 25.12 Hz      (14 %), step = 2.732 Hz     (500 m%)
+    ac: freq = 28.18 Hz    (14.5 %), step = 3.065 Hz     (500 m%)
+    ac: freq = 31.62 Hz      (15 %), step = 3.439 Hz     (500 m%)
+    ac: freq = 35.48 Hz    (15.5 %), step = 3.859 Hz     (500 m%)
+    ac: freq = 39.81 Hz      (16 %), step = 4.329 Hz     (500 m%)
+    ac: freq = 44.67 Hz    (16.5 %), step = 4.858 Hz     (500 m%)
+    ac: freq = 50.12 Hz      (17 %), step = 5.45 Hz      (500 m%)
+    ac: freq = 56.23 Hz    (17.5 %), step = 6.115 Hz     (500 m%)
+    ac: freq = 63.1 Hz       (18 %), step = 6.862 Hz     (500 m%)
+    ac: freq = 70.79 Hz    (18.5 %), step = 7.699 Hz     (500 m%)
+    ac: freq = 79.43 Hz      (19 %), step = 8.638 Hz     (500 m%)
+    ac: freq = 89.13 Hz    (19.5 %), step = 9.692 Hz     (500 m%)
+    ac: freq = 100 Hz        (20 %), step = 10.87 Hz     (500 m%)
+    ac: freq = 112.2 Hz    (20.5 %), step = 12.2 Hz      (500 m%)
+    ac: freq = 125.9 Hz      (21 %), step = 13.69 Hz     (500 m%)
+    ac: freq = 141.3 Hz    (21.5 %), step = 15.36 Hz     (500 m%)
+    ac: freq = 158.5 Hz      (22 %), step = 17.24 Hz     (500 m%)
+    ac: freq = 177.8 Hz    (22.5 %), step = 19.34 Hz     (500 m%)
+    ac: freq = 199.5 Hz      (23 %), step = 21.7 Hz      (500 m%)
+    ac: freq = 223.9 Hz    (23.5 %), step = 24.35 Hz     (500 m%)
+    ac: freq = 251.2 Hz      (24 %), step = 27.32 Hz     (500 m%)
+    ac: freq = 281.8 Hz    (24.5 %), step = 30.65 Hz     (500 m%)
+    ac: freq = 316.2 Hz      (25 %), step = 34.39 Hz     (500 m%)
+    ac: freq = 354.8 Hz    (25.5 %), step = 38.59 Hz     (500 m%)
+    ac: freq = 398.1 Hz      (26 %), step = 43.29 Hz     (500 m%)
+    ac: freq = 446.7 Hz    (26.5 %), step = 48.58 Hz     (500 m%)
+    ac: freq = 501.2 Hz      (27 %), step = 54.5 Hz      (500 m%)
+    ac: freq = 562.3 Hz    (27.5 %), step = 61.15 Hz     (500 m%)
+    ac: freq = 631 Hz        (28 %), step = 68.62 Hz     (500 m%)
+    ac: freq = 707.9 Hz    (28.5 %), step = 76.99 Hz     (500 m%)
+    ac: freq = 794.3 Hz      (29 %), step = 86.38 Hz     (500 m%)
+    ac: freq = 891.3 Hz    (29.5 %), step = 96.92 Hz     (500 m%)
+    ac: freq = 1 kHz         (30 %), step = 108.7 Hz     (500 m%)
+    ac: freq = 1.122 kHz   (30.5 %), step = 122 Hz       (500 m%)
+    ac: freq = 1.259 kHz     (31 %), step = 136.9 Hz     (500 m%)
+    ac: freq = 1.413 kHz   (31.5 %), step = 153.6 Hz     (500 m%)
+    ac: freq = 1.585 kHz     (32 %), step = 172.4 Hz     (500 m%)
+    ac: freq = 1.778 kHz   (32.5 %), step = 193.4 Hz     (500 m%)
+    ac: freq = 1.995 kHz     (33 %), step = 217 Hz       (500 m%)
+    ac: freq = 2.239 kHz   (33.5 %), step = 243.5 Hz     (500 m%)
+    ac: freq = 2.512 kHz     (34 %), step = 273.2 Hz     (500 m%)
+    ac: freq = 2.818 kHz   (34.5 %), step = 306.5 Hz     (500 m%)
+    ac: freq = 3.162 kHz     (35 %), step = 343.9 Hz     (500 m%)
+    ac: freq = 3.548 kHz   (35.5 %), step = 385.9 Hz     (500 m%)
+    ac: freq = 3.981 kHz     (36 %), step = 432.9 Hz     (500 m%)
+    ac: freq = 4.467 kHz   (36.5 %), step = 485.8 Hz     (500 m%)
+    ac: freq = 5.012 kHz     (37 %), step = 545 Hz       (500 m%)
+    ac: freq = 5.623 kHz   (37.5 %), step = 611.5 Hz     (500 m%)
+    ac: freq = 6.31 kHz      (38 %), step = 686.2 Hz     (500 m%)
+    ac: freq = 7.079 kHz   (38.5 %), step = 769.9 Hz     (500 m%)
+    ac: freq = 7.943 kHz     (39 %), step = 863.8 Hz     (500 m%)
+    ac: freq = 8.913 kHz   (39.5 %), step = 969.2 Hz     (500 m%)
+    ac: freq = 10 kHz        (40 %), step = 1.087 kHz    (500 m%)
+    ac: freq = 11.22 kHz   (40.5 %), step = 1.22 kHz     (500 m%)
+    ac: freq = 12.59 kHz     (41 %), step = 1.369 kHz    (500 m%)
+    ac: freq = 14.13 kHz   (41.5 %), step = 1.536 kHz    (500 m%)
+    ac: freq = 15.85 kHz     (42 %), step = 1.724 kHz    (500 m%)
+    ac: freq = 17.78 kHz   (42.5 %), step = 1.934 kHz    (500 m%)
+    ac: freq = 19.95 kHz     (43 %), step = 2.17 kHz     (500 m%)
+    ac: freq = 22.39 kHz   (43.5 %), step = 2.435 kHz    (500 m%)
+    ac: freq = 25.12 kHz     (44 %), step = 2.732 kHz    (500 m%)
+    ac: freq = 28.18 kHz   (44.5 %), step = 3.065 kHz    (500 m%)
+    ac: freq = 31.62 kHz     (45 %), step = 3.439 kHz    (500 m%)
+    ac: freq = 35.48 kHz   (45.5 %), step = 3.859 kHz    (500 m%)
+    ac: freq = 39.81 kHz     (46 %), step = 4.329 kHz    (500 m%)
+    ac: freq = 44.67 kHz   (46.5 %), step = 4.858 kHz    (500 m%)
+    ac: freq = 50.12 kHz     (47 %), step = 5.45 kHz     (500 m%)
+    ac: freq = 56.23 kHz   (47.5 %), step = 6.115 kHz    (500 m%)
+    ac: freq = 63.1 kHz      (48 %), step = 6.862 kHz    (500 m%)
+    ac: freq = 70.79 kHz   (48.5 %), step = 7.699 kHz    (500 m%)
+    ac: freq = 79.43 kHz     (49 %), step = 8.638 kHz    (500 m%)
+    ac: freq = 89.13 kHz   (49.5 %), step = 9.692 kHz    (500 m%)
+    ac: freq = 100 kHz       (50 %), step = 10.87 kHz    (500 m%)
+    ac: freq = 112.2 kHz   (50.5 %), step = 12.2 kHz     (500 m%)
+    ac: freq = 125.9 kHz     (51 %), step = 13.69 kHz    (500 m%)
+    ac: freq = 141.3 kHz   (51.5 %), step = 15.36 kHz    (500 m%)
+    ac: freq = 158.5 kHz     (52 %), step = 17.24 kHz    (500 m%)
+    ac: freq = 177.8 kHz   (52.5 %), step = 19.34 kHz    (500 m%)
+    ac: freq = 199.5 kHz     (53 %), step = 21.7 kHz     (500 m%)
+    ac: freq = 223.9 kHz   (53.5 %), step = 24.35 kHz    (500 m%)
+    ac: freq = 251.2 kHz     (54 %), step = 27.32 kHz    (500 m%)
+    ac: freq = 281.8 kHz   (54.5 %), step = 30.65 kHz    (500 m%)
+    ac: freq = 316.2 kHz     (55 %), step = 34.39 kHz    (500 m%)
+    ac: freq = 354.8 kHz   (55.5 %), step = 38.59 kHz    (500 m%)
+    ac: freq = 398.1 kHz     (56 %), step = 43.29 kHz    (500 m%)
+    ac: freq = 446.7 kHz   (56.5 %), step = 48.58 kHz    (500 m%)
+    ac: freq = 501.2 kHz     (57 %), step = 54.5 kHz     (500 m%)
+    ac: freq = 562.3 kHz   (57.5 %), step = 61.15 kHz    (500 m%)
+    ac: freq = 631 kHz       (58 %), step = 68.62 kHz    (500 m%)
+    ac: freq = 707.9 kHz   (58.5 %), step = 76.99 kHz    (500 m%)
+    ac: freq = 794.3 kHz     (59 %), step = 86.38 kHz    (500 m%)
+    ac: freq = 891.3 kHz   (59.5 %), step = 96.92 kHz    (500 m%)
+    ac: freq = 1 MHz         (60 %), step = 108.7 kHz    (500 m%)
+    ac: freq = 1.122 MHz   (60.5 %), step = 122 kHz      (500 m%)
+    ac: freq = 1.259 MHz     (61 %), step = 136.9 kHz    (500 m%)
+    ac: freq = 1.413 MHz   (61.5 %), step = 153.6 kHz    (500 m%)
+    ac: freq = 1.585 MHz     (62 %), step = 172.4 kHz    (500 m%)
+    ac: freq = 1.778 MHz   (62.5 %), step = 193.4 kHz    (500 m%)
+    ac: freq = 1.995 MHz     (63 %), step = 217 kHz      (500 m%)
+    ac: freq = 2.239 MHz   (63.5 %), step = 243.5 kHz    (500 m%)
+    ac: freq = 2.512 MHz     (64 %), step = 273.2 kHz    (500 m%)
+    ac: freq = 2.818 MHz   (64.5 %), step = 306.5 kHz    (500 m%)
+    ac: freq = 3.162 MHz     (65 %), step = 343.9 kHz    (500 m%)
+    ac: freq = 3.548 MHz   (65.5 %), step = 385.9 kHz    (500 m%)
+    ac: freq = 3.981 MHz     (66 %), step = 432.9 kHz    (500 m%)
+    ac: freq = 4.467 MHz   (66.5 %), step = 485.8 kHz    (500 m%)
+    ac: freq = 5.012 MHz     (67 %), step = 545 kHz      (500 m%)
+    ac: freq = 5.623 MHz   (67.5 %), step = 611.5 kHz    (500 m%)
+    ac: freq = 6.31 MHz      (68 %), step = 686.2 kHz    (500 m%)
+    ac: freq = 7.079 MHz   (68.5 %), step = 769.9 kHz    (500 m%)
+    ac: freq = 7.943 MHz     (69 %), step = 863.8 kHz    (500 m%)
+    ac: freq = 8.913 MHz   (69.5 %), step = 969.2 kHz    (500 m%)
+    ac: freq = 10 MHz        (70 %), step = 1.087 MHz    (500 m%)
+    ac: freq = 11.22 MHz   (70.5 %), step = 1.22 MHz     (500 m%)
+    ac: freq = 12.59 MHz     (71 %), step = 1.369 MHz    (500 m%)
+    ac: freq = 14.13 MHz   (71.5 %), step = 1.536 MHz    (500 m%)
+    ac: freq = 15.85 MHz     (72 %), step = 1.724 MHz    (500 m%)
+    ac: freq = 17.78 MHz   (72.5 %), step = 1.934 MHz    (500 m%)
+    ac: freq = 19.95 MHz     (73 %), step = 2.17 MHz     (500 m%)
+    ac: freq = 22.39 MHz   (73.5 %), step = 2.435 MHz    (500 m%)
+    ac: freq = 25.12 MHz     (74 %), step = 2.732 MHz    (500 m%)
+    ac: freq = 28.18 MHz   (74.5 %), step = 3.065 MHz    (500 m%)
+    ac: freq = 31.62 MHz     (75 %), step = 3.439 MHz    (500 m%)
+    ac: freq = 35.48 MHz   (75.5 %), step = 3.859 MHz    (500 m%)
+    ac: freq = 39.81 MHz     (76 %), step = 4.329 MHz    (500 m%)
+    ac: freq = 44.67 MHz   (76.5 %), step = 4.858 MHz    (500 m%)
+    ac: freq = 50.12 MHz     (77 %), step = 5.45 MHz     (500 m%)
+    ac: freq = 56.23 MHz   (77.5 %), step = 6.115 MHz    (500 m%)
+    ac: freq = 63.1 MHz      (78 %), step = 6.862 MHz    (500 m%)
+    ac: freq = 70.79 MHz   (78.5 %), step = 7.699 MHz    (500 m%)
+    ac: freq = 79.43 MHz     (79 %), step = 8.638 MHz    (500 m%)
+    ac: freq = 89.13 MHz   (79.5 %), step = 9.692 MHz    (500 m%)
+    ac: freq = 100 MHz       (80 %), step = 10.87 MHz    (500 m%)
+    ac: freq = 112.2 MHz   (80.5 %), step = 12.2 MHz     (500 m%)
+    ac: freq = 125.9 MHz     (81 %), step = 13.69 MHz    (500 m%)
+    ac: freq = 141.3 MHz   (81.5 %), step = 15.36 MHz    (500 m%)
+    ac: freq = 158.5 MHz     (82 %), step = 17.24 MHz    (500 m%)
+    ac: freq = 177.8 MHz   (82.5 %), step = 19.34 MHz    (500 m%)
+    ac: freq = 199.5 MHz     (83 %), step = 21.7 MHz     (500 m%)
+    ac: freq = 223.9 MHz   (83.5 %), step = 24.35 MHz    (500 m%)
+    ac: freq = 251.2 MHz     (84 %), step = 27.32 MHz    (500 m%)
+    ac: freq = 281.8 MHz   (84.5 %), step = 30.65 MHz    (500 m%)
+    ac: freq = 316.2 MHz     (85 %), step = 34.39 MHz    (500 m%)
+    ac: freq = 354.8 MHz   (85.5 %), step = 38.59 MHz    (500 m%)
+    ac: freq = 398.1 MHz     (86 %), step = 43.29 MHz    (500 m%)
+    ac: freq = 446.7 MHz   (86.5 %), step = 48.58 MHz    (500 m%)
+    ac: freq = 501.2 MHz     (87 %), step = 54.5 MHz     (500 m%)
+    ac: freq = 562.3 MHz   (87.5 %), step = 61.15 MHz    (500 m%)
+    ac: freq = 631 MHz       (88 %), step = 68.62 MHz    (500 m%)
+    ac: freq = 707.9 MHz   (88.5 %), step = 76.99 MHz    (500 m%)
+    ac: freq = 794.3 MHz     (89 %), step = 86.38 MHz    (500 m%)
+    ac: freq = 891.3 MHz   (89.5 %), step = 96.92 MHz    (500 m%)
+    ac: freq = 1 GHz         (90 %), step = 108.7 MHz    (500 m%)
+    ac: freq = 1.122 GHz   (90.5 %), step = 122 MHz      (500 m%)
+    ac: freq = 1.259 GHz     (91 %), step = 136.9 MHz    (500 m%)
+    ac: freq = 1.413 GHz   (91.5 %), step = 153.6 MHz    (500 m%)
+    ac: freq = 1.585 GHz     (92 %), step = 172.4 MHz    (500 m%)
+    ac: freq = 1.778 GHz   (92.5 %), step = 193.4 MHz    (500 m%)
+    ac: freq = 1.995 GHz     (93 %), step = 217 MHz      (500 m%)
+    ac: freq = 2.239 GHz   (93.5 %), step = 243.5 MHz    (500 m%)
+    ac: freq = 2.512 GHz     (94 %), step = 273.2 MHz    (500 m%)
+    ac: freq = 2.818 GHz   (94.5 %), step = 306.5 MHz    (500 m%)
+    ac: freq = 3.162 GHz     (95 %), step = 343.9 MHz    (500 m%)
+    ac: freq = 3.548 GHz   (95.5 %), step = 385.9 MHz    (500 m%)
+    ac: freq = 3.981 GHz     (96 %), step = 432.9 MHz    (500 m%)
+    ac: freq = 4.467 GHz   (96.5 %), step = 485.8 MHz    (500 m%)
+    ac: freq = 5.012 GHz     (97 %), step = 545 MHz      (500 m%)
+    ac: freq = 5.623 GHz   (97.5 %), step = 611.5 MHz    (500 m%)
+    ac: freq = 6.31 GHz      (98 %), step = 686.2 MHz    (500 m%)
+    ac: freq = 7.079 GHz   (98.5 %), step = 769.9 MHz    (500 m%)
+    ac: freq = 7.943 GHz     (99 %), step = 863.8 MHz    (500 m%)
+    ac: freq = 8.913 GHz   (99.5 %), step = 969.2 MHz    (500 m%)
+    ac: freq = 10 GHz       (100 %), step = 1.087 GHz    (500 m%)
+Accumulated DC solution time =            4.0071 ms.
+Intrinsic ac analysis time =              31.431 ms.
+Total time required for ac analysis `ac': CPU = 28.441 ms, elapsed = 35.862 ms, util. = 79.3%.
+Time accumulated: CPU = 299.348 ms, elapsed = 293.482 ms.
+Peak resident memory used = 103 Mbytes.
+
+
+Notice from spectre.
+    77 warnings suppressed.
+Warning from spectre.
+    WARNING (CMI-2477): I33.PM30: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM3: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM1: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM15: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+    WARNING (CMI-2477): I33.PM10: `Rds' = 390.195 nOhm is less than 0.001. Set to 0.
+        Further occurrences of this warning will be suppressed.
+
+modelParameter: writing model parameter values to rawfile.
+
+Opening the PSF file ../psf/modelParameter.info ...
+
+Notice from spectre.
+    77 warnings suppressed.
+
+element: writing instance parameter values to rawfile.
+
+Opening the PSF file ../psf/element.info ...
+outputParameter: writing output parameter values to rawfile.
+
+Opening the PSF file ../psf/outputParameter.info ...
+designParamVals: writing netlist parameters to rawfile.
+
+Opening the PSFASCII file ../psf/designParamVals.info ...
+primitives: writing primitives to rawfile.
+
+Opening the PSFASCII file ../psf/primitives.info.primitives ...
+subckts: writing subcircuits to rawfile.
+
+Opening the PSFASCII file ../psf/subckts.info.subckts ...
+Licensing Information:
+Lic Summary:
+[12:43:07.443177] Cdslmd servers:5280@noiflex:5280@noidalic01
+[12:43:07.443210] Feature usage summary:
+[12:43:07.443211] Virtuoso_Spectre
+
+
+Aggregate audit (12:43:07 PM, Wed Aug 9, 2023):
+Time used: CPU = 319 ms, elapsed = 321 ms, util. = 99.1%.
+Time spent in licensing: elapsed = 44.1 ms, percentage of total = 13.7%.
+Peak memory used = 104 Mbytes.
+Simulation started at: 12:43:07 PM, Wed Aug 9, 2023, ended at: 12:43:07 PM, Wed Aug 9, 2023, with elapsed time (wall clock): 321 ms.
+spectre completes with 0 errors, 15 warnings, and 8 notices.

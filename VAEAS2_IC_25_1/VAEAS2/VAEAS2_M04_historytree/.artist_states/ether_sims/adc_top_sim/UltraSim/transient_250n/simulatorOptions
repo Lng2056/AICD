@@ -1,0 +1,92 @@
+(opts wf_abstolv) "1e-6"
+(opts tnom) "27"
+(opts temp) "27.0"
+(opts rcr_fmax) "1e9"
+(opts UsimNALimit) ""
+(opts simTimePoints) ""
+(opts ParasiticRCFile_SPEF) ""
+(opts UsimNASortIs) "inc"
+(opts scale) "1.0"
+(opts UsimRAAgingTime) "10y"
+(opts simLoadFile) ""
+(opts UsimRADeltaD) 0.1
+(opts scalem) "1.0"
+(opts rvshort) "1e-6"
+(opts UsimTASigEdgeType) "rise"
+(opts UsimPAName) ""
+(opts UsimPADisplaySetting) (nil choices ("") value nil)
+(opts UsimTADepth) ""
+(opts analog) "Default (1)"
+(opts tol) "0.01"
+(opts UsimRADeltaDToggle) t
+(opts lvshort) "0"
+(opts UsimTARefSigEdgeType) "rise"
+(opts wf_abstoli) "1e-12"
+(opts wf_reltol) ""
+(opts speed) "Default (5)"
+(opts ParasiticRCFile_CAPFILE) ""
+(opts cgnd) "1e-20"
+(opts dcut) nil
+(opts UsimRA) (nil)
+(opts UsimPAPort) ""
+(opts UsimOptMethod) nil
+(opts wf_tres) "1e-12"
+(opts UsimTARefSigLowThreshold) ""
+(opts UsimTASubcktName) ""
+(opts UsimPA) (nil)
+(opts UsimPATimeIntervals) ""
+(opts UsimTACheckType) "setup"
+(opts UsimTAMaxHighTime) ""
+(opts UsimTA) (nil)
+(opts UsimRAMinAge) 0.0
+(opts UsimRAMode) "HCI only"
+(opts UsimTATrigger) "both"
+(opts UsimTASigHighThreshold) ""
+(opts postl) "No RCR (0)"
+(opts UsimTAMinPerTime) ""
+(opts abstolv) "1.00e-06"
+(opts simSaveFile) ""
+(opts UsimTAReportTitle) ""
+(opts UsimOptMethodHier) nil
+(opts diode_method) "Analog Table (A)"
+(opts simRepeat) ""
+(opts UsimTASigNames) ""
+(opts sim_mode) "Mixed Signal (MS)"
+(opts cgndr) "0"
+(opts UsimTADisplaySetting) (nil choices ("") value nil)
+(opts dump_step) ""
+(opts UsimTAMinHighTime) ""
+(opts UsimRAAgeproc) ""
+(opts dc) "Complete DC (1)"
+(opts other) ""
+(opts otherSpice) ""
+(opts simRestart) nil
+(opts UsimPADepth) "1"
+(opts UsimTAMaxLowTime) ""
+(opts UsimTARefSig) ""
+(opts UsimPALimit) ""
+(opts wf_format) "PSF"
+(opts UsimPAOutputSort) "avg"
+(opts ParasiticRCFile_SPF) ""
+(opts rshort) "1e-6"
+(opts UsimRAAgeDomain) "loglog"
+(opts UsimPAPower) nil
+(opts mos_method) "Analog/MS Table (A)"
+(opts UsimRAAgeMethod) "interp"
+(opts simSave) nil
+(opts UsimTASetupTime) ""
+(opts abstoli) "1.00e-12"
+(opts UsimTAMaxPerTime) ""
+(opts UsimTANegWindow) ""
+(opts UsimTARefSigHighThreshold) ""
+(opts wf_filter) t
+(opts UsimRANBTIAgeproc) ""
+(opts UsimTASigLowThreshold) ""
+(opts ParasiticRCFile_DPF) ""
+(opts UsimPAEnabled) nil
+(opts lshort) "0"
+(opts dcut_field) ""
+(opts UsimTAMinLowTime) ""
+(opts UsimTAEnabled) nil
+(opts UsimNA) (nil)
+(opts UsimNAOutputSort) "name"

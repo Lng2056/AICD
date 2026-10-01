@@ -1,0 +1,11 @@
+(envOpts mdlControlFile) ""
+(envOpts autoDisplay) t
+(envOpts analysisOrder) nil
+(envOpts recover) ""
+(envOpts switchViewList) ("spectre" "cmos_sch" "cmos.sch" "schematic" "veriloga" "ahdl")
+(envOpts spp) ""
+(envOpts checkpoint) ""
+(envOpts paramRangeCheckFile) ""
+(envOpts stopViewList) ("spectre")
+(envOpts enableArclength) nil
+(envOpts printComments) nil

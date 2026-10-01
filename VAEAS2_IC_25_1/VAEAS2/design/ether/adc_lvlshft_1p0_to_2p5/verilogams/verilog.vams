@@ -1,0 +1,58 @@
+//Verilog-AMS HDL for "drouillard_ph2", "adc_lvlshft_1p0_to_2p5" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_lvlshft_1p0_to_2p5 ( BASE100TX_DIS_2p5, BASEFX_DIS_2p5, CLK_2p5,
+    BASE100TX_DIS_1p0, BASEFX_DIS_1p0, CLK_1p0, VDD_1p0, VDD_2p5, VSS );
+
+// To analog blocks
+output	BASEFX_DIS_2p5;
+output	BASE100TX_DIS_2p5;
+output	CLK_2p5;
+
+// From Digital Block
+input	BASE100TX_DIS_1p0;
+input	BASEFX_DIS_1p0;
+input	CLK_1p0;
+
+// Power Supplies
+input	VDD_2p5, VDD_1p0, VSS;
+
+
+logic BASE100TX_DIS_1p0, BASEFX_DIS_1p0, CLK_1p0;
+electrical VDD_2p5, VDD_1p0, VSS;
+
+`ifdef ANALOG
+   electrical BASEFX_DIS_2p5, BASE100TX_DIS_2p5, CLK_2p5;
+   real vbasefx, vbase100, vclk;
+   wire basefx  = (BASEFX_DIS_1p0==1'b1)    ? 1'b1: 1'b0;
+   wire base100 = (BASE100TX_DIS_1p0==1'b1) ? 1'b1: 1'b0;
+   wire clk     = (CLK_1p0==1'b1)           ? 1'b1: 1'b0;
+   analog begin
+	@(initial_step) begin
+		vbasefx  = V(VDD_2p5);
+		vbase100 = V(VSS);
+		vclk     = V(VSS);
+	end
+	vbasefx  = (basefx)  ? V(VDD_2p5): V(VSS);
+	vbase100 = (base100) ? V(VDD_2p5): V(VSS);
+	vclk     = (clk)     ? V(VDD_2p5): V(VSS);
+
+//	V(BASEFX_DIS_2p5)    <+ transition(vbasefx,0,100p,100p);
+//	V(BASE100TX_DIS_2p5) <+ transition(vbase100,0,100p,100p);
+//	V(CLK_2p5)           <+ transition(vclk,0,100p,100p);
+
+	V(BASEFX_DIS_2p5)    <+ slew(vbasefx,2.5e10);
+	V(BASE100TX_DIS_2p5) <+ slew(vbase100,2.5e10);
+	V(CLK_2p5)           <+ slew(vclk,2.5e10);
+   end
+`else
+   logic BASEFX_DIS_2p5, BASE100TX_DIS_2p5, CLK_2p5;
+   wire BASEFX_DIS_2p5    = BASE100TX_DIS_1p0;
+   wire BASE100TX_DIS_2p5 = BASEFX_DIS_1p0;
+   wire CLK_2p5           = CLK_1p0;
+`endif
+
+
+endmodule

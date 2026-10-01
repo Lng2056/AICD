@@ -1,0 +1,81 @@
+//------------------------------------------------------------------------------
+// Name   : adc_ref_ladder
+// View   : verilogams
+// Purpose: Model the reference ladder portion of the 6-bit AD converter
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_ref_ladder ( ref0, ref1, ref10, ref2, ref3, ref4, ref5, ref6, ref7,
+    ref8, ref9, INM, INP, SIDDQ, VDD, VSS, ibias50 );
+
+output ref0, ref1, ref2, ref3, ref4, ref5;	// Ladder Reference Outputs
+output ref6, ref7, ref8, ref9, ref10;		// Ladder Reference Outputs
+
+input	INP, INM;				// Sampled Voltage
+input	VDD, VSS;				// Power & Ground
+input	ibias50;				// Reference Current
+input	SIDDQ;					// IDDQ Test Signal
+
+
+electrical ref0, ref1, ref2, ref3, ref4, ref5;	// Ladder Reference Outputs
+electrical ref6, ref7, ref8, ref9, ref10;	// Ladder Reference Outputs
+electrical INP, INM;
+electrical VDD, VSS;
+electrical ibias50;
+
+logic	SIDDQ;
+
+parameter voffset  = 0.0;			// Default Voltage offset
+parameter r_ladder = 500.0;			// Values of R (ohms) in ladder
+
+
+// Create Internal Nodes
+real	vin;					// Input Voltage
+real	vref5;					// Reference ladder mid-point
+real	Iref;					// Current reference
+real	res_mirror = 6500;
+
+analog begin
+	if (SIDDQ) begin			// Ground the reference ladder
+	  V(ref10) <+ V(VSS);
+	  V(ref9)  <+ V(VSS);
+	  V(ref8)  <+ V(VSS);
+	  V(ref7)  <+ V(VSS);
+	  V(ref6)  <+ V(VSS);
+	  V(ref5)  <+ V(VSS);
+	  V(ref4)  <+ V(VSS);
+	  V(ref3)  <+ V(VSS);
+	  V(ref2)  <+ V(VSS);
+	  V(ref1)  <+ V(VSS);
+	  V(ref0)  <+ V(VSS);
+	  V(ibias50) <+ V(VSS);
+	end
+	else begin
+	  vin	= (V(INP)+V(INM))/2.0;  	  // Input to Opamp
+	  vref5 = vin + voffset;		  // Input Reference to Opamp
+//	  Iref  = -1.0*I(ref10);		  // Reference Current
+	  Iref  = I(ref10);	// Change back to positive
+	
+	  V(ref10) <+ vref5 + 5*r_ladder*Iref;    // Ladder top top
+	  V(ref9)  <+ vref5 + 4*r_ladder*Iref;    // Ladder reference
+	  V(ref8)  <+ vref5 + 3*r_ladder*Iref;    // Ladder reference
+	  V(ref7)  <+ vref5 + 2*r_ladder*Iref;    // Ladder reference
+	  V(ref6)  <+ vref5 + 1*r_ladder*Iref;    // Ladder reference
+	  V(ref5)  <+ vref5;			  // Ladder reference
+	  V(ref4)  <+ vref5 - 1*r_ladder*Iref;    // Ladder reference
+	  V(ref3)  <+ vref5 - 2*r_ladder*Iref;    // Ladder reference
+	  V(ref2)  <+ vref5 - 3*r_ladder*Iref;    // Ladder reference
+	  V(ref1)  <+ vref5 - 4*r_ladder*Iref;    // Ladder reference
+	  V(ref0)  <+ vref5 - 5*r_ladder*Iref;    // Ladder bottom tap
+//	  V(ibias50) <+ transition(I(ibias50)*res_mirror*2,0,10n,10n);
+	  V(ibias50) <+ slew(I(ibias50)*res_mirror*2,2.5e8);
+	  
+	end
+end
+endmodule

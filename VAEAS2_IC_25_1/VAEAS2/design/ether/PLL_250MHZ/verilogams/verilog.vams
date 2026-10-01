@@ -1,0 +1,130 @@
+//Verilog-AMS HDL for "drouillard_ph2", "PLL_250MHZ" "verilogams_ssr"
+
+`timescale 1ns / 10ps
+`include "constants.vams"
+`include "disciplines.vams"
+
+module PLL_250MHZ ( CLK_250MHZ_PH, CP_ITEST_25u, CLK_25MHZ, DISABLE, IEXT_25u,
+    IEXT_100u, IPLY_25u, SIDDQ, VDD, VSS );
+
+  input VDD;
+  input CLK_25MHZ;
+  output  [10:0] CLK_250MHZ_PH;
+  input SIDDQ;
+  output CP_ITEST_25u;
+  input IPLY_25u;
+  input DISABLE;
+  input VSS;
+  input IEXT_100u;
+  input IEXT_25u;
+
+
+
+  logic [10:0] CLK_250MHZ_PH;
+  logic      CLK_25MHZ;
+  logic CP_ITEST_25u, DISABLE, SIDDQ;
+  electrical IEXT_25u, IEXT_100u, IPLY_25u, VDD, VSS;
+
+  real res;
+
+    reg [10:0] CLK_250MHZ_PH;
+    reg locked;
+
+    real num_fbdiv, num_refdiv, num_outdiv;
+    real tp_REFCLK, cliff, td_CLKOUT, td_CLKOUT_p;
+    real res_mirror = 6500.0;
+
+    wire en_tot = !(SIDDQ) & !(DISABLE);
+
+    wire CP_ITEST_25u = en_tot?1'b1:1'bz; 
+
+initial begin
+        tp_REFCLK = 40;
+        td_CLKOUT = 6;
+        td_CLKOUT_p = 0.1818;
+        cliff = 0;
+        CLK_250MHZ_PH = 11'b11111000000;
+end
+
+always @(posedge en_tot) begin
+        tp_REFCLK = 40;
+        td_CLKOUT = 6;
+        td_CLKOUT_p = 0.1818;
+	CLK_250MHZ_PH = 11'b11111000000;
+end
+
+always @(posedge CLK_25MHZ) begin
+        if (en_tot) begin
+         if (locked) begin
+          tp_REFCLK = $realtime - cliff;
+          td_CLKOUT = tp_REFCLK/(10);
+          td_CLKOUT_p = tp_REFCLK/(11*2*10); 
+         end
+         cliff = $realtime;
+         if (cliff > 0) locked = 1;
+        end
+      //$display("%f", $time);
+      //$display("  tp_REFCLK: %f", tp_REFCLK);
+      //$display("  td_CLKOUT: %f", td_CLKOUT);
+      //$display("  td_CLKOUT_p: %f", td_CLKOUT_p);
+end
+
+always #(td_CLKOUT_p) begin
+        if (en_tot) begin
+	 CLK_250MHZ_PH[0] <= !CLK_250MHZ_PH[0];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[6] <= !CLK_250MHZ_PH[6];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[1] <= !CLK_250MHZ_PH[1];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[7] <= !CLK_250MHZ_PH[7];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[2] <= !CLK_250MHZ_PH[2];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[8] <= !CLK_250MHZ_PH[8];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[3] <= !CLK_250MHZ_PH[3];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[9] <= !CLK_250MHZ_PH[9];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[4] <= !CLK_250MHZ_PH[4];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[10] <= !CLK_250MHZ_PH[10];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[5] <= !CLK_250MHZ_PH[5];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[0] <= !CLK_250MHZ_PH[0];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[6] <= !CLK_250MHZ_PH[6];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[1] <= !CLK_250MHZ_PH[1];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[7] <= !CLK_250MHZ_PH[7];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[2] <= !CLK_250MHZ_PH[2];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[8] <= !CLK_250MHZ_PH[8];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[3] <= !CLK_250MHZ_PH[3];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[9] <= !CLK_250MHZ_PH[9];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[4] <= !CLK_250MHZ_PH[4];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[10] <= !CLK_250MHZ_PH[10];
+	 #td_CLKOUT_p
+	 CLK_250MHZ_PH[5] <= !CLK_250MHZ_PH[5];
+	end
+end
+
+
+analog begin
+  res = transition( res_mirror, 0, 10n, 10n );
+  V(IEXT_25u)  <+ I(IEXT_25u)*res*4;
+  V(IEXT_100u) <+ I(IEXT_100u)*res;
+  V(IPLY_25u)  <+ I(IPLY_25u)*res*4;
+
+end
+
+
+endmodule

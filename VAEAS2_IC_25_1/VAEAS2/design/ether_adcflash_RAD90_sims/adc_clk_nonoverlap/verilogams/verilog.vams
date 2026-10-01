@@ -1,0 +1,98 @@
+//------------------------------------------------------------------------------
+// Name   : adc_clk_nonoverlap
+// View   : verilogams
+// Purpose: Create Sample and Hold and non-overlapping clocks for the ADC
+// Author : Cadence Design Foundry
+// Date   : March 2003
+// Copyright: Cadence Design Systems
+//
+//------------------------------------------------------------------------------
+`include "constants.vams"
+`include "disciplines.vams"
+
+module adc_clk_nonoverlap ( hold, hold_f, hold_test, hold_test_f, ph1, ph1b,
+    ph2, ph2b, sample, sample_f, sample_test, sample_test_f, SIDDQ, TEST_ENABLE,
+    VDD, VSS, clk_in );
+
+output	ph1, ph1b;				// non-overlapping clock
+output	ph2, ph2b;				// non-overlapping clock
+output	sample, hold;				// 6-bit ADC sample and hold 
+output	sample_test, hold_test;			// 6-bit ADC Test sample & hold
+output	sample_f, hold_f;			// 3-bit flash Sample and hold
+output	sample_test_f, hold_test_f;		// 3-bit flash test s&h
+
+input	clk_in;					// input reference clock
+input	VDD, VSS;				// Power and Ground
+input	SIDDQ;					// Static IDDQ test signal
+input	TEST_ENABLE;				// Enable Test Signals
+
+logic	ph1, ph1b;				// non-overlapping clock
+logic	ph2, ph2b;				// non-overlapping clock
+logic	sample, hold;				// 6-bit ADC sample and hold 
+logic	sample_test, hold_test;			// 6-bit ADC Test sample & hold
+logic	sample_f, hold_f;			// 3-bit flash Sample and hold
+logic	sample_test_f, hold_test_f;		// 3-bit flash test s&h
+
+`ifdef ANALOG
+  electrical clk_in, SIDDQ, TEST_ENABLE;
+`else
+  logic clk_in, SIDDQ, TEST_ENABLE;
+`endif
+
+electrical VDD, VSS;				// Power and Ground
+
+reg  ph1, ph2b;
+reg  sample, sample_test;
+initial begin
+	ph1         = 1'b0;
+	ph2b        = 1'b0;
+	sample      = 1'b1;
+	sample_test = 1'b1;
+end
+
+`ifdef ANALOG
+	real	vthr;
+	integer siddqa, testen_a;
+	analog begin
+		vthr   = (V(VDD) - V(VSS))/2;		// Digital Threshold
+		siddqa = (V(SIDDQ)>vthr) ? 1: 0;
+		testen_a = (V(TEST_ENABLE)>vthr) ? 1: 0;
+	end
+	reg  clkd, testen;
+	always @(cross(V(clk_in)-vthr,+1)) begin
+		clkd   = (siddqa) ? 1'b0: 1'b1;
+		testen = testen_a;
+	end
+	always @(cross(V(clk_in)-vthr,-1)) clkd = 1'b0;
+`else
+	wire clkd   = clk_in;
+	wire testen = TEST_ENABLE;
+`endif
+
+// Generate Non-Overlapping Clocks
+wire #0.1 ph1b = ~ph1;
+wire #0.1 ph2  = ~ph2b;
+always @(posedge clkd) begin
+	#0.7 ph2b = 1'b1;
+	#0.2 ph1  = 1'b1;
+end
+always @(negedge clkd) begin
+	#0.7 ph1  = 1'b0;
+	#0.1 ph2b = 1'b0;
+end
+
+// Generate Sample and Hold
+wire HundredBT = ~testen;
+always @(posedge clkd) #0.7 sample = HundredBT;
+always @(negedge clkd) #0.4 sample = 1'b0;
+wire #0.1 sample_f = ~sample;
+wire      hold     = ~sample;
+wire #0.1 hold_f   = ~hold;
+ 
+always @(posedge clkd) #0.7 sample_test = testen;
+always @(negedge clkd) #0.4 sample_test = 1'b0;
+wire #0.1 sample_test_f = sample_test;
+wire      hold_test     = ~sample_test;
+wire #0.1 hold_test_f   = hold_test;
+
+endmodule

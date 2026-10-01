@@ -1,0 +1,35 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I26:DVSS=VSS;
+	I26:DVDD=VDD;
+	I25:DVDD=VDD;
+	I25:DVSS=VSS;
+	ADC_DECODE:VDD=DVDD;
+	ADC_DECODE:VSS=DVSS;
+$END
+$TIMESTAMP
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1136308171=5-ether22-adc_lvlshft_1p0_to_2p5;
+	1136308172=5-ether22-adc_lvlshft_1p0_to_2p512-symbol_xform;
+	1136308173=5-ether22-adc_lvlshft_2p5_to_1p0;
+	1136308173=5-ether22-adc_lvlshft_2p5_to_1p06-symbol;
+	1136308073=5-ether9-or2_2x_hv;
+	1136308074=5-ether9-or2_2x_hv6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308169=5-ether10-adc_decode;
+	1136308169=5-ether10-adc_decode6-symbol;
+	1136308177=5-ether13-adc_wo_decode;
+	1136308177=5-ether13-adc_wo_decode6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387683=verilog.vams;
+$END

@@ -1,0 +1,35 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$GLOBAL_SIGNALS
+	gnd!:::;
+$END
+$VERILOG_NAME_MAP_LIST
+	net:gnd!:cds_globals.\\gnd! ;
+$END
+$TIMESTAMP
+	1082075638=14-VFS_AMS_PHY18014-PLL_VCO_250MHZ;
+	1083105485=14-VFS_AMS_PHY18014-PLL_VCO_250MHZ6-symbol;
+	1084241420=9-analogLib4-vpwl;
+	1084057254=9-analogLib4-vpwl6-symbol;
+	1084241419=9-analogLib10-pcapacitor;
+	1084057085=9-analogLib10-pcapacitor6-symbol;
+	1084241420=9-analogLib6-vpulse;
+	1084057250=9-analogLib6-vpulse6-symbol;
+	-1=5-basic4-opin;
+	1034185461=5-basic4-opin6-symbol;
+	1084241420=9-analogLib3-vdc;
+	1084057236=9-analogLib3-vdc6-symbol;
+	1084241420=9-analogLib3-idc;
+	1084056971=9-analogLib3-idc6-symbol;
+	1086984939=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	vdd:;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	PCAP:10:0:::;
+$END

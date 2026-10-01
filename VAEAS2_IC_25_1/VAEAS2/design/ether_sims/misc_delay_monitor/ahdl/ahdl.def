@@ -1,0 +1,41 @@
+// Spectre AHDL for nsc02001_ms, misc_delay_monitor, ahdl
+//
+// By: Richard Deken, Tality
+//
+// This module looks for rising and falling edges to cross vthresh volts, and 
+// measures skew based on these crossings.
+//
+// positive skew means sense leads ref
+// negative skew means ref leads sense
+
+module misc_delay_monitor
+  (sig_in, sig_out, vthresh_in, vthresh_out, meas_dly)
+  (tstart, edgein, edgeout)
+  node [V,I] sig_in, sig_out, vthresh_in, vthresh_out, meas_dly;
+
+  parameter real tstart = 1e-9;	    // 1 nsec transient startup
+  parameter integer edgein = 0;
+  parameter integer edgeout = 0;
+{
+   real last_in_edge;
+   real e_delay;
+  
+   initial {
+      last_in_edge = 0;
+      e_delay = 0;
+   }
+
+   analog {
+      if ($threshold (V(sig_in) - V(vthresh_in), edgein, 1e-12)) {
+         if (tstart < $time()) {
+            last_in_edge = $time();
+         }
+      }
+      if ($threshold (V(sig_out) - V(vthresh_out), edgeout, 1e-12)) {
+         if (tstart < $time()) {
+	    e_delay = $time() - last_in_edge;
+         }
+      }
+      V(meas_dly)<-e_delay;
+   }
+}

@@ -1,0 +1,4 @@
+connectrules mixedsignal_25a;
+	     connect elect2logic25a;
+	     connect logic2elect25a;
+endconnectrules

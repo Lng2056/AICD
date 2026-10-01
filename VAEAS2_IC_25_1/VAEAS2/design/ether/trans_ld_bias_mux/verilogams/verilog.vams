@@ -1,0 +1,71 @@
+//Verilog-AMS HDL for "drouillard_ph2", "trans_ld_bias_mux" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+module trans_ld_bias_mux ( ibias_100tx, ibias_tenbt, dgnd, ibias_rext_100u,
+    ibias_rext_400u, siddq, tenbt_on, tx_on, dvdd, ibias_100tx_100u, 
+    ibias_tenbt_cas );
+
+
+output ibias_tenbt, ibias_tenbt_cas;
+output ibias_100tx_100u, ibias_100tx;
+input  ibias_rext_100u, ibias_rext_400u;
+input  tenbt_on;
+input  tx_on, siddq;
+input  dvdd, dgnd;
+
+electrical ibias_tenbt, ibias_tenbt_cas;
+electrical ibias_100tx_100u, ibias_100tx;
+electrical ibias_rext_100u, ibias_rext_400u;
+electrical dvdd, dgnd;
+logic  tenbt_on;
+logic  tx_on, siddq;
+
+real itenbt, itenbt_cas;
+real i100tx_100u, i100tx_400u;
+real irext_100u, irext_400u;
+real res_mirror = 6500;			// Termination of Currents
+real vrext400, vrext100;		// Termination of currents
+
+// Avoid X/Z states in analog sections
+`include "myfunctions.vams"
+wire tenbt  = noxz(tenbt_on,1'b0) & !noxz(siddq,1'b0);
+wire tx100  = noxz(tx_on,1'b0) & !noxz(siddq,1'b0);
+
+analog begin
+    irext_100u  = I(ibias_rext_100u);
+    irext_400u  = I(ibias_rext_400u);
+		
+    itenbt_cas  = (tenbt) ? irext_100u: 0.0;
+    itenbt      = (tenbt) ? irext_400u: 0.0;
+    i100tx_100u = (tx100) ? irext_100u: 0.0;
+    i100tx_400u = (tx100) ? irext_400u: 0.0;
+
+//    I(ibias_tenbt_cas)  <+ transition(itenbt_cas,0,10n,10n);	
+//    I(ibias_tenbt)      <+ transition(itenbt,0,10n,10n);	
+
+//    I(ibias_100tx_100u) <+ transition(i100tx_100u,0,10n,10n);	
+//    I(ibias_100tx)      <+ transition(i100tx_400u,0,10n,10n);	
+
+//    vrext100 = (itenbt + i100tx_100u)*res_mirror;
+//    vrext400 = (itenbt_cas + i100tx_400u)*res_mirror/4.0;
+
+//    V(ibias_rext_100u)  <+ transition(vrext100,0,10n,10n);	
+//    V(ibias_rext_400u)  <+ transition(vrext400,0,10n,10n);	
+
+    I(ibias_tenbt_cas)  <+ slew(itenbt_cas,2.5e8);	
+    I(ibias_tenbt)      <+ slew(itenbt,2.5e8);	
+
+    I(ibias_100tx_100u) <+ slew(i100tx_100u,2.5e8);	
+    I(ibias_100tx)      <+ slew(i100tx_400u,2.5e8);	
+
+    vrext100 = (itenbt + i100tx_100u)*res_mirror;
+    vrext400 = (itenbt_cas + i100tx_400u)*res_mirror/4.0;
+
+    V(ibias_rext_100u)  <+ slew(vrext100,2.5e8);	
+    V(ibias_rext_400u)  <+ slew(vrext400,2.5e8);	
+
+end
+
+endmodule

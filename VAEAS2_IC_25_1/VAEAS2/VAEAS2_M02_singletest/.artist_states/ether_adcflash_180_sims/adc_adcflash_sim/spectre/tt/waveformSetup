@@ -1,0 +1,1265 @@
+'(nil version 1.0 bBox ((696 139) (1260 626)) subwindowList (1))
+(unless waveInfoDpl
+waveInfoDpl = (ncons nil)
+)
+waveInfoDpl->uniqueIdNumber = 1
+(unless waveInfoDpl->subwinArr
+waveInfoDpl->subwinArr = (awviSaveMakeArray 1)
+)
+(unless waveInfoDpl->subwinArr[0]
+waveInfoDpl->subwinArr[0] = (ncons nil)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr
+waveInfoDpl->subwinArr[0]->yInfoArr = (awviSaveMakeArray 21)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[0]
+waveInfoDpl->subwinArr[0]->yInfoArr[0] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[0][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->numUsed = 9
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->penIndex = 5
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[0][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[0][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[0][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[0][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[0][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[0][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[0][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[0][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[0][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[0][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[0][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[0][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[0][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[0][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[0][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[0][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[0][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[0][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[0][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[1]
+waveInfoDpl->subwinArr[0]->yInfoArr[1] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[1][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->penIndex = 5
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[1][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[1][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[1][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[1][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[1][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[1][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[1][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[1][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[1][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[1][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[1][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[1][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[1][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[1][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[1][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[1][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[1][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[1][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[1][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[2]
+waveInfoDpl->subwinArr[0]->yInfoArr[2] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[2][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->penIndex = 3
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[2][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[2][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[2][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[2][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[2][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[2][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[2][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[2][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[2][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[2][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[2][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[2][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[2][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[2][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[2][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[2][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[2][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[2][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[2][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[3]
+waveInfoDpl->subwinArr[0]->yInfoArr[3] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[3][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->penIndex = 6
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[3][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[3][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[3][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[3][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[3][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[3][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[3][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[3][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[3][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[3][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[3][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[3][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[3][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[3][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[3][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[3][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[3][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[3][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[3][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[4]
+waveInfoDpl->subwinArr[0]->yInfoArr[4] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[4][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->penIndex = 7
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[4][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[4][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[4][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[4][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[4][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[4][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[4][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[4][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[4][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[4][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[4][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[4][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[4][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[4][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[4][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[4][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[4][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[4][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[4][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[5]
+waveInfoDpl->subwinArr[0]->yInfoArr[5] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[5][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->penIndex = 4
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[5][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[5][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[5][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[5][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[5][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[5][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[5][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[5][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[5][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[5][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[5][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[5][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[5][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[5][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[5][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[5][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[5][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[5][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[5][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[6]
+waveInfoDpl->subwinArr[0]->yInfoArr[6] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[6][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->penIndex = 8
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[6][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[6][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[6][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[6][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[6][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[6][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[6][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[6][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[6][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[6][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[6][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[6][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[6][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[6][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[6][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[6][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[6][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[6][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[6][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[7]
+waveInfoDpl->subwinArr[0]->yInfoArr[7] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[7][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->penIndex = 11
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[7][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[7][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[7][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[7][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[7][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[7][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[7][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[7][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[7][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[7][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[7][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[7][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[7][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[7][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[7][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[7][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[7][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[7][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[7][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[8]
+waveInfoDpl->subwinArr[0]->yInfoArr[8] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[8][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->penIndex = 12
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[8][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[8][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[8][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[8][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[8][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[8][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[8][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[8][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[8][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[8][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[8][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[8][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[8][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[8][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[8][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[8][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[8][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[8][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[8][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[9]
+waveInfoDpl->subwinArr[0]->yInfoArr[9] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[9][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->numUsed = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->penIndex = 5
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->axisLabelWave = "( V )"
+waveInfoDpl->subwinArr[0]->yInfoArr[9][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[9][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[9][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[9][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[9][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[9][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[9][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[9][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[9][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[9][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[9][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[9][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[9][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[9][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[9][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[9][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[9][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[9][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[9][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[10]
+waveInfoDpl->subwinArr[0]->yInfoArr[10] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[10][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->actualYNum = 1
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->penIndex = 3
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[10][0]->axisLabel = "( V )"
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[10][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[10][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[10][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[10][1]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[10][1]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[10][1]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[10][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[10][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[10][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[10][2]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[10][2]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[10][2]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[10][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[10][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[10][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[10][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->yInfoArr[10][3]->axisLabelWave = nil
+waveInfoDpl->subwinArr[0]->yInfoArr[10][3]->axisLabel = nil
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[11]
+waveInfoDpl->subwinArr[0]->yInfoArr[11] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[11][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[11][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[11][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[11][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[11][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[11][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[11][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[11][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[11][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[11][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[11][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[11][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[11][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[11][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[11][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[11][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[12]
+waveInfoDpl->subwinArr[0]->yInfoArr[12] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[12][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[12][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[12][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[12][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[12][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[12][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[12][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[12][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[12][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[12][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[12][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[12][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[12][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[12][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[12][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[12][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[13]
+waveInfoDpl->subwinArr[0]->yInfoArr[13] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[13][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[13][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[13][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[13][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[13][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[13][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[13][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[13][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[13][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[13][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[13][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[13][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[13][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[13][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[13][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[13][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[14]
+waveInfoDpl->subwinArr[0]->yInfoArr[14] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[14][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[14][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[14][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[14][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[14][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[14][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[14][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[14][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[14][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[14][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[14][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[14][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[14][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[14][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[14][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[14][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[15]
+waveInfoDpl->subwinArr[0]->yInfoArr[15] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[15][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[15][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[15][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[15][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[15][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[15][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[15][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[15][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[15][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[15][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[15][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[15][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[15][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[15][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[15][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[15][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[16]
+waveInfoDpl->subwinArr[0]->yInfoArr[16] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[16][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[16][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[16][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[16][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[16][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[16][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[16][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[16][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[16][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[16][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[16][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[16][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[16][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[16][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[16][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[16][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[17]
+waveInfoDpl->subwinArr[0]->yInfoArr[17] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[17][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[17][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[17][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[17][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[17][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[17][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[17][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[17][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[17][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[17][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[17][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[17][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[17][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[17][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[17][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[17][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[18]
+waveInfoDpl->subwinArr[0]->yInfoArr[18] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[18][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[18][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[18][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[18][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[18][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[18][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[18][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[18][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[18][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[18][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[18][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[18][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[18][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[18][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[18][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[18][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[19]
+waveInfoDpl->subwinArr[0]->yInfoArr[19] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[19][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[19][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[19][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[19][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[19][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[19][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[19][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[19][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[19][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[19][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[19][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[19][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[19][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[19][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[19][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[19][3]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[20]
+waveInfoDpl->subwinArr[0]->yInfoArr[20] = (awviSaveMakeArray 4)
+)
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[20][0]
+waveInfoDpl->subwinArr[0]->yInfoArr[20][0] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[20][0]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[20][0]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[20][1]
+waveInfoDpl->subwinArr[0]->yInfoArr[20][1] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[20][1]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[20][1]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[20][2]
+waveInfoDpl->subwinArr[0]->yInfoArr[20][2] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[20][2]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[20][2]->limitsType = 'autoscale
+(unless waveInfoDpl->subwinArr[0]->yInfoArr[20][3]
+waveInfoDpl->subwinArr[0]->yInfoArr[20][3] = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->yInfoArr[20][3]->numUsed = 0
+waveInfoDpl->subwinArr[0]->yInfoArr[20][3]->limitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->smithYLimitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->smithXLimitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->xLimitsType = 'autoscale
+waveInfoDpl->subwinArr[0]->xScale = 'auto
+waveInfoDpl->subwinArr[0]->stripMaxNumYUsed = 1
+(unless waveInfoDpl->subwinArr[0]->numYUsedArr
+waveInfoDpl->subwinArr[0]->numYUsedArr = (awviSaveMakeArray 21)
+)
+waveInfoDpl->subwinArr[0]->numYUsedArr[0] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[1] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[2] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[3] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[4] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[5] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[6] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[7] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[8] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[9] = 1
+waveInfoDpl->subwinArr[0]->numYUsedArr[10] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[11] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[12] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[13] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[14] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[15] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[16] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[17] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[18] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[19] = 0
+waveInfoDpl->subwinArr[0]->numYUsedArr[20] = 0
+(unless waveInfoDpl->subwinArr[0]->yMarker
+waveInfoDpl->subwinArr[0]->yMarker = (ncons nil)
+)
+(unless waveInfoDpl->subwinArr[0]->xMarker
+waveInfoDpl->subwinArr[0]->xMarker = (ncons nil)
+)
+(unless waveInfoDpl->subwinArr[0]->crossHairMarker
+waveInfoDpl->subwinArr[0]->crossHairMarker = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->crossHairMarker->active = 'A
+(unless waveInfoDpl->subwinArr[0]->crossHairMarker->A
+waveInfoDpl->subwinArr[0]->crossHairMarker->A = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->screenLoc = (let (tmp)
+tmp = 141
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->screenLoc = (cons (let (tmp)
+tmp = 183
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->A->screenLoc)
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->plotLoc = (let (tmp)
+tmp = 1.2463647403480942e+00
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->plotLoc = (cons (let (tmp)
+tmp = 4.8542624817443214e-08
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->A->plotLoc)
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->index = 1
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->bBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 154
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 195
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->A->bBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 137
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 184
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->A->bBox)
+waveInfoDpl->subwinArr[0]->crossHairMarker->save = nil
+waveInfoDpl->subwinArr[0]->crossHairMarker->label = "A: (48.5426n 1.24636)\tdelta: (-43.7785n -681.365m)\nB: (4.76408n 565m)\tslope: 15.5639M"
+(unless waveInfoDpl->subwinArr[0]->crossHairMarker->B
+waveInfoDpl->subwinArr[0]->crossHairMarker->B = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->screenLoc = (let (tmp)
+tmp = 66
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->screenLoc = (cons (let (tmp)
+tmp = 105
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->B->screenLoc)
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->plotLoc = (let (tmp)
+tmp = 5.6499999999999995e-01
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->plotLoc = (cons (let (tmp)
+tmp = 4.7640842555416784e-09
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->B->plotLoc)
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->index = 1
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->bBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 79
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 118
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->crossHairMarker->B->bBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 62
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 106
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->crossHairMarker->B->bBox)
+waveInfoDpl->subwinArr[0]->xWaveIndex = 0
+waveInfoDpl->subwinArr[0]->cursorPrecision = 4
+waveInfoDpl->subwinArr[0]->cursorXOffset = "0"
+waveInfoDpl->subwinArr[0]->cursorValue = "normalized impedance"
+waveInfoDpl->subwinArr[0]->cursorPhase = "degree"
+waveInfoDpl->subwinArr[0]->cursorAction = "line"
+waveInfoDpl->subwinArr[0]->numLabelMode = 'suffix
+waveInfoDpl->subwinArr[0]->displayMinorTicks = 't
+waveInfoDpl->subwinArr[0]->displayMajorTicks = 't
+waveInfoDpl->subwinArr[0]->displayAxesLabel = 't
+waveInfoDpl->subwinArr[0]->displayAxes = 't
+waveInfoDpl->subwinArr[0]->paramIdNumber = 0
+waveInfoDpl->subwinArr[0]->numIdentifier = 6
+waveInfoDpl->subwinArr[0]->style = 'auto
+waveInfoDpl->subwinArr[0]->labelIdNumber = 0
+waveInfoDpl->subwinArr[0]->smithModeType = 'impedance
+waveInfoDpl->subwinArr[0]->stripModeType = 'analogStrip
+waveInfoDpl->subwinArr[0]->mode = 'strip
+waveInfoDpl->subwinArr[0]->redrawStatus = nil
+(unless waveInfoDpl->subwinArr[0]->headingArr
+waveInfoDpl->subwinArr[0]->headingArr = (awviSaveMakeArray 21)
+)
+waveInfoDpl->subwinArr[0]->headingArr[0] = 10
+waveInfoDpl->subwinArr[0]->headingArr[1] = 1
+waveInfoDpl->subwinArr[0]->headingArr[2] = 1
+waveInfoDpl->subwinArr[0]->headingArr[3] = 1
+waveInfoDpl->subwinArr[0]->headingArr[4] = 1
+waveInfoDpl->subwinArr[0]->headingArr[5] = 1
+waveInfoDpl->subwinArr[0]->headingArr[6] = 1
+waveInfoDpl->subwinArr[0]->headingArr[7] = 1
+waveInfoDpl->subwinArr[0]->headingArr[8] = 1
+waveInfoDpl->subwinArr[0]->headingArr[9] = 1
+waveInfoDpl->subwinArr[0]->headingArr[10] = 1
+waveInfoDpl->subwinArr[0]->headingArr[11] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[12] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[13] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[14] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[15] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[16] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[17] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[18] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[19] = 'unbound
+waveInfoDpl->subwinArr[0]->headingArr[20] = 'unbound
+(unless waveInfoDpl->subwinArr[0]->plotArr
+waveInfoDpl->subwinArr[0]->plotArr = (awviSaveMakeArray 21)
+)
+waveInfoDpl->subwinArr[0]->plotArr[0] = 1
+waveInfoDpl->subwinArr[0]->plotArr[1] = 1
+waveInfoDpl->subwinArr[0]->plotArr[2] = 2
+waveInfoDpl->subwinArr[0]->plotArr[3] = 3
+waveInfoDpl->subwinArr[0]->plotArr[4] = 4
+waveInfoDpl->subwinArr[0]->plotArr[5] = 5
+waveInfoDpl->subwinArr[0]->plotArr[6] = 6
+waveInfoDpl->subwinArr[0]->plotArr[7] = 7
+waveInfoDpl->subwinArr[0]->plotArr[8] = 8
+waveInfoDpl->subwinArr[0]->plotArr[9] = 9
+waveInfoDpl->subwinArr[0]->plotArr[10] = 9
+waveInfoDpl->subwinArr[0]->plotArr[11] = nil
+waveInfoDpl->subwinArr[0]->plotArr[12] = nil
+waveInfoDpl->subwinArr[0]->plotArr[13] = nil
+waveInfoDpl->subwinArr[0]->plotArr[14] = nil
+waveInfoDpl->subwinArr[0]->plotArr[15] = nil
+waveInfoDpl->subwinArr[0]->plotArr[16] = nil
+waveInfoDpl->subwinArr[0]->plotArr[17] = nil
+waveInfoDpl->subwinArr[0]->plotArr[18] = nil
+waveInfoDpl->subwinArr[0]->plotArr[19] = nil
+waveInfoDpl->subwinArr[0]->plotArr[20] = nil
+waveInfoDpl->subwinArr[0]->numAnalogStrip = 9
+waveInfoDpl->subwinArr[0]->plotNumList = (let (tmp)
+tmp = 9
+list(tmp))
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 8
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 7
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 6
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 5
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 4
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 3
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 2
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->plotNumList = (cons (let (tmp)
+tmp = 1
+tmp) waveInfoDpl->subwinArr[0]->plotNumList)
+waveInfoDpl->subwinArr[0]->updateStatus = 't
+waveInfoDpl->subwinArr[0]->on = 't
+waveInfoDpl->subwinArr[0]->id = 1
+waveInfoDpl->subwinArr[0]->viewPort = (let (tmp)
+tmp = 1.0000000000000000e+00
+list(tmp))
+waveInfoDpl->subwinArr[0]->viewPort = (cons (let (tmp)
+tmp = 1.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->viewPort)
+waveInfoDpl->subwinArr[0]->viewPort = (cons (let (tmp)
+tmp = 0.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->viewPort)
+waveInfoDpl->subwinArr[0]->viewPort = (cons (let (tmp)
+tmp = 0.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->viewPort)
+waveInfoDpl->subwinArr[0]->bBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 369
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 522
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->bBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 0
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 0
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->bBox)
+waveInfoDpl->subwinArr[0]->subViewPort = (let (tmp)
+tmp = 9.5392953929539293e-01
+list(tmp))
+waveInfoDpl->subwinArr[0]->subViewPort = (cons (let (tmp)
+tmp = 1.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->subViewPort)
+waveInfoDpl->subwinArr[0]->subViewPort = (cons (let (tmp)
+tmp = 0.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->subViewPort)
+waveInfoDpl->subwinArr[0]->subViewPort = (cons (let (tmp)
+tmp = 0.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->subViewPort)
+waveInfoDpl->subwinArr[0]->numberBBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 368
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 521
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->numberBBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 355
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 514
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->numberBBox)
+waveInfoDpl->subwinArr[0]->rescaleCursor = nil
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 1
+tmp->yNumber = 1
+tmp->expr = "VT(\"/INP\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/INP\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "1"
+tmp->plotSymbol = -1
+tmp->lineType = 0
+tmp->penIndex = 5
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 1
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+list(tmp))
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 2
+tmp->yNumber = 1
+tmp->expr = "VT(\"/INM\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/INM\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "2"
+tmp->plotSymbol = -2
+tmp->lineType = 0
+tmp->penIndex = 3
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 2
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 3
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<0>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<0>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "3"
+tmp->plotSymbol = -3
+tmp->lineType = 0
+tmp->penIndex = 6
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 3
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 4
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<1>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<1>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "4"
+tmp->plotSymbol = -4
+tmp->lineType = 0
+tmp->penIndex = 7
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 4
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 5
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<2>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<2>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "5"
+tmp->plotSymbol = -5
+tmp->lineType = 0
+tmp->penIndex = 4
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 5
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 6
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<3>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<3>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "6"
+tmp->plotSymbol = -6
+tmp->lineType = 0
+tmp->penIndex = 8
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 6
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 7
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<4>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<4>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "7"
+tmp->plotSymbol = -7
+tmp->lineType = 0
+tmp->penIndex = 11
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 7
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 8
+tmp->yNumber = 1
+tmp->expr = "VT(\"/adcflash<5>\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/adcflash<5>\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "8"
+tmp->plotSymbol = -8
+tmp->lineType = 0
+tmp->penIndex = 12
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 8
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOnList = (cons (let (tmp)
+(unless tmp
+tmp = (ncons nil)
+)
+tmp->waveLabel = nil
+tmp->selected = nil
+tmp->stripNumber = 9
+tmp->yNumber = 1
+tmp->expr = "VT(\"/ph1\")"
+tmp->paramInfo = nil
+tmp->evalInfo = (let (tmp)
+list(tmp))
+tmp->evalInfo = (cons (let (tmp)
+tmp = "VT(\"/ph1\" \"/user/jmedero/simulation/adcflash_SIM/spectre/schematic\")"
+tmp) tmp->evalInfo)
+tmp->barShift = nil
+tmp->barWidth = nil
+tmp->barBase = nil
+tmp->dataSymbol = "9"
+tmp->plotSymbol = -9
+tmp->lineType = 0
+tmp->penIndex = 5
+tmp->component = "magnitude"
+tmp->waveform = nil
+tmp->index = 9
+tmp->history = 1
+tmp->plotWave = nil
+tmp->computedPlotStyle = 'joined
+tmp) waveInfoDpl->subwinArr[0]->waveInfoOnList)
+waveInfoDpl->subwinArr[0]->waveInfoOffList = nil
+waveInfoDpl->subwinArr[0]->stripNumList = (let (tmp)
+tmp = 9
+list(tmp))
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 8
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 7
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 6
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 5
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 4
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 3
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 2
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->stripNumList = (cons (let (tmp)
+tmp = 1
+tmp) waveInfoDpl->subwinArr[0]->stripNumList)
+waveInfoDpl->subwinArr[0]->xWaveInfo = nil
+waveInfoDpl->subwinArr[0]->residualPlot = nil
+waveInfoDpl->subwinArr[0]->plotWaveList = (let (tmp)
+tmp = nil
+list(tmp))
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->plotWaveList = (cons (let (tmp)
+tmp = nil
+tmp) waveInfoDpl->subwinArr[0]->plotWaveList)
+waveInfoDpl->subwinArr[0]->xAxisLabelWave = "time ( s )"
+waveInfoDpl->subwinArr[0]->xAxisLabel = "time ( s )"
+waveInfoDpl->subwinArr[0]->plotAreaBBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 819
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 1177
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->plotAreaBBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 66
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 96
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->plotAreaBBox)
+(unless waveInfoDpl->subwinArr[0]->title
+waveInfoDpl->subwinArr[0]->title = (ncons nil)
+)
+waveInfoDpl->subwinArr[0]->title->penIndex = 10
+waveInfoDpl->subwinArr[0]->title->overBar = nil
+waveInfoDpl->subwinArr[0]->title->drafting = 't
+waveInfoDpl->subwinArr[0]->title->height = 11
+waveInfoDpl->subwinArr[0]->title->fontStyle = "stick"
+waveInfoDpl->subwinArr[0]->title->label = "Transient Response"
+waveInfoDpl->subwinArr[0]->title->bBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 367
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 342
+tmp) tmp)
+list(tmp))
+waveInfoDpl->subwinArr[0]->title->bBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 350
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 181
+tmp) tmp)
+tmp) waveInfoDpl->subwinArr[0]->title->bBox)
+waveInfoDpl->subwinArr[0]->stripXLimits = (let (tmp)
+tmp = 5.1200000000000003e-07
+list(tmp))
+waveInfoDpl->subwinArr[0]->stripXLimits = (cons (let (tmp)
+tmp = 0.0000000000000000e+00
+tmp) waveInfoDpl->subwinArr[0]->stripXLimits)
+waveInfoDpl->subwinArr[0]->moveInfo = nil
+waveInfoDpl->currentSubwindow = 1
+waveInfoDpl->unusedBBox = nil
+waveInfoDpl->dateBBox = nil
+(unless waveInfoDpl->title
+waveInfoDpl->title = (ncons nil)
+)
+waveInfoDpl->title->penIndex = 16
+waveInfoDpl->title->overBar = nil
+waveInfoDpl->title->drafting = 't
+waveInfoDpl->title->height = 12
+waveInfoDpl->title->fontStyle = "swedish"
+waveInfoDpl->title->label = "schroeder_sims adcflash_SIM schematic : Sep 15 08:15:18 2003"
+waveInfoDpl->title->bBox = (let (tmp)
+tmp = (let (tmp)
+tmp = 399
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 511
+tmp) tmp)
+list(tmp))
+waveInfoDpl->title->bBox = (cons (let (tmp)
+tmp = (let (tmp)
+tmp = 383
+list(tmp))
+tmp = (cons (let (tmp)
+tmp = 12
+tmp) tmp)
+tmp) waveInfoDpl->title->bBox)
+waveInfoDpl->saveNeeded = 't
+waveInfoDpl->saveLoadFile = "$modelPath/sitelibs//schroeder_sims/adcflash_SIM/spectre/tt/waveformSetup"

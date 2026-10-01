@@ -1,0 +1,10 @@
+--pcdbVlog file, Rev:1.0
+
+#CELL
+* trans_ld_b2t_clock *
+clock
+
+#CELL
+* trans_ld_b2t_logic *
+logic
+

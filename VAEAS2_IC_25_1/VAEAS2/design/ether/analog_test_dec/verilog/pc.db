@@ -1,0 +1,54 @@
+#
+gsclib090 OR2X1 symbol
+i_24
+#
+gsclib090 CLKINVX1 symbol
+i_92
+#
+gsclib090 AO22X1 symbol
+i_36
+#
+gsclib090 OAI31XL symbol
+i_63
+#
+gsclib090 AOI31X1 symbol
+i_2
+#
+gsclib090 AOI211X1 symbol
+i_3
+#
+gsclib090 NOR2BX1 symbol
+i_6
+#
+gsclib090 NAND2BX1 symbol
+i_9
+i_7
+i_15
+#
+gsclib090 OAI211X1 symbol
+i_14
+#
+gsclib090 OAI2BB1X1 symbol
+i_67
+i_71
+i_20
+i_83
+#
+gsclib090 OAI21XL symbol
+i_21
+i_39
+i_18
+#
+gsclib090 NOR2X1 symbol
+i_0
+i_1
+#
+gsclib090 NAND2X1 symbol
+i_75
+i_11
+i_5
+i_8
+i_79
+i_29
+i_12
+i_4

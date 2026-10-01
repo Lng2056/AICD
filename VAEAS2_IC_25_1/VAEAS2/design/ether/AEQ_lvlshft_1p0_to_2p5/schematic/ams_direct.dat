@@ -1,0 +1,20 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136308055=5-ether21-level_shifter_1p0_2p5;
+	1136308055=5-ether21-level_shifter_1p0_2p56-symbol;
+	1136387603=verilog.vams;
+$END
+$VERILOG_ITER_INST_NAME_MAP_LIST
+	I_gain:4:0:::;
+	I_pole:1:0:::;
+	I_zero:6:0:::;
+$END

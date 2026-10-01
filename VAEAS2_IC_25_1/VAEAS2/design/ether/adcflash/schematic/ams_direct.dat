@@ -1,0 +1,41 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I40:DVDD=VDD;
+	I40:DVSS=VSS;
+	I41:DVSS=VSS;
+	I41:DVDD=VDD;
+	I38:DVSS=VSS;
+	I38:DVDD=VDD;
+	I39:DVDD=VDD;
+	I39:DVSS=VSS;
+	I37:DVSS=VSS;
+	I37:DVDD=VDD;
+	I42:DVDD=VDD;
+	I42:DVSS=VSS;
+$END
+$TIMESTAMP
+	1134103883=7-gpdk0906-nmos2v;
+	1134103884=7-gpdk0906-nmos2v6-symbol;
+	1136308073=5-ether9-or2_2x_hv;
+	1136308074=5-ether9-or2_2x_hv6-symbol;
+	1136308078=5-ether9-inv_2x_hv;
+	1136308078=5-ether9-inv_2x_hv6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308134=5-ether15-adc_sample_hold;
+	1136308135=5-ether15-adc_sample_hold6-symbol;
+	1136308173=5-ether24-adcflash_comparator_actr;
+	1136308174=5-ether24-adcflash_comparator_actr6-symbol;
+	1136308174=5-ether19-adcflash_ref_ladder;
+	1136308175=5-ether19-adcflash_ref_ladder6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136387663=verilog.vams;
+$END

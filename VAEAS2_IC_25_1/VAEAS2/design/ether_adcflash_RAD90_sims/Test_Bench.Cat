@@ -1,0 +1,7 @@
+TDMCHECKPOINT="1.0"
+ether_adcflash_RAD90_sims/adc_adcflash_comparator_actr_sim type="cell"
+ether_adcflash_RAD90_sims/adc_adcflash_sim type="cell"
+ether_adcflash_RAD90_sims/adc_cascode_opamp_sim type="cell"
+ether_adcflash_RAD90_sims/adc_refladder_sim type="cell"
+ether_adcflash_RAD90_sims/adc_sample_hold_sim type="cell"
+keepEmptyCategory type="unknown"

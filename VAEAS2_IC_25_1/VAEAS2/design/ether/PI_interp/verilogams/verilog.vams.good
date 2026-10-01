@@ -1,0 +1,54 @@
+//Verilog-AMS HDL for "drouillard_ph2", "PI_interp" "verilogams"
+
+`include "constants.vams"
+`include "disciplines.vams"
+
+`timescale 1ns/10ps
+module PI_interp ( OUT, IN, VDD, VSS );
+
+output [21:0] OUT;
+input  [10:0] IN;
+input	      VDD, VSS;
+
+parameter real td = 1.6;		// digital values in Nano-seconds
+
+logic [21:0] OUT;
+logic [10:0] IN;
+electrical   VDD, VSS;
+
+real vtrans;
+real latest, earlier;
+real period, tapspace;
+integer crosscount; 
+
+reg [21:0] OUT;
+initial begin
+    crosscount = 0;    
+    earlier    = 0.0;
+    latest     = 4.0;				// 
+    period     = 4.0;				// 4ns period = 250MHz      
+    tapspace   = period/22.0;     
+    OUT        = 22'b0;
+end
+
+always @(posedge (IN[0])) begin 
+    crosscount = (crosscount < 2) ? crosscount + 1: 2;
+    earlier    = latest;
+    latest     = $realtime;
+    period     = (crosscount >= 2) ? latest-earlier: 4.0;
+    tapspace   = period/22.0;     
+end
+
+always @(IN[0] ) begin #(td) OUT[0] = IN[0] ; #(tapspace) OUT[1] = IN[0] ; end
+always @(IN[1] ) begin #(td) OUT[2] = IN[1] ; #(tapspace) OUT[3] = IN[1] ; end
+always @(IN[2] ) begin #(td) OUT[4] = IN[2] ; #(tapspace) OUT[5] = IN[2] ; end
+always @(IN[3] ) begin #(td) OUT[6] = IN[3] ; #(tapspace) OUT[7] = IN[3] ; end
+always @(IN[4] ) begin #(td) OUT[8] = IN[4] ; #(tapspace) OUT[9] = IN[4] ; end
+always @(IN[5] ) begin #(td) OUT[10]= IN[5] ; #(tapspace) OUT[11]= IN[5] ; end
+always @(IN[6] ) begin #(td) OUT[12]= IN[6] ; #(tapspace) OUT[13]= IN[6] ; end
+always @(IN[7] ) begin #(td) OUT[14]= IN[7] ; #(tapspace) OUT[15]= IN[7] ; end
+always @(IN[8] ) begin #(td) OUT[16]= IN[8] ; #(tapspace) OUT[17]= IN[8] ; end
+always @(IN[9] ) begin #(td) OUT[18]= IN[9] ; #(tapspace) OUT[19]= IN[9] ; end
+always @(IN[10]) begin #(td) OUT[20]= IN[10]; #(tapspace) OUT[21]= IN[10]; end
+
+endmodule

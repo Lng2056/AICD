@@ -1,0 +1,5 @@
+
+// Library name: ether
+// Cell name: adc_IREF_bias
+// View name: schematic
+subckt adc_IREF_bias Iin1 Iin2 SIDDQ VDD VSS pbias pbias_cas

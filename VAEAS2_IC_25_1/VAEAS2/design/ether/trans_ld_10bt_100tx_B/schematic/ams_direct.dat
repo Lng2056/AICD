@@ -1,0 +1,39 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$INH_CONN_PARAMETERS
+	I43:DVSS=gnd;
+	I43:DVDD=vdd;
+	I42:DVDD=vdd;
+	I42:DVSS=gnd;
+	I36:DVSS=gnd;
+	I36:DVDD=vdd;
+	I33:DVDD=vdd;
+	I33:DVSS=gnd;
+$END
+$TIMESTAMP
+	1134103889=7-gpdk0909-nmoscap2v;
+	1134103890=7-gpdk0909-nmoscap2v6-symbol;
+	1136308370=5-ether14-trans_ld_tenbt;
+	1136308371=5-ether14-trans_ld_tenbt6-symbol;
+	1136308073=5-ether9-or2_2x_hv;
+	1136308074=5-ether9-or2_2x_hv6-symbol;
+	1136308050=5-ether10-and2_1x_hv;
+	1136308050=5-ether10-and2_1x_hv6-symbol;
+	1136308077=5-ether9-inv_1x_hv;
+	1136308078=5-ether9-inv_1x_hv6-symbol;
+	1136308089=5-ether9-inv_4x_hv;
+	1136308090=5-ether9-inv_4x_hv6-symbol;
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	1136308363=5-ether17-trans_ld_bias_mux;
+	1136308364=5-ether17-trans_ld_bias_mux6-symbol;
+	1136308362=5-ether14-trans_ld_100tx;
+	1136308363=5-ether14-trans_ld_100tx6-symbol;
+	-1=5-basic5-iopin;
+	1133906589=5-basic5-iopin7-symbolr;
+	1136387763=verilog.vams;
+$END

@@ -1,0 +1,20 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$GLOBAL_SIGNALS
+	VSS!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	vss!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	vdda!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd5-false5-alias5-false5-alsIx1-0;
+	gnd!:::4-user5-false11-inUseByCDBA4-true4-lang4-CDBA4-wire4-wire6-discip0-3-gnd4-true5-alias5-false5-alsIx1-0;
+$END
+$TIMESTAMP
+	1110846539000=verilog.vams;
+$END
+$DESIGN_VARIABLES
+	fvco:4-user4-true11-inUseByCDBA5-false4-type4-real5-value8-2.5E+09 14-valueSetInForm4-true;
+	R:4-user4-true11-inUseByCDBA5-false4-type4-real5-value3-10014-valueSetInForm4-true;
+	freq:4-user4-true11-inUseByCDBA5-false4-type4-real5-value11-4.16667E+0814-valueSetInForm4-true;
+	vdd_1p0:4-user4-true11-inUseByCDBA5-false4-type4-real5-value3-1.014-valueSetInForm4-true;
+	vdd_nom:4-user4-true11-inUseByCDBA5-false4-type4-real5-value3-2.514-valueSetInForm4-true;
+	freg:4-user5-false11-inUseByCDBA4-true4-type4-real5-value6-416.7M14-valueSetInForm5-false9-CDBAValue6-416.7M;
+$END

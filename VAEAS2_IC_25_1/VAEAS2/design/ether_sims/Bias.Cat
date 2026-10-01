@@ -1,0 +1,7 @@
+TDMCHECKPOINT="1.0"
+ether_sims/bias_bandgap_ac_sim type="cell"
+ether_sims/bias_isource_1_2_ac_sim type="cell"
+ether_sims/bias_isource_2_2_ac_sim type="cell"
+ether_sims/bias_op_sim type="cell"
+ether_sims/bias_op_sim_test type="cell"
+keepEmptyCategory type="unknown"

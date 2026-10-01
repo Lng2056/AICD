@@ -1,0 +1,10 @@
+    NM0 (OUT A net6 VSS) gpdk090_nmos2v w=(10u) l=280.0n as=6p ad=6p \
+        ps=21.2u pd=21.2u m=(1)*(1) simM=(1)*(1)
+    NM1 (net6 B VSS VSS) gpdk090_nmos2v w=(10u) l=280.0n as=6p ad=6p \
+        ps=21.2u pd=21.2u m=(1)*(1) simM=(1)*(1)
+    PM0 (OUT A VDD VDD) gpdk090_pmos2v w=(20u) l=280.0n as=12p ad=12p \
+        ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+    PM1 (OUT B VDD VDD) gpdk090_pmos2v w=(20u) l=280.0n as=12p ad=12p \
+        ps=41.2u pd=41.2u m=(1)*(1) simM=(1)*(1)
+ends adc_nandx10
+// End of subcircuit definition.

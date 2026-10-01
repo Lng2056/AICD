@@ -1,0 +1,13 @@
+EVcdFile ""
+EVcdInfoFile ""
+VcdFile ""
+VcdInfoFile ""
+VectorFile nil
+allDefinitionFiles nil
+allIncludedPaths ((t "./design/ampTest_lab/Models/"))
+allStimulusFiles nil
+allVectorFiles nil
+definitionFiles nil
+hlcheck "off"
+includePath "./design/ampTest_lab/Models/"
+stimulusFile nil

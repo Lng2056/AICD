@@ -1,0 +1,1244 @@
+; Sample runset for 90 nm
+; GPDK090 version 4.2
+; ASSURA(r) version 3.1.7 DRC file
+; generated Nov 15, 2006
+
+drcExtractRules(
+
+; procedure for switches !SKIP_CHECK_CONT_ANT_3
+procedure( switchProc0()
+    geomConnect(
+        via(cont_poly cont_antenna Poly)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(cont_antenna cont_poly)
+        ratio=(cont_antenna.area/gate.area)
+        drcAntenna(cont_antenna (gate) ratio keep>15.0
+            "ANT.3: Poly Contact area to gate area ratio must be <= 15.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL1_ANT_4
+procedure( switchProc1()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal1_conn cont_poly cont_diode)
+        ratio=(metal1_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal1_conn (gate) ratio keep>475.0
+            "ANT.4.M1: Metal1 area / (gate area + 2*diff area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL2_ANT_4
+procedure( switchProc2()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal2_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal2_conn (gate) ratio keep>475.0
+            "ANT.4.M2: Metal2 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL2_ANT_6
+procedure( switchProc3()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly) )
+        antenna( cumulative metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        ratio=((metal2_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal2_conn (gate) ratio keep>1200.0
+            "ANT.6.M2: Cumulative Metal1 through Metal2 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL3_ANT_4
+procedure( switchProc4()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal3_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal3_conn (gate) ratio keep>475.0
+            "ANT.4.M3: Metal3 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL3_ANT_6
+procedure( switchProc5()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        ratio=((metal3_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal3_conn (gate) ratio keep>1200.0
+            "ANT.6.M3: Cumulative Metal1 through Metal3 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL4_ANT_4
+procedure( switchProc6()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal4_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal4_conn (gate) ratio keep>475.0
+            "ANT.4.M4: Metal4 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL4_ANT_6
+procedure( switchProc7()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        ratio=((metal4_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal4_conn (gate) ratio keep>1200.0
+            "ANT.6.M4: Cumulative Metal1 through Metal4 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+; procedure for switches !SKIP_CHECK_METAL5_ANT_4
+procedure( switchProc8()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal5_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal5_conn (gate) ratio keep>475.0
+            "ANT.4.M5: Metal5 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL5_ANT_6
+procedure( switchProc9()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode)
+        ratio=((metal5_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal5_conn (gate) ratio keep>1200.0
+            "ANT.6.M5: Cumulative Metal1 through Metal5 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL6_ANT_4
+procedure( switchProc10()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal6_conn Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn
+            Via2 metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal6_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal6_conn (gate) ratio keep>475.0
+            "ANT.4.M6: Metal6 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL6_ANT_6
+procedure( switchProc11()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal6_conn Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn
+            Via2 metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        ratio=((metal6_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal6_conn (gate) ratio keep>1200.0
+            "ANT.6.M6: Cumulative Metal1 through Metal6 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL7_ANT_4
+procedure( switchProc12()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal7_conn Via6 metal6_conn Via5 metal5_conn Via4 metal4_conn
+            Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal7_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal7_conn (gate) ratio keep>475.0
+            "ANT.4.M7: Metal7 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL7_ANT_6
+procedure( switchProc13()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal7_conn Via6 metal6_conn Via5 metal5_conn Via4 metal4_conn
+            Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        ratio=((metal7_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal7_conn (gate) ratio keep>1200.0
+            "ANT.6.M7: Cumulative Metal1 through Metal7 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL8_ANT_4
+procedure( switchProc14()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal8_conn Via7 metal7_conn Via6 metal6_conn Via5 metal5_conn
+            Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal8_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal8_conn (gate) ratio keep>475.0
+            "ANT.4.M8: Metal8 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL8_ANT_6
+procedure( switchProc15()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal8_conn Via7 metal7_conn Via6 metal6_conn Via5 metal5_conn
+            Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        ratio=((metal8_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal8_conn (gate) ratio keep>1200.0
+            "ANT.6.M8: Cumulative Metal1 through Metal8 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL9_ANT_4
+procedure( switchProc16()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+        via(Via8 metal9_conn metal8_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal9_conn Via8 metal8_conn Via7 metal7_conn Via6 metal6_conn
+            Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(metal9_conn.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal9_conn (gate) ratio keep>475.0
+            "ANT.4.M9: Metal9 area to (gate area + 2*diff_diode.area) ratio must be <= 475.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_METAL9_ANT_6
+procedure( switchProc17()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+        via(Via8 metal9_conn metal8_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna( cumulative metal9_conn Via8 metal8_conn Via7 metal7_conn Via6 metal6_conn
+            Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode diff_diode)
+        ratio=((metal9_conn.area)/(gate.area+2*diff_diode.area))
+        drcAntenna(metal9_conn (gate) ratio keep>1200.0
+            "ANT.6.M9: Cumulative Metal1 through Metal9 area to (gate area + 2*diff_diode.area) ratio must be <= 1200.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_POLY_ANT_1
+procedure( switchProc18()
+    geomConnect(
+        via(poly_tap poly_on_field Poly)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(poly_on_field poly_tap)
+        ratio=(poly_on_field.area/gate.area)
+        drcAntenna(poly_on_field (gate) ratio keep>275.0
+            "ANT.1: Field Poly area to gate area ratio must be <= 275.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_POLY_ANT_2
+procedure( switchProc19()
+    geomConnect(
+        via(poly_tap poly_on_field Poly)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(poly_on_field poly_tap)
+        ratio=(poly_on_field.perimeter/gate.area)
+        drcAntenna(poly_on_field (gate) ratio keep>550.0
+            "ANT.2: Field Poly perimeter to gate area ratio must be <= 550.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA1_ANT_5
+procedure( switchProc20()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via1.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal2_conn (gate) ratio keep>25.0
+            "ANT.5.V1: Via1 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA2_ANT_5
+procedure( switchProc21()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via2.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal3_conn (gate) ratio keep>25.0
+            "ANT.5.V2: Via2 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA3_ANT_5
+procedure( switchProc22()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via3.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal4_conn (gate) ratio keep>25.0
+            "ANT.5.V3: Via3 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA4_ANT_5
+procedure( switchProc23()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via4.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal5_conn (gate) ratio keep>25.0
+            "ANT.5.V4: Via4 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA5_ANT_5
+procedure( switchProc24()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal6_conn Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn
+            Via2 metal2_conn Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via5.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal6_conn (gate) ratio keep>25.0
+            "ANT.5.V5: Via5 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA6_ANT_5
+procedure( switchProc25()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal7_conn Via6 metal6_conn Via5 metal5_conn Via4 metal4_conn
+            Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn cont_poly
+            cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via6.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal7_conn (gate) ratio keep>25.0
+            "ANT.5.V6: Via6 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA7_ANT_5
+procedure( switchProc26()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal8_conn Via7 metal7_conn Via6 metal6_conn Via5 metal5_conn
+            Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn Via1 metal1_conn
+            cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via7.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal8_conn (gate) ratio keep>25.0
+            "ANT.5.V7: Via7 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+; procedure for switches !SKIP_CHECK_VIA8_ANT_5
+procedure( switchProc27()
+    geomConnect(
+        via(cont_diode metal1_conn diff_diode)
+        via(cont_poly metal1_conn Poly)
+        via(Via1 metal2_conn metal1_conn)
+        via(Via2 metal3_conn metal2_conn)
+        via(Via3 metal4_conn metal3_conn)
+        via(Via4 metal5_conn metal4_conn)
+        via(Via5 metal6_conn metal5_conn)
+        via(Via6 metal7_conn metal6_conn)
+        via(Via7 metal8_conn metal7_conn)
+        via(Via8 metal9_conn metal8_conn)
+    )
+
+    processAntenna(
+        gate((gate Poly))
+        antenna(metal9_conn Via8 metal8_conn Via7 metal7_conn Via6 metal6_conn
+            Via5 metal5_conn Via4 metal4_conn Via3 metal3_conn Via2 metal2_conn
+            Via1 metal1_conn cont_poly cont_diode)
+        diffusion(diff_diode)
+        ratio=(Via8.area/(gate.area+2*diff_diode.area))
+        drcAntenna(metal9_conn (gate) ratio keep>25.0
+            "ANT.5.V8: Via8 area to (gate area + 2*diff_diode.area) ratio must be <= 25.0")
+    )
+
+)
+
+layerDefs("GDS2"
+
+    Cont=layer( 6 type(0) )
+
+    M1Resdum=layer( 75 type(0) )
+
+    M2Resdum=layer( 76 type(0) )
+
+    M3Resdum=layer( 77 type(0) )
+
+    M4Resdum=layer( 78 type(0) )
+
+    M5Resdum=layer( 79 type(0) )
+
+    M6Resdum=layer( 80 type(0) )
+
+    M7Resdum=layer( 81 type(0) )
+
+    M8Resdum=layer( 82 type(0) )
+
+    M9Resdum=layer( 83 type(0) )
+
+    Metal1_d=layer( 7 type(0) )
+    Metal1_d_text=textToPin( 7 type(3) )
+    Metal1_d_pintext=text( 7 type(3) )
+
+    Metal1_f=layer( 7 type(5) )
+
+    Metal1_n=layer( 7 type(4) )
+
+    Metal1_p=layer( 7 type(1) )
+    Metal1_p_text=textToPin( 7 type(3) )
+    Metal1_p_pintext=text( 7 type(3) )
+
+    Metal1_slot=layer( 7 type(2) )
+
+    Metal2_d=layer( 9 type(0) )
+    Metal2_d_text=textToPin( 9 type(3) )
+    Metal2_d_pintext=text( 9 type(3) )
+
+    Metal2_f=layer( 9 type(5) )
+
+    Metal2_n=layer( 9 type(4) )
+
+    Metal2_p=layer( 9 type(1) )
+    Metal2_p_text=textToPin( 9 type(3) )
+    Metal2_p_pintext=text( 9 type(3) )
+
+    Metal2_slot=layer( 9 type(2) )
+
+    Metal3_d=layer( 11 type(0) )
+    Metal3_d_text=textToPin( 11 type(3) )
+    Metal3_d_pintext=text( 11 type(3) )
+
+    Metal3_f=layer( 11 type(5) )
+
+    Metal3_n=layer( 11 type(4) )
+
+    Metal3_p=layer( 11 type(1) )
+    Metal3_p_text=textToPin( 11 type(3) )
+    Metal3_p_pintext=text( 11 type(3) )
+
+    Metal3_slot=layer( 11 type(2) )
+
+    Metal4_d=layer( 31 type(0) )
+    Metal4_d_text=textToPin( 31 type(3) )
+    Metal4_d_pintext=text( 31 type(3) )
+
+    Metal4_f=layer( 31 type(5) )
+
+    Metal4_n=layer( 31 type(4) )
+
+    Metal4_p=layer( 31 type(1) )
+    Metal4_p_text=textToPin( 31 type(3) )
+    Metal4_p_pintext=text( 31 type(3) )
+
+    Metal4_slot=layer( 31 type(2) )
+
+    Metal5_d=layer( 33 type(0) )
+    Metal5_d_text=textToPin( 33 type(3) )
+    Metal5_d_pintext=text( 33 type(3) )
+
+    Metal5_f=layer( 33 type(5) )
+
+    Metal5_n=layer( 33 type(4) )
+
+    Metal5_p=layer( 33 type(1) )
+    Metal5_p_text=textToPin( 33 type(3) )
+    Metal5_p_pintext=text( 33 type(3) )
+
+    Metal5_slot=layer( 33 type(2) )
+
+    Metal6_d=layer( 35 type(0) )
+    Metal6_d_text=textToPin( 35 type(3) )
+    Metal6_d_pintext=text( 35 type(3) )
+
+    Metal6_f=layer( 35 type(5) )
+
+    Metal6_n=layer( 35 type(4) )
+
+    Metal6_p=layer( 35 type(1) )
+    Metal6_p_text=textToPin( 35 type(3) )
+    Metal6_p_pintext=text( 35 type(3) )
+
+    Metal6_slot=layer( 35 type(2) )
+
+    Metal7_d=layer( 38 type(0) )
+    Metal7_d_text=textToPin( 38 type(3) )
+    Metal7_d_pintext=text( 38 type(3) )
+
+    Metal7_f=layer( 38 type(5) )
+
+    Metal7_n=layer( 38 type(4) )
+
+    Metal7_p=layer( 38 type(1) )
+    Metal7_p_text=textToPin( 38 type(3) )
+    Metal7_p_pintext=text( 38 type(3) )
+
+    Metal7_slot=layer( 38 type(2) )
+
+    Metal8_d=layer( 40 type(0) )
+    Metal8_d_text=textToPin( 40 type(3) )
+    Metal8_d_pintext=text( 40 type(3) )
+
+    Metal8_f=layer( 40 type(5) )
+
+    Metal8_n=layer( 40 type(4) )
+
+    Metal8_p=layer( 40 type(1) )
+    Metal8_p_text=textToPin( 40 type(3) )
+    Metal8_p_pintext=text( 40 type(3) )
+
+    Metal8_slot=layer( 40 type(2) )
+
+    Metal9_d=layer( 42 type(0) )
+    Metal9_d_text=textToPin( 42 type(3) )
+    Metal9_d_pintext=text( 42 type(3) )
+
+    Metal9_f=layer( 42 type(5) )
+
+    Metal9_n=layer( 42 type(4) )
+
+    Metal9_p=layer( 42 type(1) )
+    Metal9_p_text=textToPin( 42 type(3) )
+    Metal9_p_pintext=text( 42 type(3) )
+
+    Metal9_slot=layer( 42 type(2) )
+
+    NPNdummy=layer( 20 type(0) )
+
+    Nimp=layer( 4 type(0) )
+
+    Oxide=layer( 1 type(0) )
+
+    Pimp=layer( 5 type(0) )
+
+    Poly=layer( 3 type(0) )
+
+    Resdum=layer( 13 type(0) )
+
+    Via1=layer( 8 type(0) )
+
+    Via2=layer( 10 type(0) )
+
+    Via3=layer( 30 type(0) )
+
+    Via4=layer( 32 type(0) )
+
+    Via5=layer( 34 type(0) )
+
+    Via6=layer( 37 type(0) )
+
+    Via7=layer( 39 type(0) )
+
+    Via8=layer( 41 type(0) )
+
+)
+
+layerDefs("df2"
+
+    Cont=layer("Cont" type("drawing"))
+
+    M1Resdum=layer("M1Resdum" type("drawing"))
+
+    M2Resdum=layer("M2Resdum" type("drawing"))
+
+    M3Resdum=layer("M3Resdum" type("drawing"))
+
+    M4Resdum=layer("M4Resdum" type("drawing"))
+
+    M5Resdum=layer("M5Resdum" type("drawing"))
+
+    M6Resdum=layer("M6Resdum" type("drawing"))
+
+    M7Resdum=layer("M7Resdum" type("drawing"))
+
+    M8Resdum=layer("M8Resdum" type("drawing"))
+
+    M9Resdum=layer("M9Resdum" type("drawing"))
+
+    Metal1_d=layer("Metal1" type("drawing"))
+    Metal1_d_text=textToPin("Metal1" type("label"))
+    Metal1_d_pintext=pinText("Metal1")
+
+    Metal1_f=layer("Metal1" type("fill"))
+
+    Metal1_n=layer("Metal1" type("net"))
+
+    Metal1_p=layer("Metal1" type("pin"))
+    Metal1_p_text=textToPin("Metal1" type("label"))
+    Metal1_p_pintext=pinText("Metal1")
+
+    Metal1_slot=layer("Metal1" type("slot"))
+
+    Metal2_d=layer("Metal2" type("drawing"))
+    Metal2_d_text=textToPin("Metal2" type("label"))
+    Metal2_d_pintext=pinText("Metal2")
+
+    Metal2_f=layer("Metal2" type("fill"))
+
+    Metal2_n=layer("Metal2" type("net"))
+
+    Metal2_p=layer("Metal2" type("pin"))
+    Metal2_p_text=textToPin("Metal2" type("label"))
+    Metal2_p_pintext=pinText("Metal2")
+
+    Metal2_slot=layer("Metal2" type("slot"))
+
+    Metal3_d=layer("Metal3" type("drawing"))
+    Metal3_d_text=textToPin("Metal3" type("label"))
+    Metal3_d_pintext=pinText("Metal3")
+
+    Metal3_f=layer("Metal3" type("fill"))
+
+    Metal3_n=layer("Metal3" type("net"))
+
+    Metal3_p=layer("Metal3" type("pin"))
+    Metal3_p_text=textToPin("Metal3" type("label"))
+    Metal3_p_pintext=pinText("Metal3")
+
+    Metal3_slot=layer("Metal3" type("slot"))
+
+    Metal4_d=layer("Metal4" type("drawing"))
+    Metal4_d_text=textToPin("Metal4" type("label"))
+    Metal4_d_pintext=pinText("Metal4")
+
+    Metal4_f=layer("Metal4" type("fill"))
+
+    Metal4_n=layer("Metal4" type("net"))
+
+    Metal4_p=layer("Metal4" type("pin"))
+    Metal4_p_text=textToPin("Metal4" type("label"))
+    Metal4_p_pintext=pinText("Metal4")
+
+    Metal4_slot=layer("Metal4" type("slot"))
+
+    Metal5_d=layer("Metal5" type("drawing"))
+    Metal5_d_text=textToPin("Metal5" type("label"))
+    Metal5_d_pintext=pinText("Metal5")
+
+    Metal5_f=layer("Metal5" type("fill"))
+
+    Metal5_n=layer("Metal5" type("net"))
+
+    Metal5_p=layer("Metal5" type("pin"))
+    Metal5_p_text=textToPin("Metal5" type("label"))
+    Metal5_p_pintext=pinText("Metal5")
+
+    Metal5_slot=layer("Metal5" type("slot"))
+
+    Metal6_d=layer("Metal6" type("drawing"))
+    Metal6_d_text=textToPin("Metal6" type("label"))
+    Metal6_d_pintext=pinText("Metal6")
+
+    Metal6_f=layer("Metal6" type("fill"))
+
+    Metal6_n=layer("Metal6" type("net"))
+
+    Metal6_p=layer("Metal6" type("pin"))
+    Metal6_p_text=textToPin("Metal6" type("label"))
+    Metal6_p_pintext=pinText("Metal6")
+
+    Metal6_slot=layer("Metal6" type("slot"))
+
+    Metal7_d=layer("Metal7" type("drawing"))
+    Metal7_d_text=textToPin("Metal7" type("label"))
+    Metal7_d_pintext=pinText("Metal7")
+
+    Metal7_f=layer("Metal7" type("fill"))
+
+    Metal7_n=layer("Metal7" type("net"))
+
+    Metal7_p=layer("Metal7" type("pin"))
+    Metal7_p_text=textToPin("Metal7" type("label"))
+    Metal7_p_pintext=pinText("Metal7")
+
+    Metal7_slot=layer("Metal7" type("slot"))
+
+    Metal8_d=layer("Metal8" type("drawing"))
+    Metal8_d_text=textToPin("Metal8" type("label"))
+    Metal8_d_pintext=pinText("Metal8")
+
+    Metal8_f=layer("Metal8" type("fill"))
+
+    Metal8_n=layer("Metal8" type("net"))
+
+    Metal8_p=layer("Metal8" type("pin"))
+    Metal8_p_text=textToPin("Metal8" type("label"))
+    Metal8_p_pintext=pinText("Metal8")
+
+    Metal8_slot=layer("Metal8" type("slot"))
+
+    Metal9_d=layer("Metal9" type("drawing"))
+    Metal9_d_text=textToPin("Metal9" type("label"))
+    Metal9_d_pintext=pinText("Metal9")
+
+    Metal9_f=layer("Metal9" type("fill"))
+
+    Metal9_n=layer("Metal9" type("net"))
+
+    Metal9_p=layer("Metal9" type("pin"))
+    Metal9_p_text=textToPin("Metal9" type("label"))
+    Metal9_p_pintext=pinText("Metal9")
+
+    Metal9_slot=layer("Metal9" type("slot"))
+
+    NPNdummy=layer("NPNdummy" type("drawing"))
+
+    Nimp=layer("Nimp" type("drawing"))
+
+    Oxide=layer("Oxide" type("drawing"))
+
+    Pimp=layer("Pimp" type("drawing"))
+
+    Poly=layer("Poly" type("drawing"))
+
+    Resdum=layer("Resdum" type("drawing"))
+
+    Via1=layer("Via1" type("drawing"))
+
+    Via2=layer("Via2" type("drawing"))
+
+    Via3=layer("Via3" type("drawing"))
+
+    Via4=layer("Via4" type("drawing"))
+
+    Via5=layer("Via5" type("drawing"))
+
+    Via6=layer("Via6" type("drawing"))
+
+    Via7=layer("Via7" type("drawing"))
+
+    Via8=layer("Via8" type("drawing"))
+
+)
+
+
+
+; cont_poly=Cont and Poly
+cont_poly=geomAnd(Cont Poly)
+
+; cont_antenna=cont_poly and Poly
+cont_antenna=geomAnd(Poly cont_poly)
+
+; gate=Poly and Oxide
+gate=geomAnd(Oxide Poly)
+
+; nactive=Nimp and Oxide
+nactive=geomAnd(Nimp Oxide)
+
+; pactive=Pimp and Oxide
+pactive=geomAnd(Oxide Pimp)
+
+; pdiff=pactive andnot Poly
+pdiff=geomAndNot(pactive Poly)
+
+; poly_conn=Poly andnot Resdum
+poly_conn=geomAndNot(Poly Resdum)
+
+; ndiff=(nactive andnot poly_conn)
+ndiff=geomAndNot(nactive poly_conn)
+
+; poly_on_field=Poly andnot Oxide
+poly_on_field=geomAndNot(Poly Oxide)
+
+; poly_tap=poly_on_field and Poly
+poly_tap=geomAnd(Poly poly_on_field)
+
+; ndiff_conn=ndiff andnot Resdum andnot NPNdummy
+L46829=geomAndNot(ndiff Resdum)
+ndiff_conn=geomAndNot(L46829 NPNdummy)
+
+; cont_ndiff=Cont and ndiff_conn
+cont_ndiff=geomAnd(Cont ndiff_conn)
+
+; pdiff_conn=pdiff andnot Resdum andnot NPNdummy
+L12267=geomAndNot(pdiff Resdum)
+pdiff_conn=geomAndNot(L12267 NPNdummy)
+
+; cont_pdiff=Cont and pdiff_conn
+cont_pdiff=geomAnd(Cont pdiff_conn)
+
+; cont_diode=cont_ndiff or cont_pdiff
+cont_diode=geomOr(cont_ndiff cont_pdiff)
+
+; diff_diode=ndiff_conn or pdiff_conn
+diff_diode=geomOr(ndiff_conn pdiff_conn)
+
+; Metal1_d_n=if MergePinAndNet Metal1_d or Metal1_n else Metal1_d
+if( avSwitch("MergePinAndNet") then
+    Metal1_d_n=geomOr(Metal1_d Metal1_n)
+else
+    Metal1_d_n=Metal1_d
+)
+
+
+; Metal1=Metal1_d_n or Metal1_p or Metal1_f
+L59680=geomOr(Metal1_d_n Metal1_p)
+Metal1=geomOr(L59680 Metal1_f)
+
+; metal1_conn=(Metal1 andnot Metal1_slot) andnot M1Resdum
+L32159=geomAndNot(Metal1 Metal1_slot)
+metal1_conn=geomAndNot(L32159 M1Resdum)
+
+; Metal2_d_n=if MergePinAndNet Metal2_d or Metal2_n else Metal2_d
+if( avSwitch("MergePinAndNet") then
+    Metal2_d_n=geomOr(Metal2_d Metal2_n)
+else
+    Metal2_d_n=Metal2_d
+)
+
+
+; Metal2=Metal2_d_n or Metal2_p or Metal2_f
+L17344=geomOr(Metal2_d_n Metal2_p)
+Metal2=geomOr(L17344 Metal2_f)
+
+; metal2_conn=(Metal2 andnot Metal2_slot) andnot M2Resdum
+L6015=geomAndNot(Metal2 Metal2_slot)
+metal2_conn=geomAndNot(L6015 M2Resdum)
+
+; Metal3_d_n=if MergePinAndNet Metal3_d or Metal3_n else Metal3_d
+if( avSwitch("MergePinAndNet") then
+    Metal3_d_n=geomOr(Metal3_d Metal3_n)
+else
+    Metal3_d_n=Metal3_d
+)
+
+
+; Metal3=Metal3_d_n or Metal3_p or Metal3_f
+L92288=geomOr(Metal3_d_n Metal3_p)
+Metal3=geomOr(L92288 Metal3_f)
+
+; metal3_conn=(Metal3 andnot Metal3_slot) andnot M3Resdum
+L79871=geomAndNot(Metal3 Metal3_slot)
+metal3_conn=geomAndNot(L79871 M3Resdum)
+
+; Metal4_d_n=if MergePinAndNet Metal4_d or Metal4_n else Metal4_d
+if( avSwitch("MergePinAndNet") then
+    Metal4_d_n=geomOr(Metal4_d Metal4_n)
+else
+    Metal4_d_n=Metal4_d
+)
+
+
+; Metal4=Metal4_d_n or Metal4_p or Metal4_f
+L34624=geomOr(Metal4_d_n Metal4_p)
+Metal4=geomOr(L34624 Metal4_f)
+
+; metal4_conn=(Metal4 andnot Metal4_slot) andnot M4Resdum
+L53727=geomAndNot(Metal4 Metal4_slot)
+metal4_conn=geomAndNot(L53727 M4Resdum)
+
+; Metal5_d_n=if MergePinAndNet Metal5_d or Metal5_n else Metal5_d
+if( avSwitch("MergePinAndNet") then
+    Metal5_d_n=geomOr(Metal5_d Metal5_n)
+else
+    Metal5_d_n=Metal5_d
+)
+
+
+; Metal5=Metal5_d_n or Metal5_p or Metal5_f
+L76960=geomOr(Metal5_d_n Metal5_p)
+Metal5=geomOr(L76960 Metal5_f)
+
+; metal5_conn=(Metal5 andnot Metal5_slot) andnot M5Resdum
+L27583=geomAndNot(Metal5 Metal5_slot)
+metal5_conn=geomAndNot(L27583 M5Resdum)
+
+; Metal6_d_n=if MergePinAndNet Metal6_d or Metal6_n else Metal6_d
+if( avSwitch("MergePinAndNet") then
+    Metal6_d_n=geomOr(Metal6_d Metal6_n)
+else
+    Metal6_d_n=Metal6_d
+)
+
+
+; Metal6=Metal6_d_n or Metal6_p or Metal6_f
+L19296=geomOr(Metal6_d_n Metal6_p)
+Metal6=geomOr(L19296 Metal6_f)
+
+; metal6_conn=(Metal6 andnot Metal6_slot) andnot M6Resdum
+L65857=geomAndNot(Metal6 Metal6_slot)
+metal6_conn=geomAndNot(L65857 M6Resdum)
+
+; Metal7_d_n=if MergePinAndNet Metal7_d or Metal7_n else Metal7_d
+if( avSwitch("MergePinAndNet") then
+    Metal7_d_n=geomOr(Metal7_d Metal7_n)
+else
+    Metal7_d_n=Metal7_d
+)
+
+
+; Metal7=Metal7_d_n or Metal7_p or Metal7_f
+L38368=geomOr(Metal7_d_n Metal7_p)
+Metal7=geomOr(L38368 Metal7_f)
+
+; metal7_conn=(Metal7 andnot Metal7_slot) andnot M7Resdum
+L92001=geomAndNot(Metal7 Metal7_slot)
+metal7_conn=geomAndNot(L92001 M7Resdum)
+
+; Metal8_d_n=if MergePinAndNet Metal8_d or Metal8_n else Metal8_d
+if( avSwitch("MergePinAndNet") then
+    Metal8_d_n=geomOr(Metal8_d Metal8_n)
+else
+    Metal8_d_n=Metal8_d
+)
+
+
+; Metal8=Metal8_d_n or Metal8_p or Metal8_f
+L96032=geomOr(Metal8_d_n Metal8_p)
+Metal8=geomOr(L96032 Metal8_f)
+
+; metal8_conn=(Metal8 andnot Metal8_slot) andnot M8Resdum
+L18145=geomAndNot(Metal8 Metal8_slot)
+metal8_conn=geomAndNot(L18145 M8Resdum)
+
+; Metal9_d_n=if MergePinAndNet Metal9_d or Metal9_n else Metal9_d
+if( avSwitch("MergePinAndNet") then
+    Metal9_d_n=geomOr(Metal9_d Metal9_n)
+else
+    Metal9_d_n=Metal9_d
+)
+
+
+; Metal9=Metal9_d_n or Metal9_p or Metal9_f
+L53696=geomOr(Metal9_d_n Metal9_p)
+Metal9=geomOr(L53696 Metal9_f)
+
+; metal9_conn=(Metal9 andnot Metal9_slot) andnot M9Resdum
+L44289=geomAndNot(Metal9 Metal9_slot)
+metal9_conn=geomAndNot(L44289 M9Resdum)
+
+
+if( !avSwitch("SKIP_CHECK_CONT_ANT_3") then switchProc0() )
+
+if( !avSwitch("SKIP_CHECK_METAL1_ANT_4") then switchProc1() )
+
+if( !avSwitch("SKIP_CHECK_METAL2_ANT_4") then switchProc2() )
+
+if( !avSwitch("SKIP_CHECK_METAL2_ANT_6") then switchProc3() )
+
+if( !avSwitch("SKIP_CHECK_METAL3_ANT_4") then switchProc4() )
+
+if( !avSwitch("SKIP_CHECK_METAL3_ANT_6") then switchProc5() )
+
+if( !avSwitch("SKIP_CHECK_METAL4_ANT_4") then switchProc6() )
+
+if( !avSwitch("SKIP_CHECK_METAL4_ANT_6") then switchProc7() )
+
+if( !avSwitch("SKIP_CHECK_METAL5_ANT_4") then switchProc8() )
+
+if( !avSwitch("SKIP_CHECK_METAL5_ANT_6") then switchProc9() )
+
+if( !avSwitch("SKIP_CHECK_METAL6_ANT_4") then switchProc10() )
+
+if( !avSwitch("SKIP_CHECK_METAL6_ANT_6") then switchProc11() )
+
+if( !avSwitch("SKIP_CHECK_METAL7_ANT_4") then switchProc12() )
+
+if( !avSwitch("SKIP_CHECK_METAL7_ANT_6") then switchProc13() )
+
+if( !avSwitch("SKIP_CHECK_METAL8_ANT_4") then switchProc14() )
+
+if( !avSwitch("SKIP_CHECK_METAL8_ANT_6") then switchProc15() )
+
+if( !avSwitch("SKIP_CHECK_METAL9_ANT_4") then switchProc16() )
+
+if( !avSwitch("SKIP_CHECK_METAL9_ANT_6") then switchProc17() )
+
+if( !avSwitch("SKIP_CHECK_POLY_ANT_1") then switchProc18() )
+
+if( !avSwitch("SKIP_CHECK_POLY_ANT_2") then switchProc19() )
+
+if( !avSwitch("SKIP_CHECK_VIA1_ANT_5") then switchProc20() )
+
+if( !avSwitch("SKIP_CHECK_VIA2_ANT_5") then switchProc21() )
+
+if( !avSwitch("SKIP_CHECK_VIA3_ANT_5") then switchProc22() )
+
+if( !avSwitch("SKIP_CHECK_VIA4_ANT_5") then switchProc23() )
+
+if( !avSwitch("SKIP_CHECK_VIA5_ANT_5") then switchProc24() )
+
+if( !avSwitch("SKIP_CHECK_VIA6_ANT_5") then switchProc25() )
+
+if( !avSwitch("SKIP_CHECK_VIA7_ANT_5") then switchProc26() )
+
+if( !avSwitch("SKIP_CHECK_VIA8_ANT_5") then switchProc27() )
+
+)
+

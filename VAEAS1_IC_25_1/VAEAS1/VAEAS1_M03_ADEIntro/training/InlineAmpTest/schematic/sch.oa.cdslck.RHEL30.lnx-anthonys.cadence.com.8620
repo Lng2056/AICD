@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      anthonys
+HostName                       lnx-anthonys.cadence.com
+ProcessIdentifier              8620
+ProcessCreationTime_UTC        1272891054
+ProcessCreationTime_Readable   Mon May  3 18:20:54 2010 IST
+AppIdentifier                  OA File System Design Manager
+OSType                         unix
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         /export/home/anthonys/VADE614/training/InlineAmpTest/schematic/sch.oa.cdslck
+TimeEditLocked                 Mon May  3 18:21:01 2010 IST

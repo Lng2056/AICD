@@ -1,0 +1,37 @@
+;;        Cadence DFII session initialization file 
+;; =====================================================================
+
+; load bindKeys
+load(prependInstallPath("/samples/local/schBindKeys.il"))
+load(prependInstallPath("/samples/local/leBindKeys.il"))
+load(prependInstallPath("/samples/local/lxBindKeys.il"))
+
+;;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+envLoadFile(".cdsenv")  ;; Load Cadence environment
+if( !member("-axlChildIdFlag" getShellArgs())
+   ddsOpenLibManager() ;; Open Library Manager only on start-up
+)
+;;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;; envSetVal("spectre.envOpts" "controlMode" 'string "batch")
+;;ciUseFrontEnd(t)
+
+;;Enable Reliability analysis
+;;envSetVal("adexl.gui" "enableRelXpertSupport" 'boolean t)
+
+;;To enable link analysis and measurement to not show simerr for all analyses, if only one or some fail.
+;;envSetVal("adexl.results" "evalOutputsOnSimFailure" 'cyclic "SkipFailedAnalyses")
+
+;;To output job log even when there is no error
+envSetVal("adexl.distribute" "generateJobFileOnlyOnError" 'boolean nil)
+;;envSetVal("adexl.local" "generateJobFileOnlyOnError" 'boolean nil)
+
+;;To ignore design changes after you hit the run button and ensure that the netlist will not be changed
+envSetVal("adexl.simulation" "ignoreDesignChangesDuringRun" 'boolean t)
+
+;;Specify which method to use when creating a statistical corner from Monte Carlo results
+;;specify "values", "prompt" or "promptValues"
+envSetVal("adexl.monte" "createStatisticalCornerType" 'cyclic "sequence")
+
+;senvSetVal("viva.application" "vivaWindowMode" 'string "assistant")
+;envSetVal("viva.application" "vivaWindowMode" 'string "window")
+

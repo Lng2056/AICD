@@ -1,0 +1,23 @@
+$FILE_FORMAT_VERSION
+	Version 1.1;
+$END
+$VECTOR_PREFERENCE
+	descending;
+$END
+$TIMESTAMP
+	-1=5-basic4-ipin;
+	1133906589=5-basic4-ipin6-symbol;
+	-1=5-basic4-opin;
+	1133906591=5-basic4-opin6-symbol;
+	-1=9-gsclib0907-AOI21X1;
+	1134107122=9-gsclib0907-AOI21X16-symbol;
+	-1=9-gsclib0905-INVX1;
+	1134107331=9-gsclib0905-INVX16-symbol;
+	-1=9-gsclib0907-NAND3X1;
+	1134107411=9-gsclib0907-NAND3X16-symbol;
+	-1=9-gsclib0907-NAND2X1;
+	1134107396=9-gsclib0907-NAND2X16-symbol;
+	-1=9-gsclib0905-MX2X1;
+	1134107354=9-gsclib0905-MX2X16-symbol;
+	1136387686=verilog.vams;
+$END
